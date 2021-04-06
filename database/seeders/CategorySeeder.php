@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
-use App\Models\subCategory;
+use App\Models\SubCategory;
 use Illuminate\Database\Seeder;
 
 class CategorySeeder extends Seeder
@@ -140,7 +140,7 @@ class CategorySeeder extends Seeder
 
         	if (isset($subCategories[$category])) {
         		foreach ($subCategories[$category] as $subCategory) {
-        			subCategory::create([
+        			SubCategory::create([
         				'name' => $subCategory,
         				'category_id' => $categoryCreated->id
         			]);
