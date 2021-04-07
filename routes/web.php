@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+	$user = User::find(1);
+
+    return view('welcome', [
+    	'user' => $user
+    ]);
+})->name('home');
+
+Route::post('/login', 'AuthController@login')->name('auth.login');
+Route::get('/logout', 'AuthController@logout')->name('auth.logout');
+
+Route::group(['middleware' => 'auth', 'namespace' => 'Admin'], function() {
+	Route::get('/admin', 'HomeController@home')->name('admin.home');
 });
