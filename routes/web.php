@@ -25,6 +25,8 @@ Route::get('/', function () {
 Route::post('/login', 'AuthController@login')->name('auth.login');
 Route::get('/logout', 'AuthController@logout')->name('auth.logout');
 
-Route::group(['middleware' => 'auth', 'namespace' => 'Admin'], function() {
-	Route::get('/admin', 'HomeController@home')->name('admin.home');
+Route::group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin'], function() {
+	Route::get('/', 'HomeController@home')->name('admin.home');
+
+	Route::get('/recent-writers', 'WriterController@recentWriters')->name('writer.recentWriters');
 });

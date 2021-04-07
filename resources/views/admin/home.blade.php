@@ -1,21 +1,14 @@
 @extends('admin.layout.app')
 
-@section('contentt')
+@section('content')
     <!--Page header-->
     <div class="page-header">
         <div class="page-leftheader">
-            <h4 class="page-title mb-0">Hi! Welcome Back</h4>
+            <h4 class="page-title mb-0">Hi! Welcome Back {{ Auth::user()->name }}</h4>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#"><i class="fe fe-home mr-2 fs-14"></i>Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page"><a href="#">Sales Dashboard</a></li>
+                <li class="breadcrumb-item"><a><i class="fe fe-home mr-2 fs-14"></i>Analyst</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('admin.home') }}">Dashboard</a></li>
             </ol>
-        </div>
-        <div class="page-rightheader">
-            <div class="btn btn-list">
-                <a href="#" class="btn btn-info"><i class="fe fe-settings mr-1"></i> General Settings </a>
-                <a href="#" class="btn btn-danger"><i class="fe fe-printer mr-1"></i> Print </a>
-                <a href="#" class="btn btn-warning"><i class="fe fe-shopping-cart mr-1"></i> Buy Now </a>
-            </div>
         </div>
     </div>
     <!--End Page header-->
@@ -25,361 +18,121 @@
         <div class="col-xl-3 col-lg-6 col-md-6 col-xm-12">
             <div class="card overflow-hidden dash1-card border-0">
                 <div class="card-body">
-                    <p class=" mb-1 ">Total Sales</p>
-                    <h2 class="mb-1 number-font">$3,257</h2>
-                    <small class="fs-12 text-muted">Compared to Last Month</small>
-                    <span class="ratio bg-warning">76%</span>
-                    <span class="ratio-text text-muted">Goals Reached</span>
+                    <p class=" mb-1 ">Total Posts</p>
+                    <h2 class="mb-1 number-font">{{ $totalPosts }}</h2>
+                    <small class="fs-12 text-muted">Compared to All Time</small>
+                    <span class="ratio bg-warning">{{ round($totalPosts/1000*100) }}%</span>
+                    <span class="ratio-text text-muted">Goals: 1000</span>
                 </div>
-                <div id="spark1"></div>
             </div>
         </div>
         <div class="col-xl-3 col-lg-6 col-md-6 col-xm-12">
             <div class="card overflow-hidden dash1-card border-0">
                 <div class="card-body">
                     <p class=" mb-1 ">Total User</p>
-                    <h2 class="mb-1 number-font">1,678</h2>
-                    <small class="fs-12 text-muted">Compared to Last Month</small>
-                    <span class="ratio bg-info">85%</span>
-                    <span class="ratio-text text-muted">Goals Reached</span>
+                    <h2 class="mb-1 number-font">{{ $totalUsers }}</h2>
+                    <small class="fs-12 text-muted">Compared to All Time</small>
+                    <span class="ratio bg-info">{{ round($totalUsers/1000*100) }}%</span>
+                    <span class="ratio-text text-muted">Goals: 1000</span>
                 </div>
-                <div id="spark2"></div>
             </div>
         </div>
         <div class="col-xl-3 col-lg-6 col-md-6 col-xm-12">
             <div class="card overflow-hidden dash1-card border-0">
                 <div class="card-body">
-                    <p class=" mb-1 ">Total Income</p>
-                    <h2 class="mb-1 number-font">$2,590</h2>
-                    <small class="fs-12 text-muted">Compared to Last Month</small>
-                    <span class="ratio bg-danger">62%</span>
-                    <span class="ratio-text text-muted">Goals Reached</span>
+                    <p class=" mb-1 ">Total Writer</p>
+                    <h2 class="mb-1 number-font">{{ $totalWriters }}</h2>
+                    <small class="fs-12 text-muted">Compared to All Time</small>
+                    <span class="ratio bg-danger">{{ round($totalWriters/100*100) }}%</span>
+                    <span class="ratio-text text-muted">Goals: 100</span>
                 </div>
-                <div id="spark3"></div>
             </div>
         </div>
         <div class="col-xl-3 col-lg-6 col-md-6 col-xm-12">
             <div class="card overflow-hidden dash1-card border-0">
                 <div class="card-body">
-                    <p class=" mb-1">Total Tax</p>
-                    <h2 class="mb-1 number-font">$1,954</h2>
-                    <small class="fs-12 text-muted">Compared to Last Month</small>
-                    <span class="ratio bg-success">53%</span>
-                    <span class="ratio-text text-muted">Goals Reached</span>
+                    <p class=" mb-1">Total Comments</p>
+                    <h2 class="mb-1 number-font">{{ $totalComments }}</h2>
+                    <small class="fs-12 text-muted">Compared to All Time</small>
+                    <span class="ratio bg-success"><a href="#"></a></span>
+                    <span class="ratio-text text-muted"></span>
                 </div>
-                <div id="spark4"></div>
             </div>
         </div>
     </div>
     <!-- End Row-1 -->
-
-    <!-- Row-2 -->
-    <div class="row">
-        <div class="col-xl-8 col-lg-8 col-md-12">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Sales Analysis</h3>
-                    <div class="card-options">
-                        <div class="btn-group p-0">
-                            <button class="btn btn-outline-light btn-sm" type="button">Week</button>
-                            <button class="btn btn-light btn-sm" type="button">Month</button>
-                            <button class="btn btn-outline-light btn-sm" type="button">Year</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="row mb-3">
-                        <div class="col-xl-3 col-6">
-                            <p class="mb-1">Total Sales</p>
-                            <h3 class="mb-0 fs-20 number-font1">$52,618</h3>
-                            <p class="fs-12 text-muted"><span class="text-danger mr-1"><i class="fe fe-arrow-down"></i>0.9%</span>this month</p>
-                        </div>
-                        <div class="col-xl-3 col-6 ">
-                            <p class=" mb-1">Maximum Sales</p>
-                            <h3 class="mb-0 fs-20 number-font1">$26,197</h3>
-                            <p class="fs-12 text-muted"><span class="text-success mr-1"><i class="fe fe-arrow-up"></i>0.15%</span>this month</p>
-                        </div>
-                        <div class="col-xl-3 col-6">
-                            <p class=" mb-1">Total Units Sold</p>
-                            <h3 class="mb-0 fs-20 number-font1">13,876</h3>
-                            <p class="fs-12 text-muted"><span class="text-danger mr-1"><i class="fe fe-arrow-down"></i>0.8%</span>this month</p>
-                        </div>
-                        <div class="col-xl-3 col-6">
-                            <p class=" mb-1">Maximum Units Sold</p>
-                            <h3 class="mb-0 fs-20 number-font1">5,876</h3>
-                            <p class="fs-12 text-muted"><span class="text-success mr-1"><i class="fe fe-arrow-up"></i>0.06%</span>this month</p>
-                        </div>
-                    </div>
-                    <div id="echart1" class="chart-tasks chart-dropshadow text-center"></div>
-                    <div class="text-center mt-2">
-                        <span class="mr-4"><span class="dot-label bg-primary"></span>Total Sales</span>
-                        <span><span class="dot-label bg-secondary"></span>Total Units Sold</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-4 col-lg-4 col-md-12">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Recent Activity</h3>
-                    <div class="card-options">
-                        <a href="#" class="option-dots" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fe fe-more-horizontal fs-20"></i></a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="#">Today</a>
-                            <a class="dropdown-item" href="#">Last Week</a>
-                            <a class="dropdown-item" href="#">Last Month</a>
-                            <a class="dropdown-item" href="#">Last Year</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="latest-timeline scrollbar3" id="scrollbar3">
-                        <ul class="timeline mb-0">
-                            <li class="mt-0">
-                                <div class="d-flex"><span class="time-data">Task Finished</span><span class="ml-auto text-muted fs-11">09 June 2020</span></div>
-                                <p class="text-muted fs-12"><span class="text-info">Joseph Ellison</span> finished task on<a href="#" class="font-weight-semibold"> Project Management</a></p>
-                            </li>
-                            <li>
-                                <div class="d-flex"><span class="time-data">New Comment</span><span class="ml-auto text-muted fs-11">05 June 2020</span></div>
-                                <p class="text-muted fs-12"><span class="text-info">Elizabeth Scott</span> Product delivered<a href="#" class="font-weight-semibold"> Service Management</a></p>
-                            </li>
-                            <li>
-                                <div class="d-flex"><span class="time-data">Target Completed</span><span class="ml-auto text-muted fs-11">01 June 2020</span></div>
-                                <p class="text-muted fs-12"><span class="text-info">Sonia Peters</span> finished target on<a href="#" class="font-weight-semibold"> this month Sales</a></p>
-                            </li>
-                            <li>
-                                <div class="d-flex"><span class="time-data">Revenue Sources</span><span class="ml-auto text-muted fs-11">26 May 2020</span></div>
-                                <p class="text-muted fs-12"><span class="text-info">Justin Nash</span> source report on<a href="#" class="font-weight-semibold"> Generated</a></p>
-                            </li>
-                            <li>
-                                <div class="d-flex"><span class="time-data">Dispatched Order</span><span class="ml-auto text-muted fs-11">22 May 2020</span></div>
-                                <p class="text-muted fs-12"><span class="text-info">Ella Lambert</span> ontime order delivery <a href="#" class="font-weight-semibold">Service Management</a></p>
-                            </li>
-                            <li>
-                                <div class="d-flex"><span class="time-data">New User Added</span><span class="ml-auto text-muted fs-11">19 May 2020</span></div>
-                                <p class="text-muted fs-12"><span class="text-info">Nicola  Blake</span> visit the site<a href="#" class="font-weight-semibold"> Membership allocated</a></p>
-                            </li>
-                            <li>
-                                <div class="d-flex"><span class="time-data">Revenue Sources</span><span class="ml-auto text-muted fs-11">15 May 2020</span></div>
-                                <p class="text-muted fs-12"><span class="text-info">Richard Mills</span> source report on<a href="#" class="font-weight-semibold"> Generated</a></p>
-                            </li>
-                            <li class="mb-0">
-                                <div class="d-flex"><span class="time-data">New Order Placed</span><span class="ml-auto text-muted fs-11">11 May 2020</span></div>
-                                <p class="text-muted fs-12"><span class="text-info">Steven Hart</span> is proces the order<a href="#" class="font-weight-semibold"> #987</a></p>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Row-2 -->
 
     <!-- Row-3 -->
     <div class="row">
         <div class="col-xl-4 col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Recent Customers</h3>
+                    <h3 class="card-title">Recent Users</h3>
                     <div class="card-options">
-                        <a href="#" class="option-dots" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fe fe-more-horizontal fs-20"></i></a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="#">Today</a>
-                            <a class="dropdown-item" href="#">Last Week</a>
-                            <a class="dropdown-item" href="#">Last Month</a>
-                            <a class="dropdown-item" href="#">Last Year</a>
-                        </div>
+                        <a href="#" class="option-dots"><i class="fe fe-arrow-right fs-20"></i></a>
                     </div>
                 </div>
                 <div class="card-body">
-                    <div class="list-card">
-                        <span class="bg-warning list-bar"></span>
-                        <div class="row align-items-center">
-                            <div class="col-9 col-sm-9">
-                                <div class="media mt-0">
-                                    <img src="admin-assets/images/users/1.jpg" alt="img" class="avatar brround avatar-md mr-3">
-                                    <div class="media-body">
-                                        <div class="d-md-flex align-items-center mt-1">
-                                            <h6 class="mb-1">Lisa Marshall</h6>
+                    @foreach($recentUsers as $recentUser)
+                        <div class="list-card">
+                            <span class="bg-info list-bar"></span>
+                            <div class="row align-items-center">
+                                <div class="col-9 col-sm-9">
+                                    <div class="media mt-0">
+                                        <img src="admin-assets/images/users/{{ $recentUser->id }}.jpg" alt="img" class="avatar brround avatar-md mr-3">
+                                        <div class="media-body">
+                                            <div class="d-md-flex align-items-center mt-1">
+                                                <h6 class="mb-1">{{ $recentUser->name }}</h6>
+                                            </div>
                                         </div>
-                                        <span class="mb-0 fs-13 text-muted">User ID:#2342<span class="ml-2 text-success fs-13 font-weight-semibold">Paid</span></span>
+                                    </div>
+                                </div>
+                                <div class="col-3 col-sm-3">
+                                    <div class="text-right">
+                                        <span class="font-weight-semibold fs-16 number-font">#{{ $recentUser->id }}</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-3 col-sm-3">
-                                <div class="text-right">
-                                    <span class="font-weight-semibold fs-16 number-font">$558</span>
-                                </div>
-                            </div>
                         </div>
-                    </div>
-                    <div class="list-card">
-                        <span class="bg-info list-bar"></span>
-                        <div class="row align-items-center">
-                            <div class="col-9 col-sm-9">
-                                <div class="media mt-0">
-                                    <img src="admin-assets/images/users/9.jpg" alt="img" class="avatar brround avatar-md mr-3">
-                                    <div class="media-body">
-                                        <div class="d-md-flex align-items-center mt-1">
-                                            <h6 class="mb-1">John Chapman</h6>
-                                        </div>
-                                        <span class="mb-0 fs-13 text-muted">User ID:#6720<span class="ml-2 text-danger fs-13 font-weight-semibold">Pending</span></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-3 col-sm-3">
-                                <div class="text-right">
-                                    <span class="font-weight-semibold fs-16 number-font">$458</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="list-card">
-                        <span class="bg-danger list-bar"></span>
-                        <div class="row align-items-center">
-                            <div class="col-9 col-sm-9">
-                                <div class="media mt-0">
-                                    <img src="admin-assets/images/users/2.jpg" alt="img" class="avatar brround avatar-md mr-3">
-                                    <div class="media-body">
-                                        <div class="d-md-flex align-items-center mt-1">
-                                            <h6 class="mb-1">Sonia Smith </h6>
-                                        </div>
-                                        <span class="mb-0 fs-13 text-muted">User ID:#8763<span class="ml-2 text-success fs-13 font-weight-semibold">Paid</span></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-3 col-sm-3">
-                                <div class="text-right">
-                                    <span class="font-weight-semibold fs-16 number-font">$358</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="list-card">
-                        <span class="bg-success list-bar"></span>
-                        <div class="row align-items-center">
-                            <div class="col-9 col-sm-9">
-                                <div class="media mt-0">
-                                    <img src="admin-assets/images/users/11.jpg" alt="img" class="avatar brround avatar-md mr-3">
-                                    <div class="media-body">
-                                        <div class="d-md-flex align-items-center mt-1">
-                                            <h6 class="mb-1">Joseph Abraham</h6>
-                                        </div>
-                                        <span class="mb-0 fs-13 text-muted">User ID:#1076<span class="ml-2 text-danger fs-13 font-weight-semibold">Pending</span></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-3 col-sm-3">
-                                <div class="text-right">
-                                    <span class="font-weight-semibold fs-16 number-font">$796</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="list-card">
-                        <span class="bg-primary list-bar"></span>
-                        <div class="row align-items-center">
-                            <div class="col-9 col-sm-9">
-                                <div class="media mt-0">
-                                    <img src="admin-assets/images/users/3.jpg" alt="img" class="avatar brround avatar-md mr-3">
-                                    <div class="media-body">
-                                        <div class="d-md-flex align-items-center mt-1">
-                                            <h6 class="mb-1">Joseph Abraham</h6>
-                                        </div>
-                                        <span class="mb-0 fs-13 text-muted">User ID:#986<span class="ml-2 text-success fs-13 font-weight-semibold">Paid</span></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-3 col-sm-3">
-                                <div class="text-right">
-                                    <span class="font-weight-semibold fs-16 number-font">$867</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
-        <div class="col-xl-4  col-md-12">
+        <div class="col-xl-4 col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Revenue by customers in Countries</h3>
+                    <h3 class="card-title">Recent Writers</h3>
                     <div class="card-options">
                         <a href="#" class="option-dots" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fe fe-more-horizontal fs-20"></i></a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="#">Today</a>
-                            <a class="dropdown-item" href="#">Last Week</a>
-                            <a class="dropdown-item" href="#">Last Month</a>
-                            <a class="dropdown-item" href="#">Last Year</a>
+                            <button id="btn-refresh-recent-writers" class="dropdown-item">Refresh</button>
+                            <button class="dropdown-item">View all</button>
                         </div>
                     </div>
                 </div>
-                <div class="card-body">
-                    <div class="country-card">
-                        <div class="mb-5">
-                            <div class="d-flex">
-                                <span class=""><img src="admin-assets/images/flags/us.svg" class="w-5 h-5 mr-2" alt="">United States</span>
-                                <div class="ml-auto"><span class="text-success mr-1"><i class="fe fe-trending-up"></i></span><span class="number-font">$45,870</span> (86%)</div>
-                            </div>
-                            <div class="progress h-2  mt-1">
-                                <div class="progress-bar progress-bar-striped progress-bar-animated bg-secondary" style="width: 80%"></div>
-                            </div>
-                        </div>
-                        <div class="mb-5">
-                            <div class="d-flex">
-                                <span class=""><img src="admin-assets/images/flags/in.svg" class="w-5 h-5 mr-2" alt="">India</span>
-                                <div class="ml-auto"><span class="text-danger mr-1"><i class="fe fe-trending-down"></i></span><span class="number-font">$32,879</span> (65%)</div>
-                            </div>
-                            <div class="progress h-2  mt-1">
-                                <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" style="width: 60%"></div>
-                            </div>
-                        </div>
-                        <div class="mb-5">
-                            <div class="d-flex">
-                                <span class=""><img src="admin-assets/images/flags/ru.svg" class="w-5 h-5 mr-2" alt="">Russia</span>
-                                <div class="ml-auto"><span class="text-success mr-1"><i class="fe fe-trending-up"></i></span><span class="number-font">$22,710</span> (55%)</div>
-                            </div>
-                            <div class="progress h-2  mt-1">
-                                <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" style="width: 50%"></div>
+                <div id="card-recent-writers" class="card-body">
+                    @foreach($recentWriters as $rencentWriter)
+                        <div class="list-card">
+                            <span class="bg-primary list-bar"></span>
+                            <div class="row align-items-center">
+                                <div class="col-9 col-sm-9">
+                                    <div class="media mt-0">
+                                        <img src="admin-assets/images/users/{{ $rencentWriter->id }}.jpg" alt="img" class="avatar brround avatar-md mr-3">
+                                        <div class="media-body">
+                                            <div class="d-md-flex align-items-center mt-1">
+                                                <h6 class="mb-1">{{ $rencentWriter->name }}</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3 col-sm-3">
+                                    <div class="text-right">
+                                        <span class="font-weight-semibold fs-16 number-font">#{{ $rencentWriter->id }}</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="mb-5">
-                            <div class="d-flex">
-                                <span class=""><img src="admin-assets/images/flags/ca.svg" class="w-5 h-5 mr-2" alt="">Canada</span>
-                                <div class="ml-auto"><span class="text-danger mr-1"><i class="fe fe-trending-down"></i></span><span class="number-font">$56,291</span> (69%)</div>
-                            </div>
-                            <div class="progress h-2  mt-1">
-                                <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" style="width: 80%"></div>
-                            </div>
-                        </div>
-                        <div class="mb-5">
-                            <div class="d-flex">
-                                <span class=""><img src="admin-assets/images/flags/ge.svg" class="w-5 h-5 mr-2" alt="">Germany</span>
-                                <div class="ml-auto"><span class="text-success mr-1"><i class="fe fe-trending-up"></i></span><span class="number-font">$67,357</span> (73%)</div>
-                            </div>
-                            <div class="progress h-2  mt-1">
-                                <div class="progress-bar progress-bar-striped progress-bar-animated bg-teal" style="width: 70%"></div>
-                            </div>
-                        </div>
-                        <div class="mb-5">
-                            <div class="d-flex">
-                                <span class=""><img src="admin-assets/images/flags/br.svg" class="w-5 h-5 mr-2" alt="">Brazil</span>
-                                <div class="ml-auto"><span class="text-success mr-1"><i class="fe fe-trending-up"></i></span><span class="number-font">$34,209</span> (60%)</div>
-                            </div>
-                            <div class="progress h-2  mt-1">
-                                <div class="progress-bar progress-bar-striped progress-bar-animated bg-indigo" style="width: 60%"></div>
-                            </div>
-                        </div>
-                        <div class="mb-0">
-                            <div class="d-flex">
-                                <span class=""><img src="admin-assets/images/flags/au.svg" class="w-5 h-5 mr-2" alt="">Australia</span>
-                                <div class="ml-auto"><span class="text-success mr-1"><i class="fe fe-trending-up"></i></span><span class="number-font">$12,876</span> (46%)</div>
-                            </div>
-                            <div class="progress h-2  mt-1">
-                                <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" style="width: 40%"></div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -451,6 +204,96 @@
         </div>
     </div>
     <!-- End Row-3 -->
+
+    <!-- Row-2 -->
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Recent Client Activity</h3>
+                    <div class="card-options">
+                        <a href="#" class="option-dots"><i class="fe fe-more-horizontal fs-20"></i></a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="latest-timeline scrollbar3" id="scrollbar3">
+                        <ul class="timeline mb-0">
+                            <li class="mt-0">
+                                <div class="d-flex"><span class="time-data">Task Finished</span><span class="ml-auto text-muted fs-11">09 June 2020</span></div>
+                                <p class="text-muted fs-12"><span class="text-info">Joseph Ellison</span> finished task on<a href="#" class="font-weight-semibold"> Project Management</a></p>
+                            </li>
+                            <li>
+                                <div class="d-flex"><span class="time-data">New Comment</span><span class="ml-auto text-muted fs-11">05 June 2020</span></div>
+                                <p class="text-muted fs-12"><span class="text-info">Elizabeth Scott</span> Product delivered<a href="#" class="font-weight-semibold"> Service Management</a></p>
+                            </li>
+                            <li>
+                                <div class="d-flex"><span class="time-data">Target Completed</span><span class="ml-auto text-muted fs-11">01 June 2020</span></div>
+                                <p class="text-muted fs-12"><span class="text-info">Sonia Peters</span> finished target on<a href="#" class="font-weight-semibold"> this month Sales</a></p>
+                            </li>
+                            <li>
+                                <div class="d-flex"><span class="time-data">Revenue Sources</span><span class="ml-auto text-muted fs-11">26 May 2020</span></div>
+                                <p class="text-muted fs-12"><span class="text-info">Justin Nash</span> source report on<a href="#" class="font-weight-semibold"> Generated</a></p>
+                            </li>
+                            <li>
+                                <div class="d-flex"><span class="time-data">Dispatched Order</span><span class="ml-auto text-muted fs-11">22 May 2020</span></div>
+                                <p class="text-muted fs-12"><span class="text-info">Ella Lambert</span> ontime order delivery <a href="#" class="font-weight-semibold">Service Management</a></p>
+                            </li>
+                            <li>
+                                <div class="d-flex"><span class="time-data">New User Added</span><span class="ml-auto text-muted fs-11">19 May 2020</span></div>
+                                <p class="text-muted fs-12"><span class="text-info">Nicola  Blake</span> visit the site<a href="#" class="font-weight-semibold"> Membership allocated</a></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Row-2 -->
+
+    <!-- Row-2 -->
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Recent Client Activity</h3>
+                    <div class="card-options">
+                        <a href="#" class="option-dots"><i class="fe fe-more-horizontal fs-20"></i></a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="latest-timeline scrollbar3" id="scrollbar3">
+                        <ul class="timeline mb-0">
+                            <li class="mt-0">
+                                <div class="d-flex"><span class="time-data">Task Finished</span><span class="ml-auto text-muted fs-11">09 June 2020</span></div>
+                                <p class="text-muted fs-12"><span class="text-info">Joseph Ellison</span> finished task on<a href="#" class="font-weight-semibold"> Project Management</a></p>
+                            </li>
+                            <li>
+                                <div class="d-flex"><span class="time-data">New Comment</span><span class="ml-auto text-muted fs-11">05 June 2020</span></div>
+                                <p class="text-muted fs-12"><span class="text-info">Elizabeth Scott</span> Product delivered<a href="#" class="font-weight-semibold"> Service Management</a></p>
+                            </li>
+                            <li>
+                                <div class="d-flex"><span class="time-data">Target Completed</span><span class="ml-auto text-muted fs-11">01 June 2020</span></div>
+                                <p class="text-muted fs-12"><span class="text-info">Sonia Peters</span> finished target on<a href="#" class="font-weight-semibold"> this month Sales</a></p>
+                            </li>
+                            <li>
+                                <div class="d-flex"><span class="time-data">Revenue Sources</span><span class="ml-auto text-muted fs-11">26 May 2020</span></div>
+                                <p class="text-muted fs-12"><span class="text-info">Justin Nash</span> source report on<a href="#" class="font-weight-semibold"> Generated</a></p>
+                            </li>
+                            <li>
+                                <div class="d-flex"><span class="time-data">Dispatched Order</span><span class="ml-auto text-muted fs-11">22 May 2020</span></div>
+                                <p class="text-muted fs-12"><span class="text-info">Ella Lambert</span> ontime order delivery <a href="#" class="font-weight-semibold">Service Management</a></p>
+                            </li>
+                            <li>
+                                <div class="d-flex"><span class="time-data">New User Added</span><span class="ml-auto text-muted fs-11">19 May 2020</span></div>
+                                <p class="text-muted fs-12"><span class="text-info">Nicola  Blake</span> visit the site<a href="#" class="font-weight-semibold"> Membership allocated</a></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Row-2 -->
 
     <!--Row-->
     <div class="row">
@@ -546,4 +389,96 @@
         </div>
     </div>
     <!--End row-->
+@endsection
+
+@section('custom-js')
+    <script type="text/javascript">
+        $('#btn-refresh-recent-writers').on('click', function(event) {
+            event.preventDefault();
+            
+            $.ajax({
+                url: '{{ route('writer.recentWriters') }}',
+                type: 'GET',
+            })
+            .done(function(response) {
+                $('#card-recent-writers').empty();
+
+                response['recentWriters'].forEach(function(writer) {
+                    var html = `
+                        <div class="list-card">
+                            <span class="bg-primary list-bar"></span>
+                            <div class="row align-items-center">
+                                <div class="col-9 col-sm-9">
+                                    <div class="media mt-0">
+                                        <img src="admin-assets/images/users/${writer['id']}.jpg" alt="img" class="avatar brround avatar-md mr-3">
+                                        <div class="media-body">
+                                            <div class="d-md-flex align-items-center mt-1">
+                                                <h6 class="mb-1">${writer['name']}</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3 col-sm-3">
+                                    <div class="text-right">
+                                        <span class="font-weight-semibold fs-16 number-font">#${writer['id']}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    $('#card-recent-writers').append(html);
+                });
+            })
+            .fail(function() {
+                console.log("error");
+            });
+
+            console.log("Complete refresh !");
+        });
+
+        // setInterval(refreshRecentWriters, 2000);
+
+        // function refreshRecentWriters() {
+        //     $.ajax({
+        //         url: '{{-- route('writer.recentWriters') --}}',
+        //         type: 'GET',
+        //     })
+        //     .done(function(response) {
+        //         $('#card-recent-writers').empty();
+
+        //         response['recentWriters'].forEach(function(writer) {
+        //             var html = `
+        //                 <div class="list-card">
+        //                     <span class="bg-primary list-bar"></span>
+        //                     <div class="row align-items-center">
+        //                         <div class="col-9 col-sm-9">
+        //                             <div class="media mt-0">
+        //                                 <img src="admin-assets/images/users/${writer['id']}.jpg" alt="img" class="avatar brround avatar-md mr-3">
+        //                                 <div class="media-body">
+        //                                     <div class="d-md-flex align-items-center mt-1">
+        //                                         <h6 class="mb-1">${writer['name']}</h6>
+        //                                     </div>
+        //                                 </div>
+        //                             </div>
+        //                         </div>
+        //                         <div class="col-3 col-sm-3">
+        //                             <div class="text-right">
+        //                                 <span class="font-weight-semibold fs-16 number-font">#${writer['id']}</span>
+        //                             </div>
+        //                         </div>
+        //                     </div>
+        //                 </div>
+        //             `;
+        //             $('#card-recent-writers').append(html);
+        //         });
+        //     })
+        //     .fail(function() {
+        //         console.log("error");
+        //     });
+
+        //     console.log("Complete refresh !");
+        // }
+         
+        
+    </script>
 @endsection
