@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Comment;
 use App\Models\User;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Carbon;
@@ -18,7 +20,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::where('role_id', 1)->orderBy('id', 'desc')->get();
+
+        return view('admin.user', [
+            'users' => $users
+        ]);
     }
 
     /**
@@ -84,7 +90,14 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            Comment::where('user_id', $id)->delete();
+            USer::destroy($id);
+
+            return 'success';
+        } catch (ModelNotFoundException $e) {
+            return 'fail';
+        }
     }
 
     public function recentUsers()

@@ -257,6 +257,8 @@
 
 @section('custom-js')
     <script type="text/javascript">
+        $('#menu-dashboard').addClass('active');
+
         var database = firebase.database();
         var recentWritersRef = database.ref('recentWriters');
         recentWritersRef.on('value', (snapshot) => {
@@ -269,7 +271,7 @@
                         <div class="row align-items-center">
                             <div class="col-9 col-sm-9">
                                 <div class="media mt-0">
-                                    <img src="admin-assets/images/users/${recentWriter['0']}.jpg" alt="img" class="avatar brround avatar-md mr-3">
+                                    <img src="/admin-assets/images/users/${recentWriter['0']}.jpg" alt="img" class="avatar brround avatar-md mr-3">
                                     <div class="media-body">
                                         <div class="d-md-flex align-items-center mt-1">
                                             <h6 class="mb-1">${recentWriter['1']}</h6>
@@ -300,7 +302,7 @@
                         <div class="row align-items-center">
                             <div class="col-9 col-sm-9">
                                 <div class="media mt-0">
-                                    <img src="admin-assets/images/users/${recentUser['0']}.jpg" alt="img" class="avatar brround avatar-md mr-3">
+                                    <img src="/admin-assets/images/users/${recentUser['0']}.jpg" alt="img" class="avatar brround avatar-md mr-3">
                                     <div class="media-body">
                                         <div class="d-md-flex align-items-center mt-1">
                                             <h6 class="mb-1">${recentUser['1']}</h6>

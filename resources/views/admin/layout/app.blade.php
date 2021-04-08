@@ -12,42 +12,38 @@
         <title>UET-News</title>
 
         <!--Favicon -->
-        <link rel="icon" href="admin-assets/images/brand/favicon.png" type="image/png"/>
+        <link rel="icon" href="{{ asset('admin-assets/images/brand/favicon.png') }}" type="image/png"/>
 
         <!--Bootstrap css -->
-        <link href="admin-assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="{{ asset('admin-assets/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 
         <!-- Style css -->
-        <link href="admin-assets/css/style.css" rel="stylesheet" />
-        <link href="admin-assets/css/dark.css" rel="stylesheet" />
-        <link href="admin-assets/css/skin-modes.css" rel="stylesheet" />
+        <link href="{{ asset('admin-assets/css/style.css') }}" rel="stylesheet" />
+        <link href="{{ asset('admin-assets/css/dark.css') }}" rel="stylesheet" />
+        <link href="{{ asset('admin-assets/css/skin-modes.css') }}" rel="stylesheet" />
 
         <!-- Animate css -->
-        <link href="admin-assets/css/animated.css" rel="stylesheet" />
+        <link href="{{ asset('admin-assets/css/animated.css') }}" rel="stylesheet" />
 
         <!--Sidemenu css -->
-       <link href="admin-assets/css/sidemenu.css" rel="stylesheet">
-
-        <!-- P-scroll bar css-->
-        <link href="admin-assets/plugins/p-scrollbar/p-scrollbar.css" rel="stylesheet" />
+       <link href="{{ asset('admin-assets/css/sidemenu.css') }}" rel="stylesheet">
 
         <!---Icons css-->
-        <link href="admin-assets/css/icons.css" rel="stylesheet" />
-
-        <!-- Simplebar css -->
-        <link rel="stylesheet" href="admin-assets/plugins/simplebar/css/simplebar.css">
+        <link href="{{ asset('admin-assets/css/icons.css') }}" rel="stylesheet" />
 
         <!-- INTERNAL Select2 css -->
-        <link href="admin-assets/plugins/select2/select2.min.css" rel="stylesheet" />
+        <link href="{{ asset('admin-assets/plugins/select2/select2.min.css') }}" rel="stylesheet" />
 
         <!-- Color Skin css -->
-        <link id="theme" href="admin-assets/colors/color1.css" rel="stylesheet" type="text/css"/>
+        <link id="theme" href="{{ asset('admin-assets/colors/color1.css') }}" rel="stylesheet" type="text/css"/>
+
+        @yield('custom-css')
     </head>
 
     <body class="app sidebar-mini">
         <!---Global-loader-->
         <div id="global-loader" >
-            <img src="admin-assets/images/svgs/loader.svg" alt="loader">
+            <img src="{{ asset('admin-assets/images/svgs/loader.svg') }}" alt="loader">
         </div>
         <!--- End Global-loader-->
 
@@ -58,13 +54,13 @@
                 <aside class="app-sidebar">
                     <div class="app-sidebar__logo">
                         <a class="header-brand" href="{{ route('admin.home') }}">
-                            <img src="admin-assets/images/brand/logo.png" class="header-brand-img desktop-lgo" alt="Admitro logo">
+                            <img src="{{ asset('admin-assets/images/brand/logo.png') }}" class="header-brand-img desktop-lgo" alt="Admitro logo">
                         </a>
                     </div>
                     <div class="app-sidebar__user">
                         <div class="dropdown user-pro-body text-center">
                             <div class="user-pic">
-                                <img src="admin-assets/images/users/{{ Auth::id() }}.jpg" alt="user-img" class="avatar-xl rounded-circle mb-1">
+                                <img src="{{ asset('admin-assets/images/users/' . Auth::id() . '.jpg') }}" alt="user-img" class="avatar-xl rounded-circle mb-1">
                             </div>
                             <div class="user-info">
                                 <h5 class=" mb-1">{{ Auth::user()->name }} <i class="ion-checkmark-circled  text-success fs-12"></i></h5>
@@ -72,12 +68,23 @@
                             </div>
                         </div>
                     </div>
+                    {{-- #5C678F --}}
                     <ul class="side-menu app-sidebar3">
                         <li class="side-item side-item-category mt-4">Analyst</li>
                         <li class="slide">
-                            <a class="side-menu__item active" href="{{ route('admin.home') }}">
-                            <svg class="side-menu__icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 5v2h-4V5h4M9 5v6H5V5h4m10 8v6h-4v-6h4M9 17v2H5v-2h4M21 3h-8v6h8V3zM11 3H3v10h8V3zm10 8h-8v10h8V11zm-10 4H3v6h8v-6z"/></svg>
+                            <a id="menu-dashboard" class="side-menu__item" href="{{ route('admin.home') }}">
+                            <img class="side-menu__icon" src="{{ asset('admin-assets/images/icons/dashboard.png') }}" width="24px"/>
                             <span class="side-menu__label">Dashboard</span><span class="badge badge-danger side-badge">New</span></a>
+                        </li>
+                        <li class="side-item side-item-category">CRUD</li>
+                        <li id="list-menu-user" class="slide">
+                            <a id="menu-user" class="side-menu__item" data-toggle="slide" href="#">
+                            <img class="side-menu__icon" src="{{ asset('admin-assets/images/icons/users.png') }}" width="24px"/>
+                            <span class="side-menu__label">Users</span><i class="angle fa fa-angle-right"></i></a>
+                            <ul class="slide-menu ">
+                                <li><a id="sub-menu-user" href="{{ route('users.index') }}" class="slide-item">Users</a></li>
+                                <li><a href="" class="slide-item">Writers</a></li>
+                            </ul>
                         </li>
                     </ul>
                 </aside>
@@ -91,7 +98,7 @@
                             <div class="container-fluid">
                                 <div class="d-flex">
                                     <a class="header-brand" href="{{ route('admin.home') }}">
-                                        <img src="admin-assets/images/brand/logo.png" class="header-brand-img desktop-lgo" alt="Admitro logo">
+                                        <img src="{{ asset('admin-assets/images/brand/logo.png') }}" class="header-brand-img desktop-lgo" alt="Admitro logo">
                                     </a>
                                     <div class="app-sidebar__toggle" data-toggle="sidebar">
                                         <a class="open-toggle" href="#">
@@ -107,7 +114,7 @@
                                         <div class="dropdown profile-dropdown">
                                             <a href="#" class="nav-link pr-0 leading-none" data-toggle="dropdown">
                                                 <span>
-                                                    <img src="admin-assets/images/users/{{ Auth::id() }}.jpg" alt="img" class="avatar avatar-md brround">
+                                                    <img src="{{ asset('admin-assets/images/users/'. Auth::id() .'.jpg') }}" alt="img" class="avatar avatar-md brround">
                                                 </span>
                                             </a>
                                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow animated">
@@ -158,47 +165,32 @@
         <a href="#top" id="back-to-top"><i class="fe fe-chevrons-up"></i></a>
 
         <!-- Jquery js-->
-        <script src="admin-assets/js/jquery-3.5.1.min.js"></script>
+        <script src="{{ asset('admin-assets/js/jquery-3.5.1.min.js') }}"></script>
 
         <!-- Bootstrap4 js-->
-        <script src="admin-assets/plugins/bootstrap/popper.min.js"></script>
-        <script src="admin-assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-
-        <!--Othercharts js-->
-        <script src="admin-assets/plugins/othercharts/jquery.sparkline.min.js"></script>
-
-        <!-- Circle-progress js-->
-        <script src="admin-assets/js/circle-progress.min.js"></script>
+        <script src="{{ asset('admin-assets/plugins/bootstrap/popper.min.js') }}"></script>
+        <script src="{{ asset('admin-assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
 
         <!-- Jquery-rating js-->
-        <script src="admin-assets/plugins/rating/jquery.rating-stars.js"></script>
+        <script src="{{ asset('admin-assets/plugins/rating/jquery.rating-stars.js') }}"></script>
 
         <!--Sidemenu js-->
-        <script src="admin-assets/plugins/sidemenu/sidemenu.js"></script>
-
-        <!--INTERNAL Peitychart js-->
-        <script src="admin-assets/plugins/peitychart/jquery.peity.min.js"></script>
-        <script src="admin-assets/plugins/peitychart/peitychart.init.js"></script>
-
-        <!--INTERNAL Chart js -->
-        <script src="admin-assets/plugins/chart/chart.bundle.js"></script>
-        <script src="admin-assets/plugins/chart/utils.js"></script>
+        <script src="{{ asset('admin-assets/plugins/sidemenu/sidemenu.js') }}"></script>
 
         <!-- INTERNAL Select2 js -->
-        <script src="admin-assets/plugins/select2/select2.full.min.js"></script>
-        <script src="admin-assets/js/select2.js"></script>
+        <script src="{{ asset('admin-assets/plugins/select2/select2.full.min.js') }}"></script>
+        <script src="{{ asset('admin-assets/js/select2.js') }}"></script>
 
         <!--INTERNAL Moment js-->
-        <script src="admin-assets/plugins/moment/moment.js"></script>
-
-        <!--INTERNAL Index js-->
-        <script src="admin-assets/js/index1.js"></script>
-
-        <!-- Simplebar JS -->
-        <script src="admin-assets/plugins/simplebar/js/simplebar.min.js"></script>
+        <script src="{{ asset('admin-assets/plugins/moment/moment.js') }}"></script>
 
         {{-- SweetAlert2 --}}
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        <style type="text/css">
+            .swal2-container {
+                z-index: 10000;
+            }
+        </style>
 
         {{-- Firebase --}}
         <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -223,7 +215,7 @@
         </script>
 
         <!-- Custom js-->
-        <script src="admin-assets/js/custom.js"></script>
+        <script src="{{ asset('admin-assets/js/custom.js') }}"></script>
         @yield('custom-js')
     </body>
 </html>
