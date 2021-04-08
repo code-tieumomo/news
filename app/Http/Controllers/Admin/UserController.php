@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Carbon;
 use Kreait\Firebase\Factory;
 
 class UserController extends Controller
@@ -122,9 +123,14 @@ class UserController extends Controller
         //     'recentUsers/'.$removeId => 'Katelyn Schusterr'
         // ];
         // $database->getReference()->update($update);
-        $database->getReference('recentUsers/54')->remove();
-        $database->getReference('recentUsers')->update([
-            41 => 'Katelyn Schusterr'
+        // $database->getReference('recentUsers/54')->remove();
+        // $database->getReference('recentUsers')->update([
+        //     41 => 'Katelyn Schusterr'
+        // ]);
+        $database->getReference('recentClientActivities')->push([
+            'activity' => 'Change Nameeeeeeee',
+            'description' => 'Katelyn Schusterr change account\'s password',
+            'time' => Carbon::now()->toDateTimeString()
         ]);
         // echo "<pre>";
         // print_r($removeId);
