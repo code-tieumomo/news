@@ -237,71 +237,14 @@
                         <table class="table table-vcenter text-nowrap mb-0 table-striped table-bordered border-top">
                             <thead class="">
                                 <tr>
-                                    <th>Product</th>
-                                    <th>Sold</th>
-                                    <th>Record point</th>
-                                    <th>Stock</th>
-                                    <th>Amount</th>
-                                    <th>Stock Status</th>
+                                    <th>Title</th>
+                                    <th>Writer</th>
+                                    <th>Sumary</th>
+                                    <th colspan="2">Action</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="font-weight-bold"><img class="w-7 h-7 rounded shadow mr-3" src="admin-assets/images/orders/7.jpg" alt="media1"> New Book</td>
-                                    <td><span class="badge badge-primary">18</span></td>
-                                    <td>05</td>
-                                    <td>112</td>
-                                    <td class="number-font">$ 2,356</td>
-                                    <td><i class="fa fa-check mr-1 text-success"></i> In Stock</td>
-                                </tr>
-                                <tr>
-                                    <td class="font-weight-bold"><img class="w-7 h-7 rounded shadow mr-3" src="admin-assets/images/orders/8.jpg" alt="media1"> New Bowl</td>
-                                    <td><span class="badge badge-info">10</span></td>
-                                    <td>04</td>
-                                    <td>210</td>
-                                    <td class="number-font">$ 3,522</td>
-                                    <td><i class="fa fa-check text-success"></i> In Stock</td>
-                                </tr>
-                                <tr>
-                                    <td class="font-weight-bold"><img class="w-7 h-7 rounded shadow mr-3" src="admin-assets/images/orders/9.jpg" alt="media1"> Modal Car</td>
-                                    <td><span class="badge badge-secondary">15</span></td>
-                                    <td>05</td>
-                                    <td>215</td>
-                                    <td class="number-font">$ 5,362</td>
-                                    <td><i class="fa fa-check text-success"></i> In Stock</td>
-                                </tr>
-                                <tr>
-                                    <td class="font-weight-bold"><img class="w-7 h-7 rounded shadow mr-3" src="admin-assets/images/orders/10.jpg" alt="media1"> Headset</td>
-                                    <td><span class="badge badge-primary">21</span></td>
-                                    <td>07</td>
-                                    <td>102</td>
-                                    <td class="number-font">$ 1,326</td>
-                                    <td><i class="fa fa-check text-success"></i> In Stock</td>
-                                </tr>
-                                <tr>
-                                    <td class="font-weight-bold"><img class="w-7 h-7 rounded shadow mr-3" src="admin-assets/images/orders/12.jpg" alt="media1"> Watch</td>
-                                    <td><span class="badge badge-danger">34</span></td>
-                                    <td>10</td>
-                                    <td>325</td>
-                                    <td class="number-font">$ 5,234</td>
-                                    <td><i class="fa fa-check text-success"></i> In Stock</td>
-                                </tr>
-                                <tr>
-                                    <td class="font-weight-bold"><img class="w-7 h-7 rounded shadow mr-3" src="admin-assets/images/orders/13.jpg" alt="media1"> Branded Shoes</td>
-                                    <td><span class="badge badge-success">11</span></td>
-                                    <td>04</td>
-                                    <td>0</td>
-                                    <td class="number-font">$ 3,256</td>
-                                    <td><i class="fa fa-exclamation-triangle text-warning"></i> Out of stock</td>
-                                </tr>
-                                <tr class="mb-0">
-                                    <td class="font-weight-bold"><img class="w-7 h-7 rounded shadow mr-3" src="admin-assets/images/orders/11.jpg" alt="media1"> New EarPhones</td>
-                                    <td><span class="badge badge-warning">60</span></td>
-                                    <td>10</td>
-                                    <td>0</td>
-                                    <td class="number-font">$ 7,652</td>
-                                    <td><i class="fa fa-exclamation-triangle text-danger"></i> Out of stock</td>
-                                </tr>
+                            <tbody id="tbl-recent-pending-posts">
+                                {{-- Recent pending post go here --}}
                             </tbody>
                         </table>
                     </div>
@@ -389,6 +332,24 @@
                     </li>
                 `;
                 $('#list-recent-client-activities').prepend(html);
+            });
+        });
+
+        var recentPendingPostsRef = database.ref('recentPendingPosts').orderByKey().limitToLast(6);
+        recentPendingPostsRef.on('value', (snapshot) => {
+            $('#tbl-recent-pending-posts').empty();
+            const recentPendingPosts = snapshot.val();
+            Object.entries(recentPendingPosts).forEach(([key, post]) => {
+                var html = `
+                    <tr class="mb-0">
+                        <td class="font-weight-bold">${post['title'].substr(0, 40) + ' ...'}</td>
+                        <td>${post['writer']}</td>
+                        <td>${post['sumary'].substr(0, 40) + ' ...'}</td>
+                        <td><a href="#"><span class="badge badge-success">Approve</span></a></td>
+                        <td><a href="#"><span class="badge badge-danger">Deny</span></a></td>
+                    </tr>
+                `;
+                $('#tbl-recent-pending-posts').prepend(html);
             });
         });
     </script>
