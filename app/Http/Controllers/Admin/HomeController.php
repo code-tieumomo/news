@@ -26,7 +26,6 @@ class HomeController extends Controller
             'totalComments' => $totalComments,
             'recentUsers' => $recentUsers,
             'recentWriters' => $recentWriters,
-
         ]);
     }
 }

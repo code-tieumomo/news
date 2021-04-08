@@ -200,6 +200,28 @@
         {{-- SweetAlert2 --}}
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
+        {{-- Firebase --}}
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use -->
+        <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
+
+        <script>
+        // Your web app's Firebase configuration
+            var firebaseConfig = {
+                apiKey: "AIzaSyA95mMD-7Y19ZlAkz7nLGLFt3jOaIwrpH4",
+                authDomain: "uet-news-2021.firebaseapp.com",
+                databaseURL: "https://uet-news-2021-default-rtdb.firebaseio.com",
+                projectId: "uet-news-2021",
+                storageBucket: "uet-news-2021.appspot.com",
+                messagingSenderId: "638010519609",
+                appId: "1:638010519609:web:ab6a38b0dc0d85f55edde8"
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+        </script>
+
         <!-- Custom js-->
         <script src="admin-assets/js/custom.js"></script>
         @yield('custom-js')

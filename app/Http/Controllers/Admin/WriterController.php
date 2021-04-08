@@ -15,7 +15,7 @@ class WriterController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**

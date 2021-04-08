@@ -69,32 +69,15 @@
                 <div class="card-header">
                     <h3 class="card-title">Recent Users</h3>
                     <div class="card-options">
-                        <a href="#" class="option-dots"><i class="fe fe-arrow-right fs-20"></i></a>
+                        <a href="#" class="option-dots" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fe fe-more-horizontal fs-20"></i></a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <button id="btn-refresh-recent-users" class="dropdown-item">Refresh</button>
+                            <button class="dropdown-item">View all</button>
+                        </div>
                     </div>
                 </div>
-                <div class="card-body">
-                    @foreach($recentUsers as $recentUser)
-                        <div class="list-card">
-                            <span class="bg-info list-bar"></span>
-                            <div class="row align-items-center">
-                                <div class="col-9 col-sm-9">
-                                    <div class="media mt-0">
-                                        <img src="admin-assets/images/users/{{ $recentUser->id }}.jpg" alt="img" class="avatar brround avatar-md mr-3">
-                                        <div class="media-body">
-                                            <div class="d-md-flex align-items-center mt-1">
-                                                <h6 class="mb-1">{{ $recentUser->name }}</h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-3 col-sm-3">
-                                    <div class="text-right">
-                                        <span class="font-weight-semibold fs-16 number-font">#{{ $recentUser->id }}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
+                <div id="card-recent-users" class="card-body">
+                    {{-- Recent users go here --}}
                 </div>
             </div>
         </div>
@@ -111,28 +94,7 @@
                     </div>
                 </div>
                 <div id="card-recent-writers" class="card-body">
-                    @foreach($recentWriters as $rencentWriter)
-                        <div class="list-card">
-                            <span class="bg-primary list-bar"></span>
-                            <div class="row align-items-center">
-                                <div class="col-9 col-sm-9">
-                                    <div class="media mt-0">
-                                        <img src="admin-assets/images/users/{{ $rencentWriter->id }}.jpg" alt="img" class="avatar brround avatar-md mr-3">
-                                        <div class="media-body">
-                                            <div class="d-md-flex align-items-center mt-1">
-                                                <h6 class="mb-1">{{ $rencentWriter->name }}</h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-3 col-sm-3">
-                                    <div class="text-right">
-                                        <span class="font-weight-semibold fs-16 number-font">#{{ $rencentWriter->id }}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
+                    {{-- Recent writers go here --}}
                 </div>
             </div>
         </div>
@@ -141,7 +103,7 @@
                 <div class="card-body">
                     <div class="d-flex align-items-end justify-content-between">
                         <div>
-                            <p class=" mb-1 fs-14">Users</p>
+                            <p class=" mb-1 fs-14">Posts</p>
                             <h2 class="mb-0"><span class="number-font1">12,769</span><span class="ml-2 text-muted fs-11"><span class="text-danger"><i class="fa fa-caret-down"></i> 43.2</span> this month</span></h2>
 
                         </div>
@@ -393,92 +355,67 @@
 
 @section('custom-js')
     <script type="text/javascript">
-        $('#btn-refresh-recent-writers').on('click', function(event) {
-            event.preventDefault();
-            
-            $.ajax({
-                url: '{{ route('writer.recentWriters') }}',
-                type: 'GET',
-            })
-            .done(function(response) {
-                $('#card-recent-writers').empty();
-
-                response['recentWriters'].forEach(function(writer) {
-                    var html = `
-                        <div class="list-card">
-                            <span class="bg-primary list-bar"></span>
-                            <div class="row align-items-center">
-                                <div class="col-9 col-sm-9">
-                                    <div class="media mt-0">
-                                        <img src="admin-assets/images/users/${writer['id']}.jpg" alt="img" class="avatar brround avatar-md mr-3">
-                                        <div class="media-body">
-                                            <div class="d-md-flex align-items-center mt-1">
-                                                <h6 class="mb-1">${writer['name']}</h6>
-                                            </div>
+        var database = firebase.database();
+        var recentWritersRef = database.ref('recentWriters');
+        recentWritersRef.on('value', (snapshot) => {
+            $('#card-recent-writers').empty();
+            const recentWriters = snapshot.val();
+            Object.entries(recentWriters).forEach(function(recentWriter, order) {
+                var html = `
+                    <div class="list-card">
+                        <span class="bg-primary list-bar"></span>
+                        <div class="row align-items-center">
+                            <div class="col-9 col-sm-9">
+                                <div class="media mt-0">
+                                    <img src="admin-assets/images/users/${recentWriter['0']}.jpg" alt="img" class="avatar brround avatar-md mr-3">
+                                    <div class="media-body">
+                                        <div class="d-md-flex align-items-center mt-1">
+                                            <h6 class="mb-1">${recentWriter['1']}</h6>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-3 col-sm-3">
-                                    <div class="text-right">
-                                        <span class="font-weight-semibold fs-16 number-font">#${writer['id']}</span>
-                                    </div>
+                            </div>
+                            <div class="col-3 col-sm-3">
+                                <div class="text-right">
+                                    <span class="font-weight-semibold fs-16 number-font">#${recentWriter['0']}</span>
                                 </div>
                             </div>
                         </div>
-                    `;
-                    $('#card-recent-writers').append(html);
-                });
-            })
-            .fail(function() {
-                console.log("error");
+                    </div>
+                `;
+                $('#card-recent-writers').prepend(html);
             });
-
-            console.log("Complete refresh !");
         });
 
-        // setInterval(refreshRecentWriters, 2000);
-
-        // function refreshRecentWriters() {
-        //     $.ajax({
-        //         url: '{{-- route('writer.recentWriters') --}}',
-        //         type: 'GET',
-        //     })
-        //     .done(function(response) {
-        //         $('#card-recent-writers').empty();
-
-        //         response['recentWriters'].forEach(function(writer) {
-        //             var html = `
-        //                 <div class="list-card">
-        //                     <span class="bg-primary list-bar"></span>
-        //                     <div class="row align-items-center">
-        //                         <div class="col-9 col-sm-9">
-        //                             <div class="media mt-0">
-        //                                 <img src="admin-assets/images/users/${writer['id']}.jpg" alt="img" class="avatar brround avatar-md mr-3">
-        //                                 <div class="media-body">
-        //                                     <div class="d-md-flex align-items-center mt-1">
-        //                                         <h6 class="mb-1">${writer['name']}</h6>
-        //                                     </div>
-        //                                 </div>
-        //                             </div>
-        //                         </div>
-        //                         <div class="col-3 col-sm-3">
-        //                             <div class="text-right">
-        //                                 <span class="font-weight-semibold fs-16 number-font">#${writer['id']}</span>
-        //                             </div>
-        //                         </div>
-        //                     </div>
-        //                 </div>
-        //             `;
-        //             $('#card-recent-writers').append(html);
-        //         });
-        //     })
-        //     .fail(function() {
-        //         console.log("error");
-        //     });
-
-        //     console.log("Complete refresh !");
-        // }
-         
-        
+        var recentUsersRef = database.ref('recentUsers');
+        recentUsersRef.on('value', (snapshot) => {
+            $('#card-recent-users').empty();
+            const recentUsers = snapshot.val();
+            Object.entries(recentUsers).forEach(function(recentUser, order) {
+                var html = `
+                    <div class="list-card">
+                        <span class="bg-primary list-bar"></span>
+                        <div class="row align-items-center">
+                            <div class="col-9 col-sm-9">
+                                <div class="media mt-0">
+                                    <img src="admin-assets/images/users/${recentUser['0']}.jpg" alt="img" class="avatar brround avatar-md mr-3">
+                                    <div class="media-body">
+                                        <div class="d-md-flex align-items-center mt-1">
+                                            <h6 class="mb-1">${recentUser['1']}</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-3 col-sm-3">
+                                <div class="text-right">
+                                    <span class="font-weight-semibold fs-16 number-font">#${recentUser['0']}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                $('#card-recent-users').prepend(html);
+            });
+        });
     </script>
 @endsection

@@ -29,4 +29,12 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin
 	Route::get('/', 'HomeController@home')->name('admin.home');
 
 	Route::get('/recent-writers', 'WriterController@recentWriters')->name('writer.recentWriters');
+	Route::get('/recent-users', 'UserController@recentUsers')->name('user.recentUsers');
+
+
+
+
+
+	//Debug
+	Route::get('/change-most-recent-user', 'UserController@changeMostRecentUser');
 });
