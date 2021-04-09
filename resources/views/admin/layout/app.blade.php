@@ -83,7 +83,7 @@
                             <span class="side-menu__label">Users</span><i class="angle fa fa-angle-right"></i></a>
                             <ul class="slide-menu ">
                                 <li><a id="sub-menu-user" href="{{ route('users.index') }}" class="slide-item">Users</a></li>
-                                <li><a href="" class="slide-item">Writers</a></li>
+                                <li><a id="sub-menu-writer" href="{{ route('writers.index') }}" class="slide-item">Writers</a></li>
                             </ul>
                         </li>
                     </ul>

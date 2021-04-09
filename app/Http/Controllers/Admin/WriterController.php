@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Comment;
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -15,7 +17,11 @@ class WriterController extends Controller
      */
     public function index()
     {
-        
+        $writers = User::where('role_id', 2)->orderBy('id', 'desc')->get();
+
+        return view('admin.writer', [
+            'writers' => $writers
+        ]);
     }
 
     /**
@@ -81,15 +87,36 @@ class WriterController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            Comment::where('user_id', $id)->delete();
+            $posts = Post::where('user_id', $id)->get();
+            foreach ($posts as $post) {
+                Comment::where('post_id', $post->id)->delete();
+            }
+            Post::where('user_id', $id)->delete();
+            User::destroy($id);
+
+            return 'success';
+        } catch (ModelNotFoundException $e) {
+            return 'fail';
+        }
     }
 
-    public function recentWriters()
+    public function removeWritePermission($id)
     {
-        $recentWriters = User::where('role_id', '2')->orderBy('id', 'desc')->limit(6)->get();
+        try {
+            $posts = Post::where('user_id', $id)->get();
+            foreach ($posts as $post) {
+                Comment::where('post_id', $post->id)->delete();
+            }
+            Post::where('user_id', $id)->delete();
+            User::find($id)->update([
+                'role_id' => 1
+            ]);
 
-        return response()->json([
-            'recentWriters' => $recentWriters
-        ], 200);
+            return 'success';
+        } catch (ModelNotFoundException $e) {
+            return 'fail';
+        }
     }
 }

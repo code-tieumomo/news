@@ -29,9 +29,8 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin
 	Route::get('/dashboard', 'HomeController@home')->name('admin.home');
 
 	Route::resource('users', 'UserController');
-
-	Route::get('/recent-writers', 'WriterController@recentWriters')->name('writer.recentWriters');
-	Route::get('/recent-users', 'UserController@recentUsers')->name('user.recentUsers');
+	Route::resource('writers', 'WriterController');
+	Route::delete('writers/remove-write-permission/{writer}', 'WriterController@removeWritePermission')->name('writers.removeWritePermission');
 
 
 

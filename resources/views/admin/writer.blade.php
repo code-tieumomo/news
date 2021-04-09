@@ -11,11 +11,11 @@
     <!--Page header-->
     <div class="page-header">
         <div class="page-leftheader">
-            <h4 class="page-title mb-0">Manage Users</h4>
+            <h4 class="page-title mb-0">Manage Writers</h4>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a><i class="fe fe-layout  mr-2 fs-14"></i>CRUD</a></li>
-                <li class="breadcrumb-item"><a></i>Users</a></li>
-                <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('users.index') }}">Users</a></li>
+                <li class="breadcrumb-item"><a></i>Writers</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('writers.index') }}">Writers</a></li>
             </ol>
         </div>
     </div>
@@ -26,11 +26,11 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <div class="card-title">Users DataTable</div>
+                    <div class="card-title">Writers DataTable</div>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-bordered text-nowrap" id="tbl-users">
+                        <table class="table table-bordered text-nowrap" id="tbl-writers">
                             <thead>
                                 <tr>
                                     <th class="wd-15p border-bottom-0">ID</th>
@@ -40,14 +40,17 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($users as $user)
-                                    <tr id="{{ $user->id }}">
-                                        <td>{{ $user->id }}</td>
-                                        <td data-id="{{ $user->id }}" data-name="{{ $user->name }}" data-email="{{ $user->email }}" data-password="{{ $user->password }}" data-remember-token="{{ $user->remember_token }}" data-created-at="{{ $user->created_at }}" data-updated-at="{{ $user->updated_at }}" class="show-user-detail">
-                                            {{ $user->name }}
+                                @foreach ($writers as $writer)
+                                    <tr id="{{ $writer->id }}">
+                                        <td>{{ $writer->id }}</td>
+                                        <td data-id="{{ $writer->id }}" data-name="{{ $writer->name }}" data-email="{{ $writer->email }}" data-password="{{ $writer->password }}" data-remember-token="{{ $writer->remember_token }}" data-created-at="{{ $writer->created_at }}" data-updated-at="{{ $writer->updated_at }}" class="show-writer-detail">
+                                            {{ $writer->name }}
                                         </td>
-                                        <td>{{ $user->email }}</td>
-                                        <td><a data-id="{{ $user->id }}" class="btn btn-danger btn-delete">Delete</a></td>
+                                        <td>{{ $writer->email }}</td>
+                                        <td>
+                                            <a data-id="{{ $writer->id }}" class="btn btn-danger btn-delete">Delete</a>
+                                            <a data-id="{{ $writer->id }}" class="btn btn-warning btn-remove">Remove write permission</a>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -61,7 +64,7 @@
     <!-- /Row -->
 
     <!-- Modal -->
-    <div class="modal" id="modal-user-detail">
+    <div class="modal" id="modal-writer-detail">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content modal-content-demo">
                 <div class="modal-header">
@@ -87,7 +90,7 @@
                         </tr>
                         <tr>
                             <td>Role</td>
-                            <td><span class="badge badge-secondary">User</span></td>
+                            <td><span class="badge badge-warning">Writer</span></td>
                         </tr>
                         <tr>
                             <td>Remember token</td>
@@ -102,7 +105,10 @@
                             <td id="modal-tbl-updated-at"></td>
                         </tr>
                         <tr>
-                            <td colspan="2"><a id="modal-btn-delete" class="btn btn-danger">Delete this user</a></td>
+                            <td colspan="2">
+                                <a id="modal-btn-delete" class="btn btn-danger">Delete this writer</a>
+                                <a id="modal-btn-remove" class="btn btn-warning">Remove write permission</a>
+                            </td>
                         </tr>
                     </table>
                 </div>
@@ -122,12 +128,12 @@
     <script src="{{ asset('admin-assets/plugins/datatable/responsive.bootstrap4.min.js') }}"></script>
 
     <script type="text/javascript">
-        document.title = 'Manage Users | UET-News';
+        document.title = 'Manage Writers | UET-News';
         $('#menu-user').addClass('active');
-        $('#sub-menu-user').addClass('active');
+        $('#sub-menu-writer').addClass('active');
         $('#list-menu-user').addClass('is-expanded');
 
-        $('#tbl-users').DataTable({
+        $('#tbl-writers').DataTable({
             language: {
                 searchPlaceholder: 'Search...',
                 sSearch: '',
@@ -135,7 +141,7 @@
             }
         });
 
-        $('#tbl-users').on('click', '.show-user-detail', function(event) {
+        $('#tbl-writers').on('click', '.show-writer-detail', function(event) {
             event.preventDefault();
             
             $('#modal-name').html($(this).data('name'));
@@ -146,28 +152,43 @@
             $('#modal-tbl-remember-token').html($(this).data('remember-token'));
             $('#modal-tbl-created-at').html($(this).data('created-at'));
             $('#modal-tbl-updated-at').html($(this).data('updated-at'));
-            $('#modal-user-detail').modal('show');
+            $('#modal-writer-detail').modal('show');
         });
 
-        $('#tbl-users').on('click', '.btn-delete', function(event) {
+        $('#tbl-writers').on('click', '.btn-delete', function(event) {
             event.preventDefault();
 
             var id = $(this).data('id');
-            deleteUser(id);
+            deleteWriter(id);
         });
 
         $('#modal-btn-delete').on('click', function(event) {
             event.preventDefault();
             
             var id = $('td[id="modal-tbl-id"]').html();
-            deleteUser(id);
+            deleteWriter(id);
         });
 
-        function deleteUser(id)
+        $('#tbl-writers').on('click', '.btn-remove', function(event) {
+            event.preventDefault();
+
+            var id = $(this).data('id');
+            removeWritePermission(id);
+        });
+
+        $('#modal-btn-remove').on('click', function(event) {
+            event.preventDefault();
+            
+            var id = $('td[id="modal-tbl-id"]').html();
+            alert(id);
+            removeWritePermission(id);
+        });
+
+        function deleteWriter(id)
         {
             Swal.fire({
                 title: 'Are you sure?',
-                text: "All user's comment will be delete too!",
+                text: "All writer's comments, posts and post's comments will be delete too!",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -176,7 +197,7 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({
-                        url: 'users/' + id,
+                        url: 'writers/' + id,
                         type: 'DELETE',
                         data: {
                             _token: '{{ csrf_token() }}',
@@ -184,11 +205,59 @@
                     })
                     .done(function(response) {
                         if (response == 'success'){
-                            $('#modal-user-detail').modal('hide');
+                            $('#modal-writer-detail').modal('hide');
                             $('tr[id=' + id + ']').remove();
                             Swal.fire(
                                 'Deleted!',
-                                'User has been deleted.',
+                                'Writer has been deleted.',
+                                'success'
+                            );
+
+                        } else {
+                            Swal.fire(
+                                'Oops!',
+                                'Something went wrong! Please try later.',
+                                'error'
+                            );
+                        }
+                    })
+                    .fail(function(reponse) {
+                        Swal.fire(
+                            'Oops!',
+                            'Something went wrong! Please try later.',
+                            'error'
+                        );
+                    });
+                }
+            });
+        }
+
+        function removeWritePermission(id)
+        {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "All writer's posts and post's comments will be delete too!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, remove permission!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: 'writers/remove-write-permission/' + id,
+                        type: 'DELETE',
+                        data: {
+                            _token: '{{ csrf_token() }}',
+                        }
+                    })
+                    .done(function(response) {
+                        if (response == 'success'){
+                            $('#modal-writer-detail').modal('hide');
+                            $('tr[id=' + id + ']').remove();
+                            Swal.fire(
+                                'Removed!',
+                                'Write permission has been removed.',
                                 'success'
                             );
 

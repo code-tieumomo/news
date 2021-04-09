@@ -92,7 +92,7 @@ class UserController extends Controller
     {
         try {
             Comment::where('user_id', $id)->delete();
-            USer::destroy($id);
+            User::destroy($id);
 
             return 'success';
         } catch (ModelNotFoundException $e) {
