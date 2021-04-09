@@ -28,7 +28,7 @@
                 <div class="card-header">
                     <div class="card-title">Users DataTable</div>
                 </div>
-                <div class="card-body">
+                <div id="card-users-datatable" class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered text-nowrap" id="tbl-users">
                             <thead>
@@ -52,6 +52,11 @@
                                 @endforeach
                             </tbody>
                         </table>
+                    </div>
+                </div>
+                <div id="card-loader" class="card-body">
+                    <div class="dimmer active">
+                        <div class="lds-hourglass"></div>
                     </div>
                 </div>
             </div>
@@ -126,6 +131,7 @@
         $('#menu-user').addClass('active');
         $('#sub-menu-user').addClass('active');
         $('#list-menu-user').addClass('is-expanded');
+        $('#card-loader').hide();
 
         $('#tbl-users').DataTable({
             language: {
@@ -180,9 +186,15 @@
                         type: 'DELETE',
                         data: {
                             _token: '{{ csrf_token() }}',
+                        },
+                        beforeSend: function() {
+                            $('#card-users-datatable').hide();
+                            $('#card-loader').show();
                         }
                     })
                     .done(function(response) {
+                        $('#card-users-datatable').show();
+                        $('#card-loader').hide();
                         if (response == 'success'){
                             $('#modal-user-detail').modal('hide');
                             $('tr[id=' + id + ']').remove();
@@ -201,6 +213,8 @@
                         }
                     })
                     .fail(function(reponse) {
+                        $('#card-users-datatable').show();
+                        $('#card-loader').hide();
                         Swal.fire(
                             'Oops!',
                             'Something went wrong! Please try later.',

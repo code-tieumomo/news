@@ -73,18 +73,25 @@
                         <li class="side-item side-item-category mt-4">Analyst</li>
                         <li class="slide">
                             <a id="menu-dashboard" class="side-menu__item" href="{{ route('admin.home') }}">
-                            <img class="side-menu__icon" src="{{ asset('admin-assets/images/icons/dashboard.png') }}" width="24px"/>
-                            <span class="side-menu__label">Dashboard</span><span class="badge badge-danger side-badge">New</span></a>
+                                <img class="side-menu__icon" src="{{ asset('admin-assets/images/icons/dashboard.png') }}" width="24px"/>
+                                <span class="side-menu__label">Dashboard</span><span class="badge badge-danger side-badge">New</span>
+                            </a>
                         </li>
                         <li class="side-item side-item-category">CRUD</li>
                         <li id="list-menu-user" class="slide">
                             <a id="menu-user" class="side-menu__item" data-toggle="slide" href="#">
-                            <img class="side-menu__icon" src="{{ asset('admin-assets/images/icons/users.png') }}" width="24px"/>
-                            <span class="side-menu__label">Users</span><i class="angle fa fa-angle-right"></i></a>
+                                <img class="side-menu__icon" src="{{ asset('admin-assets/images/icons/users.png') }}" width="24px"/>
+                                <span class="side-menu__label">Users</span><i class="angle fa fa-angle-right"></i>
+                            </a>
                             <ul class="slide-menu ">
                                 <li><a id="sub-menu-user" href="{{ route('users.index') }}" class="slide-item">Users</a></li>
                                 <li><a id="sub-menu-writer" href="{{ route('writers.index') }}" class="slide-item">Writers</a></li>
                             </ul>
+
+                            <a id="menu-dashboard" class="side-menu__item" href="{{ route('admin.home') }}">
+                                <img class="side-menu__icon" src="{{ asset('admin-assets/images/icons/dashboard.png') }}" width="24px"/>
+                                <span class="side-menu__label">Posts</span>
+                            </a>
                         </li>
                     </ul>
                 </aside>

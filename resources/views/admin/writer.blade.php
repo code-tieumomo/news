@@ -28,7 +28,7 @@
                 <div class="card-header">
                     <div class="card-title">Writers DataTable</div>
                 </div>
-                <div class="card-body">
+                <div id="card-writers-datatable" class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered text-nowrap" id="tbl-writers">
                             <thead>
@@ -55,6 +55,11 @@
                                 @endforeach
                             </tbody>
                         </table>
+                    </div>
+                </div>
+                <div id="card-loader" class="card-body">
+                    <div class="dimmer active">
+                        <div class="lds-hourglass"></div>
                     </div>
                 </div>
             </div>
@@ -132,6 +137,7 @@
         $('#menu-user').addClass('active');
         $('#sub-menu-writer').addClass('active');
         $('#list-menu-user').addClass('is-expanded');
+        $('#card-loader').hide();
 
         $('#tbl-writers').DataTable({
             language: {
@@ -201,9 +207,15 @@
                         type: 'DELETE',
                         data: {
                             _token: '{{ csrf_token() }}',
+                        },
+                        beforeSend: function() {
+                            $('#card-writers-datatable').hide();
+                            $('#card-loader').show();
                         }
                     })
                     .done(function(response) {
+                        $('#card-writers-datatable').show();
+                        $('#card-loader').hide();
                         if (response == 'success'){
                             $('#modal-writer-detail').modal('hide');
                             $('tr[id=' + id + ']').remove();
@@ -222,6 +234,8 @@
                         }
                     })
                     .fail(function(reponse) {
+                        $('#card-writers-datatable').show();
+                        $('#card-loader').hide();
                         Swal.fire(
                             'Oops!',
                             'Something went wrong! Please try later.',
@@ -249,9 +263,15 @@
                         type: 'DELETE',
                         data: {
                             _token: '{{ csrf_token() }}',
+                        },
+                        beforeSend: function() {
+                            $('#card-writers-datatable').hide();
+                            $('#card-loader').show();
                         }
                     })
                     .done(function(response) {
+                        $('#card-writers-datatable').show();
+                        $('#card-loader').hide();
                         if (response == 'success'){
                             $('#modal-writer-detail').modal('hide');
                             $('tr[id=' + id + ']').remove();
@@ -270,6 +290,8 @@
                         }
                     })
                     .fail(function(reponse) {
+                        $('#card-writers-datatable').show();
+                        $('#card-loader').hide();
                         Swal.fire(
                             'Oops!',
                             'Something went wrong! Please try later.',
