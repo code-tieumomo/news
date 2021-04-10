@@ -277,7 +277,7 @@
                             comment: comment
                         },
                         beforeSend: function() {
-                            btn.html('<i class="text-warning fs-16">Deleting ...</i>');
+                            btn.html('<i class="text-warning">Deleting ...</i>');
                         }
                     })
                     .done(function() {
