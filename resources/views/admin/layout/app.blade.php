@@ -26,13 +26,13 @@
         <link href="{{ asset('admin-assets/css/animated.css') }}" rel="stylesheet" />
 
         <!--Sidemenu css -->
-       <link href="{{ asset('admin-assets/css/sidemenu.css') }}" rel="stylesheet">
+        <link href="{{ asset('admin-assets/css/sidemenu.css') }}" rel="stylesheet">
 
         <!---Icons css-->
         <link href="{{ asset('admin-assets/css/icons.css') }}" rel="stylesheet" />
 
-        <!-- INTERNAL Select2 css -->
-        <link href="{{ asset('admin-assets/plugins/select2/select2.min.css') }}" rel="stylesheet" />
+        <!-- Simplebar css -->
+        <link rel="stylesheet" href="{{ asset('admin-assets/plugins/simplebar/css/simplebar.css') }}">
 
         <!-- Color Skin css -->
         <link id="theme" href="{{ asset('admin-assets/colors/color1.css') }}" rel="stylesheet" type="text/css"/>
@@ -55,6 +55,7 @@
                     <div class="app-sidebar__logo">
                         <a class="header-brand" href="{{ route('admin.home') }}">
                             <img src="{{ asset('admin-assets/images/brand/logo.png') }}" class="header-brand-img desktop-lgo" alt="Admitro logo">
+                            {{-- <img src="{{ asset('admin-assets/images/brand/logo-mobile.png') }}" class="header-brand-img mobile-lgo" alt="Admitro logo"> --}}
                         </a>
                     </div>
                     <div class="app-sidebar__user">
@@ -77,6 +78,7 @@
                                 <span class="side-menu__label">Dashboard</span><span class="badge badge-danger side-badge">New</span>
                             </a>
                         </li>
+
                         <li class="side-item side-item-category">CRUD</li>
                         <li id="list-menu-user" class="slide">
                             <a id="menu-user" class="side-menu__item" data-toggle="slide" href="#">
@@ -88,8 +90,8 @@
                                 <li><a id="sub-menu-writer" href="{{ route('writers.index') }}" class="slide-item">Writers</a></li>
                             </ul>
 
-                            <a id="menu-dashboard" class="side-menu__item" href="{{ route('admin.home') }}">
-                                <img class="side-menu__icon" src="{{ asset('admin-assets/images/icons/dashboard.png') }}" width="24px"/>
+                            <a id="menu-post" class="side-menu__item" href="{{ route('posts.index') }}">
+                                <img class="side-menu__icon" src="{{ asset('admin-assets/images/icons/posts.png') }}" width="24px"/>
                                 <span class="side-menu__label">Posts</span>
                             </a>
                         </li>
@@ -106,6 +108,7 @@
                                 <div class="d-flex">
                                     <a class="header-brand" href="{{ route('admin.home') }}">
                                         <img src="{{ asset('admin-assets/images/brand/logo.png') }}" class="header-brand-img desktop-lgo" alt="Admitro logo">
+                                        <img src="{{ asset('admin-assets/images/brand/logo-mobile.png') }}" class="header-brand-img mobile-lgo" alt="Admitro logo">
                                     </a>
                                     <div class="app-sidebar__toggle" data-toggle="sidebar">
                                         <a class="open-toggle" href="#">
@@ -178,18 +181,17 @@
         <script src="{{ asset('admin-assets/plugins/bootstrap/popper.min.js') }}"></script>
         <script src="{{ asset('admin-assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
 
+        <!--Othercharts js-->
+        <script src="{{ asset('admin-assets/plugins/othercharts/jquery.sparkline.min.js') }}"></script>
+
+        <!-- Circle-progress js-->
+        <script src="{{ asset('admin-assets/js/circle-progress.min.js') }}"></script>
+
         <!-- Jquery-rating js-->
         <script src="{{ asset('admin-assets/plugins/rating/jquery.rating-stars.js') }}"></script>
 
         <!--Sidemenu js-->
         <script src="{{ asset('admin-assets/plugins/sidemenu/sidemenu.js') }}"></script>
-
-        <!-- INTERNAL Select2 js -->
-        <script src="{{ asset('admin-assets/plugins/select2/select2.full.min.js') }}"></script>
-        <script src="{{ asset('admin-assets/js/select2.js') }}"></script>
-
-        <!--INTERNAL Moment js-->
-        <script src="{{ asset('admin-assets/plugins/moment/moment.js') }}"></script>
 
         {{-- SweetAlert2 --}}
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
@@ -221,8 +223,9 @@
             firebase.initializeApp(firebaseConfig);
         </script>
 
+        @yield('custom-js')
+
         <!-- Custom js-->
         <script src="{{ asset('admin-assets/js/custom.js') }}"></script>
-        @yield('custom-js')
     </body>
 </html>

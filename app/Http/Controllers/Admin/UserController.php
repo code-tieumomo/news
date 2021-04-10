@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Comment;
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
@@ -140,13 +141,26 @@ class UserController extends Controller
         // $database->getReference('recentUsers')->update([
         //     41 => 'Katelyn Schusterr'
         // ]);
-        $database->getReference('recentClientActivities')->push([
-            'activity' => 'Change Nameeeeeeee',
-            'description' => 'Katelyn Schusterr change account\'s password',
-            'time' => Carbon::now()->toDateTimeString()
-        ]);
+        // $database->getReference('recentClientActivities')->push([
+        //     'activity' => 'Change Nameeeeeeee',
+        //     'description' => 'Katelyn Schusterr change account\'s password',
+        //     'time' => Carbon::now()->toDateTimeString()
+        // ]);
         // echo "<pre>";
         // print_r($removeId);
         // echo "</pre>";
+        
+        
+        $posts = Post::all();
+        foreach ($posts as $post) {
+            foreach($post->comments as $comment) {
+                $database->getReference('comments/' . $post->id)->push([
+                    'comment' => $comment->content,
+                    'user' => $comment->user->name,
+                    'time' => $comment->created_at->toDateTimeString(),
+                    'mysql_id' => $comment->id
+                ]);
+            }
+        }
     }
 }
