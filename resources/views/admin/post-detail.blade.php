@@ -133,7 +133,7 @@
                             <span class="time-data">
                                 ${comment[1].comment}
                                 <a id="" data-id="${comment[0]}" data-comment="${comment[1].comment}" data-mysql-id="${comment[1].mysql_id}" href="javascript:void(0)" class="new ml-3 btn-edit-comment"><i class="text-warning fe fe-edit fs-16"></i></a>
-                                <a id="" data-id="${comment[0]}" href="javascript:void(0)" class="new ml-3 btn-delete-comment"><i class="text-danger fe fe-trash-2 fs-16"></i></a>
+                                <a id="" data-id="${comment[0]}" data-comment="${comment[1].comment}" data-mysql-id="${comment[1].mysql_id}" href="javascript:void(0)" class="new ml-3 btn-delete-comment"><i class="text-danger fe fe-trash-2 fs-16"></i></a>
                             </span>
                             <span class="ml-auto text-muted fs-11">
                                 ${comment[1].time}
@@ -247,6 +247,52 @@
             $('#modal-firebase-key').html(id);
             $('#modal-mysql-id').html(mysqlId);
             $('#modal-edit-comment').modal('show');
+        });
+
+        $('#list-comments').on('click', '.btn-delete-comment', function(event) {
+            event.preventDefault();
+            
+            var btn = $(this);
+            var id = $(this).data('id');
+            var comment = $(this).data('comment');
+            var mysqlId = $(this).data('mysql-id')
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "Comment will be delete!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: '{{ route('comments.destroy') }}',
+                        method: 'PUT',
+                        data: {
+                            _token: '{{ csrf_token() }}',
+                            firebase_key: id,
+                            mysql_id: mysqlId,
+                            post_id: {{ $post->id }},
+                            comment: comment
+                        },
+                        beforeSend: function() {
+                            btn.html('<i class="text-warning fs-16">Deleting ...</i>');
+                        }
+                    })
+                    .done(function() {
+                        //
+                    })
+                    .fail(function() {
+                        btn.html('<i class="text-warning fe fe-edit fs-16"></i>');
+                        Swal.fire(
+                            'Oops!',
+                            'Something went wrong! Please try later.',
+                            'error'
+                        );
+                    });
+                }
+            });
         });
 
         $('#btn-update-comment').on('click', function(event) {
