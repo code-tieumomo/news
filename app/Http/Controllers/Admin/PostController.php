@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Kreait\Firebase\Factory;
 
 class PostController extends Controller
 {
@@ -99,6 +100,10 @@ class PostController extends Controller
         try {
             Comment::where('post_id', $id)->delete();
             Post::destroy($id);
+
+            $factory = (new Factory())->withDatabaseUri('https://uet-news-2021-default-rtdb.firebaseio.com/');
+            $database = $factory->createDatabase();
+            $database->getReference('comments/' . $id)->remove();
 
             return 'success';
         } catch(ModelNotFoundException $e) {
