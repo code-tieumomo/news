@@ -262,6 +262,5 @@
             },5000); 
         });
     } catch(er) {console.log(er);}
-            
 
 })(jQuery);

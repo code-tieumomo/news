@@ -235,7 +235,7 @@ a.left-topbar-item:hover {
 }
 
 .right-topbar a {
-  font-size: 18px;
+  font-size: 13px;
   color: #ccc;
   line-height: 1.5;
   margin: 0 4px;
@@ -451,6 +451,10 @@ a.left-topbar-item:hover {
   -webkit-transition: all 0.3s;
   -o-transition: all 0.3s;
   -moz-transition: all 0.3s;
+}
+
+.single-item > a::after {
+  content: "" !important;
 }
 
 li.main-menu-active > a::before {
