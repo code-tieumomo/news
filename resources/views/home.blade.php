@@ -6,21 +6,15 @@
         <div class="bg0 flex-wr-sb-c p-rl-20 p-tb-8">
             <div class="f2-s-1 p-r-30 size-w-0 m-tb-6 flex-wr-s-c">
                 <span class="text-uppercase cl2 p-r-8">
-                    Trending Now:
+                    Daily Quotes:<br>
                 </span>
 
                 <span class="dis-inline-block cl6 slide100-txt pos-relative size-w-0" data-in="fadeInDown" data-out="fadeOutDown">
-                    <span class="dis-inline-block slide100-txt-item animated visible-false">
-                        Interest rate angst trips up US equity bull market
-                    </span>
-                    
-                    <span class="dis-inline-block slide100-txt-item animated visible-false">
-                        Designer fashion show kicks off Variety Week
-                    </span>
-
-                    <span class="dis-inline-block slide100-txt-item animated visible-false">
-                        Microsoft quisque at ipsum vel orci eleifend ultrices
-                    </span>
+                    @foreach ($quotes as $quote)
+                        <span class="dis-inline-block slide100-txt-item animated visible-false">
+                            {{ $quote }}
+                        </span>
+                    @endforeach
                 </span>
             </div>
 

@@ -31,7 +31,9 @@
     <body class="animsition">
         @include('header')
             
-        <!-- Feature post -->
+        @yield('headline')
+        
+        {{-- <!-- Feature post -->
         <section class="bg0">
             <div class="container">
                 <div class="row m-rl--1">
@@ -2677,7 +2679,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         <!--===============================================================================================-->  
         <script src="{{ asset('client-assets/vendor/jquery/jquery-3.2.1.min.js') }}"></script>
