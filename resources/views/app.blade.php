@@ -32,105 +32,10 @@
         @include('header')
             
         @yield('headline')
-        
-        {{-- <!-- Feature post -->
-        <section class="bg0">
-            <div class="container">
-                <div class="row m-rl--1">
-                    <div class="col-md-6 p-rl-1 p-b-2">
-                        <div class="bg-img1 size-a-3 how1 pos-relative" style="background-image: url(images/post-01.jpg);">
-                            <a href="blog-detail-01.html" class="dis-block how1-child1 trans-03"></a>
 
-                            <div class="flex-col-e-s s-full p-rl-25 p-tb-20">
-                                <a href="#" class="dis-block how1-child2 f1-s-2 cl0 bo-all-1 bocl0 hov-btn1 trans-03 p-rl-5 p-t-2">
-                                    Business
-                                </a>
+        @yield('feature-posts')
 
-                                <h3 class="how1-child2 m-t-14 m-b-10">
-                                    <a href="blog-detail-01.html" class="how-txt1 size-a-6 f1-l-1 cl0 hov-cl10 trans-03">
-                                        Microsoft quisque at ipsum vel orci eleifend ultrices
-                                    </a>
-                                </h3>
-
-                                <span class="how1-child2">
-                                    <span class="f1-s-4 cl11">
-                                        Jack Sims
-                                    </span>
-
-                                    <span class="f1-s-3 cl11 m-rl-3">
-                                        -
-                                    </span>
-
-                                    <span class="f1-s-3 cl11">
-                                        Feb 16
-                                    </span>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 p-rl-1">
-                        <div class="row m-rl--1">
-                            <div class="col-12 p-rl-1 p-b-2">
-                                <div class="bg-img1 size-a-4 how1 pos-relative" style="background-image: url(images/post-02.jpg);">
-                                    <a href="blog-detail-01.html" class="dis-block how1-child1 trans-03"></a>
-
-                                    <div class="flex-col-e-s s-full p-rl-25 p-tb-24">
-                                        <a href="#" class="dis-block how1-child2 f1-s-2 cl0 bo-all-1 bocl0 hov-btn1 trans-03 p-rl-5 p-t-2">
-                                            Culture
-                                        </a>
-
-                                        <h3 class="how1-child2 m-t-14">
-                                            <a href="blog-detail-01.html" class="how-txt1 size-a-7 f1-l-2 cl0 hov-cl10 trans-03">
-                                                London ipsum dolor sit amet, consectetur adipiscing elit.
-                                            </a>
-                                        </h3>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6 p-rl-1 p-b-2">
-                                <div class="bg-img1 size-a-5 how1 pos-relative" style="background-image: url(images/post-03.jpg);">
-                                    <a href="blog-detail-01.html" class="dis-block how1-child1 trans-03"></a>
-
-                                    <div class="flex-col-e-s s-full p-rl-25 p-tb-20">
-                                        <a href="#" class="dis-block how1-child2 f1-s-2 cl0 bo-all-1 bocl0 hov-btn1 trans-03 p-rl-5 p-t-2">
-                                            Life Style
-                                        </a>
-
-                                        <h3 class="how1-child2 m-t-14">
-                                            <a href="blog-detail-01.html" class="how-txt1 size-h-1 f1-m-1 cl0 hov-cl10 trans-03">
-                                                Pellentesque dui nibh, pellen-tesque ut dapibus ut
-                                            </a>
-                                        </h3>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6 p-rl-1 p-b-2">
-                                <div class="bg-img1 size-a-5 how1 pos-relative" style="background-image: url(images/post-04.jpg);">
-                                    <a href="blog-detail-01.html" class="dis-block how1-child1 trans-03"></a>
-
-                                    <div class="flex-col-e-s s-full p-rl-25 p-tb-20">
-                                        <a href="#" class="dis-block how1-child2 f1-s-2 cl0 bo-all-1 bocl0 hov-btn1 trans-03 p-rl-5 p-t-2">
-                                            Sport
-                                        </a>
-
-                                        <h3 class="how1-child2 m-t-14">
-                                            <a href="blog-detail-01.html" class="how-txt1 size-h-1 f1-m-1 cl0 hov-cl10 trans-03">
-                                                Motobike Vestibulum vene-natis purus nec nibh volutpat
-                                            </a>
-                                        </h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Post -->
+        {{-- <!-- Post -->
         <section class="bg0 p-t-70">
             <div class="container">
                 <div class="row justify-content-center">
@@ -2691,8 +2596,27 @@
         <!--===============================================================================================-->
         <script src="{{ asset('client-assets/vendor/fancybox/jquery.fancybox.min.js') }}"></script>
         <!--===============================================================================================-->
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+        <!-- TODO: Add SDKs for Firebase products that you want to use -->
+        <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
+        <script>
+        // Your web app's Firebase configuration
+            var firebaseConfig = {
+                apiKey: "AIzaSyA95mMD-7Y19ZlAkz7nLGLFt3jOaIwrpH4",
+                authDomain: "uet-news-2021.firebaseapp.com",
+                databaseURL: "https://uet-news-2021-default-rtdb.firebaseio.com",
+                projectId: "uet-news-2021",
+                storageBucket: "uet-news-2021.appspot.com",
+                messagingSenderId: "638010519609",
+                appId: "1:638010519609:web:ab6a38b0dc0d85f55edde8"
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+        </script>
+        <!--===============================================================================================-->
         <script src="{{ asset('client-assets/js/main.js') }}"></script>
-        <!-- Get location, time and weather -->
+        <!-- Get location, time and weather in header-->
         <script type="text/javascript">
             $(document).ready(function() {
                 const openWeatherApiKey = "5da9e9e00c3cf8188bddf9f81bcedd84";
@@ -2708,7 +2632,6 @@
                     jsonpCallback: "callback",
                     dataType: "jsonp",
                     success: function(response) {
-                        console.log(response);
                         $(".current-location").html((response.city == null) ? '<span class="text-danger">Error while get location !</span>' : (response.city  + ', ' + response.country_code));
                         var lat = response.latitude;
                         var lon = response.longitude;
@@ -2722,5 +2645,7 @@
                 });
             });
         </script>
+
+        @yield('custom-js')
     </body>
 </html>
