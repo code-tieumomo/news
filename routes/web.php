@@ -28,7 +28,7 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin
 	Route::resource('users', 'UserController');
 	Route::resource('writers', 'WriterController');
 	Route::delete('writers/remove-write-permission/{writer}', 'WriterController@removeWritePermission')->name('writers.removeWritePermission');
-	Route::resource('posts', 'PostController');
+	Route::resource('manage-posts', 'PostController');
 	Route::put('comments/update', 'CommentController@update')->name('comments.update');
 	Route::put('comments/destroy', 'CommentController@destroy')->name('comments.destroy');
 

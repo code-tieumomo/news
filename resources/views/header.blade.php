@@ -165,7 +165,7 @@
                         </li>
                         @foreach ($menuCategories as $category)
                             <li class="mega-menu-item">
-                                <a href="index.html">{{ $category->name }}</a>
+                                <a href="">{{ $category->name }}</a>
 
                                 <div class="sub-mega-menu">
                                     <div class="nav flex-column nav-pills" role="tablist">
@@ -183,7 +183,7 @@
                                                         <div class="col-3">
                                                             <!-- Item post -->  
                                                             <div>
-                                                                <a href="blog-detail-01.html" class="wrap-pic-w hov1 trans-03">
+                                                                <a href="{{ route('posts.show', [$post->id]) }}" class="wrap-pic-w hov1 trans-03">
                                                                     <img src="{{ $post->thumbnail }}" alt="Post Thumbnail">
                                                                 </a>
 
