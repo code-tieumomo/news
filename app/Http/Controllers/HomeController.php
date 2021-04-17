@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\SubCategory;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Kreait\Firebase\Factory;
@@ -13,7 +14,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $factory = (new Factory())->withDatabaseUri('https://uet-news-2021-default-rtdb.firebaseio.com/');
+        $factory = (new Factory())->withDatabaseUri('https://uet-news-2021-default-rtdb.firebaseio.com/');            
         $database = $factory->createDatabase();
         $menuCategories = Category::limit(7)->get();
         $quotes = Collection::make([
@@ -32,12 +33,16 @@ class HomeController extends Controller
         $featureCategoriesId = $featureCategoriesRef->getValue();
         $featureCategories = Category::whereIn('id', $featureCategoriesId)->get();
         $popPosts = Post::orderBy('id', 'desc')->limit(5)->get();
+        $lastestPosts = Post::orderBy('id', 'desc')->limit(6)->get();
+        $topWriters = User::where('role_id', 2)->limit(10)->get();
 
         return view('home', [
             'menuCategories' => $menuCategories,
             'quotes' => $quotes,
             'featureCategories' => $featureCategories,
-            'popPosts' => $popPosts
+            'popPosts' => $popPosts,
+            'lastestPosts' => $lastestPosts,
+            'topWriters' => $topWriters
         ]);
     }
 
