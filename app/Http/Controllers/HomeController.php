@@ -13,6 +13,8 @@ class HomeController extends Controller
 {
     public function index()
     {
+        $factory = (new Factory())->withDatabaseUri('https://uet-news-2021-default-rtdb.firebaseio.com/');
+        $database = $factory->createDatabase();
         $menuCategories = Category::limit(7)->get();
         $quotes = Collection::make([
             'An unexamined life is not worth living. - Socrates',
@@ -26,10 +28,14 @@ class HomeController extends Controller
             'Smile, breathe, and go slowly. - Thich Nhat Hanh',
             'Well begun is half done. - Aristotle',
         ]);
+        $featureCategoriesRef = $database->getReference('featureCategories')->getSnapshot();
+        $featureCategoriesId = $featureCategoriesRef->getValue();
+        $featureCategories = Category::whereIn('id', $featureCategoriesId)->get();
 
         return view('home', [
             'menuCategories' => $menuCategories,
-            'quotes' => $quotes
+            'quotes' => $quotes,
+            'featureCategories' => $featureCategories
         ]);
     }
 
