@@ -54,7 +54,7 @@
         <div class="wrap-header-mobile">
             <!-- Logo moblie -->        
             <div class="logo-mobile">
-                <a href="index.html"><img src="{{ asset('client-assets/images/icons/logo-mobile.png') }}" alt="IMG-LOGO"></a>
+                <a href="{{ route('home.index') }}"><img src="{{ asset('client-assets/images/icons/logo-mobile.png') }}" alt="IMG-LOGO"></a>
             </div>
 
             <!-- Button show menu -->
