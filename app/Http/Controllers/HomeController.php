@@ -31,11 +31,13 @@ class HomeController extends Controller
         $featureCategoriesRef = $database->getReference('featureCategories')->getSnapshot();
         $featureCategoriesId = $featureCategoriesRef->getValue();
         $featureCategories = Category::whereIn('id', $featureCategoriesId)->get();
+        $popPosts = Post::orderBy('id', 'desc')->limit(5)->get();
 
         return view('home', [
             'menuCategories' => $menuCategories,
             'quotes' => $quotes,
-            'featureCategories' => $featureCategories
+            'featureCategories' => $featureCategories,
+            'popPosts' => $popPosts
         ]);
     }
 

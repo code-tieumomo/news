@@ -299,62 +299,30 @@
                             </div>
 
                             <ul class="p-t-35">
-                                <li class="flex-wr-sb-s p-b-22">
-                                    <div class="size-a-8 flex-c-c borad-3 size-a-8 bg9 f1-m-4 cl0 m-b-6">
-                                        1
-                                    </div>
+                                @php
+                                    $countPopPosts = 1;
+                                @endphp
+                                @foreach ($popPosts as $post)
+                                    <li class="flex-wr-sb-s p-b-22">
+                                        <div class="size-a-8 flex-c-c borad-3 size-a-8 bg9 f1-m-4 cl0 m-b-6">
+                                            {{ $countPopPosts }}
+                                        </div>
 
-                                    <a href="#" class="size-w-3 f1-s-7 cl3 hov-cl10 trans-03">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                                    </a>
-                                </li>
-
-                                <li class="flex-wr-sb-s p-b-22">
-                                    <div class="size-a-8 flex-c-c borad-3 size-a-8 bg9 f1-m-4 cl0 m-b-6">
-                                        2
-                                    </div>
-
-                                    <a href="#" class="size-w-3 f1-s-7 cl3 hov-cl10 trans-03">
-                                        Proin velit consectetur non neque
-                                    </a>
-                                </li>
-
-                                <li class="flex-wr-sb-s p-b-22">
-                                    <div class="size-a-8 flex-c-c borad-3 size-a-8 bg9 f1-m-4 cl0 m-b-6">
-                                        3
-                                    </div>
-
-                                    <a href="#" class="size-w-3 f1-s-7 cl3 hov-cl10 trans-03">
-                                        Nunc vestibulum, enim vitae condimentum volutpat lobortis ante
-                                    </a>
-                                </li>
-
-                                <li class="flex-wr-sb-s p-b-22">
-                                    <div class="size-a-8 flex-c-c borad-3 size-a-8 bg9 f1-m-4 cl0 m-b-6">
-                                        4
-                                    </div>
-
-                                    <a href="#" class="size-w-3 f1-s-7 cl3 hov-cl10 trans-03">
-                                        Proin velit justo consectetur non neque elementum
-                                    </a>
-                                </li>
-
-                                <li class="flex-wr-sb-s p-b-22">
-                                    <div class="size-a-8 flex-c-c borad-3 size-a-8 bg9 f1-m-4 cl0">
-                                        5
-                                    </div>
-
-                                    <a href="#" class="size-w-3 f1-s-7 cl3 hov-cl10 trans-03">
-                                        Proin velit consectetur non neque
-                                    </a>
-                                </li>
+                                        <a href="#" class="size-w-3 f1-s-7 cl3 hov-cl10 trans-03">
+                                            {{ $post->title }}
+                                        </a>
+                                    </li>
+                                    @php
+                                        $countPopPosts++;
+                                    @endphp
+                                @endforeach
                             </ul>
                         </div>
 
                         <!--  -->
                         <div class="flex-c-s p-t-8">
                             <a href="#">
-                                <img class="max-w-full" src="images/banner-02.jpg" alt="IMG">
+                                <img class="max-w-full" src="{{ asset('client-assets/images/banner-02.jpg') }}" alt="IMG">
                             </a>
                         </div>
 
