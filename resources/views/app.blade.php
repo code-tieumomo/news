@@ -86,9 +86,9 @@
                 const openWeatherApiKey = "5da9e9e00c3cf8188bddf9f81bcedd84";
                 var hour = (new Date()).getHours();
                 if (hour > 5 && hour < 18) {
-                    $(".current-time").attr("src", "client-assets/images/icons/icon-day.png");
+                    $(".current-time").attr("src", "{{ asset('client-assets/images/icons/icon-day.png') }}");
                 } else {
-                    $(".current-time").attr("src", "client-assets/images/icons/icon-night.png");
+                    $(".current-time").attr("src", "{{ asset('client-assets/images/icons/icon-night.png') }}");
                 }
 
                 $.ajax({
@@ -102,7 +102,7 @@
                         $.ajax({
                             url: "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=" + openWeatherApiKey,
                             success: function(response) {
-                                $(".current-weather").html(response.weather[0].main + ' <img src="client-assets/images/icons/icon-temp.png" alt="Banner"></a> ' + Math.round(parseFloat(response.main.temp)-273.15) + '&deg;C');
+                                $(".current-weather").html(response.weather[0].main + ' <img src="{{ asset('client-assets/images/icons/icon-temp.png') }}" alt="Temp"></a> ' + Math.round(parseFloat(response.main.temp)-273.15) + '&deg;C');
                             }
                         });
                     }
