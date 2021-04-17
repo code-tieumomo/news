@@ -342,7 +342,7 @@
 
                                     <div class="size-w-3 flex-wr-sb-c">
                                         <span class="f1-s-8 cl3 p-r-20">
-                                            6879 Fans
+                                            Facebook
                                         </span>
 
                                         <a href="#" class="f1-s-9 text-uppercase cl3 hov-cl10 trans-03">
@@ -358,7 +358,7 @@
 
                                     <div class="size-w-3 flex-wr-sb-c">
                                         <span class="f1-s-8 cl3 p-r-20">
-                                            568 Followers
+                                            Twitter
                                         </span>
 
                                         <a href="#" class="f1-s-9 text-uppercase cl3 hov-cl10 trans-03">
@@ -374,7 +374,7 @@
 
                                     <div class="size-w-3 flex-wr-sb-c">
                                         <span class="f1-s-8 cl3 p-r-20">
-                                            5039 Subscribers
+                                            Youtube
                                         </span>
 
                                         <a href="#" class="f1-s-9 text-uppercase cl3 hov-cl10 trans-03">
