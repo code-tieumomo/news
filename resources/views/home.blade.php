@@ -253,7 +253,7 @@
                             <ul class="p-t-35">
                                 <li class="flex-wr-sb-c p-b-20">
                                     <a href="#" class="size-a-8 flex-c-c borad-3 size-a-8 bg-facebook fs-16 cl0 hov-cl0">
-                                        <span class="fab fa-facebook-f"></span>
+                                        <span class="fa fa-facebook-f"></span>
                                     </a>
 
                                     <div class="size-w-3 flex-wr-sb-c">
@@ -269,7 +269,7 @@
 
                                 <li class="flex-wr-sb-c p-b-20">
                                     <a href="#" class="size-a-8 flex-c-c borad-3 size-a-8 bg-twitter fs-16 cl0 hov-cl0">
-                                        <span class="fab fa-twitter"></span>
+                                        <span class="fa fa-twitter"></span>
                                     </a>
 
                                     <div class="size-w-3 flex-wr-sb-c">
@@ -285,7 +285,7 @@
 
                                 <li class="flex-wr-sb-c p-b-20">
                                     <a href="#" class="size-a-8 flex-c-c borad-3 size-a-8 bg-youtube fs-16 cl0 hov-cl0">
-                                        <span class="fab fa-youtube"></span>
+                                        <span class="fa fa-youtube-play"></span>
                                     </a>
 
                                     <div class="size-w-3 flex-wr-sb-c">
@@ -437,7 +437,7 @@
                 if (order == 0) {
                     var html = `
                         <div class="bg-img1 size-a-3 how1 pos-relative" style="background-image: url('${post[1].thumbnail}');">
-                            <a href="#post-id-${post[0]}" class="dis-block how1-child1 trans-03"></a>
+                            <a href="posts/${post[0]}" class="dis-block how1-child1 trans-03"></a>
 
                             <div class="flex-col-e-s s-full p-rl-25 p-tb-20">
                                 <a href="#" class="dis-block how1-child2 f1-s-2 cl0 bo-all-1 bocl0 hov-btn1 trans-03 p-rl-5 p-t-2">
@@ -445,7 +445,7 @@
                                 </a>
 
                                 <h3 class="how1-child2 m-t-14 m-b-10">
-                                    <a href="blog-detail-01.html" class="how-txt1 size-a-6 f1-l-1 cl0 hov-cl10 trans-03">
+                                    <a href="posts/${post[0]}" class="how-txt1 size-a-6 f1-l-1 cl0 hov-cl10 trans-03">
                                         ${post[1].title}
                                     </a>
                                 </h3>
@@ -469,7 +469,7 @@
                 } else if (order == 1) {
                     var html = `
                         <div class="bg-img1 size-a-4 how1 pos-relative" style="background-image: url('${post[1].thumbnail}');">
-                            <a href="blog-detail-01.html" class="dis-block how1-child1 trans-03"></a>
+                            <a href="posts/${post[0]}" class="dis-block how1-child1 trans-03"></a>
 
                             <div class="flex-col-e-s s-full p-rl-25 p-tb-24">
                                 <a href="#" class="dis-block how1-child2 f1-s-2 cl0 bo-all-1 bocl0 hov-btn1 trans-03 p-rl-5 p-t-2">
@@ -477,7 +477,7 @@
                                 </a>
 
                                 <h3 class="how1-child2 m-t-14">
-                                    <a href="blog-detail-01.html" class="how-txt1 size-a-7 f1-l-2 cl0 hov-cl10 trans-03">
+                                    <a href="posts/${post[0]}" class="how-txt1 size-a-7 f1-l-2 cl0 hov-cl10 trans-03">
                                         ${post[1].title}
                                     </a>
                                 </h3>
@@ -487,7 +487,7 @@
                 } else {
                     var html = `
                         <div class="bg-img1 size-a-5 how1 pos-relative" style="background-image: url('${post[1].thumbnail}');">
-                            <a href="blog-detail-01.html" class="dis-block how1-child1 trans-03"></a>
+                            <a href="posts/${post[0]}" class="dis-block how1-child1 trans-03"></a>
 
                             <div class="flex-col-e-s s-full p-rl-25 p-tb-20">
                                 <a href="#" class="dis-block how1-child2 f1-s-2 cl0 bo-all-1 bocl0 hov-btn1 trans-03 p-rl-5 p-t-2">
@@ -495,7 +495,7 @@
                                 </a>
 
                                 <h3 class="how1-child2 m-t-14">
-                                    <a href="blog-detail-01.html" class="how-txt1 size-h-1 f1-m-1 cl0 hov-cl10 trans-03">
+                                    <a href="posts/${post[0]}" class="how-txt1 size-h-1 f1-m-1 cl0 hov-cl10 trans-03">
                                         ${post[1].title}
                                     </a>
                                 </h3>

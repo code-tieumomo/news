@@ -11,7 +11,7 @@
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{{ asset('client-assets/vendor/bootstrap/css/bootstrap.min.css') }}">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('client-assets/fonts/fontawesome-5.0.8/css/fontawesome-all.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('client-assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{{ asset('client-assets/fonts/iconic/css/material-design-iconic-font.min.css') }}">
     <!--===============================================================================================-->
@@ -21,7 +21,7 @@
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{{ asset('client-assets/vendor/animsition/css/animsition.min.css') }}">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('client-assets/vendor/fancybox/jquery.fancybox.min.css') }}">
+    {{-- <link rel="stylesheet" type="text/css" href="{{ asset('client-assets/vendor/fancybox/jquery.fancybox.min.css') }}"> --}}
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{{ asset('client-assets/css/util.min.css') }}">
     <!--===============================================================================================-->  
@@ -30,9 +30,10 @@
     </head>
     <body class="animsition">
         @include('header')
-            
+        
         @yield('headline')
 
+        {{-- Home page section --}}
         @yield('feature-posts')
 
         @yield('feature-categories')
@@ -40,6 +41,9 @@
         @yield('banner')
 
         @yield('lastest-posts')
+
+        {{-- Post detail page section --}}
+        @yield('content')
 
         @include('footer')
 
@@ -58,7 +62,7 @@
         <script src="{{ asset('client-assets/vendor/bootstrap/js/popper.js') }}"></script>
         <script src="{{ asset('client-assets/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
         <!--===============================================================================================-->
-        <script src="{{ asset('client-assets/vendor/fancybox/jquery.fancybox.min.js') }}"></script>
+        {{-- <script src="{{ asset('client-assets/vendor/fancybox/jquery.fancybox.min.js') }}"></script> --}}
         <!--===============================================================================================-->
         <!-- The core Firebase JS SDK is always required and must be listed first -->
         <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>

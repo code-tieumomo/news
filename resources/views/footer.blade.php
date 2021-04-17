@@ -21,15 +21,15 @@
 
                         <div class="p-t-15">
                             <a href="#" class="fs-18 cl11 hov-cl10 trans-03 m-r-8">
-                                <span class="fab fa-facebook-f"></span>
+                                <span class="fa fa-facebook-f"></span>
                             </a>
 
                             <a href="#" class="fs-18 cl11 hov-cl10 trans-03 m-r-8">
-                                <span class="fab fa-twitter"></span>
+                                <span class="fa fa-twitter"></span>
                             </a>
 
                             <a href="#" class="fs-18 cl11 hov-cl10 trans-03 m-r-8">
-                                <span class="fab fa-youtube"></span>
+                                <span class="fa fa-youtube-play"></span>
                             </a>
                         </div>
                     </div>
@@ -83,7 +83,7 @@
 
                         <li class="how-bor1 p-rl-5 p-tb-10">
                             <a href="#" class="f1-s-5 cl11 hov-cl10 trans-03 p-tb-8">
-                                Explore all 
+                                Explore all <i class="fa fa-long-arrow-right"></i>
                             </a>
                         </li>
                     </ul>
