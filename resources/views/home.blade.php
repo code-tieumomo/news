@@ -85,90 +85,6 @@
     </section>
 @endsection
 
-@section('custom-js')
-    <script type="text/javascript">
-        //Feature Posts
-        var database = firebase.database();
-
-        var featurePostsRef = database.ref('featurePosts');
-        featurePostsRef.on('value', (snapshot) => {
-            const featurePosts = snapshot.val();
-            Object.entries(featurePosts).forEach(function(post, order) {
-                if (order == 0) {
-                    var html = `
-                        <div class="bg-img1 size-a-3 how1 pos-relative" style="background-image: url('${post[1].thumbnail}');">
-                            <a href="#post-id-${post[0]}" class="dis-block how1-child1 trans-03"></a>
-
-                            <div class="flex-col-e-s s-full p-rl-25 p-tb-20">
-                                <a href="#" class="dis-block how1-child2 f1-s-2 cl0 bo-all-1 bocl0 hov-btn1 trans-03 p-rl-5 p-t-2">
-                                    ${post[1].subCategory}
-                                </a>
-
-                                <h3 class="how1-child2 m-t-14 m-b-10">
-                                    <a href="blog-detail-01.html" class="how-txt1 size-a-6 f1-l-1 cl0 hov-cl10 trans-03">
-                                        ${post[1].title}
-                                    </a>
-                                </h3>
-
-                                <span class="how1-child2">
-                                    <span class="f1-s-4 cl11">
-                                        ${post[1].writer}
-                                    </span>
-
-                                    <span class="f1-s-3 cl11 m-rl-3">
-                                        -
-                                    </span>
-
-                                    <span class="f1-s-3 cl11">
-                                        ${post[1].time}
-                                    </span>
-                                </span>
-                            </div>
-                        </div>
-                    `;
-                } else if (order == 1) {
-                    var html = `
-                        <div class="bg-img1 size-a-4 how1 pos-relative" style="background-image: url('${post[1].thumbnail}');">
-                            <a href="blog-detail-01.html" class="dis-block how1-child1 trans-03"></a>
-
-                            <div class="flex-col-e-s s-full p-rl-25 p-tb-24">
-                                <a href="#" class="dis-block how1-child2 f1-s-2 cl0 bo-all-1 bocl0 hov-btn1 trans-03 p-rl-5 p-t-2">
-                                    ${post[1].subCategory}
-                                </a>
-
-                                <h3 class="how1-child2 m-t-14">
-                                    <a href="blog-detail-01.html" class="how-txt1 size-a-7 f1-l-2 cl0 hov-cl10 trans-03">
-                                        ${post[1].title}
-                                    </a>
-                                </h3>
-                            </div>
-                        </div>
-                    `;
-                } else {
-                    var html = `
-                        <div class="bg-img1 size-a-5 how1 pos-relative" style="background-image: url('${post[1].thumbnail}');">
-                            <a href="blog-detail-01.html" class="dis-block how1-child1 trans-03"></a>
-
-                            <div class="flex-col-e-s s-full p-rl-25 p-tb-20">
-                                <a href="#" class="dis-block how1-child2 f1-s-2 cl0 bo-all-1 bocl0 hov-btn1 trans-03 p-rl-5 p-t-2">
-                                    ${post[1].subCategory}
-                                </a>
-
-                                <h3 class="how1-child2 m-t-14">
-                                    <a href="blog-detail-01.html" class="how-txt1 size-h-1 f1-m-1 cl0 hov-cl10 trans-03">
-                                        ${post[1].title}
-                                    </a>
-                                </h3>
-                            </div>
-                        </div>
-                    `;
-                }
-                $('#feature-post-' + order).html(html);
-            });
-        });
-    </script>
-@endsection
-
 @section('feature-categories')
     <!-- Post -->
     <section class="bg0 p-t-70">
@@ -507,4 +423,88 @@
             </div>
         </div>
     </section>
+@endsection
+
+@section('custom-js')
+    <script type="text/javascript">
+        //Feature Posts
+        var database = firebase.database();
+
+        var featurePostsRef = database.ref('featurePosts');
+        featurePostsRef.on('value', (snapshot) => {
+            const featurePosts = snapshot.val();
+            Object.entries(featurePosts).forEach(function(post, order) {
+                if (order == 0) {
+                    var html = `
+                        <div class="bg-img1 size-a-3 how1 pos-relative" style="background-image: url('${post[1].thumbnail}');">
+                            <a href="#post-id-${post[0]}" class="dis-block how1-child1 trans-03"></a>
+
+                            <div class="flex-col-e-s s-full p-rl-25 p-tb-20">
+                                <a href="#" class="dis-block how1-child2 f1-s-2 cl0 bo-all-1 bocl0 hov-btn1 trans-03 p-rl-5 p-t-2">
+                                    ${post[1].subCategory}
+                                </a>
+
+                                <h3 class="how1-child2 m-t-14 m-b-10">
+                                    <a href="blog-detail-01.html" class="how-txt1 size-a-6 f1-l-1 cl0 hov-cl10 trans-03">
+                                        ${post[1].title}
+                                    </a>
+                                </h3>
+
+                                <span class="how1-child2">
+                                    <span class="f1-s-4 cl11">
+                                        ${post[1].writer}
+                                    </span>
+
+                                    <span class="f1-s-3 cl11 m-rl-3">
+                                        -
+                                    </span>
+
+                                    <span class="f1-s-3 cl11">
+                                        ${post[1].time}
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                    `;
+                } else if (order == 1) {
+                    var html = `
+                        <div class="bg-img1 size-a-4 how1 pos-relative" style="background-image: url('${post[1].thumbnail}');">
+                            <a href="blog-detail-01.html" class="dis-block how1-child1 trans-03"></a>
+
+                            <div class="flex-col-e-s s-full p-rl-25 p-tb-24">
+                                <a href="#" class="dis-block how1-child2 f1-s-2 cl0 bo-all-1 bocl0 hov-btn1 trans-03 p-rl-5 p-t-2">
+                                    ${post[1].subCategory}
+                                </a>
+
+                                <h3 class="how1-child2 m-t-14">
+                                    <a href="blog-detail-01.html" class="how-txt1 size-a-7 f1-l-2 cl0 hov-cl10 trans-03">
+                                        ${post[1].title}
+                                    </a>
+                                </h3>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    var html = `
+                        <div class="bg-img1 size-a-5 how1 pos-relative" style="background-image: url('${post[1].thumbnail}');">
+                            <a href="blog-detail-01.html" class="dis-block how1-child1 trans-03"></a>
+
+                            <div class="flex-col-e-s s-full p-rl-25 p-tb-20">
+                                <a href="#" class="dis-block how1-child2 f1-s-2 cl0 bo-all-1 bocl0 hov-btn1 trans-03 p-rl-5 p-t-2">
+                                    ${post[1].subCategory}
+                                </a>
+
+                                <h3 class="how1-child2 m-t-14">
+                                    <a href="blog-detail-01.html" class="how-txt1 size-h-1 f1-m-1 cl0 hov-cl10 trans-03">
+                                        ${post[1].title}
+                                    </a>
+                                </h3>
+                            </div>
+                        </div>
+                    `;
+                }
+                $('#feature-post-' + order).html(html);
+            });
+        });
+    </script>
 @endsection
