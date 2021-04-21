@@ -107,13 +107,13 @@
                                                 <div class="col-sm-6 p-r-25 p-r-15-sr991">
                                                     <!-- Item post -->  
                                                     <div class="m-b-30">
-                                                        <a href="blog-detail-01.html" class="wrap-pic-w hov1 trans-03">
+                                                        <a href="{{ route('posts.show', ['slug' => $subCategory->posts->first()->slug]) }}" class="wrap-pic-w hov1 trans-03">
                                                             <img src="{{ $subCategory->posts->first()->thumbnail }}" alt="IMG">
                                                         </a>
 
                                                         <div class="p-t-20">
                                                             <h5 class="p-b-5">
-                                                                <a href="blog-detail-01.html" class="f1-m-3 cl2 hov-cl10 trans-03">
+                                                                <a href="{{ route('posts.show', ['slug' => $subCategory->posts->first()->slug]) }}" class="f1-m-3 cl2 hov-cl10 trans-03">
                                                                     {{ $subCategory->posts->first()->title }}
                                                                 </a>
                                                             </h5>
@@ -139,13 +139,13 @@
                                                     @foreach ($subCategory->posts->skip(1)->take(3) as $post)
                                                         <!-- Item post -->  
                                                         <div class="flex-wr-sb-s m-b-30">
-                                                            <a href="blog-detail-01.html" class="size-w-1 wrap-pic-w hov1 trans-03">
+                                                            <a href="{{ route('posts.show', ['slug' => $post->slug]) }}" class="size-w-1 wrap-pic-w hov1 trans-03">
                                                                 <img src="{{ $post->thumbnail }}" alt="IMG">
                                                             </a>
 
                                                             <div class="size-w-2">
                                                                 <h5 class="p-b-5">
-                                                                    <a href="blog-detail-01.html" class="f1-s-5 cl3 hov-cl10 trans-03">
+                                                                    <a href="{{ route('posts.show', ['slug' => $post->slug]) }}" class="f1-s-5 cl3 hov-cl10 trans-03">
                                                                         {{ $post->title }}
                                                                     </a>
                                                                 </h5>
@@ -196,7 +196,7 @@
                                             {{ $countPopPosts }}
                                         </div>
 
-                                        <a href="#" class="size-w-3 f1-s-7 cl3 hov-cl10 trans-03">
+                                        <a href="{{ route('posts.show', ['slug' => $post->slug]) }}" class="size-w-3 f1-s-7 cl3 hov-cl10 trans-03">
                                             {{ $post->title }}
                                         </a>
                                     </li>
@@ -313,13 +313,13 @@
                            <div class="col-sm-6 p-r-25 p-r-15-sr991">
                                 <!-- Item latest -->    
                                 <div class="m-b-45">
-                                    <a href="blog-detail-01.html" class="wrap-pic-w hov1 trans-03">
+                                    <a href="{{ route('posts.show', ['slug' => $post->slug]) }}" class="wrap-pic-w hov1 trans-03">
                                         <img src="{{ $post->thumbnail }}" alt="IMG">
                                     </a>
 
                                     <div class="p-t-16">
                                         <h5 class="p-b-5">
-                                            <a href="blog-detail-01.html" class="f1-m-3 cl2 hov-cl10 trans-03">
+                                            <a href="{{ route('posts.show', ['slug' => $post->slug]) }}" class="f1-m-3 cl2 hov-cl10 trans-03">
                                                 {{ $post->title }}
                                             </a>
                                         </h5>

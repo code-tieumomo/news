@@ -28,7 +28,7 @@ class PostFactory extends Factory
         return [
             'title' => $title,
             'sumary' => $this->faker->paragraph(2),
-            'content' => $this->faker->paragraph(10),
+            'content' => $this->faker->paragraph(100),
             'thumbnail' => $this->faker->imageUrl($width = 640, $height = 480),
             'slug' => Str::slug($title, '-'),
             'user_id' => User::where('role_id', '2')->get()->random()->id,

@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Post;
 use App\Models\SubCategory;
 use App\Models\User;
+use CyrildeWit\EloquentViewable\Support\Period;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Kreait\Firebase\Factory;
@@ -32,7 +33,7 @@ class HomeController extends Controller
         $featureCategoriesRef = $database->getReference('featureCategories')->getSnapshot();
         $featureCategoriesId = $featureCategoriesRef->getValue();
         $featureCategories = Category::whereIn('id', $featureCategoriesId)->get();
-        $popPosts = Post::orderBy('id', 'desc')->limit(5)->get();
+        $popPosts = Post::orderByViews('desc', Period::pastDays(3))->limit(5)->get();
         $lastestPosts = Post::orderBy('id', 'desc')->limit(6)->get();
         $topWriters = User::where('role_id', 2)->limit(10)->get();
 

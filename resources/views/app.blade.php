@@ -50,7 +50,7 @@
         <!-- Back to top -->
         <div class="btn-back-to-top" id="myBtn">
             <span class="symbol-btn-back-to-top">
-                <span class="fas fa-angle-up"></span>
+                <span class="fa fa-angle-up"></span>
             </span>
         </div>
 
@@ -102,7 +102,7 @@
                 // }
 
                 $.ajax({
-                    url: "http://geolocation-db.com/jsonp",
+                    url: "https://geolocation-db.com/jsonp",
                     jsonpCallback: "callback",
                     crossDomain: true,
                     dataType: "jsonp",

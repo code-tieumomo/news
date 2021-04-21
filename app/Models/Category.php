@@ -19,4 +19,14 @@ class Category extends Model
     {
     	return $this->hasMany(SubCategory::class);
     }
+
+    public function posts()
+    {
+    	$postsCollection = collect();
+    	foreach ($this->subCategories as $category) {
+    		$postsCollection = collect($category->posts);
+    	}
+
+    	return $postsCollection;
+    }
 }

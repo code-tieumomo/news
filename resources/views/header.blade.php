@@ -136,7 +136,7 @@
                     </li>
                 @endforeach
                 <li>
-                    <a href="">Explore All</a>
+                    <a href="{{ route('categories.index') }}">Explore All</a>
                 </li>
             </ul>
         </div>
@@ -219,7 +219,7 @@
                             </li>
                         @endforeach
                         <li class="single-item">
-                            <a href="">Explore All</a>
+                            <a href="{{ route('categories.index') }}">Explore All</a>
                         </li>
                     </ul>
                 </nav>

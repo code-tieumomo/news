@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Post;
+use CyrildeWit\EloquentViewable\Support\Period;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -11,7 +12,7 @@ class PostController extends Controller
     public function show($slug)
     {
         $menuCategories = Category::limit(7)->get();
-        $popPosts = Post::orderBy('id', 'desc')->limit(5)->get();
+        $popPosts = Post::orderByViews('desc', Period::pastDays(3))->limit(5)->get();
         $post = Post::where('slug', $slug)->first();
         if (!$post) {
             abort(404);
