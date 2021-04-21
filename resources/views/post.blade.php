@@ -149,13 +149,13 @@
                         <ul class="p-t-35">
                             @foreach ($relatedPosts as $post)
                                 <li class="flex-wr-sb-s p-b-30">
-                                    <a href="{{ route('posts.show', ['id' => $post->id]) }}" class="size-w-10 wrap-pic-w hov1 trans-03">
+                                    <a href="{{ route('posts.show', ['slug' => $post->slug]) }}" class="size-w-10 wrap-pic-w hov1 trans-03">
                                         <img src="{{ $post->thumbnail }}" alt="Thumnail">
                                     </a>
 
                                     <div class="size-w-11">
                                         <h6 class="p-b-4">
-                                            <a href="{{ route('posts.show', ['id' => $post->id]) }}" class="f1-s-5 cl3 hov-cl10 trans-03">
+                                            <a href="{{ route('posts.show', ['slug' => $post->slug]) }}" class="f1-s-5 cl3 hov-cl10 trans-03">
                                                 {{ $post->title }}
                                             </a>
                                         </h6>

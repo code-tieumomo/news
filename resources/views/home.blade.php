@@ -409,7 +409,7 @@
                 if (order == 0) {
                     var html = `
                         <div class="bg-img1 size-a-3 how1 pos-relative" style="background-image: url('${post[1].thumbnail}');">
-                            <a href="posts/${post[0]}" class="dis-block how1-child1 trans-03"></a>
+                            <a href="posts/${post[1].slug}" class="dis-block how1-child1 trans-03"></a>
 
                             <div class="flex-col-e-s s-full p-rl-25 p-tb-20">
                                 <a href="#" class="dis-block how1-child2 f1-s-2 cl0 bo-all-1 bocl0 hov-btn1 trans-03 p-rl-5 p-t-2">
@@ -441,7 +441,7 @@
                 } else if (order == 1) {
                     var html = `
                         <div class="bg-img1 size-a-4 how1 pos-relative" style="background-image: url('${post[1].thumbnail}');">
-                            <a href="posts/${post[0]}" class="dis-block how1-child1 trans-03"></a>
+                            <a href="posts/${post[1].slug}" class="dis-block how1-child1 trans-03"></a>
 
                             <div class="flex-col-e-s s-full p-rl-25 p-tb-24">
                                 <a href="#" class="dis-block how1-child2 f1-s-2 cl0 bo-all-1 bocl0 hov-btn1 trans-03 p-rl-5 p-t-2">
@@ -459,7 +459,7 @@
                 } else {
                     var html = `
                         <div class="bg-img1 size-a-5 how1 pos-relative" style="background-image: url('${post[1].thumbnail}');">
-                            <a href="posts/${post[0]}" class="dis-block how1-child1 trans-03"></a>
+                            <a href="posts/${post[1].slug}" class="dis-block how1-child1 trans-03"></a>
 
                             <div class="flex-col-e-s s-full p-rl-25 p-tb-20">
                                 <a href="#" class="dis-block how1-child2 f1-s-2 cl0 bo-all-1 bocl0 hov-btn1 trans-03 p-rl-5 p-t-2">
