@@ -2,12 +2,15 @@
 
 namespace App\Models;
 
+use CyrildeWit\EloquentViewable\Contracts\Viewable;
+use CyrildeWit\EloquentViewable\InteractsWithViews;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+class Post extends Model implements Viewable
 {
     use HasFactory;
+    use InteractsWithViews;
 
     protected $table = 'posts';
 
@@ -15,7 +18,8 @@ class Post extends Model
         'title', 
         'sumary', 
         'content', 
-        'thumbnail', 
+        'thumbnail',
+        'slug',
         'user_id', 
         'sub_category_id'
     ];

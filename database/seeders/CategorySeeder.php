@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Category;
 use App\Models\SubCategory;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class CategorySeeder extends Seeder
 {
@@ -42,6 +43,9 @@ class CategorySeeder extends Seeder
         		'Traffic',
         		'Mekong'
         	],
+            'Perspectives' => [
+                'Perspective'
+            ],
         	'World' => [
         		'Data',
         		'Analysis',
@@ -135,13 +139,15 @@ class CategorySeeder extends Seeder
 
         foreach ($categories as $category) {
         	$categoryCreated = Category::create([
-        		'name' => $category
+        		'name' => $category,
+                'slug' => Str::slug($category, '-')
         	]);
 
         	if (isset($subCategories[$category])) {
         		foreach ($subCategories[$category] as $subCategory) {
         			SubCategory::create([
         				'name' => $subCategory,
+                        'slug' => Str::slug($subCategory, '-'),
         				'category_id' => $categoryCreated->id
         			]);
         		}

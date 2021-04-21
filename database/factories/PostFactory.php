@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Models\SubCategory;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 class PostFactory extends Factory
 {
@@ -23,11 +24,13 @@ class PostFactory extends Factory
      */
     public function definition()
     {
+        $title = $this->faker->sentence(7);
         return [
-            'title' => $this->faker->sentence(5),
+            'title' => $title,
             'sumary' => $this->faker->paragraph(2),
             'content' => $this->faker->paragraph(10),
             'thumbnail' => $this->faker->imageUrl($width = 640, $height = 480),
+            'slug' => Str::slug($title, '-'),
             'user_id' => User::where('role_id', '2')->get()->random()->id,
             'sub_category_id' => SubCategory::all()->random()->id
         ];

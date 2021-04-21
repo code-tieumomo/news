@@ -27,17 +27,18 @@ class ComposerStaticInit7f7eb29c5ebd0cd6ebdb352a0904321c
         '538ca81a9a966a6716601ecf48f4eaef' => __DIR__ . '/..' . '/opis/closure/functions.php',
         'a1105708a18b76903365ca1c4aa61b02' => __DIR__ . '/..' . '/symfony/translation/Resources/functions.php',
         'e39a8b23c42d4e1452234d762b03835a' => __DIR__ . '/..' . '/ramsey/uuid/src/functions.php',
+        '27592325262b385204a263c2ab632d6e' => __DIR__ . '/..' . '/kreait/clock/src/Clock.php',
         '265b4faa2b3a9766332744949e83bf97' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Collections/helpers.php',
         'c7a3c339e7e14b60e06a2d7fcce9476b' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Events/functions.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
-        '27592325262b385204a263c2ab632d6e' => __DIR__ . '/..' . '/kreait/clock/src/Clock.php',
         '8825ede83f2f289127722d4e842cf7e8' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/bootstrap.php',
         '9cdd7b9056abc3081735233ba9dd9c7f' => __DIR__ . '/..' . '/facade/flare-client-php/src/helpers.php',
+        'b067bc7112e384b61c701452d53a14a8' => __DIR__ . '/..' . '/mtdowling/jmespath.php/src/JmesPath.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
-        'b067bc7112e384b61c701452d53a14a8' => __DIR__ . '/..' . '/mtdowling/jmespath.php/src/JmesPath.php',
         'ed962a97bd972bc82007176b647d4e36' => __DIR__ . '/..' . '/facade/ignition/src/helpers.php',
+        '55939d295627a904f01d5f2ab92e8d67' => __DIR__ . '/..' . '/cyrildewit/eloquent-viewable/src/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -144,6 +145,7 @@ class ComposerStaticInit7f7eb29c5ebd0cd6ebdb352a0904321c
         'J' => 
         array (
             'JmesPath\\' => 9,
+            'Jaybizzle\\CrawlerDetect\\' => 24,
         ),
         'I' => 
         array (
@@ -189,6 +191,7 @@ class ComposerStaticInit7f7eb29c5ebd0cd6ebdb352a0904321c
         ),
         'C' => 
         array (
+            'CyrildeWit\\EloquentViewable\\' => 28,
             'Cron\\' => 5,
             'Carbon\\' => 7,
         ),
@@ -454,6 +457,10 @@ class ComposerStaticInit7f7eb29c5ebd0cd6ebdb352a0904321c
         array (
             0 => __DIR__ . '/..' . '/mtdowling/jmespath.php/src',
         ),
+        'Jaybizzle\\CrawlerDetect\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/jaybizzle/crawler-detect/src',
+        ),
         'Illuminate\\Support\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Macroable',
@@ -563,6 +570,10 @@ class ComposerStaticInit7f7eb29c5ebd0cd6ebdb352a0904321c
         array (
             0 => __DIR__ . '/../..' . '/database/factories',
         ),
+        'CyrildeWit\\EloquentViewable\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/cyrildewit/eloquent-viewable/src',
+        ),
         'Cron\\' => 
         array (
             0 => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron',
@@ -598,10 +609,16 @@ class ComposerStaticInit7f7eb29c5ebd0cd6ebdb352a0904321c
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Http\\Controllers\\Admin\\CommentController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/CommentController.php',
         'App\\Http\\Controllers\\Admin\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/HomeController.php',
+        'App\\Http\\Controllers\\Admin\\PostController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/PostController.php',
+        'App\\Http\\Controllers\\Admin\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/UserController.php',
         'App\\Http\\Controllers\\Admin\\WriterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/WriterController.php',
         'App\\Http\\Controllers\\AuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/AuthController.php',
+        'App\\Http\\Controllers\\CategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/CategoryController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
+        'App\\Http\\Controllers\\PostController' => __DIR__ . '/../..' . '/app/Http/Controllers/PostController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
@@ -724,6 +741,25 @@ class ComposerStaticInit7f7eb29c5ebd0cd6ebdb352a0904321c
         'Cron\\HoursField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/HoursField.php',
         'Cron\\MinutesField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/MinutesField.php',
         'Cron\\MonthField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/MonthField.php',
+        'CyrildeWit\\EloquentViewable\\CacheKey' => __DIR__ . '/..' . '/cyrildewit/eloquent-viewable/src/CacheKey.php',
+        'CyrildeWit\\EloquentViewable\\Contracts\\CrawlerDetector' => __DIR__ . '/..' . '/cyrildewit/eloquent-viewable/src/Contracts/CrawlerDetector.php',
+        'CyrildeWit\\EloquentViewable\\Contracts\\View' => __DIR__ . '/..' . '/cyrildewit/eloquent-viewable/src/Contracts/View.php',
+        'CyrildeWit\\EloquentViewable\\Contracts\\Viewable' => __DIR__ . '/..' . '/cyrildewit/eloquent-viewable/src/Contracts/Viewable.php',
+        'CyrildeWit\\EloquentViewable\\Contracts\\Views' => __DIR__ . '/..' . '/cyrildewit/eloquent-viewable/src/Contracts/Views.php',
+        'CyrildeWit\\EloquentViewable\\Contracts\\Visitor' => __DIR__ . '/..' . '/cyrildewit/eloquent-viewable/src/Contracts/Visitor.php',
+        'CyrildeWit\\EloquentViewable\\CooldownManager' => __DIR__ . '/..' . '/cyrildewit/eloquent-viewable/src/CooldownManager.php',
+        'CyrildeWit\\EloquentViewable\\CrawlerDetectAdapter' => __DIR__ . '/..' . '/cyrildewit/eloquent-viewable/src/CrawlerDetectAdapter.php',
+        'CyrildeWit\\EloquentViewable\\EloquentViewableServiceProvider' => __DIR__ . '/..' . '/cyrildewit/eloquent-viewable/src/EloquentViewableServiceProvider.php',
+        'CyrildeWit\\EloquentViewable\\Events\\ViewRecorded' => __DIR__ . '/..' . '/cyrildewit/eloquent-viewable/src/Events/ViewRecorded.php',
+        'CyrildeWit\\EloquentViewable\\Exceptions\\InvalidPeriod' => __DIR__ . '/..' . '/cyrildewit/eloquent-viewable/src/Exceptions/InvalidPeriod.php',
+        'CyrildeWit\\EloquentViewable\\Exceptions\\ViewRecordException' => __DIR__ . '/..' . '/cyrildewit/eloquent-viewable/src/Exceptions/ViewRecordException.php',
+        'CyrildeWit\\EloquentViewable\\InteractsWithViews' => __DIR__ . '/..' . '/cyrildewit/eloquent-viewable/src/InteractsWithViews.php',
+        'CyrildeWit\\EloquentViewable\\Support\\Period' => __DIR__ . '/..' . '/cyrildewit/eloquent-viewable/src/Support/Period.php',
+        'CyrildeWit\\EloquentViewable\\View' => __DIR__ . '/..' . '/cyrildewit/eloquent-viewable/src/View.php',
+        'CyrildeWit\\EloquentViewable\\ViewableObserver' => __DIR__ . '/..' . '/cyrildewit/eloquent-viewable/src/ViewableObserver.php',
+        'CyrildeWit\\EloquentViewable\\Views' => __DIR__ . '/..' . '/cyrildewit/eloquent-viewable/src/Views.php',
+        'CyrildeWit\\EloquentViewable\\ViewsFacade' => __DIR__ . '/..' . '/cyrildewit/eloquent-viewable/src/ViewsFacade.php',
+        'CyrildeWit\\EloquentViewable\\Visitor' => __DIR__ . '/..' . '/cyrildewit/eloquent-viewable/src/Visitor.php',
         'Database\\Factories\\CommentFactory' => __DIR__ . '/../..' . '/database/factories/CommentFactory.php',
         'Database\\Factories\\PostFactory' => __DIR__ . '/../..' . '/database/factories/PostFactory.php',
         'Database\\Factories\\UserFactory' => __DIR__ . '/../..' . '/database/factories/UserFactory.php',
@@ -2862,6 +2898,11 @@ class ComposerStaticInit7f7eb29c5ebd0cd6ebdb352a0904321c
         'Illuminate\\View\\ViewFinderInterface' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewFinderInterface.php',
         'Illuminate\\View\\ViewName' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewName.php',
         'Illuminate\\View\\ViewServiceProvider' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewServiceProvider.php',
+        'Jaybizzle\\CrawlerDetect\\CrawlerDetect' => __DIR__ . '/..' . '/jaybizzle/crawler-detect/src/CrawlerDetect.php',
+        'Jaybizzle\\CrawlerDetect\\Fixtures\\AbstractProvider' => __DIR__ . '/..' . '/jaybizzle/crawler-detect/src/Fixtures/AbstractProvider.php',
+        'Jaybizzle\\CrawlerDetect\\Fixtures\\Crawlers' => __DIR__ . '/..' . '/jaybizzle/crawler-detect/src/Fixtures/Crawlers.php',
+        'Jaybizzle\\CrawlerDetect\\Fixtures\\Exclusions' => __DIR__ . '/..' . '/jaybizzle/crawler-detect/src/Fixtures/Exclusions.php',
+        'Jaybizzle\\CrawlerDetect\\Fixtures\\Headers' => __DIR__ . '/..' . '/jaybizzle/crawler-detect/src/Fixtures/Headers.php',
         'JmesPath\\AstRuntime' => __DIR__ . '/..' . '/mtdowling/jmespath.php/src/AstRuntime.php',
         'JmesPath\\CompilerRuntime' => __DIR__ . '/..' . '/mtdowling/jmespath.php/src/CompilerRuntime.php',
         'JmesPath\\DebugRuntime' => __DIR__ . '/..' . '/mtdowling/jmespath.php/src/DebugRuntime.php',

@@ -18,11 +18,14 @@ class PostController extends Controller
         } catch(ModelNotFoundException $e) {
             abort(404);
         }
+        $relatedPosts = $post->subCategory->posts->where('id' ,'!=', $post->id)->take(3);
+        views($post)->cooldown(1)->record();
 
         return view('post', [
             'menuCategories' => $menuCategories,
             'popPosts' => $popPosts,
-            'post' => $post
+            'post' => $post,
+            'relatedPosts' => $relatedPosts
         ]);
     }
 }

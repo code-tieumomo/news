@@ -63,7 +63,7 @@
                     </span>
 
                     <span class="f1-s-3 cl8 m-rl-7 txt-center">
-                        5239 Views
+                        {{ views($post)->count() }} Views
                     </span>
 
                     <a href="" class="f1-s-3 cl8 m-rl-7 txt-center hov-cl10 trans-03">
@@ -90,7 +90,7 @@
                                 
                                 <div class="flex-wr-s-s size-w-0">
                                     <a href="#" class="f1-s-12 cl8 hov-link1">
-                                        {{ $post->user->name }} |
+                                        {{ $post->user->name }}
                                     </a>
                                 </div>
 
@@ -113,7 +113,7 @@
                                 
                                 <div class="flex-wr-s-s size-w-0">
                                     <a href="#" class="dis-block f1-s-13 cl0 bg-facebook borad-3 p-tb-4 p-rl-18 hov-btn1 m-r-3 m-b-3 trans-03">
-                                        <i class="fab fa-facebook-f m-r-7"></i>
+                                        <i class="fa fa-facebook-f m-r-7"></i>
                                         Facebook
                                     </a>
                                 </div>
@@ -138,6 +138,47 @@
                 </div>
                 
                 <div class="col-md-10 col-lg-4 p-b-100">
+                    <!-- Related Posts -->
+                    <div class="p-b-30">
+                        <div class="how2 how2-cl4 flex-s-c">
+                            <h3 class="f1-m-2 cl3 tab01-title">
+                                Related Posts
+                            </h3>
+                        </div>
+
+                        <ul class="p-t-35">
+                            @foreach ($relatedPosts as $post)
+                                <li class="flex-wr-sb-s p-b-30">
+                                    <a href="{{ route('posts.show', ['id' => $post->id]) }}" class="size-w-10 wrap-pic-w hov1 trans-03">
+                                        <img src="{{ $post->thumbnail }}" alt="Thumnail">
+                                    </a>
+
+                                    <div class="size-w-11">
+                                        <h6 class="p-b-4">
+                                            <a href="{{ route('posts.show', ['id' => $post->id]) }}" class="f1-s-5 cl3 hov-cl10 trans-03">
+                                                {{ $post->title }}
+                                            </a>
+                                        </h6>
+
+                                        <span class="cl8 txt-center p-b-24">
+                                            <a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
+                                                {{ $post->subCategory->name }}
+                                            </a>
+
+                                            <span class="f1-s-3 m-rl-3">
+                                                -
+                                            </span>
+
+                                            <span class="f1-s-3">
+                                                {{ $post->created_at->toFormattedDateString() }}
+                                            </span>
+                                        </span>
+                                    </div>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+
                     <div class="p-l-10 p-rl-0-sr991">
                         <!-- Banner -->
                         <div class="flex-c-s">

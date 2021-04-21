@@ -95,9 +95,16 @@
                     $(".current-time").attr("src", "{{ asset('client-assets/images/icons/icon-night.png') }}");
                 }
 
+                // if (navigator.geolocation) {
+                //     navigator.geolocation.getCurrentPosition(showPosition);
+                // } else { 
+                //    console.log("Geolocation is not supported by this browser.");
+                // }
+
                 $.ajax({
-                    url: "https://geolocation-db.com/jsonp",
+                    url: "http://geolocation-db.com/jsonp",
                     jsonpCallback: "callback",
+                    crossDomain: true,
                     dataType: "jsonp",
                     success: function(response) {
                         $(".current-location").html(((response.city == null) ? response.country_name : response.city)  + ', ' + response.country_code);

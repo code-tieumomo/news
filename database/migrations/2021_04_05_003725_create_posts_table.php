@@ -19,6 +19,7 @@ class CreatePostsTable extends Migration
             $table->text('sumary');
             $table->longText('content');
             $table->string('thumbnail');
+            $table->string('slug')->unique();
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict');
             $table->bigInteger('sub_category_id')->unsigned();
