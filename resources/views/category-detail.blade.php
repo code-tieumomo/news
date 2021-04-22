@@ -63,7 +63,7 @@
 
                                             <span class="cl8">
                                                 <a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
-                                                    by {{ $post->user->name }}
+                                                    <i class="fa fa-pencil"></i> {{ $post->user->name }}
                                                 </a>
 
                                                 <span class="f1-s-3 m-rl-3">
@@ -71,7 +71,7 @@
                                                 </span>
 
                                                 <span class="f1-s-3">
-                                                    {{ $post->created_at->toFormattedDateString() }}
+                                                    <i class="fa fa-calendar-o"></i> {{ $post->created_at->toFormattedDateString() }}
                                                 </span>
                                             </span>
                                         </div>
@@ -86,39 +86,34 @@
                     </div>
 
                     <!-- Load more posts -->
+                    {{-- <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div> --}}
                     <div class="flex-wr-s-c m-rl--7 p-t-15">
-                        <button id="btn-load" data-page="{{ $nextPage }}" class="flex-c-c pagi-item hov-btn1 trans-03 m-all-7 pagi-active load-more-posts">Load More</button>
+                        <button id="btn-load" class="flex-c-c pagi-item hov-btn1 trans-03 m-all-7 pagi-active load-more-posts">Load More</button>
                     </div>
                     {{-- <div class="lds-hourglass"></div> --}}
                 </div>
 
                 <div class="col-md-10 col-lg-4 p-b-80">
                     <div class="p-l-10 p-rl-0-sr991">                           
-                        <!-- Most Popular -->
+                        <!-- Sub Categories -->
                         <div class="p-b-23">
                             <div class="how2 how2-cl4 flex-s-c">
                                 <h3 class="f1-m-2 cl3 tab01-title">
-                                    Most Popular
+                                    Sub Categories in {{ $category->name }}
                                 </h3>
                             </div>
 
                              <ul class="p-t-35">
-                                @php
-                                    $countPopPosts = 1;
-                                @endphp
-                                @foreach ($popPosts as $post)
+                                @foreach ($category->subCategories as $subCategory)
                                     <li class="flex-wr-sb-s p-b-22">
                                         <div class="size-a-8 flex-c-c borad-3 size-a-8 bg9 f1-m-4 cl0 m-b-6">
-                                            {{ $countPopPosts }}
+                                            <i class="fa fa-bookmark"></i>
                                         </div>
 
-                                        <a href="{{ route('posts.show', ['slug' => $post->slug]) }}" class="size-w-3 f1-s-7 cl3 hov-cl10 trans-03">
-                                            {{ $post->title }}
+                                        <a href="{{ route('subCategories.show', ['slug' => $category->slug, 'subSlug' => $subCategory->slug]) }}" class="size-w-3 f1-s-7 cl3 hov-cl10 trans-03">
+                                            {{ $subCategory->name }}
                                         </a>
                                     </li>
-                                    @php
-                                        $countPopPosts++;
-                                    @endphp
                                 @endforeach
                             </ul>
                         </div>
@@ -161,13 +156,13 @@
 
         $('#btn-load').on('click', function(event) {
             event.preventDefault();
-            $('#list-posts').append('<div class="lds-hourglass"></div>');
+            $('#list-posts').append('<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>');
             $('#btn-load').hide();
 
             var link = $("a[rel='next']").attr("href");
             if (typeof link !== "undefined") {
                 $.get(link, function(response) {
-                    $('.lds-hourglass').remove();
+                    $('.lds-ellipsis').remove();
                     $('#btn-load').show();
                     $('nav[role=navigation]').remove();
                     $('#list-posts').append(
@@ -176,7 +171,7 @@
                     $('nav[role=navigation]').hide();
                 });
             } else {
-                $('.lds-hourglass').remove();
+                $('.lds-ellipsis').remove();
                 $('#btn-load').html('No More Posts');
                 $('#btn-load').removeClass('hov-btn1');
                 $('#btn-load').removeClass('pagi-active');

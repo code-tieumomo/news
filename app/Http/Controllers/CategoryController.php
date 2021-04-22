@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\SubCategory;
 use CyrildeWit\EloquentViewable\Support\Period;
 use Illuminate\Http\Request;
 
@@ -27,10 +28,10 @@ class CategoryController extends Controller
         $popPosts = Post::orderByViews('desc', Period::pastDays(3))->limit(5)->get();
 
         if (!$subSlug) {
-            if (!$request->page) {
-                $request->page = 1;
-            }
             $category = Category::where('slug', $slug)->first();
+            if (!$category) {
+                abort(404);
+            }
             $posts = $category->posts()->paginate(8);
 
             return view('category-detail', [
@@ -38,10 +39,30 @@ class CategoryController extends Controller
                 'popPosts' => $popPosts,
                 'category' => $category,
                 'posts' => $posts,
-                'nextPage' => $request->page
             ]);
         } else {
-            return $slug . '/' . $subSlug;
+            $category = Category::where('slug', $slug)->first();
+            if (!$category) {
+                abort(404);
+            }
+            $subCategory = SubCategory::where([
+                'slug' => $subSlug,
+                'category_id' => $category->id
+            ])->first();
+            if (!$subCategory) {
+                abort(404);
+            }
+            $popPosts = Post::where('sub_category_id', $subCategory->id)->orderByViews('desc', Period::pastDays(3))->limit(5)->get();
+            $posts = $subCategory->posts->paginate(8);
+
+            return view('sub-category-detail', [
+                'menuCategories' => $menuCategories,
+                'popPosts' => $popPosts,
+                'category' => $category,
+                'subCategory' => $subCategory,
+                'popPosts' => $popPosts,
+                'posts' => $posts,
+            ]);
         }
     }
 }

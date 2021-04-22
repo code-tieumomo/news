@@ -80,12 +80,19 @@
                     <div class="p-r-10 p-r-0-sr991">
                         <!-- Blog Detail -->
                         <div class="p-b-70">
-                            {{ $post->content }}
+                            <!-- Sumary -->
+                            <div class="flex-s-s p-t-12 p-b-15">
+                                <span class="f1-s-12 cl5 m-r-8">
+                                    {{ $post->sumary }}
+                                </span>
+                            </div>
+
+                            {!! $post->content !!}
 
                             <!-- Info -->
                             <div class="flex-s-s p-t-12 p-b-15">
                                 <span class="f1-s-12 cl5 m-r-8">
-                                    Writer:
+                                    <i class="fa fa-pencil"></i> Writer:
                                 </span>
                                 
                                 <div class="flex-wr-s-s size-w-0">
@@ -93,9 +100,9 @@
                                         {{ $post->user->name }}
                                     </a>
                                 </div>
-
+                                
                                 <span class="f1-s-12 cl5 m-r-8">
-                                    Sub Category:
+                                    <i class="fa fa-bookmark"></i> Sub Category:
                                 </span>
                                 
                                 <div class="flex-wr-s-s size-w-0">
