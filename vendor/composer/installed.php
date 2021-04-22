@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '8802fda65ba679cbe26d2ca0b163007e39ab7e5a',
+    'reference' => '729a9de3f427446c8625315df4b2ae6c1716104a',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -544,7 +544,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '8802fda65ba679cbe26d2ca0b163007e39ab7e5a',
+      'reference' => '729a9de3f427446c8625315df4b2ae6c1716104a',
     ),
     'laravel/sail' => 
     array (
@@ -1113,6 +1113,15 @@
       ),
       'reference' => 'c6c1022351a901512170118436c764e473f6de8c',
     ),
+    'simplepie/simplepie' => 
+    array (
+      'pretty_version' => '1.5.6',
+      'version' => '1.5.6.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '1c68e14ca3ac84346b6e6fe3c5eedf725d0f92c6',
+    ),
     'swiftmailer/swiftmailer' => 
     array (
       'pretty_version' => 'v6.2.7',
@@ -1423,6 +1432,15 @@
       array (
       ),
       'reference' => '6964c76c7804814a842473e0c8fd15bab0f18e25',
+    ),
+    'willvincent/feeds' => 
+    array (
+      'pretty_version' => 'v2.2.0',
+      'version' => '2.2.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '1093d06cd6626aabe31e75d6d8a835846064f27c',
     ),
   ),
 );
