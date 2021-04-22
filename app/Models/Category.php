@@ -23,8 +23,10 @@ class Category extends Model
     public function posts()
     {
     	$postsCollection = collect();
-    	foreach ($this->subCategories as $category) {
-    		$postsCollection = collect($category->posts);
+    	foreach ($this->subCategories as $subCategory) {
+    		foreach ($subCategory->posts as $post) {
+                $postsCollection->push($post);
+            }
     	}
 
     	return $postsCollection;

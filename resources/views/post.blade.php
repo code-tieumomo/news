@@ -42,7 +42,7 @@
         <div class="bg-img1 size-a-18 how-overlay1" style="background-image: url('{{ $post->thumbnail }}');">
             <div class="container h-full flex-col-e-c p-b-58">
                 <a href="#" class="f1-s-10 cl0 hov-cl10 trans-03 text-uppercase txt-center m-b-33">
-                    {{ $post->subCategory->category->name }}
+                    {{ $post->subCategory->category->name }} <i class="fa fa-angle-right"></i> {{ $post->subCategory->name }}
                 </a>
 
                 <h3 class="f1-l-5 cl0 p-b-16 txt-center respon2">

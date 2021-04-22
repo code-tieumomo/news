@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\SubCategory;
 use CyrildeWit\EloquentViewable\Support\Period;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class CategoryController extends Controller
 {
@@ -32,7 +33,7 @@ class CategoryController extends Controller
             if (!$category) {
                 abort(404);
             }
-            $posts = $category->posts()->paginate(8);
+            $posts = $category->posts()->sortByDesc('id')->paginate(8);
 
             return view('category-detail', [
                 'menuCategories' => $menuCategories,

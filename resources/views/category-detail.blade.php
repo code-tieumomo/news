@@ -62,12 +62,19 @@
                                             </h5>
 
                                             <span class="cl8">
+                                                <a href="{{ route('subCategories.show', ['slug' => $post->subCategory->category->slug, 'subSlug' => $post->subCategory->slug]) }}" class="f1-s-4 cl8 hov-cl10 trans-03">
+                                                    <i class="fa fa-bookmark"></i> {{ $post->subCategory->name }}
+                                                </a>
+
+                                                <span class="f1-s-3 m-rl-3">
+                                                    <br>
+                                                </span>
                                                 <a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
                                                     <i class="fa fa-pencil"></i> {{ $post->user->name }}
                                                 </a>
 
                                                 <span class="f1-s-3 m-rl-3">
-                                                    -
+                                                    <br>
                                                 </span>
 
                                                 <span class="f1-s-3">
@@ -81,6 +88,7 @@
                         @else
 
                         @endif
+                        {{ $posts->links() }}
                     </div>
 
                     <!-- Load more posts -->

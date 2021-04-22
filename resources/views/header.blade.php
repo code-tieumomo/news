@@ -165,7 +165,7 @@
                         </li>
                         @foreach ($menuCategories as $category)
                             <li class="mega-menu-item">
-                                <a href="">{{ $category->name }}</a>
+                                <a href="{{ route('categories.show', ['slug' => $category->slug]) }}">{{ $category->name }}</a>
 
                                 <div class="sub-mega-menu">
                                     <div class="nav flex-column nav-pills" role="tablist">
