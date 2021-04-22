@@ -281,7 +281,9 @@
                 $.get(link, function(response) {
                     $('.lds-ellipsis').remove();
                     $('#btn-load').show();
-                    $('nav[role=navigation]').remove();
+                    $('nav[role=navigation]').html(
+                        $(response).find("nav[role=navigation]").html()
+                    );
                     $('#list-posts-1').append(
                         $(response).find("#list-posts-1").html()
                     );

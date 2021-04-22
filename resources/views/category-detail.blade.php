@@ -81,8 +81,6 @@
                         @else
 
                         @endif
-                        
-                        {{ $posts->links() }}
                     </div>
 
                     <!-- Load more posts -->
