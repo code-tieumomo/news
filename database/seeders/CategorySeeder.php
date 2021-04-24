@@ -41,7 +41,8 @@ class CategorySeeder extends Seeder
         	'News' => [
         		'Politic',
         		'Traffic',
-        		'Mekong'
+        		'Mekong',
+                'News',
         	],
             'Perspectives' => [
                 'Perspective'
@@ -94,7 +95,7 @@ class CategorySeeder extends Seeder
         	'Life' => [
         		'Home',
         		'Life Lessons',
-        		'Home',
+        		'House',
         		'Consumption'
         	],
         	'Travel' => [

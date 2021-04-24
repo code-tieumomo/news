@@ -4,6 +4,27 @@
     {{ $post->title }} | UET-News
 @endsection
 
+@section('custom-css')
+    <style type="text/css">
+        .content img {
+            max-width: 100% !important;
+            margin: 20px 0 20px 0;
+        }
+
+        .content p {
+            margin-top: 20px;
+        }
+
+        table tr {
+            margin: 20px 0 20px 0;
+        }
+
+        table tr td {
+            margin-right: 20px;
+        }
+    </style>
+@endsection
+
 @section('headline')
     <div class="container">
         <div class="headline bg0 flex-wr-sb-c p-rl-20 p-tb-8">
@@ -83,11 +104,11 @@
                             <!-- Sumary -->
                             <div class="flex-s-s p-t-12 p-b-15">
                                 <span class="f1-s-12 cl5 m-r-8">
-                                    {{ $post->sumary }}
+                                    <b>{{ $post->sumary }}</b>
                                 </span>
                             </div>
 
-                            {!! $post->content !!}
+                            <div class="content">{!! $post->content !!}</div>
 
                             <!-- Info -->
                             <div class="flex-s-s p-t-12 p-b-15">

@@ -75,13 +75,11 @@
 
                                     <!-- Nav tabs -->
                                     <ul class="nav nav-tabs" role="tablist">
-
                                         @foreach ($category->subCategories->take(5) as $subCategory)
                                             <li class="nav-item">
                                                 <a class="nav-link @if ($loop->first) active @endif" data-toggle="tab" href="#tab{{ $category->id }}-{{ $subCategory->id }}" role="tab">{{ $subCategory->name }}</a>
                                             </li>
                                         @endforeach
-
                                         <li class="nav-item-more dropdown dis-none">
                                             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
                                                 <i class="fa fa-ellipsis-h"></i>
@@ -92,7 +90,7 @@
                                     </ul>
 
                                     <!--  -->
-                                    <a href="category-01.html" class="tab01-link f1-s-1 cl9 hov-cl10 trans-03">
+                                    <a href="{{ route('categories.show', ['slug' => $category->slug]) }}" class="tab01-link f1-s-1 cl9 hov-cl10 trans-03">
                                         View all
                                         <i class="fs-12 m-l-5 fa fa-caret-right"></i>
                                     </a>
@@ -119,16 +117,16 @@
                                                             </h5>
 
                                                             <span class="cl8">
-                                                                <a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
-                                                                    {{ $subCategory->name }}
+                                                                <a href="{{ route('subCategories.show', ['slug' => $category->slug, 'subSlug' => $subCategory->slug]) }}" class="f1-s-4 cl8 hov-cl10 trans-03">
+                                                                    <i class="fa fa-bookmark"></i> {{ $subCategory->name }}
                                                                 </a>
 
                                                                 <span class="f1-s-3 m-rl-3">
-                                                                    -
+                                                                    <br>
                                                                 </span>
 
                                                                 <span class="f1-s-3">
-                                                                    {{ $subCategory->posts->first()->created_at->toFormattedDateString() }}
+                                                                    <i class="fa fa-calendar-o"></i> {{ $subCategory->posts->first()->created_at->toFormattedDateString() }}
                                                                 </span>
                                                             </span>
                                                         </div>
@@ -151,16 +149,16 @@
                                                                 </h5>
 
                                                                 <span class="cl8">
-                                                                    <a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-                                                                        {{ $subCategory->name }}
+                                                                    <a href="{{ route('subCategories.show', ['slug' => $category->slug, 'subSlug' => $subCategory->slug]) }}" class="f1-s-6 cl8 hov-cl10 trans-03">
+                                                                        <i class="fa fa-bookmark"></i> {{ $subCategory->name }}
                                                                     </a>
 
                                                                     <span class="f1-s-3 m-rl-3">
-                                                                        -
+                                                                        <br>
                                                                     </span>
 
                                                                     <span class="f1-s-3">
-                                                                        {{ $post->created_at->toFormattedDateString() }}
+                                                                        <i class="fa fa-calendar-o"></i> {{ $post->created_at->toFormattedDateString() }}
                                                                     </span>
                                                                 </span>
                                                             </div>
@@ -297,12 +295,12 @@
             <div class="row justify-content-center">
                 <div class="col-md-10 col-lg-8 p-b-20">
                     <div class="how2 how2-cl4 flex-s-c m-r-10 m-r-0-sr991">
-                        <h3 class="f1-m-2 cl3 tab01-title">
+                        <h3 class="f1-m-2 cl3 tab01-title" style="width: 100%;">
                             Latest Posts
                         </h3>
 
                         <!--  -->
-                        <a href="category-01.html" class="f1-s-1 cl9 hov-cl10 trans-03" style="float: right;">
+                        <a href="category-01.html" class="f1-s-1 cl9 hov-cl10 trans-03" style="min-width: 70px;">
                             View all
                             <i class="fs-12 m-l-5 fa fa-caret-right"></i>
                         </a>
@@ -325,16 +323,24 @@
                                         </h5>
 
                                         <span class="cl8">
-                                            <a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
-                                                by {{ $post->user->name }}
+                                            <a href="{{ route('subCategories.show', ['slug' => $post->subCategory->category->slug, 'subSlug' => $post->subCategory->slug]) }}" class="f1-s-4 cl8 hov-cl10 trans-03">
+                                                <i class="fa fa-pencil"></i> {{ $post->user->name }}
                                             </a>
 
                                             <span class="f1-s-3 m-rl-3">
-                                                -
+                                                <br>
+                                            </span>
+
+                                            <a href="{{ route('categories.show', ['slug' => $post->subCategory->category->slug]) }}" class="f1-s-4 cl8 hov-cl10 trans-03">
+                                                <i class="fa fa-book"></i> {{ $post->subCategory->category->name }}
+                                            </a>
+
+                                            <span class="f1-s-3 m-rl-3">
+                                                <br>
                                             </span>
 
                                             <span class="f1-s-3">
-                                                {{ $post->created_at->toFormattedDateString() }}
+                                                <i class="fa fa-calendar-o"></i> {{ $post->created_at->toFormattedDateString() }}
                                             </span>
                                         </span>
                                     </div>
@@ -349,12 +355,12 @@
                         <!-- Top writer -->
                         <div class="p-b-55">
                             <div class="how2 how2-cl4 flex-s-c">
-                                <h3 class="f1-m-2 cl3 tab01-title">
+                                <h3 class="f1-m-2 cl3 tab01-title" style="width: 100%;">
                                     Top Writers
                                 </h3>
 
                                 <!--  -->
-                                <a href="category-01.html" class="tab01-link f1-s-1 cl9 hov-cl10 trans-03">
+                                <a href="category-01.html" class="tab01-link f1-s-1 cl9 hov-cl10 trans-03" style="min-width: 70px;">
                                     View all
                                     <i class="fs-12 m-l-5 fa fa-caret-right"></i>
                                 </a>

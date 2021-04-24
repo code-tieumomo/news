@@ -51,15 +51,15 @@
                                         </a> --}}
 
                                         <h5 class="p-b-5">
-                                            <a href="{{ route('categories.show', ['slug' => $category->slug]) }}" class="f1-m-3 cl2 hov-cl10 trans-03">
-                                                {{ $category->name }}
+                                            <a href="{{ route('categories.show', ['slug' => $category->slug]) }}" class="f1-m-5 cl2 hov-cl10 trans-03">
+                                                <i class="fa fa-book"></i> {{ $category->name }}
                                             </a>
                                         </h5>
 
                                         <span class="cl8">
                                             @foreach ($category->subCategories as $subCategory)
-                                                <a href="{{ route('subCategories.show', ['slug' => $category->slug, 'subSlug' => $subCategory->slug]) }}" class="f1-s-4 cl8 hov-cl10 trans-03">
-                                                    {{ $subCategory->name }} <span class="f1-s-3 m-rl-3"><i class="fa fa-arrow-right"></i></span><br>
+                                                <a href="{{ route('subCategories.show', ['slug' => $category->slug, 'subSlug' => $subCategory->slug]) }}" class="f1-s-5 cl8 hov-cl10 trans-03">
+                                                    <span class="f1-s-3 m-rl-3"><i class="fa fa-level-up fa-rotate-90"></i></span> {{ $subCategory->name }} <br>
                                                 </a>
                                             @endforeach
                                         </span>

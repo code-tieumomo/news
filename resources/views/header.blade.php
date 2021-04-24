@@ -28,24 +28,42 @@
 
                 @if (!Auth::check())
                     <div class="right-topbar">
-                        <a href="#">
-                            Register
-                        </a>
-
-                        <a href="#" class="left-topbar-item">
-                            Login
+                        <a href="{{ route('auth.login.show') }}" class="left-topbar-item">
+                            <i class="fa fa-sign-in"></i> Login
                         </a>
                     </div>                   
                 @else
-                    <div class="right-topbar">
-                        <a href="#">
-                            Features
-                        </a>
+                    @role('user')
+                        <div class="right-topbar">
+                            <a href="#">
+                                User Features
+                            </a>
 
-                        <a href="#" class="left-topbar-item">
-                            Logout
-                        </a>
-                    </div>  
+                            <a href="#" class="left-topbar-item">
+                                Logout
+                            </a>
+                        </div>
+                    @elserole('writer')
+                        <div class="right-topbar">
+                            <a href="#">
+                                Writer Features
+                            </a>
+
+                            <a href="#" class="left-topbar-item">
+                                Logout
+                            </a>
+                        </div
+                    @else
+                        <div class="right-topbar">
+                            <a href="#">
+                                Admin Features
+                            </a>
+
+                            <a href="#" class="left-topbar-item">
+                                Logout
+                            </a>
+                        </div
+                    @endrole
                 @endif
             </div>
         </div>
@@ -94,12 +112,8 @@
 
                 @if (!Auth::check())
                     <li class="right-topbar">
-                        <a href="#">
-                            Register
-                        </a>
-
-                        <a href="#" class="left-topbar-item">
-                            Login
+                        <a href="{{ route('auth.login.show') }}" class="left-topbar-item">
+                            <i class="fa fa-sign-in"></i> Login
                         </a>
                     </li>                   
                 @else
@@ -183,28 +197,28 @@
                                                         <div class="col-3">
                                                             <!-- Item post -->  
                                                             <div>
-                                                                <a href="{{ route('posts.show', [$post->id]) }}" class="wrap-pic-w hov1 trans-03">
+                                                                <a href="{{ route('posts.show', ['slug' => $post->slug]) }}" class="wrap-pic-w hov1 trans-03">
                                                                     <img src="{{ $post->thumbnail }}" alt="Post Thumbnail">
                                                                 </a>
 
                                                                 <div class="p-t-10">
                                                                     <h5 class="p-b-5">
-                                                                        <a href="blog-detail-01.html" class="f1-s-5 cl3 hov-cl10 trans-03">
+                                                                        <a href="{{ route('posts.show', ['slug' => $post->slug]) }}" class="f1-s-5 cl3 hov-cl10 trans-03">
                                                                             {{ $post->title }}
                                                                         </a>
                                                                     </h5>
 
                                                                     <span class="cl8">
-                                                                        <a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-                                                                            {{ $post->subCategory->name }}
+                                                                        <a href="{{ route('subCategories.show', ['slug' => $post->subCategory->category->slug, 'subSlug' => $post->subCategory->slug]) }}" class="f1-s-6 cl8 hov-cl10 trans-03">
+                                                                            <i class="fa fa-bookmark"></i> {{ $post->subCategory->name }}
                                                                         </a>
 
                                                                         <span class="f1-s-3 m-rl-3">
-                                                                            -
+                                                                            <br>
                                                                         </span>
 
                                                                         <span class="f1-s-3">
-                                                                            {{ $post->created_at->toFormattedDateString() }}
+                                                                            <i class="fa fa-calendar-o"></i> {{ $post->created_at->toFormattedDateString() }}
                                                                         </span>
                                                                     </span>
                                                                 </div>

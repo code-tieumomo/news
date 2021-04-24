@@ -21,6 +21,7 @@ Route::get('categories/{slug}', 'CategoryController@show')->name('categories.sho
 Route::get('categories/{slug}/{subSlug}', 'CategoryController@show')->name('subCategories.show');
 Route::get('test', 'HomeController@test');
 
+Route::get('/login', 'AuthController@show')->name('auth.login.show');
 Route::post('/login', 'AuthController@login')->name('auth.login');
 Route::get('/logout', 'AuthController@logout')->name('auth.logout');
 

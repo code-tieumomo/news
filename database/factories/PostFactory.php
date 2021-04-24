@@ -31,7 +31,7 @@ class PostFactory extends Factory
             'content' => $this->faker->paragraph(100),
             'thumbnail' => $this->faker->imageUrl($width = 640, $height = 480),
             'slug' => Str::slug($title, '-'),
-            'user_id' => User::where('role_id', '2')->get()->random()->id,
+            'user_id' => User::role('writer')->get()->random()->id,
             'sub_category_id' => SubCategory::all()->random()->id
         ];
     }

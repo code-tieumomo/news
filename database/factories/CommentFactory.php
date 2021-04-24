@@ -25,7 +25,7 @@ class CommentFactory extends Factory
     {
         return [
             'content' => $this->faker->sentence(5),
-            'user_id' => User::where('role_id', '1')->get()->random()->id,
+            'user_id' => User::role('user')->get()->random()->id,
             'post_id' => Post::all()->random()->id
         ];
     }

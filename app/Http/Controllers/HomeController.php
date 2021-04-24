@@ -35,7 +35,7 @@ class HomeController extends Controller
         $featureCategories = Category::whereIn('id', $featureCategoriesId)->get();
         $popPosts = Post::orderByViews('desc', Period::pastDays(3))->limit(5)->get();
         $lastestPosts = Post::orderBy('id', 'desc')->limit(6)->get();
-        $topWriters = User::where('role_id', 2)->limit(10)->get();
+        $topWriters = User::role('writer')->limit(10)->get();
 
         return view('home', [
             'menuCategories' => $menuCategories,
@@ -49,19 +49,17 @@ class HomeController extends Controller
 
     public function test()
     {
-        // $factory = (new Factory())->withDatabaseUri('https://uet-news-2021-default-rtdb.firebaseio.com/');
+        $factory = (new Factory())->withDatabaseUri('https://uet-news-2021-default-rtdb.firebaseio.com/');
 
-        // $database = $factory->createDatabase();
-        // for($i = 22;$i <= 25;$i++) {
-        //     $database->getReference('featurePosts/' . $i)->set([
-        //         'subCategory' => 'Entertaimain > Movie',
-        //         'thumbnail' => 'https://via.placeholder.com/640x240.png',
-        //         'title' => 'Omnis sunt eos animi.',
-        //         'writer' => 'Admin',
-        //         'time' => 'April 15, 2021'
-        //     ]);
-        // }
-          
-        
+        $database = $factory->createDatabase();
+        for($i = 22;$i <= 25;$i++) {
+            $database->getReference('featurePosts/' . $i)->set([
+                'subCategory' => 'Entertaimain > Movie',
+                'thumbnail' => 'https://via.placeholder.com/640x240.png',
+                'title' => 'Omnis sunt eos animi.',
+                'writer' => 'Admin',
+                'time' => 'April 15, 2021'
+            ]);
+        }
     }
 }

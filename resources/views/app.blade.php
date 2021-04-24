@@ -1,32 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-    <title>
-        @yield('title', 'UET-News')
-    </title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--===============================================================================================-->  
-    <link rel="icon" type="image/png" href="{{ asset('client-assets/images/icons/favicon.png') }}"/>
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('client-assets/vendor/bootstrap/css/bootstrap.min.css') }}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('client-assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('client-assets/fonts/iconic/css/material-design-iconic-font.min.css') }}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('client-assets/vendor/animate/animate.css') }}">
-    <!--===============================================================================================-->  
-    <link rel="stylesheet" type="text/css" href="{{ asset('client-assets/vendor/css-hamburgers/hamburgers.min.css') }}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('client-assets/vendor/animsition/css/animsition.min.css') }}">
-    <!--===============================================================================================-->
-    {{-- <link rel="stylesheet" type="text/css" href="{{ asset('client-assets/vendor/fancybox/jquery.fancybox.min.css') }}"> --}}
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('client-assets/css/util.min.css') }}">
-    <!--===============================================================================================-->  
-    <link rel="stylesheet" type="text/css" href="{{ asset('client-assets/css/main.css') }}">
-    <!--===============================================================================================-->
+        <title>
+            @yield('title', 'UET-News')
+        </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--===============================================================================================-->  
+        <link rel="icon" type="image/png" href="{{ asset('client-assets/images/icons/favicon.png') }}"/>
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('client-assets/vendor/bootstrap/css/bootstrap.min.css') }}">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('client-assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('client-assets/fonts/iconic/css/material-design-iconic-font.min.css') }}">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('client-assets/vendor/animate/animate.css') }}">
+        <!--===============================================================================================-->  
+        <link rel="stylesheet" type="text/css" href="{{ asset('client-assets/vendor/css-hamburgers/hamburgers.min.css') }}">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('client-assets/vendor/animsition/css/animsition.min.css') }}">
+        <!--===============================================================================================-->
+        {{-- <link rel="stylesheet" type="text/css" href="{{ asset('client-assets/vendor/fancybox/jquery.fancybox.min.css') }}"> --}}
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('client-assets/css/util.min.css') }}">
+        <!--===============================================================================================-->  
+        <link rel="stylesheet" type="text/css" href="{{ asset('client-assets/css/main.css') }}">
+        <!--===============================================================================================-->
+        @yield('custom-css')
     </head>
     <body class="animsition">
         @include('header')

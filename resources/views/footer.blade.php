@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-lg-4 p-b-20">
                     <div class="size-h-3 flex-s-c">
-                        <a href="index.html">
+                        <a href="{{ route('home.index') }}">
                             <img class="max-s-full" src="{{ asset('client-assets/images/icons/logo-light.png') }}" alt="LOGO">
                         </a>
                     </div>
@@ -45,19 +45,19 @@
                     <ul>
                         @foreach ($popPosts->take(4) as $post)
                             <li class="flex-wr-sb-s p-b-20">
-                                <a href="#" class="size-w-4 wrap-pic-w hov1 trans-03">
+                                <a href="{{ route('posts.show', ['slug' => $post->slug]) }}" class="size-w-4 wrap-pic-w hov1 trans-03">
                                     <img src="{{ $post->thumbnail }}" alt="IMG">
                                 </a>
 
                                 <div class="size-w-5">
                                     <h6 class="p-b-5">
-                                        <a href="#" class="f1-s-5 cl11 hov-cl10 trans-03">
+                                        <a href="{{ route('posts.show', ['slug' => $post->slug]) }}" class="f1-s-5 cl11 hov-cl10 trans-03">
                                             {{ $post->title }}
                                         </a>
                                     </h6>
 
                                     <span class="f1-s-3 cl6">
-                                        {{ $post->created_at->toFormattedDateString() }}
+                                        <i class="fa fa-calendar-o"></i> {{ $post->created_at->toFormattedDateString() }}
                                     </span>
                                 </div>
                             </li>
@@ -75,14 +75,14 @@
                     <ul class="m-t--12">
                         @foreach ($menuCategories->take(5) as $category)
                             <li class="how-bor1 p-rl-5 p-tb-10">
-                                <a href="#" class="f1-s-5 cl11 hov-cl10 trans-03 p-tb-8">
+                                <a href="{{ route('categories.show', ['slug' => $category->slug]) }}" class="f1-s-5 cl11 hov-cl10 trans-03 p-tb-8">
                                     {{ $category->name }} ({{ $category->subCategories->count() }})
                                 </a>
                             </li>
                         @endforeach
 
                         <li class="how-bor1 p-rl-5 p-tb-10">
-                            <a href="#" class="f1-s-5 cl11 hov-cl10 trans-03 p-tb-8">
+                            <a href="{{ route('categories.index') }}" class="f1-s-5 cl11 hov-cl10 trans-03 p-tb-8">
                                 Explore all <i class="fa fa-long-arrow-right"></i>
                             </a>
                         </li>
