@@ -16,14 +16,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@index')->name('home.index');
 Route::get('posts/{slug}', 'PostController@show')->name('posts.show');
-Route::get('categories', 'CategoryController@index')->name('categories.index');
 Route::get('categories/{slug}', 'CategoryController@show')->name('categories.show');
 Route::get('categories/{slug}/{subSlug}', 'CategoryController@show')->name('subCategories.show');
 Route::get('test', 'HomeController@test');
 
-Route::get('/login', 'AuthController@show')->name('auth.login.show');
-Route::post('/login', 'AuthController@login')->name('auth.login');
-Route::get('/logout', 'AuthController@logout')->name('auth.logout');
+Route::get('auth', 'AuthController@show')->name('auth.show');
+Route::post('auth/login', 'AuthController@login')->name('auth.login');
+Route::post('auth/register', 'AuthController@register')->name('auth.register');
+Route::get('auth/facebook', 'AuthController@facebookRedirect')->name('auth.login.facebook');
+Route::get('auth/facebook/callback', 'AuthController@loginWithFacebook')->name('auth.login.facebook.callback');
+Route::get('logout', 'AuthController@logout')->name('auth.logout');
 
 Route::group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin'], function() {
 	Route::get('/dashboard', 'HomeController@home')->name('admin.home');

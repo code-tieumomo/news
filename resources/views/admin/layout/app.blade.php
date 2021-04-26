@@ -90,7 +90,7 @@
                                 <li><a id="sub-menu-writer" href="{{ route('writers.index') }}" class="slide-item">Writers</a></li>
                             </ul>
 
-                            <a id="menu-post" class="side-menu__item" href="{{ route('posts.index') }}">
+                            <a id="menu-post" class="side-menu__item" href="">
                                 <img class="side-menu__icon" src="{{ asset('admin-assets/images/icons/posts.png') }}" width="24px"/>
                                 <span class="side-menu__label">Posts</span>
                             </a>

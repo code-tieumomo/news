@@ -11,21 +11,10 @@ use Illuminate\Support\Facades\Log;
 
 class CategoryController extends Controller
 {
-    public function index() {
-        $menuCategories = Category::limit(7)->get();
-        $popPosts = Post::orderByViews('desc', Period::pastDays(3))->limit(5)->get();
-        $categories = Category::all();
-
-        return view('category', [
-            'menuCategories' => $menuCategories,
-            'popPosts' => $popPosts,
-            'categories' => $categories
-        ]);
-    }
-
     public function show($slug, $subSlug = null,Request $request)
     {
         $menuCategories = Category::limit(7)->get();
+        $categories = Category::all();
         $popPosts = Post::orderByViews('desc', Period::pastDays(3))->limit(5)->get();
 
         if (!$subSlug) {
@@ -37,6 +26,7 @@ class CategoryController extends Controller
 
             return view('category-detail', [
                 'menuCategories' => $menuCategories,
+                'categories' => $categories,
                 'popPosts' => $popPosts,
                 'category' => $category,
                 'posts' => $posts,
@@ -60,6 +50,7 @@ class CategoryController extends Controller
                 'menuCategories' => $menuCategories,
                 'popPosts' => $popPosts,
                 'category' => $category,
+                'categories' => $categories,
                 'subCategory' => $subCategory,
                 'popPosts' => $popPosts,
                 'posts' => $posts,

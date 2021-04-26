@@ -2,56 +2,114 @@
 (function ($) {
     "use strict";
 
+    $('[data-toggle="tooltip"]').tooltip()
+
+    $('#load-reg-section-btn').on('click', function(event) {
+        event.preventDefault();
+        
+        $('#section-login').toggle(300);
+        $('#section-register').toggle(300);
+    });
+
+    $('#btn-load-login').on('click', function(event) {
+        event.preventDefault();
+        
+        $('#section-register').toggle(300);
+        $('#section-login').toggle(300);
+    });
+
+    $('#login-using-facebook-btn').on('click', function(event) {
+        event.preventDefault();
+        $(this).html('<i class="fa fa-spinner fa-pulse fa-fw"></i>');
+        
+        window.location.href = "auth/facebook";
+    });
 
     /*==================================================================
     [ Validate ]*/
-    var input = $('.validate-input .input100');
+    var loginInput = $('.validate-input .input-login');
+    var regInput 
 
-    $('.validate-form').on('submit',function(){
-        var check = true;
+    $('#login-form').on('submit', function(event) {
+        event.preventDefault();
 
-        for(var i=0; i<input.length; i++) {
-            if(validate(input[i]) == false){
-                showValidate(input[i]);
-                check=false;
+        for(var i=0; i<loginInput.length; i++) {
+            if(validate(loginInput[i]) != undefined){
+                showValidate(loginInput[i], validate(loginInput[i]));
+                return false;
             }
         }
 
-        return check;
+        var email = $('input[name=login_email]').val();
+        var password = $('input[name=login_password]').val();
+
+        $.ajax({
+            url: 'auth/login',
+            type: 'POST',
+            data: {
+                _token: $('meta[name="csrf-token"]').attr('content'),
+                email: email,
+                password: password
+            },
+            beforeSend: function() {
+                $('#login-btn').html('<i class="fa fa-spinner fa-pulse fa-fw"></i>');
+            },
+            success: function(response) {
+                window.location.replace(response.redirect);
+            },
+            error: function(response) {
+                $('#login-btn').html('Login');
+                if (response.responseJSON.errors.email) {
+                    Swal.fire({
+                        title: 'Error!',
+                        text: response.responseJSON.errors.email[0],
+                        icon: 'error',
+                        confirmButtonText: 'Try again!'
+                    });
+                } else {
+                    Swal.fire({
+                        title: 'Error!',
+                        text: response.responseJSON.errors.password[0],
+                        icon: 'error',
+                        confirmButtonText: 'Try again!'
+                    });
+                }
+                
+            }
+        });
     });
 
+    var registerInput = $('.validate-input .input-register');
 
-    $('.validate-form .input100').each(function(){
-        $(this).focus(function(){
-           hideValidate(this);
-        });
+    $('#register-form').on('submit',function(){
+        for(var i=0; i<registerInput.length; i++) {
+            if(validate(registerInput[i]) != undefined){
+                showValidate(registerInput[i], validate(registerInput[i]));
+                return false;
+            }
+        }
+
+        return true;
     });
 
     function validate (input) {
         if($(input).attr('type') == 'email' || $(input).attr('name') == 'email') {
             if($(input).val().trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null) {
-                return false;
+                return 'type';
             }
+        } else if($(input).val().trim() == ''){
+            return 'required';
+        } else if($(input).attr('type') == 'password' && $(input).val().length < 8) {
+            return 'type';
         }
-        else {
-            if($(input).val().trim() == ''){
-                return false;
-            }
-        }
     }
 
-    function showValidate(input) {
-        var thisAlert = $(input).parent();
-
-        $(thisAlert).addClass('alert-validate');
+    function showValidate(input, dataName) {
+        Swal.fire({
+            title: 'Error!',
+            text: $(input).data(dataName),
+            icon: 'error',
+            confirmButtonText: 'Try again!'
+        });
     }
-
-    function hideValidate(input) {
-        var thisAlert = $(input).parent();
-
-        $(thisAlert).removeClass('alert-validate');
-    }
-    
-    
-
 })(jQuery);

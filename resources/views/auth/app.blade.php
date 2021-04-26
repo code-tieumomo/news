@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Login | UET-News</title>
+        <title>Authentication | UET-News</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
     <!--===============================================================================================-->  
         <link rel="icon" type="image/png" href="{{ asset('client-assets/images/icons/favicon.png') }}"/>
     <!--===============================================================================================-->
@@ -33,7 +34,7 @@
                         </span>
 
                         <div class="container-login100-form-btn">
-                            <button class="login100-form-btn btn-facebook">
+                            <button id="login-using-facebook-btn" class="login100-form-btn btn-facebook">
                                 <i class="fa fa-facebook-f"></i>
                             </button>
                         </div>
@@ -41,47 +42,45 @@
                 </div>
 
                 <div id="section-login" class="wrap-login100 p-t-50">
-                    <form class="login100-form validate-form flex-sb flex-w">
+                    <form id="login-form" class="login100-form validate-form flex-sb flex-w">
                         <span class="login100-form-title p-b-51">
                             - Or-
                         </span>
-
                         
-                        <div class="wrap-input100 validate-input m-b-16" data-validate = "Username is required">
-                            <input class="input100" type="text" name="username" placeholder="&#xf2c0;  Username">
+                        <div class="wrap-input100 validate-input m-b-16">
+                            <input class="input100 input-login" type="email" name="login_email" placeholder="&#xf2c0;  Email"  data-required = "Email is required" data-type="Wrong email type">
                             <span class="focus-input100"></span>
                         </div>
                         
-                        
-                        <div class="wrap-input100 validate-input m-b-16" data-validate = "Password is required">
-                            <input class="input100" type="password" name="pass" placeholder="&#xf084;  Password">
+                        <div class="wrap-input100 validate-input m-b-16">
+                            <input class="input100 input-login" type="password" name="login_password" placeholder="&#xf084;  Password" data-required = "Password is required" data-type="Password at least 8 character">
                             <span class="focus-input100"></span>
                         </div>
                         
                         <div class="flex-sb-m w-full p-t-3 p-b-24">
                             <div class="contact100-form-checkbox">
-                                <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+                                <input class="input-checkbox100" id="ckb1" type="checkbox" name="login_remember">
                                 <label class="label-checkbox100" for="ckb1">
                                     Remember me
                                 </label>
                             </div>
 
                             <div>
-                                <a id="btn-load-register" href="#" class="txt1">
+                                <a id="load-reg-section-btn" href="#" class="txt1">
                                     Don't have an account? Register
                                 </a>
                             </div>
                         </div>
 
                         <div class="container-login100-form-btn m-t-17">
-                            <button class="login100-form-btn">
+                            <button id="login-btn" type="submit" class="login100-form-btn">
                                 Login
                             </button>
                         </div>
 
                         <div class="flex-sb-m w-full p-t-3 p-b-24">
                             <div class="contact100-form-checkbox">
-                                <a href="{{ url()->previous() }}" class="txt1">
+                                <a href="{{ route('home.index') }}" class="txt1">
                                     <i class="fa fa-long-arrow-left"></i> Go back
                                 </a>
                             </div>
@@ -95,28 +94,32 @@
                     </form>
                 </div>
 
-                <div id="section-register" class="wrap-login100 p-t-50">
-                    <form class="login100-form validate-form flex-sb flex-w">
+                {{-- <div id="section-register" class="wrap-login100 p-t-50">
+                    <form id="register-form" method="POST" action="{{ route('auth.register') }}" class="login100-form validate-form flex-sb flex-w">
+                        @csrf
                         <span class="login100-form-title p-b-51">
                             Register
                         </span>
-
                         
-                        <div class="wrap-input100 validate-input m-b-16" data-validate = "Username is required">
-                            <input class="input100" type="text" name="username" placeholder="&#xf2c0;  Username">
+                        <div class="wrap-input100 validate-input m-b-16">
+                            <input class="input100 input-register" type="email" name="email" value="{{ old('email') }}" placeholder="&#xf2c0;  Email"  data-required = "Email is required" data-type="Wrong email type">
                             <span class="focus-input100"></span>
                         </div>
                         
-                        
-                        <div class="wrap-input100 validate-input m-b-16" data-validate = "Password is required">
-                            <input class="input100" type="password" name="pass" placeholder="&#xf084;  Password">
+                        <div class="wrap-input100 validate-input m-b-16">
+                            <input class="input100 input-register" type="password" name="password" value="{{ old('password') }}" placeholder="&#xf084;  Password" data-required = "Password is required" data-type="Password at least 8 character">
+                            <span class="focus-input100"></span>
+                        </div>
+
+                        <div class="wrap-input100 validate-input m-b-16">
+                            <input class="input100 input-register" type="password" name="password_confirmation" value="{{ old('password_confirmation') }}" placeholder="&#xf084;  Password Confirmation" data-required = "Password confirmation is required" data-type="Password at least 8 character">
                             <span class="focus-input100"></span>
                         </div>
                         
                         <div class="flex-sb-m w-full p-t-3 p-b-24">
                             <div class="contact100-form-checkbox">
-                                <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
-                                <label class="label-checkbox100" for="ckb1">
+                                <input class="input-checkbox100" id="ckb2" type="checkbox" name="remember-me">
+                                <label class="label-checkbox100" for="ckb2" data-toggle="tooltip" data-placement="bottom" title="Auto login and remember your account after register success">
                                     Remember me
                                 </label>
                             </div>
@@ -142,11 +145,10 @@
                             </div>
                         </div>
                     </form>
-                </div>
+                </div> --}}
             </div>
         </div>
         
-
         <div id="dropDownSelect1"></div>
     <!--===============================================================================================-->
         <script src="{{ asset('auth-assets/vendor/jquery/jquery-3.2.1.min.js') }}"></script>
@@ -163,21 +165,22 @@
     <!--===============================================================================================-->
         <script src="{{ asset('auth-assets/vendor/countdowntime/countdowntime.js') }}"></script>
     <!--===============================================================================================-->
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <!--===============================================================================================-->
         <script src="{{ asset('auth-assets/js/main.js') }}"></script>
+    <!--===============================================================================================-->
         <script type="text/javascript">
-            $('#btn-load-register').on('click', function(event) {
-                event.preventDefault();
-                
-                $('#section-login').toggle(300);
-                $('#section-register').toggle(300);
-            });
-
-            $('#btn-load-login').on('click', function(event) {
-                event.preventDefault();
-                
-                $('#section-register').toggle(300);
-                $('#section-login').toggle(300);
-            });
+            {{-- Handle validate errors --}}
+            @if ($errors->count() != 0)
+                @if ($errors->default->first() == 'access_denied')
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'We can\'t access to your Facebook\'s information!', 
+                        icon: 'error',
+                        confirmButtonText: 'Try again!'
+                    });
+                @endif
+            @endif
         </script>
     </body>
 </html>

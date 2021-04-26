@@ -28,7 +28,7 @@
 
                 @if (!Auth::check())
                     <div class="right-topbar">
-                        <a href="{{ route('auth.login.show') }}" class="left-topbar-item">
+                        <a href="{{ route('auth.show') }}" class="left-topbar-item">
                             <i class="fa fa-sign-in"></i> Login
                         </a>
                     </div>                   
@@ -36,33 +36,36 @@
                     @role('user')
                         <div class="right-topbar">
                             <a href="#">
-                                User Features
+                                <i class="fa fa-user-o"></i> {{ Auth::user()->name }}
+                                @if (Auth::user()->fb_id != null)
+                                    (Logged in with Facebook)
+                                @endif
                             </a>
 
-                            <a href="#" class="left-topbar-item">
-                                Logout
+                            <a href="{{ route('auth.logout') }}" class="left-topbar-item">
+                                <i class="fa fa-sign-out"></i> Logout
                             </a>
                         </div>
                     @elserole('writer')
                         <div class="right-topbar">
                             <a href="#">
-                                Writer Features
+                                <i class="fa fa-pencil"></i> {{ Auth::user()->name }}
                             </a>
 
-                            <a href="#" class="left-topbar-item">
-                                Logout
+                            <a href="{{ route('auth.logout') }}" class="left-topbar-item">
+                                <i class="fa fa-sign-out"></i> Logout
                             </a>
-                        </div
+                        </div>
                     @else
                         <div class="right-topbar">
                             <a href="#">
                                 Admin Features
                             </a>
 
-                            <a href="#" class="left-topbar-item">
-                                Logout
+                            <a href="{{ route('auth.logout') }}" class="left-topbar-item">
+                                <i class="fa fa-sign-out"></i> Logout
                             </a>
-                        </div
+                        </div>
                     @endrole
                 @endif
             </div>
@@ -112,20 +115,45 @@
 
                 @if (!Auth::check())
                     <li class="right-topbar">
-                        <a href="{{ route('auth.login.show') }}" class="left-topbar-item">
+                        <a href="{{ route('auth.show') }}" class="left-topbar-item">
                             <i class="fa fa-sign-in"></i> Login
                         </a>
                     </li>                   
                 @else
-                    <li class="right-topbar">
-                        <a href="#">
-                            Features
-                        </a>
+                    @role('user')
+                        <li class="right-topbar">
+                            <a href="#">
+                                <i class="fa fa-user-o"></i> {{ Auth::user()->name }}
+                                @if (Auth::user()->fb_id != null)
+                                    (Login with Facebook)
+                                @endif
+                            </a>
 
-                        <a href="#" class="left-topbar-item">
-                            Logout
-                        </a>
-                    </li>  
+                            <a href="{{ route('auth.logout') }}" class="left-topbar-item">
+                                <i class="fa fa-sign-out"></i> Logout
+                            </a>
+                        </li>
+                    @elserole('writer')
+                        <li class="right-topbar">
+                            <a href="#">
+                                <i class="fa fa-pencil"></i> {{ Auth::user()->name }}
+                            </a>
+
+                            <a href="{{ route('auth.logout') }}" class="left-topbar-item">
+                                <i class="fa fa-sign-out"></i> Logout
+                            </a>
+                        </li>
+                    @else
+                        <li class="right-topbar">
+                            <a href="#">
+                                Admin Features
+                            </a>
+
+                            <a href="{{ route('auth.logout') }}" class="left-topbar-item">
+                                <i class="fa fa-sign-out"></i> Logout
+                            </a>
+                        </li>
+                    @endrole
                 @endif
             </ul>
 
@@ -150,7 +178,16 @@
                     </li>
                 @endforeach
                 <li>
-                    <a href="{{ route('categories.index') }}">Explore All</a>
+                    <a href="javascript:void(0)">All</a>
+                    <ul class="sub-menu-m">
+                        @foreach ($categories as $category)
+                            <li><a href="{{ route('categories.show', $category->slug) }}">{{ $category->name }}</a></li>
+                        @endforeach
+                    </ul>
+
+                    <span class="arrow-main-menu-m">
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </span>
                 </li>
             </ul>
         </div>
@@ -183,14 +220,14 @@
 
                                 <div class="sub-mega-menu">
                                     <div class="nav flex-column nav-pills" role="tablist">
-                                        <a class="nav-link active" data-toggle="pill" href="#{{ $category->name }}-{{ $category->subCategories->first()->name }}" role="tab">All</a>
-                                        @foreach ($category->subCategories as $subCategory)
-                                            <a class="nav-link" data-toggle="pill" href="#{{ $category->name }}-{{ $subCategory->name }}" role="tab">{{ $subCategory->name }}</a>
+                                        @foreach ($category->subCategories->take(5) as $subCategory)
+                                            <a class="nav-link @if ($loop->first) active @endif" data-toggle="pill" href="#{{ $category->name }}-{{ $subCategory->name }}" role="tab">{{ $subCategory->name }}</a>
                                         @endforeach
+                                        <a class="nav-link" href="{{ route('categories.show', $category->slug) }}">All</a>
                                     </div>
 
                                     <div class="tab-content">
-                                        @foreach ($category->subCategories as $subCategory)
+                                        @foreach ($category->subCategories->take(5) as $subCategory)
                                             <div class="tab-pane @if ($loop->first) show active @endif" id="{{ $category->name }}-{{ $subCategory->name }}" role="tabpanel">
                                                 <div class="row">
                                                     @foreach ($subCategory->posts->take(4) as $post)
@@ -232,8 +269,24 @@
                                 </div>
                             </li>
                         @endforeach
-                        <li class="single-item">
-                            <a href="{{ route('categories.index') }}">Explore All</a>
+                        <li class="mega-menu-item">
+                            <a href="javascript:void(0)" id="all-categories">All</a>
+
+                            <div class="sub-mega-menu">
+                                <div class="nav flex-column nav-pills" role="tablist">
+                                    @foreach ($categories as $category)
+                                        <a class="fs-20 p-l-33 clblack hov-cl10 trans-03 f-r-m" href="{{ route('categories.show', $category->slug) }}">{{ $category->name }}</a>
+                                        @foreach ($category->subCategories->take(2) as $subCategory)
+                                            <a class="fs-14 cl8 hov-cl10 trans-03 p-l-33" href="{{ route('subCategories.show', ['slug' => $category->slug, 'subSlug' => $subCategory->slug]) }}">{{ $subCategory->name }}</a>
+                                        @endforeach
+                                        <a class="fs-14 cl8 hov-cl10 trans-03 p-l-33 m-b-20" href="{{ route('categories.show', $category->slug) }}">More ...</a>
+                                        @if ($loop->index % 4 == 3)
+                                            </div>
+                                            <div class="nav flex-column nav-pills" role="tablist">
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </div>
                         </li>
                     </ul>
                 </nav>

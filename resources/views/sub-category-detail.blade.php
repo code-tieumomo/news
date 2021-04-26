@@ -12,7 +12,7 @@
                     Home
                 </a>
 
-                <a href="{{ route('categories.index') }}" class="breadcrumb-item f1-s-3 cl9">
+                <a class="breadcrumb-item f1-s-3 cl9">
                     Categories
                 </a>
 

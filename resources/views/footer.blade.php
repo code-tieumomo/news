@@ -80,12 +80,6 @@
                                 </a>
                             </li>
                         @endforeach
-
-                        <li class="how-bor1 p-rl-5 p-tb-10">
-                            <a href="{{ route('categories.index') }}" class="f1-s-5 cl11 hov-cl10 trans-03 p-tb-8">
-                                Explore all <i class="fa fa-long-arrow-right"></i>
-                            </a>
-                        </li>
                     </ul>
                 </div>
             </div>

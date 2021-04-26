@@ -13,11 +13,11 @@ class HomeController extends Controller
     public function home()
     {
         $totalPosts = Post::count();
-        $totalUsers = User::where('role_id', '1')->get()->count();
-        $totalWriters = User::where('role_id', '2')->get()->count();
+        $totalUsers = User::role('user')->get()->count();
+        $totalWriters = User::role('writer')->get()->count();
         $totalComments = Comment::count();
-        $recentUsers = User::where('role_id', '1')->orderBy('id', 'desc')->limit(6)->get();
-        $recentWriters = User::where('role_id', '2')->orderBy('id', 'desc')->limit(6)->get();
+        $recentUsers = User::role('user')->orderBy('id', 'desc')->limit(6)->get();
+        $recentWriters = User::role('writer')->orderBy('id', 'desc')->limit(6)->get();
 
         return view('admin.home', [
             'totalPosts' => $totalPosts,

@@ -73,22 +73,22 @@
                 <div class="flex-wr-c-s">
                     <span class="f1-s-3 cl8 m-rl-7 txt-center">
                         <a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
-                            by {{ $post->user->name }}
+                            <i class="fa fa-pencil"></i> {{ $post->user->name }}
                         </a>
 
                         <span class="m-rl-3">-</span>
 
                         <span>
-                            {{ $post->created_at->toFormattedDateString() }}
+                            <i class="fa fa-calendar-o"></i> {{ $post->created_at->toFormattedDateString() }}
                         </span>
                     </span>
 
                     <span class="f1-s-3 cl8 m-rl-7 txt-center">
-                        {{ views($post)->count() }} Views
+                        <i class="fa fa-eye"></i> {{ views($post)->count() }} Views
                     </span>
 
                     <a href="" class="f1-s-3 cl8 m-rl-7 txt-center hov-cl10 trans-03">
-                        {{ $post->comments->count() }} Comment
+                        <i class="fa fa-comment-o"></i> {{ $post->comments->count() }} Comment
                     </a>
                 </div>
             </div>

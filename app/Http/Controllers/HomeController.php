@@ -36,6 +36,7 @@ class HomeController extends Controller
         $popPosts = Post::orderByViews('desc', Period::pastDays(3))->limit(5)->get();
         $lastestPosts = Post::orderBy('id', 'desc')->limit(6)->get();
         $topWriters = User::role('writer')->limit(10)->get();
+        $categories = Category::all();
 
         return view('home', [
             'menuCategories' => $menuCategories,
@@ -43,7 +44,8 @@ class HomeController extends Controller
             'featureCategories' => $featureCategories,
             'popPosts' => $popPosts,
             'lastestPosts' => $lastestPosts,
-            'topWriters' => $topWriters
+            'topWriters' => $topWriters,
+            'categories' => $categories,
         ]);
     }
 

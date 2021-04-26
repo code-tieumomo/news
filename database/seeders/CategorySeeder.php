@@ -18,7 +18,7 @@ class CategorySeeder extends Seeder
     {
         $categories = [
         	'News',
-        	'Perspectives',
+        	'View',
         	'World',
         	'Video',
         	'Business',
@@ -30,8 +30,8 @@ class CategorySeeder extends Seeder
         	'Life',
         	'Travel',
         	'Science',
-        	'Digital',
-        	'Car',
+        	'Digitizing',
+        	'Vehicle',
         	'Opinion',
         	'Talk',
         	'Comedy'
@@ -42,39 +42,72 @@ class CategorySeeder extends Seeder
         		'Politic',
         		'Traffic',
         		'Mekong',
-                'News',
+                'Population',
         	],
-            'Perspectives' => [
-                'Perspective'
+            'View' => [
+                'View'
             ],
         	'World' => [
         		'Data',
         		'Analysis',
-        		'Life Around Us'
+        		'Life Around Us',
+                'Military'
         	],
         	'Video' => [
         		'News',
         		'Lifestyle',
         		'Sports Life',
-        		'Food'
+        		'Food',
+                'Life 4.0',
+                'Talk',
+                'Mountain & Forest Story',
+                'Econimic Seminar',
+                'Entertainment',
+                'Travel',
+                'World',
+                'Law',
+                'Business',
+                'Science',
+                'Education',
+                'Health',
+                'Kid-lab'
         	],
         	'Business' => [
         		'International',
         		'Enterprise',
         		'Stock',
-        		'Real Estate'
+        		'Real Estate',
+                'Ebank',
+                'Macro',
+                'My Money',
+                'Insurrance',
+                'Goods',
+                'Startup',
+                'Vhome'
         	],
         	'Entertainment' => [
         		'World Stars',
         		'Video',
         		'Movie',
-        		'Music'
+        		'Music',
+                'Fashion',
+                'Make Up',
+                'Book',
+                'Theater - Fine Arts'
         	],
         	'Sport' => [
         		'Video',
         		'Soccer',
         		'Schedule',
-        		'Bundesliga'
+        		'Bundesliga',
+                'Tennis',
+                'VM 2021',
+                'Other Subjects',
+                'Behind The Scenes',
+                'Image',
+                'Report',
+                'V-race',
+                'Multiple-choise'
         	],
         	'Law' => [
         		'Criminal',
@@ -82,15 +115,23 @@ class CategorySeeder extends Seeder
         	],
         	'Education' => [
         		'Admissions',
-        		'Exam Score',
+        		'Test Score',
+                'Look Up University',
         		'Study Aboard',
-        		'Learn English'
+        		'Learn English',
+                'Multiple-choise',
+                'Education 4.0',
+                'Kid-lab',
         	],
         	'Health' => [
         		'News',
         		'Advisory',
         		'Nutrition',
-        		'Health and Beauty'
+        		'Health and Beauty',
+                'Man',
+                'Diseases',
+                'Cancer',
+                'Vaccine'
         	],
         	'Life' => [
         		'Home',
@@ -102,25 +143,34 @@ class CategorySeeder extends Seeder
         		'Destination',
         		'Footprint',
         		'Advisory',
-        		'Safe Go'
+        		'Safe Go',
+                'Image',
+                'Eat & Play'
         	],
         	'Science' => [
         		'News',
         		'Invention',
         		'Application',
-        		'Natural World'
+        		'Natural World',
+                'Conventional',
+                'Science In The Country'
         	],
-        	'Digital' => [
+        	'Digitizing' => [
         		'Technology',
         		'Product',
         		'Forum',
         		'Tech Award 2021'
         	],
-        	'Car' => [
+        	'Vehicle' => [
         		'Market',
         		'Advisory',
         		'Forum',
-        		'Evaluate'
+        		'Evaluate',
+                'Video',
+                'Car Price List',
+                'Tram',
+                'License Test',
+                'Purchase'
         	],
         	'Opinion' => [
         		'News',
