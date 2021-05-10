@@ -34,6 +34,11 @@ class Post extends Model implements Viewable
         return $this->belongsTo(SubCategory::class);
     }
 
+    public function category()
+    {
+        return $this->subCategory->category;
+    }
+
     public function comments()
     {
         return $this->hasMany(Comment::class);

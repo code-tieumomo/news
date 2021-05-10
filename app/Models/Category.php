@@ -12,23 +12,23 @@ class Category extends Model
     protected $table = 'categories';
 
     protected $fillable = [
-    	'name', 'slug'
+        'name', 'slug'
     ];
 
     public function subCategories()
     {
-    	return $this->hasMany(SubCategory::class);
+        return $this->hasMany(SubCategory::class);
     }
 
     public function posts()
     {
-    	$postsCollection = collect();
-    	foreach ($this->subCategories as $subCategory) {
-    		foreach ($subCategory->posts as $post) {
+        $postsCollection = collect();
+        foreach ($this->subCategories as $subCategory) {
+            foreach ($subCategory->posts as $post) {
                 $postsCollection->push($post);
             }
-    	}
+        }
 
-    	return $postsCollection;
+        return $postsCollection;
     }
 }

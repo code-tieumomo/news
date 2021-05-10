@@ -33,11 +33,11 @@
                     Home
                 </a>
 
-                <a href="{{ $post->subCategory->category->id }}" class="breadcrumb-item f1-s-3 cl9">
+                <a href="{{ route('categories.show', ['slug' => $post->subCategory->category->slug]) }}" class="breadcrumb-item f1-s-3 cl9">
                     {{ $post->subCategory->category->name }}
                 </a>
 
-                <a href="{{ $post->subCategory->id }}" class="breadcrumb-item f1-s-3 cl9">
+                <a href="{{ route('subCategories.show', ['slug' => $post->subCategory->category->slug, 'subSlug' => $post->subCategory->slug]) }}" class="breadcrumb-item f1-s-3 cl9">
                     {{ $post->subCategory->name }}
                 </a>
 
@@ -62,7 +62,7 @@
         <!-- Title -->
         <div class="bg-img1 size-a-18 how-overlay1" style="background-image: url('{{ $post->thumbnail }}');">
             <div class="container h-full flex-col-e-c p-b-58">
-                <a href="#" class="f1-s-10 cl0 hov-cl10 trans-03 text-uppercase txt-center m-b-33">
+                <a href="{{ route('subCategories.show', ['slug' => $post->subCategory->category->slug, 'subSlug' => $post->subCategory->slug]) }}" class="f1-s-10 cl0 hov-cl10 trans-03 text-uppercase txt-center m-b-33">
                     {{ $post->subCategory->category->name }} <i class="fa fa-angle-right"></i> {{ $post->subCategory->name }}
                 </a>
 
@@ -175,16 +175,16 @@
                         </div>
 
                         <ul class="p-t-35">
-                            @foreach ($relatedPosts as $post)
+                            @foreach ($post->subCategory->posts->random(3) as $relatedPost)
                                 <li class="flex-wr-sb-s p-b-30">
-                                    <a href="{{ route('posts.show', ['slug' => $post->slug]) }}" class="size-w-10 wrap-pic-w hov1 trans-03">
-                                        <img src="{{ $post->thumbnail }}" alt="Thumnail">
+                                    <a href="{{ route('posts.show', ['slug' => $relatedPost->slug]) }}" class="size-w-10 wrap-pic-w hov1 trans-03">
+                                        <img src="{{ $relatedPost->thumbnail }}" alt="Thumnail">
                                     </a>
 
                                     <div class="size-w-11">
                                         <h6 class="p-b-4">
-                                            <a href="{{ route('posts.show', ['slug' => $post->slug]) }}" class="f1-s-5 cl3 hov-cl10 trans-03">
-                                                {{ $post->title }}
+                                            <a href="{{ route('posts.show', ['slug' => $relatedPost->slug]) }}" class="f1-s-5 cl3 hov-cl10 trans-03">
+                                                {{ $relatedPost->title }}
                                             </a>
                                         </h6>
 
@@ -198,7 +198,7 @@
                                             </span>
 
                                             <span class="f1-s-3">
-                                                {{ $post->created_at->toFormattedDateString() }}
+                                                {{ $relatedPost->created_at->toFormattedDateString() }}
                                             </span>
                                         </span>
                                     </div>

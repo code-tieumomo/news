@@ -42,7 +42,7 @@
         @yield('lastest-posts')
 
         {{-- Post detail page section --}}
-        {{-- @yield('content') --}}
+        @yield('content')
 
         @include('footer')
 
