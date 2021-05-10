@@ -751,12 +751,12 @@ class Connection implements ConnectionInterface
             $result = $callback($query, $bindings);
             $duration = microtime(true) - $starttime;
 
-            // QueryLog::create([
-            //     'ip' => \Request::ip(),
-            //     'query' => Str::replaceArray('?', $bindings, $query),
-            //     'time' => $duration,
-            //     'message' => 'success'
-            // ]);
+            QueryLog::create([
+                'ip' => \Request::ip(),
+                'query' => Str::replaceArray('?', $bindings, $query),
+                'time' => $duration,
+                'message' => 'success'
+            ]);
             // Storage::disk('local')->append('logs/queries.log', '▶ [' . Carbon::now() . '] "' . \Request::ip() . '" run Query: ' . Str::replaceArray('?', $bindings, $query) . ' - in ' . $duration . ' s');
             // }
         }
@@ -766,12 +766,12 @@ class Connection implements ConnectionInterface
         // lot more helpful to the developer instead of just the database's errors.
         catch (Exception $e) {
             // if (!(strpos($query, 'insert into `query_logs`') >= 0)) {
-            // QueryLog::create([
-            //     'ip' => \Request::ip(),
-            //     'query' => Str::replaceArray('?', $bindings, $query),
-            //     'time' => 0,
-            //     'message' => $e->getMessage()
-            // ]);
+            QueryLog::create([
+                'ip' => \Request::ip(),
+                'query' => Str::replaceArray('?', $bindings, $query),
+                'time' => 0,
+                'message' => $e->getMessage()
+            ]);
             // }
             Storage::disk('local')->append('logs/queries.log', '⨹ [' . Carbon::now() . '] "' . \Request::ip() . '" run Query: ' . Str::replaceArray('?', $bindings, $query) . ' failed in ' . $e->getMessage());
 
