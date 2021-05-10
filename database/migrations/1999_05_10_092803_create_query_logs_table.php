@@ -16,7 +16,7 @@ class CreateQueryLogsTable extends Migration
         Schema::create('query_logs', function (Blueprint $table) {
             $table->id();
             $table->string('ip');
-            $table->string('query');
+            $table->text('query');
             $table->float('time');
             $table->string('message');
             $table->timestamps();
