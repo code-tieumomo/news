@@ -2,6 +2,7 @@
 
 namespace Illuminate\Database\Eloquent;
 
+use App\Models\QueryLog;
 use BadMethodCallException;
 use Closure;
 use Exception;
@@ -813,7 +814,11 @@ class Builder
     public function create(array $attributes = [])
     {
         return tap($this->newModelInstance($attributes), function ($instance) {
-            $instance->save();
+            if ($instance instanceof QueryLog) {
+                $instance->saveWithOutLogging();
+            } else {
+                $instance->save();
+            }
         });
     }
 

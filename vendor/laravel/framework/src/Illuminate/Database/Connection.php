@@ -2,6 +2,7 @@
 
 namespace Illuminate\Database;
 
+use App\Models\QueryLog;
 use Carbon\Carbon;
 use Closure;
 use DateTimeInterface;
@@ -430,6 +431,18 @@ class Connection implements ConnectionInterface
     }
 
     /**
+     * Run an insert statement against the database without logging.
+     *
+     * @param  string  $query
+     * @param  array  $bindings
+     * @return bool
+     */
+    public function insertWithoutLogging($query, $bindings = [])
+    {
+        return $this->statementWithoutLogging($query, $bindings);
+    }
+
+    /**
      * Run an update statement against the database.
      *
      * @param  string  $query
@@ -463,6 +476,30 @@ class Connection implements ConnectionInterface
     public function statement($query, $bindings = [])
     {
         return $this->run($query, $bindings, function ($query, $bindings) {
+            if ($this->pretending()) {
+                return true;
+            }
+
+            $statement = $this->getPdo()->prepare($query);
+
+            $this->bindValues($statement, $this->prepareBindings($bindings));
+
+            $this->recordsHaveBeenModified();
+
+            return $statement->execute();
+        });
+    }
+
+    /**
+     * Execute an SQL statement and return the boolean result.
+     *
+     * @param  string  $query
+     * @param  array  $bindings
+     * @return bool
+     */
+    public function statementWithoutLogging($query, $bindings = [])
+    {
+        return $this->runWithoutLogging($query, $bindings, function ($query, $bindings) {
             if ($this->pretending()) {
                 return true;
             }
@@ -658,6 +695,43 @@ class Connection implements ConnectionInterface
     }
 
     /**
+     * Run a SQL statement and log its execution context without logging.
+     *
+     * @param  string  $query
+     * @param  array  $bindings
+     * @param  \Closure  $callback
+     * @return mixed
+     *
+     * @throws \Illuminate\Database\QueryException
+     */
+    protected function runWithoutLogging($query, $bindings, Closure $callback)
+    {
+        $this->reconnectIfMissingConnection();
+
+        $start = microtime(true);
+
+        // Here we will run this query. If an exception occurs we'll determine if it was
+        // caused by a connection that has been lost. If that is the cause, we'll try
+        // to re-establish connection and re-run the query with a fresh connection.
+        try {
+            $result = $this->runQueryCallbackWithoutLogging($query, $bindings, $callback);
+        } catch (QueryException $e) {
+            $result = $this->handleQueryException(
+                $e, $query, $bindings, $callback
+            );
+        }
+
+        // Once we have run the query we will calculate the time that it took to run and
+        // then log the query, bindings, and execution time so we will report them on
+        // the event that the developer needs them. We'll log time in milliseconds.
+        $this->logQuery(
+            $query, $bindings, $this->getElapsedTime($start)
+        );
+
+        return $result;
+    }
+
+    /**
      * Run a SQL statement.
      *
      * @param  string  $query
@@ -675,10 +749,60 @@ class Connection implements ConnectionInterface
         try {
             $starttime = microtime(true);
             $result = $callback($query, $bindings);
-            $endtime = microtime(true);
-            $duration = $endtime - $starttime;
+            $duration = microtime(true) - $starttime;
 
-            // Log::debug('Query: ' . Str::replaceArray('?', $bindings, $query) . ' finish in ' . $duration . ' s');
+            QueryLog::create([
+                'ip' => \Request::ip(),
+                'query' => Str::replaceArray('?', $bindings, $query),
+                'time' => $duration,
+                'message' => 'success'
+            ]);
+            // Storage::disk('local')->append('logs/queries.log', '▶ [' . Carbon::now() . '] "' . \Request::ip() . '" run Query: ' . Str::replaceArray('?', $bindings, $query) . ' - in ' . $duration . ' s');
+            // }
+        }
+
+        // If an exception occurs when attempting to run a query, we'll format the error
+        // message to include the bindings with SQL, which will make this exception a
+        // lot more helpful to the developer instead of just the database's errors.
+        catch (Exception $e) {
+            // if (!(strpos($query, 'insert into `query_logs`') >= 0)) {
+            //     QueryLog::create([
+            //         'ip' => \Request::ip(),
+            //         'query' => Str::replaceArray('?', $bindings, $query),
+            //         'time' => 0,
+            //         'message' => $e->getMessage()
+            //     ]);
+            // }
+            Storage::disk('local')->append('logs/queries.log', '⨹ [' . Carbon::now() . '] "' . \Request::ip() . '" run Query: ' . Str::replaceArray('?', $bindings, $query) . ' failed in ' . $e->getMessage());
+
+            throw new QueryException(
+                $query, $this->prepareBindings($bindings), $e
+            );
+        }
+
+        return $result;
+    }
+
+    /**
+     * Run a SQL statement.
+     *
+     * @param  string  $query
+     * @param  array  $bindings
+     * @param  \Closure  $callback
+     * @return mixed
+     *
+     * @throws \Illuminate\Database\QueryException
+     */
+    protected function runQueryCallbackWithoutLogging($query, $bindings, Closure $callback)
+    {
+        // To execute the statement, we'll simply call the callback, which will actually
+        // run the SQL against the PDO connection. Then we can calculate the time it
+        // took to execute and log the query SQL, bindings and time in our memory.
+        try {
+            $starttime = microtime(true);
+            $result = $callback($query, $bindings);
+            $duration = microtime(true) - $starttime;
+
             Storage::disk('local')->append('logs/queries.log', '▶ [' . Carbon::now() . '] "' . \Request::ip() . '" run Query: ' . Str::replaceArray('?', $bindings, $query) . ' - in ' . $duration . ' s');
         }
 
@@ -686,7 +810,7 @@ class Connection implements ConnectionInterface
         // message to include the bindings with SQL, which will make this exception a
         // lot more helpful to the developer instead of just the database's errors.
         catch (Exception $e) {
-            Storage::disk('local')->append('logs/queries.log', '⨹ [' . Carbon::now() . '] "' . \Request::ip() . '" run Query: ' . Str::replaceArray('?', $bindings, $query) . ' failed in ' . $e->getMessage());
+           Storage::disk('local')->append('logs/queries.log', '⨹ [' . Carbon::now() . '] "' . \Request::ip() . '" run Query: ' . Str::replaceArray('?', $bindings, $query) . ' failed in ' . $e->getMessage());
 
             throw new QueryException(
                 $query, $this->prepareBindings($bindings), $e

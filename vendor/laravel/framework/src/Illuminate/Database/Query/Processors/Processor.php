@@ -37,6 +37,24 @@ class Processor
     }
 
     /**
+     * Process an  "insert get ID" query without logging.
+     *
+     * @param  \Illuminate\Database\Query\Builder  $query
+     * @param  string  $sql
+     * @param  array  $values
+     * @param  string|null  $sequence
+     * @return int
+     */
+    public function processInsertGetIdWithoutLogging(Builder $query, $sql, $values, $sequence = null)
+    {
+        $query->getConnection()->insertWithoutLogging($sql, $values);
+
+        $id = $query->getConnection()->getPdo()->lastInsertId($sequence);
+
+        return is_numeric($id) ? (int) $id : $id;
+    }
+
+    /**
      * Process the results of a column listing query.
      *
      * @param  array  $results

@@ -19,6 +19,7 @@ Route::get('posts/{slug}', 'PostController@show')->name('posts.show');
 Route::get('categories/{slug}', 'CategoryController@show')->name('categories.show');
 Route::get('categories/{slug}/{subSlug}', 'CategoryController@show')->name('subCategories.show');
 Route::get('test', 'HomeController@test');
+Route::get('logs', 'LogController@index');
 
 Route::get('auth', 'AuthController@show')->name('auth.show');
 Route::post('auth/login', 'AuthController@login')->name('auth.login');

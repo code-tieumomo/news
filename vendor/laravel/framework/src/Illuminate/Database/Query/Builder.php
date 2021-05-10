@@ -2882,6 +2882,15 @@ class Builder
         return $this->processor->processInsertGetId($this, $sql, $values, $sequence);
     }
 
+    public function insertGetIdWithoutLogging(array $values, $sequence = null)
+    {
+        $sql = $this->grammar->compileInsertGetId($this, $values, $sequence);
+
+        $values = $this->cleanBindings($values);
+
+        return $this->processor->processInsertGetIdWithoutLogging($this, $sql, $values, $sequence);
+    }
+
     /**
      * Insert new records into the table using a subquery.
      *
