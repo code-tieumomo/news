@@ -32,21 +32,21 @@
     <body class="animsition">
         @include('header')
         
-        @yield('headline')
+        {{-- @yield('headline') --}}
 
         {{-- Home page section --}}
-        @yield('feature-posts')
+        {{-- @yield('feature-posts')
 
         @yield('feature-categories')
 
         @yield('banner')
 
-        @yield('lastest-posts')
+        @yield('lastest-posts') --}}
 
         {{-- Post detail page section --}}
-        @yield('content')
+        {{-- @yield('content')
 
-        @include('footer')
+        @include('footer') --}}
 
         <!-- Back to top -->
         <div class="btn-back-to-top" id="myBtn">

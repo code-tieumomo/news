@@ -161,7 +161,7 @@
                 <li>
                     <a href="{{ route('home.index') }}">Home</a>
                 </li>
-                @foreach ($menuCategories as $category)
+                @foreach ($categories->take(7) as $category)
                     <li>
                         <a href="index.html">{{ $category->name }}</a>
                         @if ($category->subCategories->isNotEmpty())
@@ -214,7 +214,7 @@
                         <li class="main-menu-active single-item">
                             <a href="{{ route('home.index') }}">Home</a>
                         </li>
-                        @foreach ($menuCategories as $category)
+                        @foreach ($categories->take(7) as $category)
                             <li class="mega-menu-item">
                                 <a href="{{ route('categories.show', ['slug' => $category->slug]) }}">{{ $category->name }}</a>
 

@@ -258,6 +258,11 @@ class Response
             $this->getContent();
     }
 
+    public function log()
+    {
+         return sprintf('(HTTP/%s || %s %s)', $this->version, $this->statusCode, $this->statusText);
+    }
+
     /**
      * Clones the current Response instance.
      */

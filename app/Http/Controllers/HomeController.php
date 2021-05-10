@@ -6,18 +6,20 @@ use App\Models\Category;
 use App\Models\Post;
 use App\Models\SubCategory;
 use App\Models\User;
+use Carbon\Carbon;
 use CyrildeWit\EloquentViewable\Support\Period;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Kreait\Firebase\Factory;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $factory = (new Factory())->withDatabaseUri('https://uet-news-2021-default-rtdb.firebaseio.com/');            
         $database = $factory->createDatabase();
-        $menuCategories = Category::limit(7)->get();
         $quotes = Collection::make([
             'An unexamined life is not worth living. - Socrates',
             'Be present above all else. - Naval Ravikant',
@@ -32,14 +34,13 @@ class HomeController extends Controller
         ]);
         $featureCategoriesRef = $database->getReference('featureCategories')->getSnapshot();
         $featureCategoriesId = $featureCategoriesRef->getValue();
-        $featureCategories = Category::whereIn('id', $featureCategoriesId)->get();
-        $popPosts = Post::orderByViews('desc', Period::pastDays(3))->limit(5)->get();
-        $lastestPosts = Post::orderBy('id', 'desc')->limit(6)->get();
+        $featureCategories = Category::with('subCategories')->whereIn('id', $featureCategoriesId)->get();
+        $popPosts = Post::with('subCategory')->orderByViews('desc', Period::pastDays(3))->limit(5)->get();
+        $lastestPosts = Post::with('subCategory')->orderBy('id', 'desc')->limit(6)->get();
         $topWriters = User::role('writer')->limit(10)->get();
-        $categories = Category::all();
+        $categories = Category::with('subCategories')->get();
 
         return view('home', [
-            'menuCategories' => $menuCategories,
             'quotes' => $quotes,
             'featureCategories' => $featureCategories,
             'popPosts' => $popPosts,

@@ -81,7 +81,9 @@
 
     var registerInput = $('.validate-input .input-register');
 
-    $('#register-form').on('submit',function(){
+    $('#register-form').on('submit', function(event){
+        event.preventDefault();
+
         for(var i=0; i<registerInput.length; i++) {
             if(validate(registerInput[i]) != undefined){
                 showValidate(registerInput[i], validate(registerInput[i]));
@@ -89,7 +91,12 @@
             }
         }
 
-        return true;
+        Swal.fire({
+            title: 'Success!',
+            text: 'Validated',
+            icon: 'success',
+            confirmButtonText: 'OK!'
+        });
     });
 
     function validate (input) {
@@ -101,6 +108,10 @@
             return 'required';
         } else if($(input).attr('type') == 'password' && $(input).val().length < 8) {
             return 'type';
+        } else if($(input).attr('name') == 'password_confirmation') {
+            if($('input[name=password_confirmation]').val() != $('input[name=password]').val()) {
+                return 'confirmed';
+            }
         }
     }
 

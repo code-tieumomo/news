@@ -94,7 +94,7 @@
                     </form>
                 </div>
 
-                {{-- <div id="section-register" class="wrap-login100 p-t-50">
+                <div id="section-register" class="wrap-login100 p-t-50">
                     <form id="register-form" method="POST" action="{{ route('auth.register') }}" class="login100-form validate-form flex-sb flex-w">
                         @csrf
                         <span class="login100-form-title p-b-51">
@@ -112,7 +112,7 @@
                         </div>
 
                         <div class="wrap-input100 validate-input m-b-16">
-                            <input class="input100 input-register" type="password" name="password_confirmation" value="{{ old('password_confirmation') }}" placeholder="&#xf084;  Password Confirmation" data-required = "Password confirmation is required" data-type="Password at least 8 character">
+                            <input class="input100 input-register" type="password" name="password_confirmation" value="{{ old('password_confirmation') }}" placeholder="&#xf084;  Password Confirmation" data-required = "Password confirmation is required" data-type="Password confirmation at least 8 character" data-confirmed="Password confirmation not same">
                             <span class="focus-input100"></span>
                         </div>
                         
@@ -145,7 +145,7 @@
                             </div>
                         </div>
                     </form>
-                </div> --}}
+                </div>
             </div>
         </div>
         

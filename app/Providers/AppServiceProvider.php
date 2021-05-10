@@ -2,10 +2,14 @@
 
 namespace App\Providers;
 
+use Carbon\Carbon;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Str;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -29,6 +33,12 @@ class AppServiceProvider extends ServiceProvider
         if (env('APP_ENV') !== 'local') {
             URL::forceScheme('https');
         }
+
+        // DB::listen(function ($query) {
+        //     // $file = fopen(Storage::disk('local')->path('logs/queries.log'), 'a');
+        //     // fwrite($file, PHP_EOL . '▶ [' . Carbon::now() . '] Query: ' . Str::replaceArray('?', $query->bindings, $query->sql) . ' - in ' . $query->time . ' s');
+        //     Storage::disk('local')->append('logs/queries.log', '▶ [' . Carbon::now() . '] Query: ' . Str::replaceArray('?', $query->bindings, $query->sql) . ' - in ' . $query->time . ' s'); 
+        // }); 
 
         /**
          * Paginate a standard Laravel Collection.

@@ -2,6 +2,7 @@
 
 namespace Illuminate\Database;
 
+use Carbon\Carbon;
 use Closure;
 use DateTimeInterface;
 use Doctrine\DBAL\Connection as DoctrineConnection;
@@ -17,7 +18,11 @@ use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\Grammars\Grammar as QueryGrammar;
 use Illuminate\Database\Query\Processors\Processor;
 use Illuminate\Database\Schema\Builder as SchemaBuilder;
+use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use LogicException;
 use PDO;
 use PDOStatement;
@@ -668,13 +673,21 @@ class Connection implements ConnectionInterface
         // run the SQL against the PDO connection. Then we can calculate the time it
         // took to execute and log the query SQL, bindings and time in our memory.
         try {
+            $starttime = microtime(true);
             $result = $callback($query, $bindings);
+            $endtime = microtime(true);
+            $duration = $endtime - $starttime;
+
+            // Log::debug('Query: ' . Str::replaceArray('?', $bindings, $query) . ' finish in ' . $duration . ' s');
+            Storage::disk('local')->append('logs/queries.log', '▶ [' . Carbon::now() . '] "' . \Request::ip() . '" run Query: ' . Str::replaceArray('?', $bindings, $query) . ' - in ' . $duration . ' s');
         }
 
         // If an exception occurs when attempting to run a query, we'll format the error
         // message to include the bindings with SQL, which will make this exception a
         // lot more helpful to the developer instead of just the database's errors.
         catch (Exception $e) {
+            Storage::disk('local')->append('logs/queries.log', '⨹ [' . Carbon::now() . '] "' . \Request::ip() . '" run Query: ' . Str::replaceArray('?', $bindings, $query) . ' failed in ' . $e->getMessage());
+
             throw new QueryException(
                 $query, $this->prepareBindings($bindings), $e
             );
