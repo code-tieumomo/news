@@ -164,17 +164,15 @@
                 @foreach ($categories->take(7) as $category)
                     <li>
                         <a href="index.html">{{ $category->name }}</a>
-                        @if ($category->subCategories->isNotEmpty())
-                            <ul class="sub-menu-m">
-                                @foreach ($category->subCategories as $subCategory)
-                                    <li><a href="home-02.html">{{ $subCategory->name }}</a></li>
-                                @endforeach
-                            </ul>
+                        <ul class="sub-menu-m">
+                            @foreach ($category->subCategories as $subCategory)
+                                <li><a href="home-02.html">{{ $subCategory->name }}</a></li>
+                            @endforeach
+                        </ul>
 
-                            <span class="arrow-main-menu-m">
-                                <i class="fa fa-angle-right" aria-hidden="true"></i>
-                            </span>
-                        @endif
+                        <span class="arrow-main-menu-m">
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        </span>
                     </li>
                 @endforeach
                 <li>
@@ -246,8 +244,8 @@
                                                                     </h5>
 
                                                                     <span class="cl8">
-                                                                        <a href="{{ route('subCategories.show', ['slug' => $post->subCategory->category->slug, 'subSlug' => $post->subCategory->slug]) }}" class="f1-s-6 cl8 hov-cl10 trans-03">
-                                                                            <i class="fa fa-bookmark"></i> {{ $post->subCategory->name }}
+                                                                        <a href="{{ route('subCategories.show', ['slug' => $category->slug, 'subSlug' => $subCategory->slug]) }}" class="f1-s-6 cl8 hov-cl10 trans-03">
+                                                                            <i class="fa fa-bookmark"></i> {{ $subCategory->name }}
                                                                         </a>
 
                                                                         <span class="f1-s-3 m-rl-3">

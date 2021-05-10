@@ -18,8 +18,6 @@ class HomeController extends Controller
 {
     public function index(Request $request)
     {
-        $factory = (new Factory())->withDatabaseUri('https://uet-news-2021-default-rtdb.firebaseio.com/');            
-        $database = $factory->createDatabase();
         $quotes = Collection::make([
             'An unexamined life is not worth living. - Socrates',
             'Be present above all else. - Naval Ravikant',
@@ -32,20 +30,16 @@ class HomeController extends Controller
             'Smile, breathe, and go slowly. - Thich Nhat Hanh',
             'Well begun is half done. - Aristotle',
         ]);
-        $featureCategoriesRef = $database->getReference('featureCategories')->getSnapshot();
-        $featureCategoriesId = $featureCategoriesRef->getValue();
-        $featureCategories = Category::with('subCategories')->whereIn('id', $featureCategoriesId)->get();
-        $popPosts = Post::with('subCategory')->orderByViews('desc', Period::pastDays(3))->limit(5)->get();
-        $lastestPosts = Post::with('subCategory')->orderBy('id', 'desc')->limit(6)->get();
-        $topWriters = User::role('writer')->limit(10)->get();
-        $categories = Category::with('subCategories')->get();
+        $popPosts = Post::orderByViews('desc', Period::pastDays(3))->limit(5)->get();
+        $lastestPosts = Post::with('subCategory.category', 'user')->orderBy('id', 'desc')->limit(6)->get();
+        // $topWriters = User::role('writer')->limit(10)->get();
+        $categories = Category::with('subCategories.posts')->get();
 
         return view('home', [
             'quotes' => $quotes,
-            'featureCategories' => $featureCategories,
             'popPosts' => $popPosts,
             'lastestPosts' => $lastestPosts,
-            'topWriters' => $topWriters,
+            // 'topWriters' => $topWriters,
             'categories' => $categories,
         ]);
     }

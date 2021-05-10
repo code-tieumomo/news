@@ -64,7 +64,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-10 col-lg-8">
                     <div class="p-b-20">
-                        @foreach ($featureCategories as $category)
+                        @foreach ($categories->take(3) as $category)
                             <!-- {{ $category->name }} -->
                             <div class="tab01 p-b-20">
                                 <div class="tab01-head how2 how2-cl2 bocl12 flex-s-c m-r-10 m-r-0-sr991">
@@ -293,7 +293,7 @@
     <section class="bg0 p-t-60 p-b-35">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-md-10 col-lg-8 p-b-20">
+                <div class="col-md-10 col-lg-12 p-b-20">
                     <div class="how2 how2-cl4 flex-s-c m-r-10 m-r-0-sr991">
                         <h3 class="f1-m-2 cl3 tab01-title" style="width: 100%;">
                             Latest Posts
@@ -308,7 +308,7 @@
 
                     <div class="row p-t-35">
                         @foreach ($lastestPosts as $post)
-                           <div class="col-sm-6 p-r-25 p-r-15-sr991">
+                           <div class="col-sm-4 p-r-25 p-r-15-sr991">
                                 <!-- Item latest -->    
                                 <div class="m-b-45">
                                     <a href="{{ route('posts.show', ['slug' => $post->slug]) }}" class="wrap-pic-w hov1 trans-03">
@@ -345,12 +345,12 @@
                                         </span>
                                     </div>
                                 </div>
-                            </div> 
+                            </div>
                         @endforeach
                     </div>
                 </div>
 
-                <div class="col-md-10 col-lg-4">
+                {{-- <div class="col-md-10 col-lg-4">
                     <div class="p-l-10 p-rl-0-sr991 p-b-20">
                         <!-- Top writer -->
                         <div class="p-b-55">
@@ -397,7 +397,7 @@
                             </form>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </section>
