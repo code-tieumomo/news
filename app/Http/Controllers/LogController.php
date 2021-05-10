@@ -12,7 +12,7 @@ class LogController extends Controller
         $queryLogs = QueryLog::orderBy('id', 'desc')->limit(10)->get();
         foreach ($queryLogs as $log) {
             echo "<pre>";
-            print_r('[' . $log->created_at . '] ' . $log->ip . ' - ' . $log->query . ' - ' . $log->time . 's');
+            print_r('[' . $log->created_at . '] ' . $log->ip . ' - ' . $log->query . ' - ' . $log->time . 's - ' . $log->message);
             echo "</pre>";
         }
     }
