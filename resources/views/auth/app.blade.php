@@ -80,7 +80,7 @@
 
                         <div class="flex-sb-m w-full p-t-3 p-b-24">
                             <div class="contact100-form-checkbox">
-                                <a href="{{ route('home.index') }}" class="txt1">
+                                <a href="{{ session('redirectBack') ?? route('home.index') }}" class="txt1">
                                     <i class="fa fa-long-arrow-left"></i> Go back
                                 </a>
                             </div>
@@ -98,27 +98,27 @@
                     <form id="register-form" method="POST" action="{{ route('auth.register') }}" class="login100-form validate-form flex-sb flex-w">
                         @csrf
                         <span class="login100-form-title p-b-51">
-                            Register
+                            - Or Register -
                         </span>
                         
                         <div class="wrap-input100 validate-input m-b-16">
-                            <input class="input100 input-register" type="email" name="email" value="{{ old('email') }}" placeholder="&#xf2c0;  Email"  data-required = "Email is required" data-type="Wrong email type">
+                            <input class="input100 input-register" type="email" name="reg_email" value="{{ old('email') }}" placeholder="&#xf2c0;  Email"  data-required = "Email is required" data-type="Wrong email type">
                             <span class="focus-input100"></span>
                         </div>
                         
                         <div class="wrap-input100 validate-input m-b-16">
-                            <input class="input100 input-register" type="password" name="password" value="{{ old('password') }}" placeholder="&#xf084;  Password" data-required = "Password is required" data-type="Password at least 8 character">
+                            <input class="input100 input-register" type="password" name="reg_password" value="{{ old('password') }}" placeholder="&#xf084;  Password" data-required = "Password is required" data-type="Password at least 8 character">
                             <span class="focus-input100"></span>
                         </div>
 
                         <div class="wrap-input100 validate-input m-b-16">
-                            <input class="input100 input-register" type="password" name="password_confirmation" value="{{ old('password_confirmation') }}" placeholder="&#xf084;  Password Confirmation" data-required = "Password confirmation is required" data-type="Password confirmation at least 8 character" data-confirmed="Password confirmation not same">
+                            <input class="input100 input-register" type="password" name="reg_password_confirmation" value="{{ old('password_confirmation') }}" placeholder="&#xf084;  Password Confirmation" data-required = "Password confirmation is required" data-type="Password confirmation at least 8 character" data-confirmed="Password confirmation don't match">
                             <span class="focus-input100"></span>
                         </div>
                         
                         <div class="flex-sb-m w-full p-t-3 p-b-24">
                             <div class="contact100-form-checkbox">
-                                <input class="input-checkbox100" id="ckb2" type="checkbox" name="remember-me">
+                                <input class="input-checkbox100" id="ckb2" type="checkbox" name="reg_remember">
                                 <label class="label-checkbox100" for="ckb2" data-toggle="tooltip" data-placement="bottom" title="Auto login and remember your account after register success">
                                     Remember me
                                 </label>
@@ -132,7 +132,7 @@
                         </div>
 
                         <div class="container-login100-form-btn m-t-17">
-                            <button class="login100-form-btn">
+                            <button id="register-btn" class="login100-form-btn">
                                 Register
                             </button>
                         </div>

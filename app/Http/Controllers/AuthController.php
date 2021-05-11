@@ -7,6 +7,7 @@ use App\Http\Requests\RegisterRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
 
 class AuthController extends Controller
@@ -15,6 +16,9 @@ class AuthController extends Controller
     {
         if (Auth::check()) {
             return redirect()->back();
+        }
+        if (strpos(url()->previous(), 'auth/facebook') == false) {
+            session(['redirectBack' => url()->previous()]);   
         }
 
         return view('auth.login');
@@ -36,9 +40,9 @@ class AuthController extends Controller
             $isUser = User::where('fb_id', $user->id)->first();
      
             if ($isUser) {
-                Auth::login($isUser);
+                Auth::login($isUser, true);
 
-                return redirect()->route('home.index');
+                return redirect(session('redirectBack'));
             } else {
                 $user = User::create([
                     'name' => $user->name,
@@ -47,9 +51,9 @@ class AuthController extends Controller
                     'password' => bcrypt('password')
                 ]);
                 $user->assignRole('user');
-                Auth::login($user);
+                Auth::login($user, true);
 
-                return redirect()->route('home.index');
+                return redirect(session('redirectBack'));
             }
     
         } catch (Exception $exception) {
@@ -59,9 +63,13 @@ class AuthController extends Controller
 
     public function login(LoginRequest $request)
     {
-        $credentials = $request->only('email', 'password');
+        if ($request->remember == 'true') {
+            $remember = true;
+        } else {
+            $remember = false;
+        }
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $remember)) {
             $user = Auth::user();
             if ($user->hasRole('admin')) {
                 return response()->json([
@@ -70,7 +78,7 @@ class AuthController extends Controller
             }
 
             return response()->json([
-                'redirect' => route('home.index')
+                'redirect' => session('redirectBack')
             ], 200);
         }
 
@@ -84,13 +92,40 @@ class AuthController extends Controller
 
     public function register(RegisterRequest $request)
     {
+        if ($request->remember == 'true') {
+            $remember = true;
+        } else {
+            $remember = false;
+        }
 
+        $newUser = User::create([
+            'name' => 'UET-News\'s new user',
+            'email' => $request->email,
+            'password' => $request->password,
+            'remember_token' => Str::random(10)
+        ]);
+
+        if ($newUser) {
+            $newUser->assignRole('user');
+            Auth::login($newUser, $remember);
+
+            return response()->json([
+                'redirect' => route('home.index')
+            ], 200);
+        } else {
+            return response()->json([
+                'errors' => [
+                    'email' => ['Can\'t register new account now.']
+                ],
+                'message' => 'Register failed.'
+            ], 422);
+        }
     }
 
     public function logout()
     {
         Auth::logout();
 
-        return redirect()->route('home.index');
+        return redirect()->back();
     }
 }
