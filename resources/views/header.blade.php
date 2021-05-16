@@ -35,7 +35,7 @@
                 @else
                     @role('user')
                         <div class="right-topbar">
-                            <a href="#">
+                            <a href="{{ route('user-features.index') }}">
                                 <i class="fa fa-user-o"></i> {{ Auth::user()->name }}
                                 @if (Auth::user()->fb_id != null)
                                     (Logged in with Facebook)

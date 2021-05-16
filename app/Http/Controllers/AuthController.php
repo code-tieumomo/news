@@ -101,7 +101,7 @@ class AuthController extends Controller
         $newUser = User::create([
             'name' => 'UET-News\'s new user',
             'email' => $request->email,
-            'password' => $request->password,
+            'password' => bcrypt($request->password),
             'remember_token' => Str::random(10)
         ]);
 

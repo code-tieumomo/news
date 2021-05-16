@@ -94,12 +94,6 @@
                     $(".current-time").attr("src", "{{ asset('client-assets/images/icons/icon-night.png') }}");
                 }
 
-                // if (navigator.geolocation) {
-                //     navigator.geolocation.getCurrentPosition(showPosition);
-                // } else { 
-                //    console.log("Geolocation is not supported by this browser.");
-                // }
-
                 $.ajax({
                     url: "https://geolocation-db.com/jsonp",
                     jsonpCallback: "callback",

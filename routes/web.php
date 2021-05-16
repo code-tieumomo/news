@@ -29,15 +29,19 @@ Route::get('auth/facebook/callback', 'AuthController@loginWithFacebook')->name('
 Route::get('logout', 'AuthController@logout')->name('auth.logout');
 
 Route::group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin'], function() {
-	Route::get('dashboard', 'HomeController@home')->name('admin.home');
+    Route::get('dashboard', 'HomeController@home')->name('admin.home');
 
-	Route::resource('users', 'UserController');
-	Route::resource('writers', 'WriterController');
-	Route::delete('writers/remove-write-permission/{writer}', 'WriterController@removeWritePermission')->name('writers.removeWritePermission');
-	Route::resource('manage-posts', 'PostController');
-	Route::put('comments/update', 'CommentController@update')->name('comments.update');
-	Route::put('comments/destroy', 'CommentController@destroy')->name('comments.destroy');
+    Route::resource('users', 'UserController');
+    Route::resource('writers', 'WriterController');
+    Route::delete('writers/remove-write-permission/{writer}', 'WriterController@removeWritePermission')->name('writers.removeWritePermission');
+    Route::resource('manage-posts', 'PostController');
+    Route::put('comments/update', 'CommentController@update')->name('comments.update');
+    Route::put('comments/destroy', 'CommentController@destroy')->name('comments.destroy');
 
-	//Debug
-	Route::get('change-most-recent-user', 'UserController@changeMostRecentUser');
+    //Debug
+    Route::get('change-most-recent-user', 'UserController@changeMostRecentUser');
+});
+
+Route::group(['middleware' => 'auth', 'namespace' => 'UserFeatures', 'prefix' => 'user-features'], function() {
+    Route::get('dashboard', 'HomeController@index')->name('user-features.index');
 });
