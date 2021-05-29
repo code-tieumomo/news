@@ -16688,7 +16688,6 @@ input::-webkit-input-placeholder, input::-moz-placeholder, input:-ms-input-place
   opacity: 1; }
 
 .form-control {
-  color: #99c1b2;
   opacity: 1; }
   .form-control:disabled, .form-control[readonly] {
     background-color: #e9e9eb;
@@ -25358,6 +25357,10 @@ object, embed, video {
   border-radius: 100px;
   line-height: 2rem;
   margin-top: 0.3rem; }
+
+.swal2-container {
+  z-index: 1000000000 !important;
+}
 
 /*---End profile---*/
 

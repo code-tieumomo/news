@@ -6,7 +6,7 @@
 
     $('#load-reg-section-btn').on('click', function(event) {
         event.preventDefault();
-        
+
         if ($('input[name=login_email]').val() != "") {
             $('input[name=reg_email]').val($('input[name=login_email]').val());
         }
@@ -16,7 +16,7 @@
 
     $('#btn-load-login').on('click', function(event) {
         event.preventDefault();
-        
+
         if ($('input[name=reg_email]').val() != "") {
             $('input[name=login_email]').val($('input[name=reg_email]').val());
         }
@@ -27,14 +27,14 @@
     $('#login-using-facebook-btn').on('click', function(event) {
         event.preventDefault();
         $(this).html('<i class="fa fa-spinner fa-pulse fa-fw"></i>');
-        
+
         window.location.href = "auth/facebook";
     });
 
     /*==================================================================
     [ Validate ]*/
     var loginInput = $('.validate-input .input-login');
-    var regInput 
+    var regInput
 
     $('#login-form').on('submit', function(event) {
         event.preventDefault();
@@ -158,7 +158,6 @@
                         confirmButtonText: 'Try again!'
                     });
                 }
-                
             }
         });
     });

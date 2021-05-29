@@ -6,7 +6,7 @@
         <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
 
         <!-- Title -->
-        <title>User Features</title>
+        <title>@yield('title')</title>
 
         <!--Favicon -->
         <link rel="icon" href="{{ asset('admin-assets/images/brand/favicon.png') }}" type="image/png"/>
@@ -27,6 +27,14 @@
 
         <!---Icons css-->
         <link href="{{ asset('admin-assets/css/icons.css') }}" rel="stylesheet" />
+
+        <!-- Data table css -->
+        <link href="{{ asset('admin-assets/plugins/datatable/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet" />
+        <link href="{{ asset('admin-assets/plugins/datatable/css/buttons.bootstrap4.min.css') }}"  rel="stylesheet">
+        <link href="{{ asset('admin-assets/plugins/datatable/responsive.bootstrap4.min.css') }}" rel="stylesheet" />
+
+        <!-- INTERNAL Prism Css -->
+        <link href="{{ asset('admin-assets/plugins/prism/prism.css') }}" rel="stylesheet">
 
         <!-- Simplebar css -->
         <link rel="stylesheet" href="{{ asset('admin-assets/plugins/simplebar/css/simplebar.css') }}">
@@ -60,7 +68,7 @@
                                 <img src="{{ asset('client-assets/images/users/user-sample.png') }}" alt="user-img" class="avatar-xl rounded-circle mb-1">
                             </div>
                             <div class="user-info">
-                                <h5 class=" mb-1">{{ Auth::user()->name }} <i class="ion-checkmark-circled text-success fs-12"></i></h5>
+                                <h5 class=" mb-1 dynamic-name">{{ Auth::user()->name }} <i class="ion-checkmark-circled text-success fs-12"></i></h5>
                                 <span class="text-muted app-sidebar__user-name text-sm">{{ Auth::user()->email }}</span>
                             </div>
                         </div>
@@ -116,7 +124,7 @@
                                             </a>
                                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow animated">
                                                 <div class="text-center">
-                                                    <a href="#" class="dropdown-item text-center user pb-0 font-weight-bold">{{ Auth::user()->name }}</a>
+                                                    <a href="#" class="dropdown-item text-center user pb-0 font-weight-bold dynamic-name">{{ Auth::user()->name }}</a>
                                                     <span class="text-center user-semi-title">{{ Auth::user()->email }}</span>
                                                     <div class="dropdown-divider"></div>
                                                 </div>
@@ -148,7 +156,7 @@
                 <div class="container">
                     <div class="row align-items-center flex-row-reverse">
                         <div class="col-md-12 col-sm-12 text-center">
-                            Copyright © 2020 <a href="#">Admitro</a>. Designed by <a href="#">Spruko Technologies Pvt.Ltd</a> and re-design by "nhóm dự án". All rights reserved.
+                            Copyright © 2021. Re-design by "nhóm dự án". All rights reserved.
                         </div>
                     </div>
                 </div>
@@ -179,6 +187,27 @@
 
         <!--Sidemenu js-->
         <script src="{{ asset('admin-assets/plugins/sidemenu/sidemenu.js') }}"></script>
+
+        <!-- INTERNAL Data tables -->
+        <script src="{{ asset('admin-assets/plugins/datatable/js/jquery.dataTables.js') }}"></script>
+        <script src="{{ asset('admin-assets/plugins/datatable/js/dataTables.bootstrap4.js') }}"></script>
+        <script src="{{ asset('admin-assets/plugins/datatable/js/dataTables.buttons.min.js') }}"></script>
+        <script src="{{ asset('admin-assets/plugins/datatable/js/buttons.bootstrap4.min.js') }}"></script>
+        <script src="{{ asset('admin-assets/plugins/datatable/js/jszip.min.js') }}"></script>
+        <script src="{{ asset('admin-assets/plugins/datatable/js/pdfmake.min.js') }}"></script>
+        <script src="{{ asset('admin-assets/plugins/datatable/js/vfs_fonts.js') }}"></script>
+        <script src="{{ asset('admin-assets/plugins/datatable/js/buttons.html5.min.js') }}"></script>
+        <script src="{{ asset('admin-assets/plugins/datatable/js/buttons.print.min.js') }}"></script>
+        <script src="{{ asset('admin-assets/plugins/datatable/js/buttons.colVis.min.js') }}"></script>
+        <script src="{{ asset('admin-assets/plugins/datatable/dataTables.responsive.min.js') }}"></script>
+        <script src="{{ asset('admin-assets/plugins/datatable/responsive.bootstrap4.min.js') }}"></script>
+        <script src="{{ asset('admin-assets/js/datatables.js') }}"></script>
+
+        <!-- INTERNAL Prism js -->
+        <script src="{{ asset('admin-assets/plugins/prism/prism.js') }}"></script>
+
+        <!--Sweetalert2-->
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
         @yield('custom-js')
 

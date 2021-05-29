@@ -31,7 +31,7 @@
                         <a href="{{ route('auth.show') }}" class="left-topbar-item">
                             <i class="fa fa-sign-in"></i> Login
                         </a>
-                    </div>                   
+                    </div>
                 @else
                     @role('user')
                         <div class="right-topbar">

@@ -43,5 +43,8 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin
 });
 
 Route::group(['middleware' => 'auth', 'namespace' => 'UserFeatures', 'prefix' => 'user-features'], function() {
-    Route::get('dashboard', 'HomeController@index')->name('user-features.index');
+    Route::get('dashboard', 'UserFeaturesController@index')->name('user-features.index');
+    Route::put('infomations/{name}', 'UserFeaturesController@putInfomations')->name('infomations.update');
+    Route::put('password/{currentPassword}/{newPassword}/{confirmPassword}', 'UserFeaturesController@putPassword')->name('password.update');
+    Route::put('comments/{comment}/{postId}', 'UserFeaturesController@putComments')->name('comments.update');
 });

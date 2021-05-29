@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-    <!--===============================================================================================-->  
+    <!--===============================================================================================-->
         <link rel="icon" type="image/png" href="{{ asset('client-assets/images/icons/favicon.png') }}"/>
     <!--===============================================================================================-->
         <link rel="stylesheet" type="text/css" href="{{ asset('auth-assets/vendor/bootstrap/css/bootstrap.min.css') }}">
@@ -13,7 +13,7 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('auth-assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
     <!--===============================================================================================-->
         <link rel="stylesheet" type="text/css" href="{{ asset('auth-assets/vendor/animate/animate.css') }}">
-    <!--===============================================================================================-->  
+    <!--===============================================================================================-->
         <link rel="stylesheet" type="text/css" href="{{ asset('auth-assets/vendor/css-hamburgers/hamburgers.min.css') }}">
     <!--===============================================================================================-->
         <link rel="stylesheet" type="text/css" href="{{ asset('auth-assets/vendor/animsition/css/animsition.min.css') }}">
@@ -46,17 +46,17 @@
                         <span class="login100-form-title p-b-51">
                             - Or-
                         </span>
-                        
+
                         <div class="wrap-input100 validate-input m-b-16">
                             <input class="input100 input-login" type="email" name="login_email" placeholder="&#xf2c0;  Email"  data-required = "Email is required" data-type="Wrong email type">
                             <span class="focus-input100"></span>
                         </div>
-                        
+
                         <div class="wrap-input100 validate-input m-b-16">
                             <input class="input100 input-login" type="password" name="login_password" placeholder="&#xf084;  Password" data-required = "Password is required" data-type="Password at least 8 character">
                             <span class="focus-input100"></span>
                         </div>
-                        
+
                         <div class="flex-sb-m w-full p-t-3 p-b-24">
                             <div class="contact100-form-checkbox">
                                 <input class="input-checkbox100" id="ckb1" type="checkbox" name="login_remember">
@@ -100,12 +100,12 @@
                         <span class="login100-form-title p-b-51">
                             - Or Register -
                         </span>
-                        
+
                         <div class="wrap-input100 validate-input m-b-16">
                             <input class="input100 input-register" type="email" name="reg_email" value="{{ old('email') }}" placeholder="&#xf2c0;  Email"  data-required = "Email is required" data-type="Wrong email type">
                             <span class="focus-input100"></span>
                         </div>
-                        
+
                         <div class="wrap-input100 validate-input m-b-16">
                             <input class="input100 input-register" type="password" name="reg_password" value="{{ old('password') }}" placeholder="&#xf084;  Password" data-required = "Password is required" data-type="Password at least 8 character">
                             <span class="focus-input100"></span>
@@ -115,7 +115,7 @@
                             <input class="input100 input-register" type="password" name="reg_password_confirmation" value="{{ old('password_confirmation') }}" placeholder="&#xf084;  Password Confirmation" data-required = "Password confirmation is required" data-type="Password confirmation at least 8 character" data-confirmed="Password confirmation don't match">
                             <span class="focus-input100"></span>
                         </div>
-                        
+
                         <div class="flex-sb-m w-full p-t-3 p-b-24">
                             <div class="contact100-form-checkbox">
                                 <input class="input-checkbox100" id="ckb2" type="checkbox" name="reg_remember">
@@ -148,7 +148,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div id="dropDownSelect1"></div>
     <!--===============================================================================================-->
         <script src="{{ asset('auth-assets/vendor/jquery/jquery-3.2.1.min.js') }}"></script>
@@ -175,7 +175,7 @@
                 @if ($errors->default->first() == 'access_denied')
                     Swal.fire({
                         title: 'Error!',
-                        text: 'We can\'t access to your Facebook\'s information!', 
+                        text: 'We can\'t access to your Facebook\'s information!',
                         icon: 'error',
                         confirmButtonText: 'Try again!'
                     });

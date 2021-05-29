@@ -55,7 +55,7 @@ class AuthController extends Controller
 
                 return redirect(session('redirectBack'));
             }
-    
+
         } catch (Exception $exception) {
             dd($exception->getMessage());
         }

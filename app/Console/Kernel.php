@@ -60,7 +60,7 @@ class Kernel extends ConsoleKernel
                     'user_id' => 1,
                     'sub_category_id' => $subCategoryId->id
                 ]);
-                
+
                 Log::notice('Added item: ' . $title);
             }
         })->everyMinute();
