@@ -53,7 +53,7 @@
             </span>
         </div>
 
-        <!--===============================================================================================-->  
+        <!--===============================================================================================-->
         <script src="{{ asset('client-assets/vendor/jquery/jquery-3.2.1.min.js') }}"></script>
         <!--===============================================================================================-->
         <script src="{{ asset('client-assets/vendor/animsition/js/animsition.min.js') }}"></script>
@@ -63,24 +63,7 @@
         <!--===============================================================================================-->
         {{-- <script src="{{ asset('client-assets/vendor/fancybox/jquery.fancybox.min.js') }}"></script> --}}
         <!--===============================================================================================-->
-        <!-- The core Firebase JS SDK is always required and must be listed first -->
-        <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
-        <!-- TODO: Add SDKs for Firebase products that you want to use -->
-        <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
-        <script>
-        // Your web app's Firebase configuration
-            var firebaseConfig = {
-                apiKey: "AIzaSyA95mMD-7Y19ZlAkz7nLGLFt3jOaIwrpH4",
-                authDomain: "uet-news-2021.firebaseapp.com",
-                databaseURL: "https://uet-news-2021-default-rtdb.firebaseio.com",
-                projectId: "uet-news-2021",
-                storageBucket: "uet-news-2021.appspot.com",
-                messagingSenderId: "638010519609",
-                appId: "1:638010519609:web:ab6a38b0dc0d85f55edde8"
-            };
-            // Initialize Firebase
-            firebase.initializeApp(firebaseConfig);
-        </script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <!--===============================================================================================-->
         <script src="{{ asset('client-assets/js/main.js') }}"></script>
         <!-- Get location, time and weather in header-->

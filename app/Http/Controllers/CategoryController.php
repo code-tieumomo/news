@@ -13,9 +13,8 @@ class CategoryController extends Controller
 {
     public function show($slug, $subSlug = null,Request $request)
     {
-        $menuCategories = Category::limit(7)->get();
-        $categories = Category::all();
-        $popPosts = Post::orderByViews('desc', Period::pastDays(3))->limit(5)->get();
+        $categories = Category::with('subCategories.posts')->get();
+        $popPosts = Post::orderByViews('desc', Period::pastDays(3))->limit(7)->get();
 
         if (!$subSlug) {
             $category = Category::where('slug', $slug)->first();
@@ -25,7 +24,6 @@ class CategoryController extends Controller
             $posts = $category->posts()->sortByDesc('id')->paginate(8);
 
             return view('category-detail', [
-                'menuCategories' => $menuCategories,
                 'categories' => $categories,
                 'popPosts' => $popPosts,
                 'category' => $category,
@@ -36,7 +34,7 @@ class CategoryController extends Controller
             if (!$category) {
                 abort(404);
             }
-            $subCategory = SubCategory::where([
+            $subCategory = SubCategory::with('posts')->where([
                 'slug' => $subSlug,
                 'category_id' => $category->id
             ])->first();
@@ -47,7 +45,6 @@ class CategoryController extends Controller
             $posts = $subCategory->posts->paginate(8);
 
             return view('sub-category-detail', [
-                'menuCategories' => $menuCategories,
                 'popPosts' => $popPosts,
                 'category' => $category,
                 'categories' => $categories,

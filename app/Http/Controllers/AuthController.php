@@ -18,7 +18,7 @@ class AuthController extends Controller
             return redirect()->back();
         }
         if (strpos(url()->previous(), 'auth/facebook') == false) {
-            session(['redirectBack' => url()->previous()]);   
+            session(['redirectBack' => url()->previous()]);
         }
 
         return view('auth.login');
@@ -38,7 +38,7 @@ class AuthController extends Controller
         try {
             $user = Socialite::driver('facebook')->user();
             $isUser = User::where('fb_id', $user->id)->first();
-     
+
             if ($isUser) {
                 Auth::login($isUser, true);
 

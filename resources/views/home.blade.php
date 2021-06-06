@@ -18,12 +18,12 @@
                 </span>
             </div>
 
-            <div class="pos-relative size-a-2 bo-1-rad-22 of-hidden bocl11 m-tb-6">
+            <form action="/search" class="pos-relative size-a-2 bo-1-rad-22 of-hidden bocl11 m-tb-6">
                 <input class="f1-s-1 cl6 plh9 s-full p-l-25 p-r-45" type="text" name="search" placeholder="Search">
                 <button class="flex-c-c size-a-1 ab-t-r fs-20 cl2 hov-cl10 trans-03">
                     <i class="zmdi zmdi-search"></i>
                 </button>
-            </div>
+            </form>
         </div>
     </div>
 @endsection
@@ -34,22 +34,85 @@
         <div class="container">
             <div class="row m-rl--1">
                 <div id="feature-post-0" class="col-md-6 p-rl-1 p-b-2">
-                    
+                    @php
+                        $firstPost = $lastestPosts->take(1)->first();
+                    @endphp
+                    <div class="bg-img1 size-a-3 how1 pos-relative" style="background-image: url('{{ $firstPost->thumbnail }}');">
+                        <a href="/posts/{{ $firstPost->slug }}" class="dis-block how1-child1 trans-03"></a>
+
+                        <div class="flex-col-e-s s-full p-rl-25 p-tb-20">
+                            <a href="/categories/{{ $firstPost->subCategory->category->slug }}" class="dis-block how1-child2 f1-s-2 cl0 bo-all-1 bocl0 hov-btn1 trans-03 p-rl-5 p-t-2">
+                                {{ $firstPost->subCategory->category->name }}
+                            </a>
+
+                            <h3 class="how1-child2 m-t-14 m-b-10">
+                                <a href="/posts/{{ $firstPost->slug }}" class="how-txt1 size-a-6 f1-l-1 cl0 hov-cl10 trans-03">
+                                    {{ $firstPost->title }}
+                                </a>
+                            </h3>
+
+                            <span class="how1-child2">
+                                <span class="f1-s-4 cl11">
+                                    <i class="fa fa-pencil"></i> {{ $firstPost->user->name }}
+                                </span>
+
+                                <span class="f1-s-3 cl11 m-rl-3">
+                                    -
+                                </span>
+
+                                <span class="f1-s-3 cl11">
+                                    <i class="fa fa-calendar-o"></i> {{ $firstPost->created_at->toFormattedDateString() }}
+                                </span>
+                            </span>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="col-md-6 p-rl-1">
                     <div class="row m-rl--1">
                         <div id="feature-post-1" class="col-12 p-rl-1 p-b-2">
-                            
+                            @php
+                                $secondPost = $lastestPosts->skip(1)->take(1)->first();
+                            @endphp
+                            <div class="bg-img1 size-a-4 how1 pos-relative" style="background-image: url('{{ $secondPost->thumbnail }}');">
+                                <a href="/posts/{{ $secondPost->slug }}" class="dis-block how1-child1 trans-03"></a>
+
+                                <div class="flex-col-e-s s-full p-rl-25 p-tb-24">
+                                    <a href="/categories/{{ $secondPost->subCategory->category->slug }}" class="dis-block how1-child2 f1-s-2 cl0 bo-all-1 bocl0 hov-btn1 trans-03 p-rl-5 p-t-2">
+                                        {{ $secondPost->subCategory->category->name }}
+                                    </a>
+
+                                    <h3 class="how1-child2 m-t-14">
+                                        <a href="/posts/{{ $secondPost->slug }}" class="how-txt1 size-a-7 f1-l-2 cl0 hov-cl10 trans-03">
+                                            {{ $secondPost->title }}
+                                        </a>
+                                    </h3>
+                                </div>
+                            </div>
                         </div>
 
+                        @php
+                            $anotherPosts = $lastestPosts->skip(2)->take(2);
+                        @endphp
+                        @foreach ($anotherPosts as $post)
                         <div id="feature-post-2" class="col-sm-6 p-rl-1 p-b-2">
+                            <div class="bg-img1 size-a-5 how1 pos-relative" style="background-image: url('{{ $post->thumbnail }}');">
+                                <a href="/posts/{{ $post->slug }}" class="dis-block how1-child1 trans-03"></a>
 
+                                <div class="flex-col-e-s s-full p-rl-25 p-tb-24">
+                                    <a href="/categories/{{ $post->subCategory->category->slug }}" class="dis-block how1-child2 f1-s-2 cl0 bo-all-1 bocl0 hov-btn1 trans-03 p-rl-5 p-t-2">
+                                        {{ $post->subCategory->category->name }}
+                                    </a>
+
+                                    <h3 class="how1-child2 m-t-14">
+                                        <a href="/posts/{{ $post->slug }}" class="how-txt1 size-a-7 f1-l-2 cl0 hov-cl10 trans-03">
+                                            {{ $post->title }}
+                                        </a>
+                                    </h3>
+                                </div>
+                            </div>
                         </div>
-
-                        <div id="feature-post-3" class="col-sm-6 p-rl-1 p-b-2">
-
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -103,7 +166,7 @@
                                         <div class="tab-pane fade show @if ($loop->first) active @endif" id="tab{{ $category->id }}-{{ $subCategory->id }}" role="tabpanel">
                                             <div class="row">
                                                 <div class="col-sm-6 p-r-25 p-r-15-sr991">
-                                                    <!-- Item post -->  
+                                                    <!-- Item post -->
                                                     <div class="m-b-30">
                                                         <a href="{{ route('posts.show', ['slug' => $subCategory->posts->first()->slug]) }}" class="wrap-pic-w hov1 trans-03">
                                                             <img src="{{ $subCategory->posts->first()->thumbnail }}" alt="IMG">
@@ -135,7 +198,7 @@
 
                                                 <div class="col-sm-6 p-r-25 p-r-15-sr991">
                                                     @foreach ($subCategory->posts->skip(1)->take(3) as $post)
-                                                        <!-- Item post -->  
+                                                        <!-- Item post -->
                                                         <div class="flex-wr-sb-s m-b-30">
                                                             <a href="{{ route('posts.show', ['slug' => $post->slug]) }}" class="size-w-1 wrap-pic-w hov1 trans-03">
                                                                 <img src="{{ $post->thumbnail }}" alt="IMG">
@@ -300,7 +363,7 @@
                         </h3>
 
                         <!--  -->
-                        <a href="category-01.html" class="f1-s-1 cl9 hov-cl10 trans-03" style="min-width: 70px;">
+                        <a href="/lastest-posts" class="f1-s-1 cl9 hov-cl10 trans-03" style="min-width: 70px;">
                             View all
                             <i class="fs-12 m-l-5 fa fa-caret-right"></i>
                         </a>
@@ -309,7 +372,7 @@
                     <div class="row p-t-35">
                         @foreach ($lastestPosts as $post)
                            <div class="col-sm-4 p-r-25 p-r-15-sr991">
-                                <!-- Item latest -->    
+                                <!-- Item latest -->
                                 <div class="m-b-45">
                                     <a href="{{ route('posts.show', ['slug' => $post->slug]) }}" class="wrap-pic-w hov1 trans-03">
                                         <img src="{{ $post->thumbnail }}" alt="IMG">
@@ -349,140 +412,7 @@
                         @endforeach
                     </div>
                 </div>
-
-                {{-- <div class="col-md-10 col-lg-4">
-                    <div class="p-l-10 p-rl-0-sr991 p-b-20">
-                        <!-- Top writer -->
-                        <div class="p-b-55">
-                            <div class="how2 how2-cl4 flex-s-c">
-                                <h3 class="f1-m-2 cl3 tab01-title" style="width: 100%;">
-                                    Top Writers
-                                </h3>
-
-                                <!--  -->
-                                <a href="category-01.html" class="tab01-link f1-s-1 cl9 hov-cl10 trans-03" style="min-width: 70px;">
-                                    View all
-                                    <i class="fs-12 m-l-5 fa fa-caret-right"></i>
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- Top Writer -->
-                        <div class="p-b-55">
-                            <div class="flex-wr-s-s m-rl--5">
-                                @foreach ($topWriters as $writer)
-                                    <a href="#" class="flex-c-c size-h-2 bo-1-rad-20 bocl12 f1-s-1 cl8 hov-btn2 trans-03 p-rl-20 p-tb-5 m-all-5">
-                                        {{ $writer->name }}
-                                    </a>
-                                @endforeach
-                            </div>  
-                        </div>
-
-                        <!-- Subscribe -->
-                        <div class="bg10 p-rl-35 p-t-28 p-b-35 m-b-55">
-                            <h5 class="f1-m-5 cl0 p-b-10">
-                                Subscribe
-                            </h5>
-
-                            <p class="f1-s-1 cl0 p-b-25">
-                                Get all latest content delivered to your email a few times a month.
-                            </p>
-
-                            <form class="size-a-9 pos-relative">
-                                <input class="s-full f1-m-6 cl6 plh9 p-l-20 p-r-55" type="text" name="email" placeholder="Email">
-
-                                <button class="size-a-10 flex-c-c ab-t-r fs-16 cl9 hov-cl10 trans-03">
-                                    <i class="fa fa-arrow-right"></i>
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </div> --}}
             </div>
         </div>
     </section>
-@endsection
-
-@section('custom-js')
-    <script type="text/javascript">
-        //Feature Posts
-        var database = firebase.database();
-
-        var featurePostsRef = database.ref('featurePosts');
-        featurePostsRef.on('value', (snapshot) => {
-            const featurePosts = snapshot.val();
-            Object.entries(featurePosts).forEach(function(post, order) {
-                if (order == 0) {
-                    var html = `
-                        <div class="bg-img1 size-a-3 how1 pos-relative" style="background-image: url('${post[1].thumbnail}');">
-                            <a href="posts/${post[1].slug}" class="dis-block how1-child1 trans-03"></a>
-
-                            <div class="flex-col-e-s s-full p-rl-25 p-tb-20">
-                                <a href="#" class="dis-block how1-child2 f1-s-2 cl0 bo-all-1 bocl0 hov-btn1 trans-03 p-rl-5 p-t-2">
-                                    ${post[1].subCategory}
-                                </a>
-
-                                <h3 class="how1-child2 m-t-14 m-b-10">
-                                    <a href="posts/${post[0]}" class="how-txt1 size-a-6 f1-l-1 cl0 hov-cl10 trans-03">
-                                        ${post[1].title}
-                                    </a>
-                                </h3>
-
-                                <span class="how1-child2">
-                                    <span class="f1-s-4 cl11">
-                                        ${post[1].writer}
-                                    </span>
-
-                                    <span class="f1-s-3 cl11 m-rl-3">
-                                        -
-                                    </span>
-
-                                    <span class="f1-s-3 cl11">
-                                        ${post[1].time}
-                                    </span>
-                                </span>
-                            </div>
-                        </div>
-                    `;
-                } else if (order == 1) {
-                    var html = `
-                        <div class="bg-img1 size-a-4 how1 pos-relative" style="background-image: url('${post[1].thumbnail}');">
-                            <a href="posts/${post[1].slug}" class="dis-block how1-child1 trans-03"></a>
-
-                            <div class="flex-col-e-s s-full p-rl-25 p-tb-24">
-                                <a href="#" class="dis-block how1-child2 f1-s-2 cl0 bo-all-1 bocl0 hov-btn1 trans-03 p-rl-5 p-t-2">
-                                    ${post[1].subCategory}
-                                </a>
-
-                                <h3 class="how1-child2 m-t-14">
-                                    <a href="posts/${post[0]}" class="how-txt1 size-a-7 f1-l-2 cl0 hov-cl10 trans-03">
-                                        ${post[1].title}
-                                    </a>
-                                </h3>
-                            </div>
-                        </div>
-                    `;
-                } else {
-                    var html = `
-                        <div class="bg-img1 size-a-5 how1 pos-relative" style="background-image: url('${post[1].thumbnail}');">
-                            <a href="posts/${post[1].slug}" class="dis-block how1-child1 trans-03"></a>
-
-                            <div class="flex-col-e-s s-full p-rl-25 p-tb-20">
-                                <a href="#" class="dis-block how1-child2 f1-s-2 cl0 bo-all-1 bocl0 hov-btn1 trans-03 p-rl-5 p-t-2">
-                                    ${post[1].subCategory}
-                                </a>
-
-                                <h3 class="how1-child2 m-t-14">
-                                    <a href="posts/${post[0]}" class="how-txt1 size-h-1 f1-m-1 cl0 hov-cl10 trans-03">
-                                        ${post[1].title}
-                                    </a>
-                                </h3>
-                            </div>
-                        </div>
-                    `;
-                }
-                $('#feature-post-' + order).html(html);
-            });
-        });
-    </script>
 @endsection

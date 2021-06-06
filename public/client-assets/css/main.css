@@ -1119,6 +1119,12 @@ a.breadcrumb-item:hover {
   color: #fff;
 }
 
+.pagi-active {
+  background-color: #17b978;
+  border-color: #17b978;
+  color: #fff;
+}
+
 
 /*==================================================================
    COLOR COLOR COLOR COLOR COLOR COLOR COLOR COLOR COLOR COLOR COLOR 

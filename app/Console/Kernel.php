@@ -31,39 +31,59 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
         $schedule->call(function () {
-            $feed = FeedsFacade::make('https://vietnamnet.vn/rss/tin-moi-nhat.rss');
-            $items = $feed->get_items();
-            foreach ($items as $item) {
-                $subCategory = $item->get_category()->get_term();
-                $subCategoryId = Vietnamnet::where('name', $subCategory)->first();
-                if ($subCategoryId == null) {
-                    Log::warning('Skip item with wrong category: ' . $subCategory);
-                    continue;
-                }
-                $title = $item->get_title();
-                $slug = Str::slug($title, '-');
-                $post = Post::where('slug', $slug)->first();
-                if ($post) {
-                    Log::warning('Skip duplicate item : ' . $title);
-                    continue;
-                }
-                $sumary = $item->get_description();
-                $content = $item->get_content();
-                $thumbnail = $item->get_enclosure()->get_link();
+            $feedUrls = [
+                'https://vietnamnet.vn/rss/thoi-su-chinh-tri.rss',
+                'https://vietnamnet.vn/rss/talkshow.rss',
+                'https://vietnamnet.vn/rss/thoi-su.rss',
+                'https://vietnamnet.vn/rss/kinh-doanh.rss',
+                'https://vietnamnet.vn/rss/giai-tri.rss',
+                'https://vietnamnet.vn/rss/the-gioi.rss',
+                'https://vietnamnet.vn/rss/giao-duc.rss',
+                'https://vietnamnet.vn/rss/doi-song.rss',
+                'https://vietnamnet.vn/rss/phap-luat.rss',
+                'https://vietnamnet.vn/rss/the-thao.rss',
+                'https://vietnamnet.vn/rss/cong-nghe.rss',
+                'https://vietnamnet.vn/rss/suc-khoe.rss',
+                'https://vietnamnet.vn/rss/bat-dong-san.rss',
+                'https://vietnamnet.vn/rss/ban-doc.rss',
+                'https://vietnamnet.vn/rss/tuanvietnam.rss',
+                'https://vietnamnet.vn/rss/oto-xe-may.rss',
+                'https://vietnamnet.vn/rss/goc-nhin-thang.rss',
+                'https://vietnamnet.vn/rss/tin-moi-nong.rss',
+                'https://vietnamnet.vn/rss/tin-moi-nhat.rss'
+            ];
+            foreach ($feedUrls as $url) {
+                $feed = FeedsFacade::make($url);
+                $items = $feed->get_items();
+                foreach ($items as $item) {
+                    $subCategoryId = rand(1, 112);
+                    $title = $item->get_title();
+                    $slug = Str::slug($title, '-');
+                    $post = Post::where('slug', $slug)->first();
+                    if ($post) {
+                        Log::warning('Skip duplicate item : ' . $title);
+                        continue;
+                    }
+                    $sumary = $item->get_description();
+                    $content = $item->get_content();
+                    $thumbnail = $item->get_enclosure()->get_link();
 
-                Post::create([
-                    'title' => $title,
-                    'sumary' => $sumary,
-                    'content' => $content,
-                    'thumbnail' => $thumbnail,
-                    'slug' => Str::slug($title, '-'),
-                    'user_id' => 1,
-                    'sub_category_id' => $subCategoryId->id
-                ]);
+                    Post::create([
+                        'title' => $title,
+                        'sumary' => $sumary,
+                        'content' => $content,
+                        'thumbnail' => $thumbnail,
+                        'slug' => Str::slug($title, '-'),
+                        'user_id' => 1,
+                        'sub_category_id' => $subCategoryId
+                    ]);
 
-                Log::notice('Added item: ' . $title);
+                    Log::notice('Added item: ' . $title);
+                }
             }
         })->everyMinute();
+
+        // * * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1
     }
 
     /**

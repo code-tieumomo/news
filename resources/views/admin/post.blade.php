@@ -15,7 +15,7 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a><i class="fe fe-layout  mr-2 fs-14"></i>CRUD</a></li>
                 <li class="breadcrumb-item"><a></i>Posts</a></li>
-                <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('posts.index') }}">Posts</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('manage-posts.index') }}">Posts</a></li>
             </ol>
         </div>
     </div>
@@ -43,11 +43,14 @@
                                 @foreach ($posts as $post)
                                     <tr id="{{ $post->id }}">
                                         <td>{{ $post->id }}</td>
-                                        <td data-id="{{ $post->id }}" data-title="{{ $post->title }}" class="show-post-detail">
+                                        <td data-slug="{{ $post->slug }}" data-title="{{ $post->title }}" class="show-post-detail">
                                             <b>{{ $post->title }}</b>
                                         </td>
                                         <td>{{ $post->user->name }}</td>
-                                        <td><a data-id="{{ $post->id }}" class="btn btn-danger btn-delete">Delete</a></td>
+                                        <td>
+                                            <a href="/admin/manage-posts/{{ $post->id }}" class="btn btn-info"><i class="fa fa-pencil-square-o"></i> Edit</a>
+                                            <a data-id="{{ $post->id }}" class="btn btn-danger btn-delete"><i class="fa fa-trash-o"></i> Delete</a>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -88,8 +91,8 @@
 
         $('#tbl-posts').on('click', '.show-post-detail', function(event) {
             event.preventDefault();
-            
-            var id = $(this).data('id');
+
+            var slug = $(this).data('slug');
             Swal.fire({
                 title: 'View post detail?',
                 icon: 'info',
@@ -100,7 +103,7 @@
                 confirmButtonText: 'Yes, view post!'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.href = '/admin/posts/' + id;
+                    window.open('/posts/' + slug, '_blank');
                 }
             });
         });
@@ -125,7 +128,7 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({
-                        url: '/admin/posts/' + id,
+                        url: '/admin/manage-posts/' + id,
                         type: 'DELETE',
                         data: {
                             _token: '{{ csrf_token() }}',

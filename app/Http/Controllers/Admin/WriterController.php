@@ -17,7 +17,7 @@ class WriterController extends Controller
      */
     public function index()
     {
-        $writers = User::where('role_id', 2)->orderBy('id', 'desc')->get();
+        $writers = User::role('writer')->orderBy('id', 'desc')->get();
 
         return view('admin.writer', [
             'writers' => $writers

@@ -90,7 +90,7 @@
                                 <li><a id="sub-menu-writer" href="{{ route('writers.index') }}" class="slide-item">Writers</a></li>
                             </ul>
 
-                            <a id="menu-post" class="side-menu__item" href="">
+                            <a id="menu-post" class="side-menu__item" href="{{ route('manage-posts.index') }}">
                                 <img class="side-menu__icon" src="{{ asset('admin-assets/images/icons/posts.png') }}" width="24px"/>
                                 <span class="side-menu__label">Posts</span>
                             </a>
@@ -200,28 +200,6 @@
                 z-index: 10000;
             }
         </style>
-
-        {{-- Firebase --}}
-        <!-- The core Firebase JS SDK is always required and must be listed first -->
-        <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
-
-        <!-- TODO: Add SDKs for Firebase products that you want to use -->
-        <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
-
-        <script>
-        // Your web app's Firebase configuration
-            var firebaseConfig = {
-                apiKey: "AIzaSyA95mMD-7Y19ZlAkz7nLGLFt3jOaIwrpH4",
-                authDomain: "uet-news-2021.firebaseapp.com",
-                databaseURL: "https://uet-news-2021-default-rtdb.firebaseio.com",
-                projectId: "uet-news-2021",
-                storageBucket: "uet-news-2021.appspot.com",
-                messagingSenderId: "638010519609",
-                appId: "1:638010519609:web:ab6a38b0dc0d85f55edde8"
-            };
-            // Initialize Firebase
-            firebase.initializeApp(firebaseConfig);
-        </script>
 
         @yield('custom-js')
 

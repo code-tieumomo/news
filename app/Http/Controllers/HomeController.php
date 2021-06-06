@@ -31,9 +31,8 @@ class HomeController extends Controller
             'Smile, breathe, and go slowly. - Thich Nhat Hanh',
             'Well begun is half done. - Aristotle',
         ]);
-        $popPosts = Post::orderByViews('desc', Period::pastDays(3))->limit(5)->get();
-        $lastestPosts = Post::with('subCategory.category', 'user')->orderBy('id', 'desc')->limit(6)->get();
-        // $topWriters = User::role('writer')->limit(10)->get();
+        $popPosts = Post::orderByViews('desc', Period::pastDays(3))->limit(7)->get();
+        $lastestPosts = Post::with('subCategory.category', 'user')->orderBy('id', 'desc')->limit(12)->get();
         $categories = Category::with('subCategories.posts')->get();
 
         return view('home', [

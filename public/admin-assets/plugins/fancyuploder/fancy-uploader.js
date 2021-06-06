@@ -4,6 +4,6 @@
 	params : {
 		 action : 'fileuploader'
 		},
-		maxfilesize : 1000000
+		maxfilesize : 1024000
 	});
 })(jQuery);

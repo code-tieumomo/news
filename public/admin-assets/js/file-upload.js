@@ -15,7 +15,8 @@ $(document).on('change', ':file', function() {
 		  if( input.length ) {
 			  input.val(log);
 		  } else {
-			  if( log ) alert(log);
+			  // if( log )
+			  // 	alert(log);
 		  }
 
 	  });

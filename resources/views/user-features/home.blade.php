@@ -2,6 +2,16 @@
 
 @section('title', 'Account | User Features')
 
+@section('custom-css')
+    <!-- Data table css -->
+    <link href="{{ asset('admin-assets/plugins/datatable/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('admin-assets/plugins/datatable/css/buttons.bootstrap4.min.css') }}"  rel="stylesheet">
+    <link href="{{ asset('admin-assets/plugins/datatable/responsive.bootstrap4.min.css') }}" rel="stylesheet" />
+
+    <!-- INTERNAL Prism Css -->
+    <link href="{{ asset('admin-assets/plugins/prism/prism.css') }}" rel="stylesheet">
+@endsection
+
 @section('content')
     <!--Page header-->
     <div class="page-header">
@@ -114,12 +124,12 @@
                             </thead>
                             <tbody>
                                 @foreach ($comments as $comment)
-                                    <tr>
+                                    <tr id="{{ $comment->id }}">
                                         <td class="text-comment" data-id={{ $comment->post_id . '-' . Auth::id() }}>{{ $comment->content }}</td>
                                         <td>{{ $comment->updated_at }}</td>
                                         <td class="number-font"><a href="/posts/{{ $comment->post->slug }}"><span class="badge badge-primary">View post</span></a></td>
-                                        <td><a href="#" class="btn-edit" data-comment="{{ $comment->content }}" data-post="{{ $comment->post_id }}"><i class="fa fa-edit mr-1 text-warning"></i> Edit</a></td>
-                                        <td><a href="#" class="btn-delete"><i class="fa fa-trash mr-1 text-danger"></i> Delete</a></td>
+                                        <td><a href="#" class="btn-edit" data-post="{{ $comment->post_id }}"><i class="fa fa-edit mr-1 text-warning"></i> Edit</a></td>
+                                        <td><a href="#" data-id="{{ $comment->id }}" class="btn-delete"><i class="fa fa-trash mr-1 text-danger"></i> Delete</a></td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -152,6 +162,24 @@
 @endsection
 
 @section('custom-js')
+    <!-- INTERNAL Data tables -->
+    <script src="{{ asset('admin-assets/plugins/datatable/js/jquery.dataTables.js') }}"></script>
+    <script src="{{ asset('admin-assets/plugins/datatable/js/dataTables.bootstrap4.js') }}"></script>
+    <script src="{{ asset('admin-assets/plugins/datatable/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('admin-assets/plugins/datatable/js/buttons.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('admin-assets/plugins/datatable/js/jszip.min.js') }}"></script>
+    <script src="{{ asset('admin-assets/plugins/datatable/js/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('admin-assets/plugins/datatable/js/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('admin-assets/plugins/datatable/js/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('admin-assets/plugins/datatable/js/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('admin-assets/plugins/datatable/js/buttons.colVis.min.js') }}"></script>
+    <script src="{{ asset('admin-assets/plugins/datatable/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('admin-assets/plugins/datatable/responsive.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('admin-assets/js/datatables.js') }}"></script>
+
+    <!-- INTERNAL Prism js -->
+    <script src="{{ asset('admin-assets/plugins/prism/prism.js') }}"></script>
+
     <script>
         $('#tbl-comments').DataTable({
             language: {
@@ -176,7 +204,7 @@
                 }
             }
 
-            if ($(input).val().length <= 0) {
+            if ($(input).val() == undefined || $(input).val().length <= 0) {
                 $(input).focus();
 
                 return $(input).data('required');
@@ -237,10 +265,13 @@
             let newPassword = $('input[name=new-password]').val().trim();
             let confirmPassword = $('input[name=confirm-password]').val().trim();
             $.ajax({
-                url: '/user-features/password/' + currentPassword + '/' + newPassword + '/' + confirmPassword,
+                url: '/user-features/password',
                 type: 'PUT',
                 data: {
                     _token: '{{ csrf_token() }}',
+                    currentPassword: currentPassword,
+                    newPassword: newPassword,
+                    confirmPassword: confirmPassword
                 },
             })
             .done(function() {
@@ -249,6 +280,9 @@
                     text: 'Updated your password!',
                     icon: 'success'
                 });
+                $('input[name=current-password]').val('');
+                $('input[name=new-password]').val('');
+                $('input[name=confirm-password]').val('');
             })
             .fail(function() {
                 Swal.fire({
@@ -267,10 +301,11 @@
 
             let name = $('input[name=name]').val().trim();
             $.ajax({
-                url: '/user-features/infomations/' + name,
+                url: '/user-features/infomations',
                 type: 'PUT',
                 data: {
                     _token: '{{ csrf_token() }}',
+                    name: name
                 },
             })
             .done(() => {
@@ -293,7 +328,7 @@
         $('#tbl-comments').on('click', '.btn-edit', function(event) {
             event.preventDefault();
 
-            $('input[name=comment]').val($(this).data('comment'));
+            $('input[name=comment]').val($(this).parent().parent().find('.text-comment').text());
             $('input[name=post-id]').val($(this).data('post'));
             $('#modal-edit-comment').modal('show');
         });
@@ -307,10 +342,12 @@
             let comment = $('input[name=comment]').val();
             let postId = $('input[name=post-id]').val();
             $.ajax({
-                url: '/user-features/comments/' + comment + '/' + postId,
+                url: '/user-features/comments',
                 type: 'PUT',
                 data: {
                     _token: '{{ csrf_token() }}',
+                    comment: comment,
+                    postId: postId
                 },
             })
             .done(() => {
@@ -319,7 +356,7 @@
                     text: 'Updated your comments!',
                     icon: 'success'
                 });
-                $('td[data-id=' + postId + '-{{ Auth::id() }}]').html(comment);
+                $('td[data-id=' + postId + '-{{ Auth::id() }}]').text(comment);
             })
             .fail(() => {
                 Swal.fire({
@@ -327,6 +364,46 @@
                     text: 'Some thing went wrong! Try again',
                     icon: 'error'
                 });
+            });
+        });
+
+        $('#tbl-comments').on('click', '.btn-delete', function(event) {
+            event.preventDefault();
+
+            let id = $(this).data('id');
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: '/user-features/comments/' + id,
+                        type: 'DELETE',
+                        data: {
+                            _token: '{{ csrf_token() }}',
+                        },
+                    })
+                    .done(() => {
+                        Swal.fire({
+                            title: 'Deleted!',
+                            text: 'Deleted your comments!',
+                            icon: 'success'
+                        });
+                        $('#' + id).remove();
+                    })
+                    .fail(() => {
+                        Swal.fire({
+                            title: 'Failed!',
+                            text: 'Some thing went wrong! Try again',
+                            icon: 'error'
+                        });
+                    });
+                }
             });
         });
     </script>

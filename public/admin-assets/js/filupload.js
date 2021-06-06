@@ -1,7 +1,7 @@
 $('.dropify').dropify({
 	messages: {
-		'default': 'Drag and drop a file here or click',
-		'replace': 'Drag and drop or click to replace',
+		'default': 'Click to upload file',
+		'replace': 'Click to replace file',
 		'remove': 'Remove',
 		'error': 'Ooops, something wrong appended.'
 	},

@@ -757,7 +757,7 @@ class Connection implements ConnectionInterface
             //     'time' => $duration,
             //     'message' => 'success'
             // ]);
-            Storage::disk('local')->append('logs/queries.log', '▶ [' . Carbon::now() . '] "' . \Request::ip() . '" run Query: ' . Str::replaceArray('?', $bindings, $query) . ' - in ' . $duration . ' s');
+            // Storage::disk('local')->append('logs/queries.log', '▶ [' . Carbon::now() . '] "' . \Request::ip() . '" run Query: ' . Str::replaceArray('?', $bindings, $query) . ' - in ' . $duration . ' s');
             // }
         }
 

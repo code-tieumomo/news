@@ -1,0 +1,607 @@
+RecID,appID,question,answer,author,createdDate,updatedDate,status,order
+1, com.facebook.katana,What is Facebook?,"Facebook is a website which allows users, who sign-up for free profiles, to connect with friends, work colleagues or people they don’t know, online. It allows users to share pictures, music, videos, and articles, as well as their own thoughts and opinions with however many people they like. ",Quan Hoc Gioi,2021-06-03 11:31:50,2021-06-03 11:31:50,1,1
+2, com.facebook.katana,How to use Facebook?,"1. Open Facebook. Go to https://www.facebook.com/ in your computer's web browser, or tap the Facebook app icon if you're on mobile. This will bring you to the Facebook login page if you aren't currently logged into a Facebook account.
+2. Create a Facebook account. 
+3. Add a profile and cover picture
+4. Edit your account information
+5. Adding Friends
+6. Making Posts 
+Doing More with Facebook: 
+Like,comment or share your friends' posts. Add GIFs to Facebook. Chat with your friends,....",Quan Hoc Gioi,2021-06-04 11:31:50,2021-06-04 11:31:50,1,1
+3, com.facebook.katana,How to Log in to Facebook,"1. Go to facebook.com. Click Email or Phone Number and enter one of the following:
+Email: You can log in with any email that's listed on your Facebook account.
+Phone Number: If you have a mobile number confirmed on your account, you can enter it here (don't add any zeros before the country code, or any symbols).
+Username: You can also log in with your username, if you set one up.
+2. Click Password and enter your password.
+3. Click Log In.",Quan Hoc Gioi,2021-06-05 11:31:50,2021-06-05 11:31:50,1,1
+4, com.facebook.katana,How to create a facebook account,"Note: you must be at least 13 years old to create a Facebook account.
+To create a Facebook account:
+1. Open Facebook app on your phone and click Create Facebook Account. Then click Next.
+2. Enter your first and last name, your date of birth', your gender.
+Enter your mobile number for verification.
+3.Choose a password.
+4. Finally, click on Register. If there is a problem with your password, the system will ask you to go back and change it.",Quan Hoc Gioi,2021-06-06 11:31:50,2021-06-06 11:31:50,1,1
+5, com.facebook.katana,How to update name on your Facebook profile?,"To change your username:
+
+1. Click dropdown icon in the top right of Facebook.
+2. Select Settings & Privacy, then click Settings.
+3.Click Username.
+4. Enter your new username and your password, then click Save Changes.
+Usernames must consist of alphanumeric characters (a–z, 0–9) or periods (""."").",Quan Hoc Gioi,2021-06-07 11:31:50,2021-06-07 11:31:50,1,1
+6,com.google.android.youtube,Advantages and disadvantages of Facebook ,"Advantaged
+- Facebook for Networking: Facebook is arguably the most powerful social media and social networking site out there. You can use Facebook to connect with your family, friends, work colleagues, and you can even meet new people on Facebook.
+- Facebook for Dating: With a social network powered by over 1 billion active users, it’s easy to find a date that shares common interests and hobbies.
+Finding dates in this way, much of the time you won’t get into incompatibility issues. 
+- Facebook for Business: Anyone can take advantage of Facebook to maintain a good relationship with others who identify with certain tastes or products. This is very important because as a business, you can sell or promote a product/service to a highly targeted audience, thus increasing the possibilities of making money on the internet.
+- Facebook Video Chatting: Facebook can also be used as a video chat tool. Now you can make video calls to your friends using Facebook’s inbuilt video chat service.
+- Facebook for Image and Video Hosting: You can also use Facebook as a site to host images and videos. You can set privacy levels for individual albums to control who can see what you share.
+- Facebook for News & Information: The real advantage of Facebook is that it’s a real-time social networking site. This makes it one of the best sources to stay updated with the latest news and information. Major news usually goes viral on Facebook, and most brands use it to announce important things regarding their products/services.
+
+Disadvantages
+- Facebook Privacy: One of the major concerns and disadvantages of Facebook has to do with Facebook’s privacy.
+Here’s a good rule:
+Never give out too much personal information.
+All throughout the internet, we should always keep in mind the privacy of our personal data. 
+- Private Status Published Publicly: Even though Facebook has simplified its privacy settings, many unknowing users still end up publishing private images and status updates publicly and this helps Facebook stalkers find more information about you.
+- Fake Facebook Profiles: Facebook is full of fake profiles. There is no limit to these profiles. Most of them are created by stalkers or marketers looking to gain more friends and use it for their marketing purposes.
+- Time-consuming: Facebook offers many entertainment applications and games which engage users to a great extent. Apart from that, Facebook chat and Facebook video chat are another two time-consuming features.
+
+",Quan Hoc Gioi,2021-06-08 11:31:50,2021-06-08 11:31:50,1,1
+7,com.google.android.youtube,How to change or reset Facebook password,"Change Your Password
+To change your password on Facebook if you're already logged in:
+
+1. Click dropdown icon in the top right of Facebook.
+2. Select Settings & Privacy, then click Settings.
+3. Click Security and Login.
+4. Click Edit next to Change password.
+5. Enter your current password and new password.
+6. Click Save Changes.
+
+Reset Your Password
+If you're logged in but have forgotten your password, follow the steps under Change Your Password then click Forgot your password? and follow the steps to reset it. Keep in mind that you'll need access to the email associated with your account.
+To reset your password if you're not logged in to Facebook:
+1. Go to the Find Your Account Page.(https://www.facebook.com/login/identify)
+2. Type the email, mobile phone number, full name or username associated with your account, then click Search.
+3. Follow the on-screen instructions.",Quan Hoc Gioi,2021-06-09 11:31:50,2021-06-09 11:31:50,1,1
+8,com.google.android.youtube,How to install Facebook on your smartphone,"You can download Facebook by following in 3 ways:
+1.Directly on downloadAPK in this link: https://downloadapk.net/Facebook.html 
+2.On Google Play Store:
+- Open Google Play on your phone
+- Search for “Facebook"""" in the search bar. Tap the search tool (magnifying glass icon) at the top-right corner of Google Play and type in “Facebook” Press “OK” on your keyboard to start searching.
+- Access the app’s information page. The official website should be the first app to come out in the list. Tap it.
+- Tap on the Install button, then touch Accept with Facebook's permissions.
+3.On Appstore with link: https://apps.apple.com/us/app/facebook/id284882215 ",Quan Hoc Gioi,2021-06-10 11:31:50,2021-06-10 11:31:50,1,1
+9,com.google.android.youtube,How to upload video/photo with status on Facebook,"1. Open the Facebook app on your smartphone and touch or select your name or page name.
+2. Touch or select ""Status"" and enter your status update using your phone keyboard. Select the camera icon below the text entry box.
+3. Touch or select ""Take Photo or Video"" to take a new photo or ""Choose From Library"" to upload a photo taken previously.
+4. Take a photo or select one from your photo album and choose ""Attach"" to add it to your status. Optionally, add your location by selecting the map pin icon.
+5. Touch or select ""Post"" to update your status with the photo attached.",Quan Hoc Gioi,2021-06-11 11:31:50,2021-06-11 11:31:50,1,1
+10,com.google.android.youtube,How to find and add friend on Facebook,"1. Open Facebook app on your phone. This will open your Facebook News Feed if you're already logged into Facebook on your phone or tablet (If you aren't logged into Facebook, enter your email address (or phone number) and password to continue)
+2. Tap the ""Search"" bar. It's at the top of the screen.
+3. Search for a friend you want to add. Type in a person's name, then tap their name when it appears below the ""Search"" field. This will take you to their profile.
+4. Tap Add Friend. Doing so will send them a friend request; if they accept it, they will be added to your friends list.",Quan Hoc Gioi,2021-06-12 11:31:50,2021-06-12 11:31:50,1,1
+11,com.google.android.youtube,What is Youtube?,"YouTube is an online video sharing and social media platform owned by Google. Around the world, its users watch more than one billion hours of YouTube videos each day. YouTube creators, popularly referred to as YouTubers, upload over one hundred hours of content per minute. In 2005, Youtube.com was launched by Steve Chen, Chad Hurley, and Jawed Karim.",Quan Hoc Gioi,2021-06-13 11:31:50,2021-06-13 11:31:50,1,1
+12,com.google.android.youtube,How to use YouTube,"1.Go to the YouTube website. (You don’t need to create an account to watch most videos).
+2. Scroll down until you see a video you’d like to watch, simply click on the image of that show. Video will start immediately. 
+Beneath the screen, you’ll see controls that you can click to pause the video and control the volume. There are three display settings for YouTube videos. Your video will start in ‘shrink’ mode - which only provides a small video window.  
+3. To get a bigger picture you can click on ‘expand’ which allows the video to expand to take up the width of your screen but leaves your browser window etc visible.
+4. You can also change the quality of the video – if, for example, you have a slow internet connection or you find the video keeps stopping. Usually the auto setting will select the right quality for your system. 
+5. You can also search for a specific video by name. Type the title of the show you’d like to see into the search window at the top of the page and click the magnifying glass.
+6. Click the image. As before, the clip will begin immediately.",Quan Hoc Gioi,2021-06-14 11:31:50,2021-06-14 11:31:50,1,1
+13,com.google.android.youtube,How to install Youtube on your phone,"You can download Youtube by following in 3 ways:
+1. Directly on downloadAPK in this link: https://downloadapk.net/YouTube.html 
+2. On Google Play Store:
+- Open Google Play on your phone
+- Search for “Youtube” in the search bar. Tap the search tool (magnifying glass icon) at the top-right corner of Google Play and type in “Youtube” Press “OK” on your keyboard to start searching.
+- Access the app’s information page. The official website should be the first app to come out in the list. Tap it.
+- Tap on the Install button, then touch Accept with Youtube's permissions.
+3. On Appstore with link: https://apps.apple.com/us/app/youtube-watch-listen-stream/id544007664 ",Quan Hoc Gioi,2021-06-15 11:31:50,2021-06-15 11:31:50,1,1
+14,com.google.android.youtube,How to create a Youtube channel,"Creating a YouTube channel using your Google account
+If you have a Google account, you can watch, share and comment on YouTube content. However, Google accounts don’t automatically create YouTube channels. Getting a new channel set up is a simple and quick process, though.
+1. Head over to YouTube.com and click ‘sign in’ in the top right corner of the page. Then log in using the Google account you’d like your channel to be associated with
+2. In the top right corner of the screen, click on your profile icon and then click ""Create a channel.""
+3. Next, you’ll have the option to create a personal channel or a create a channel using a business or other name. 
+Next, you'll name your channel. After this step, you'll have the chance to further customize your channel. You'll see options for: Uploading a profile picture; Adding a description of your channel; Adding links to your sites – this can include custom links to a website or blog as well as social links to Instagram or Twitter
+
+How to create a YouTube channel if you don’t already have a Google account
+If you don’t already have a Google account set up, you’ll need to create one before you get started on YouTube. To do this, simply follow the below steps:
+1. Head to YouTube.com
+2. Click ‘Sign In’
+3. Choose the option to create a Google account
+4. Follow the steps to create your Google account
+Now, you’re all set up with a Google account and can follow the above steps to create a YouTube channel.",Quan Hoc Gioi,2021-06-16 11:31:50,2021-06-16 11:31:50,1,1
+15,com.google.android.youtube,Is Youtube free now?,"By 2020, all YouTube original series and movies will be available to YouTube users for free, as well as to Premium subscribers. People who pay for the $12-per-month YouTube Premium subscription each month will get early access to that same content, ad free, Variety reported.",Quan Hoc Gioi,2021-06-17 11:31:50,2021-06-17 11:31:50,1,1
+16,com.google.android.youtube,Why is Youtube so important?,"Video is an increasingly popular content channel for marketers, as branded video has a high impact on consumers’ purchase decision-making. 
+This makes YouTube an important platform consideration for brands, given that how-to videos are the most popular video type for US adults, and particularly for youth. It also serves as a counterpoint to trends favoring social media platforms including Facebook over video platforms such as YouTube for video distribution.",Quan Hoc Gioi,2021-06-18 11:31:50,2021-06-18 11:31:50,1,1
+17,com.google.android.youtube,How Youtube works,"How YouTube works
+YouTube began in early 2005 and has grown rapidly. Every minute, people around the world upload more than 300 hours worth of video footage to YouTube.
+YouTube has the second-largest search engine in the world, behind Google (which owns YouTube). This means people are constantly searching for information using YouTube and discovering videos relating to these topics.",Quan Hoc Gioi,2021-06-19 11:31:50,2021-06-19 11:31:50,1,1
+18,com.google.android.youtube,How to put video on Youtube,"Use the YouTube Android app to upload videos by recording a new video or selecting an existing one:
+
+1. Tap Create ""+"" icon and then Upload a video.
+2. Record a new video or select an existing video from your gallery.
+3. (Optional) Add enhancements and select NEXT:
+Trim your video  by dragging the edges of the light blue box beneath your video: Add a filter  to your video;
+4. Add your video details and select NEXT.
+5. Select “Yes, it’s made for kids"" or ""No, it’s not made for kids"" to choose your audience. Learn more about made for kids.
+6. Select ""Yes, restrict my video to viewers over 18"" or ""No, don't restrict my video to viewers over 18"" to choose your audience. Learn more about age restriction.
+7. Tap UPLOAD to publish your video.",Quan Hoc Gioi,2021-06-20 11:31:50,2021-06-20 11:31:50,1,1
+19,com.google.android.youtube,Who uses Youtube most,"77% of 15–35 year-olds in the USA use YouTube
+YouTube is most popular with users 35 and under, but only slightly. 73% of Americans aged 36 to 45 use YouTube, along with 70% of those aged 46 to 55 and 67% of those 56 and older.",Quan Hoc Gioi,2021-06-21 11:31:50,2021-06-21 11:31:50,1,1
+20,com.google.android.youtube,What are dvantages of Youtube?,"Advantages of YouTube
+- Free Learning Source: You can learn a variety of things from YouTube, like never before. There are so many tutorials shared on the website, from different food recipes to DIYs. 
+- Free Sharing of Content: The sharing of content is also free of cost. 
+- Access Anytime, Anywhere; A Place for Everyone: Another advantage of YouTube is that one can access it anywhere and anytime. YouTube is a place for everyone. You can find videos that cater to all kinds of audiences
+- Access to a Large Audience: YouTube gives you an opportunity to showcase your creativity and content to a large audience.
+- Entertainment for all: YouTube is an entertaining hub. You can find all kinds of videos here: from short skits to animated videos for your amusement.",Quan Hoc Gioi,2021-06-22 11:31:50,2021-06-22 11:31:50,1,1
+21,com.google.android.youtube,Disadvantage of Youtube,"Disadvantages of YouTube
+- Cost of Making Videos: To stay relevant and keep up with your peers, there are costs to maintain the quality of your videos like the costs of camera equipment, hiring skilled people such as video editors.
+- Copyright Infringement Issues: Anyone can access your content. With a growing audience, there could be copyright infringement issues.
+- Explicit Content: Videos on YouTube can be inappropriate for children. There is violence on some of the videos as well as explicit content is also a common sight.
+- Rules and Regulations: There are a number of rules and regulations that need to be adhered to, on YouTube which can sometimes pose a threat to the creative expression of a creator.",Quan Hoc Gioi,2021-06-23 11:31:50,2021-06-23 11:31:50,1,1
+22,com.twitter.android,What is Twitter?,Twitter is a 'microblogging' system that allows you to send and receive short posts called tweets. Tweets can be up to 140 characters long and can include links to relevant websites and resources.,Quan Hoc Gioi,2021-06-24 11:31:50,2021-06-24 11:31:50,1,1
+23,com.twitter.android,Can you use Twitter without an account?,"You can use many parts of Twitter without an account, but certain functions won't work unless you sign in.
+Things you can't do on Twitter without an account include:
+- Following accounts/creating a timeline
+- Sending your own tweets
+- Replying to, liking, and retweeting tweets
+- Using the Media and Likes tabs to see particular tweets on someone's page",Quan Hoc Gioi,2021-06-25 11:31:50,2021-06-25 11:31:50,1,1
+24,com.twitter.android,How do beginners use Twitter?,"1. Set Up Your Profile: Choose your profile name, Upload Images, Select a Color Palette, Complete Your Bio, Add Your Website
+2. Follow Some People
+3. Understand the Twitter Lingo: Hashtags, Retweets, Mentions
+4. Decide What Content to Tweet About
+5. Join Trending Hashtags
+6. Maintain Your Channel",Quan Hoc Gioi,2021-06-26 11:31:50,2021-06-26 11:31:50,1,1
+25,com.twitter.android,How do I tweet someone via direct message on Twitter?,"1. Find the tweet you want to share
+2. Tap the ‘Share’ icon if it’s on your timeline and not your tweet, or click the down arrow if it’s one of your tweets
+3. Choose the option ‘Send via Direct Message’
+4. Choose the name of the person you wish to send the message to or tap ‘Search for people and groups’ to type their name if you have many followers and want to find them faster
+5. You can choose to add a note (i.e. why you’re sending them the tweet if it needs clarification)
+6. Then tap ‘Send’",Quan Hoc Gioi,2021-06-27 11:31:50,2021-06-27 11:31:50,1,1
+26,com.twitter.android,Why do people use Twitter?,"Twitter is widely used by smartphone users who don’t want to read long content items on-screen.
+Twitter allows you to:
+- Easily promote your research
+- Reach a large number of people quickly through tweets and retweets
+- Follow the work of other experts in your field
+- Keep up-to-date with the latest news and developments, and share it with others instantly
+- Reach new audiences
+- Seek feedback about your work and give feedback to others
+- Follow and contribute to discussions on events",Quan Hoc Gioi,2021-06-28 11:31:50,2021-06-28 11:31:50,1,1
+27,com.twitter.android,Why is Twitter so popular?,"Unlike other popular social media websites, Twitter trims the fat and streamlines the process of sharing to make it the fastest avenue for spreading news and info virally. By sharing links to news articles, videos and websites, information travels as fast as fingers can type and press the “enter” key.",Quan Hoc Gioi,2021-06-29 11:31:50,2021-06-29 11:31:50,1,1
+28,com.twitter.android,How to install Twitter on your phone,"You can download Twitter by following in 3 ways:
+1. Directly on downloadAPK in this link: https://downloadapk.net/Twitter.html 
+2. On Google Play Store:
+- Open Google Play from your android device’s applications page.
+- Type ""Twitter"" into the search box.
+- Click on the first application to pop up. This will be the official Twitter application.
+- Click on ""Install."" The application is also free on Android devices.
+- Open the app. If you haven’t left the Twitter install page of Google Play, you can just tap on Open. If not, go to your list of applications and look for the icon there.
+- Log in to your Twitter account. If you don’t have an account, you will need to create one.
+3. On Appstore with link: https://apps.apple.com/us/app/twitter/id333903271 ",Quan Hoc Gioi,2021-06-30 11:31:50,2021-06-30 11:31:50,1,1
+29,com.twitter.android,Who really owns twitter?,"The wild life of billionaire Twitter CEO Jack Dorsey, who eats one meal a day, has faced attempted oustings, and had to defend his company in front of Congress. Jack Dorsey cofounded Twitter in 2006, and the company has made him a billionaire",Quan Hoc Gioi,2021-07-01 11:31:50,2021-07-01 11:31:50,1,1
+30,com.twitter.android,What are the disadvantages of using Twitter?,"- Posting limits: Twitter has a 140-character limit to its posts.  Users can only allow send a maximum of 1000 tweets a day.
+- Follower Limitations:Twitter does not limit the number of followers that can follow you. Once you have 2,000 followers, Twitter can limit the number of additional followers you can receive.
+- Spamming:  some of user are spammers who posting links with unrelated tweets, posting duplicate updates, and providing links to websites that promote phishing practices and malware. 
+- Addictive: Some twitter users may find it is difficult to walk away twitter. They will post any thing even that is not relevant or useful. ",Quan Hoc Gioi,2021-07-02 11:31:50,2021-07-02 11:31:50,1,1
+31,com.twitter.android,How to create a new account on Twitter?,"1. Download the Twitter app. If you don't already have Twitter installed on your phone, you can download it for free from the Google Play Store.
+2. Open Twitter. Tap the Twitter app icon. Tap Get started. It's in the middle of the page.
+3. Enter your name. Type your name into the ""Name"" text box near the top of the page. 
+4. Enter your phone number. Tap the ""Phone or email"" text box, then type in your phone number. Tap Next. It's in the lower-right side of the form.
+5. Tap Sign up. You'll see this option at the bottom of the screen.
+6. Verify your phone number. If you used a phone number to sign up for Twitter, you'll need to verify it by doing the following:
+- Tap OK when prompted.
+- Open your phone's Messages app.
+- Open the text message from Twitter.
+- Enter the six-digit code into the text box on Twitter. Then tap Next.
+7. Enter a password. Type in the password that you want to use, then tap Next to proceed. 
+- Sync your contacts with Twitter if you like. To allow Twitter to access your contacts, tap Sync contacts.
+- Select interests. Scroll through the list of topics and tap each one in which you're interested.
+8.Tap Next. It's near the bottom of the screen.
+- Follow people. Tap each recommended account you want to follow.
+- Tap Follow. You'll see this at the bottom of the screen. Doing so will add the selected accounts to your ""Following"" list.
+9. Complete Twitter setup. Depending on your smartphone, you may be asked if you want to allow notifications, turn on GPS access, and/or let Twitter access your photos.",Quan Hoc Gioi,2021-07-03 11:31:50,2021-07-03 11:31:50,1,1
+32,com.nexstreaming.app.kinemasterfree,What is Kinemaster?,"Kinemaster is a free and subscription-based video editing app available for both iOS and Android. In fact, the interface is similar on both devices. ",Quan Hoc Gioi,2021-07-04 11:31:50,2021-07-04 11:31:50,1,1
+33,com.nexstreaming.app.kinemasterfree,How much does KineMaster cost?,"KineMaster Pricing Plans:
+Free Trial
+Monthly Subscription: $4.99
+Annual Subscription: $39.99",Quan Hoc Gioi,2021-07-05 11:31:50,2021-07-05 11:31:50,1,1
+34,com.nexstreaming.app.kinemasterfree,How do you create video with KineMaster step by step?,"1. First and foremost, you need to install KineMaster on your Android device. It is available for free on the Google Play Store.
+2. Open the App. Tap on the red button and then on Project Assistant. This will make it easier for you to edit a video.
+3. Now, choose a video theme, such as birthday, beach etc.
+4. Select an opening, middle and an ending phrase.
+5. Choose the right background music from your personal library.
+6. The app will do its thing and create beautiful videos for you to share with your family and friends. You can also customize details to get the result you wanted.",Quan Hoc Gioi,2021-07-06 11:31:50,2021-07-06 11:31:50,1,1
+35,com.nexstreaming.app.kinemasterfree,How to download Kinemaster on your phone?,"You can download Kinemaster by following in 3 ways:
+1. Directly on downloadAPK in this link: https://downloadapk.net/KineMaster-Pro-Video-Editor.html 
+2. On Google Play Store:
+- Open Google Play on your phone
+- Search for “Kinemaster” in the search bar. Tap the search tool (magnifying glass icon) at the top-right corner of Google Play and type in “Kinemaster” Press “OK” on your keyboard to start searching.
+- Access the app’s information page. The official website should be the first app to come out in the list. Tap it.
+- Tap on the Install button, then touch Accept with Kinemaster's permissions.
+3. On Appstore with link: https://apps.apple.com/us/app/kinemaster-video-editor/id1223932558 ",Quan Hoc Gioi,2021-07-07 11:31:50,2021-07-07 11:31:50,1,1
+36,com.nexstreaming.app.kinemasterfree,Is KineMaster a good app?,"Advantages:
+- Easy to use, intuitive interface
+- Features for setting advanced audio controls and advanced effects
+- Support for multiple video and audio layers
+- Cutting and trimming tools
+- Built-in animated titles that look very professional
+- Support for editing different formats and sizes as well as editing and exporting 4K videos
+- Works perfect both with long and short format videos.
+Disadvantages
+- Uses watermarks and ads on free version.
+- Basic color correction tools.
+- You can’t swap between different format files once you’ve started creating and selected your size.",Quan Hoc Gioi,2021-07-08 11:31:50,2021-07-08 11:31:50,1,1
+37,com.nexstreaming.app.kinemasterfree,Can I use KineMaster on 2 devices?,"You can use one KineMaster Premium subscription on up to 5 devices, but they must be either all Android or all Apple devices.",Quan Hoc Gioi,2021-07-09 11:31:50,2021-07-09 11:31:50,1,1
+38,com.nexstreaming.app.kinemasterfree,Who is owner of KineMaster?,"KineMaster was developed by NexStreaming, which is also a South Korean company with Il-Taek Lim as the CEO. NexStreaming is one of the mobile multimedia software company based in South Korea that develops video-processing technologies highly optimized for mobile devices",Quan Hoc Gioi,2021-07-10 11:31:50,2021-07-10 11:31:50,1,1
+39,com.nexstreaming.app.kinemasterfree,How to Add Music to Kinemaster,"1. Open Kinemaster and load the video file you have in mind.
+2. Tap on the Audio button, located in the media panel to the right.
+3. Select the Add(+) button to choose a music file you want to add.
+4. Now you can export your video using the button with a square and an arrow or use the back arrow to save your video in the app.
+",Quan Hoc Gioi,2021-07-11 11:31:50,2021-07-11 11:31:50,1,1
+40,com.gaana,What is Gaana Music?,"Gaana (or Gana) is a style of Tamil music from Chennai, India. Gaana Music: Bollywood Songs and Radio is a free music streaming app, developed and published by Gamma Gaana Ltd. It was introduced in April 2010 and is available to use on Android, iOS, and Web.",Quan Hoc Gioi,2021-07-12 11:31:50,2021-07-12 11:31:50,1,1
+41,com.gaana,Is Gaana music free?,"Gaana is completely free for listening to music from a base of over 3 crore songs. You just need to be on WiFi or mobile data to enjoy your favorite songs.
+Free streaming will be supported by ads but you can get rid of ads by subscribing to premium service Gaana Plus:
+1 month Gaana plus: Rs 99 (1.36 USD)
+3 month Gaana plus: Rs 199 (2.74 USD)
+1 year Gaana plus: Rs 399 (5.49 USD)",Quan Hoc Gioi,2021-07-13 11:31:50,2021-07-13 11:31:50,1,1
+42,com.gaana,How can I buy songs from Gaana?,You can download songs from Gaana by subscribing to our premium service Gaana+. With Gaana+ you can download unlimited songs and listen to them offline till the subscription is active. The downloaded songs remain in the Gaana App only and cannot be transferred to any other device.,Quan Hoc Gioi,2021-07-14 11:31:50,2021-07-14 11:31:50,1,1
+43,com.gaana,"How to download ""Gaana Music"" on the phone?","You can download Gaana Music by following in 3 ways:
+1. Directly on downloadAPK in this link: https://downloadapk.net/Gaana-Music-Hindi-Tamil-Telugu-MP3-Songs-Online.html 
+2. On Google Play Store:
+- Open Google Play on your phone
+- Search for “Gaana Music"" in the search bar. Tap the search tool (magnifying glass icon) at the top-right corner of Google Play and type in “Gaana Music” Press “OK” on your keyboard to start searching.
+- Access the app’s information page. The official website should be the first app to come out in the list. Tap it.
+- Tap on the Install button, then touch Accept with Gaana Music's permissions.
+3. On Appstore with link: https://apps.apple.com/in/app/gaana-music-songs-podcasts/id585270521 ",Quan Hoc Gioi,2021-07-15 11:31:50,2021-07-15 11:31:50,1,1
+44,com.gaana,How Gaana works?,"Gaana.com features music from 21 Indian languages including Assamese, Odia and Tamil. Gaana lets users create public playlists so other users can see and favourite them. ",Quan Hoc Gioi,2021-07-16 11:31:50,2021-07-16 11:31:50,1,1
+45,com.gaana,How can I contact Gaana Support?,"Gaana is available over the HELP section in the app or you can send an email at feedback@gaana.com
+Their business hours are 9 am to 7:30 pm ( Monday to Saturday).",Quan Hoc Gioi,2021-07-17 11:31:50,2021-07-17 11:31:50,1,1
+46,com.gaana,How do I change my profile picture?,"1. Open the Gaana app
+2. Go to Gaana menu and tap on your current profile image
+3. Tap on Edit Profile icon
+If you are logged in with Facebook then you can use the ""Pull from Facebook"" option to get your Facebook profile image on Gaana or else you can use the ""Upload Photo"" option to select picture from your device Gallery
+4. Save the changes",Quan Hoc Gioi,2021-07-18 11:31:50,2021-07-18 11:31:50,1,1
+47,com.gaana,How can I change app language?,"1. Open the Gaana app menu
+2. Tap on ""DISPLAY SETTINGS"" from the list, then ""App Display Language"".
+3. Select the language you wish to read your app in and tap on ""Continue""",Quan Hoc Gioi,2021-07-19 11:31:50,2021-07-19 11:31:50,1,1
+48,com.gaana,How to sign up Gaana app on the phone?,"1.Open Gaana Music App on your phone
+2. On the homepage tap on the Login/Signup option
+3. You can even register via Facebook, Google, Email id or Phone number.
+4. If you choose Email or Phone sign up, then you have to enter the required details on the Sign-up page.
+5. To sign-in using email ID, first enter your Email ID.
+6. Then on the registration page enter your Name.
+7. Below that create a Password.
+8. After that enter your DOB.
+9. Select your Gender.
+10. Select, Gaana's terms and conditions.
+11. Tick the reCaptcha and tap on generate OTP.",Quan Hoc Gioi,2021-07-20 11:31:50,2021-07-20 11:31:50,1,1
+49,com.veitch.themelodymaster.pmf,What is Piano Melody app?,Piano Melody Free is a keyboard app intended to help anyone learn to play the piano.,Quan Hoc Gioi,2021-07-21 11:31:50,2021-07-21 11:31:50,1,1
+50,com.veitch.themelodymaster.pmf,How Can I Teach with This Tool?,"Have kids play simple melodies on the keyboard to demonstrate rhythms, intervals, and chords. Kids then can use the app to figure out the melody lines of popular songs or to figure out songs on their own. ",Quan Hoc Gioi,2021-07-22 11:31:50,2021-07-22 11:31:50,1,1
+51,com.veitch.themelodymaster.pmf,How to download Piano Melody on your phone?,"You can download Piano Melody by following in 3 ways:
+1. Directly on downloadAPK in this link: https://downloadapk.net/Piano-Melody-Free.html 
+2. On Google Play Store:
+- Open Google Play on your phone
+- Search for “Piano Melody” in the search bar. Tap the search tool (magnifying glass icon) at the top-right corner of Google Play and type in “Piano Melody” Press “OK” on your keyboard to start searching.
+- Access the app’s information page. The official website should be the first app to come out in the list. Tap it.
+- Tap on the Install button, then touch Accept with Piano Melody's permissions.
+3. On Appstore with link: https://apps.apple.com/us/app/piano-melody-play-by-ear/id439099401 ",Quan Hoc Gioi,2021-07-23 11:31:50,2021-07-23 11:31:50,1,1
+52,com.veitch.themelodymaster.pmf,How to learn on Piano Melody?,"Students select a song, hit the play button to listen to the selection, and listen to a series of sounds as the corresponding notes light up on the keyboard. Students then play the same series of notes and hit a check-mark button to get feedback.. A dialog box pops up with the result, listing the correct notes (such as ""C4,"" ""C4,"" ""G4,"" ""G4,"" ""A4,"" ""A4,"" and ""G4"" for ""Twinkle, Twinkle, Little Star"") and the notes the student played. If the series played is correct, the student can proceed to the next portion of the song to learn further notes and phrases.
+",Quan Hoc Gioi,2021-07-24 11:31:50,2021-07-24 11:31:50,1,1
+53,com.veitch.themelodymaster.pmf,Disadvantages of Piano Melody,"- Learning to play by ear is a challenging task, requiring careful listening to the instruments in a song to pick out the melody and then filling out the song with all the harmony and chords that transform a series of notes into a piece of music.
+- It’s not clear that the skills learned will transfer to music-making in the real world. 
+- For students who read music, the notation in the dialog boxes could be frustrating; it gets unwieldy to read and might be better illustrated with common musical notation. 
+- To learn the melody line of pop music hits, this app will suit nicely. It may not be a good fit, however, for anything more complex.",Quan Hoc Gioi,2021-07-25 11:31:50,2021-07-25 11:31:50,1,1
+54,com.veitch.themelodymaster.pmf,Improvements of Piano Melody,"- Set the size of the keys on the piano. The larger the keys, the more accurate to get the right notes, the smaller the keys you can see all 3 octaves on screen.
+- Full support for all phones and all tablets.
+- Authentic digitised grand piano sounds produced by a professional sound engineer.
+- Advance your piano playing quickly by adjusting the speed of the song to suit your level or challenge yourself to play by ear by unhighlighting the notes.
+- Turn up / down volume of song play, which is ideal for play along mode.",Quan Hoc Gioi,2021-07-26 11:31:50,2021-07-26 11:31:50,1,1
+55,com.veitch.themelodymaster.pmf,What does it do for you?,"- Develop your ability to play by ear.
+- Learn piano songs quickly and efficiently by a play and repeat method.
+- Start with a few notes and build up until you've mastered the song.
+- Suitable for all ages (kids to adults) and for all abilities (beginner to advanced).",Quan Hoc Gioi,2021-07-27 11:31:50,2021-07-27 11:31:50,1,1
+56,com.shopee.tw,What is Shopee?,Shopee is the leading e-commerce platform that provides customers with a comprehensive online shopping experience.,Quan Hoc Gioi,2021-07-28 11:31:50,2021-07-28 11:31:50,1,1
+57,com.shopee.tw,How to download Shopee on your phone?,"You can download Shopee by following in 3 ways:
+1. Directly on downloadAPK in this link: https://downloadapk.net/蝦皮購物:-花得更少，買得更好.html 
+2. On Google Play Store:
+- Open Google Play on your phone
+- Search for “Shopee” in the search bar. Tap the search tool (magnifying glass icon) at the top-right corner of Google Play and type in “Shopee” Press “OK” on your keyboard to start searching.
+- Access the app’s information page. The official website should be the first app to come out in the list. Tap it.
+- Tap on the Install button, then touch Accept with Shopee's permissions.
+3. On Appstore with link: ",Quan Hoc Gioi,2021-07-29 11:31:50,2021-07-29 11:31:50,1,1
+58,com.shopee.tw,How to I sell in Shopee?,"Open Shopee app on your phone.
+1. Set up your Shop
+For Existing Sellers: Tap My Shop in the Me tab, then tap Seller Assistant and select Shop Profile to complete your shop profile: Shop Name, Images and Videos, Shop Description
+For New Sellers: Login to Seller Centre via desktop and select Shop Settings to complete your shop profile.
+2. Add your pickup address
+Follow these steps to set up my pickup address:
+- Tap  Account Settings in the Me tab.
+- Tap Add a new address, and fill out the required fields, and toggle on the Set As Pickup Address, then tap Submit.
+3. Create a product listing
+Tap Start Selling under the Me tab.
+Tap Add New Product.
+ Add Photo and upload high resolution and professionally taken photos of your product.
+ Fill in the product details such as Product Name, Product Description, Category, Price, Stock, Variation, Wholesale (optional), Shipping Fee, Condition. Tap Publish and your product is now listed on Shopee.
+4.  Ship out your order",Quan Hoc Gioi,2021-07-30 11:31:50,2021-07-30 11:31:50,1,1
+59,com.shopee.tw,Create a account on Shopee app,"1. Open Shopee app on your phone. 
+2. Go to ""Me"" tab and click on the “Sign Up” button. 
+3. Enter your mobile number and click 'Next'. 
+4. Enter the verification code and click 'Next'. Enter your password and click on 'Sign Up'. 
+*Please create a password that contains at least 8-16 characters, one uppercase and one lowercase letter.
+5. Check your email for account verification instructions. Follow the email instructions to complete the verification process.
+",Quan Hoc Gioi,2021-07-31 11:31:50,2021-07-31 11:31:50,1,1
+60,com.shopee.tw,How do I buy something on Shopee?,"1. Open Shopee app on your phone
+2. Select the products you want and “Check out”.
+3. Enter or edit your delivery address.
+4. Choose your shipping option, and leave a message to the seller if you have specific details to include.
+5. Select your preferred payment method and tap on  “Place Order” to proceed with payment!
+6. Verify your phone number before purchasing the item if you have not.",Quan Hoc Gioi,2021-08-01 11:31:50,2021-08-01 11:31:50,1,1
+61,com.shopee.tw,Can Shopee pay cash on delivery?," Buyers can choose to pay via Cash on Delivery (COD) to sellers that enabled COD
+1. Open Shopee app on your phone
+2. Select the products you want and “Check out”.
+3. After you checkout, tap Payment Option.
+4. Choose Cash on Delivery as your payment method, and tap Confirm. 
+5. Proceed to place your order by tapping Place Order.",Quan Hoc Gioi,2021-08-02 11:31:50,2021-08-02 11:31:50,1,1
+62,com.shopee.tw,How to track my order on Shopee app?,"1. Open Shopee on the phone
+2. Go to your ""Me"" page.
+3. Click on ""My Purchases"" : This page will show all of your orders.",Quan Hoc Gioi,2021-08-03 11:31:50,2021-08-03 11:31:50,1,1
+63,com.shopee.tw,What is the purpose of Shopee?, Shopee aims to continually enhance its platform and become the region’s e-commerce destination of choice. ,Quan Hoc Gioi,2021-08-04 11:31:50,2021-08-04 11:31:50,1,1
+64,com.shopee.tw,What is so unique about Shopee?,"What makes shopee differ from the other marketplaces is the zero commission rates. More is always better! whether you want to begin or even if you are already selling in Southeast Asia, you can go multichannel and sell your products on different affluent marketplaces of Southeast Asia in a more centralized way.",Quan Hoc Gioi,2021-08-05 11:31:50,2021-08-05 11:31:50,1,1
+65,com.shopee.tw,Why is Shopee successful?,Shopee’s growth is the result of its dynamic work module and strategic expansion plan in the Southeast Asian region. Its presence over the social media channels and the user-friendly languages have made it more popular among the buyers. The ease of selling allures more and more sellers to sell on its platform.,Quan Hoc Gioi,2021-08-06 11:31:50,2021-08-06 11:31:50,1,1
+66,chat.anti,What is Anonymous Chat Rooms?,"Anti Chat Anonymous Chat Rooms – a truly anonymous and secure group chats messenger app that helps you mask your secret identity, make friends online and meet new people. Now talk to friends and random strangers alike, share and discover secrets, whisper & gossip freely, enjoy free dating and adult confessions... privately all without losing anonymity.",Quan Hoc Gioi,2021-08-07 11:31:50,2021-08-07 11:31:50,1,1
+67,chat.anti,Are anonymous chat rooms safe?,"Anti Chat App is much better, bigger and safer than most of the chat apps to meet new people free. It is heavily censored for inappropriate content which could be user generated chatting with strangers. The chatrooms are fully secure and anonymous. The messages are encrypted and self-destructing as per your requirement.",Quan Hoc Gioi,2021-08-08 11:31:50,2021-08-08 11:31:50,1,1
+68,chat.anti,Advantages of Anonymous Chat Rooms,"- You Can Say Whatever You Want
+When you're anonymous, you can say what's on your mind without it coming back to bite you. If you want to vent about your work or other personal parts of your life, an anonymous chat room may be a good place to express those views safely. 
+- It Makes for Good Conversation
+Because you're more inclined to be yourself and express your feelings, the people you're talking to can provide advice or be the person who listens to you as you express what's going on.
+- With Smartphones, It's Easier Than Ever
+You can use anonymous chat apps on your phone and chat with anyone, anywhere. This allows you to communicate at any time, and it's good if you're feeling emotional right that second.
+- You Can Expand Your Worldview
+You never know who you're going to chat with on an anonymous message board. The person may have a different worldview, different ages, and live in a culture far from yours. This can make you open your mind and put yourself in the perspective of someone different. ",Quan Hoc Gioi,2021-08-09 11:31:50,2021-08-09 11:31:50,1,1
+69,chat.anti,How to use Anonymous Chat Rooms on your phone?,"- Download app and login, set username, password, gender, age,.....
+- Tap “+” icon on the right to find new conversation
+- Choose what you want and start chatting.",Quan Hoc Gioi,2021-08-10 11:31:50,2021-08-10 11:31:50,1,1
+70,chat.anti,How to download Anonymous Chat Rooms?,"You can download Anonymous Chat Rooms by following in 2 ways:
+1. Directly on downloadAPK in this link: https://downloadapk.net/AntiChat-Anonymous-Chat-Rooms.html 
+2. On Google Play Store:
+- Open Google Play on your phone
+- Search for “Anonymous Chat Rooms” in the search bar. Tap the search tool (magnifying glass icon) at the top-right corner of Google Play and type in “Anonymous Chat Rooms” Press “OK” on your keyboard to start searching.
+- Access the app’s information page. The official website should be the first app to come out in the list. Tap it.
+- Tap on the Install button, then touch Accept with Anonymous Chat Rooms's permissions.",Quan Hoc Gioi,2021-08-11 11:31:50,2021-08-11 11:31:50,1,1
+71,chat.anti,Caution of Anonymous Chat Rooms,"- You Don't Know Who You're Talking To
+If you're in an anonymous chatroom to get advice or discuss important topics to you and gain feedback, you won't know who you're getting advice from. 
+- It Can Be Hard to Make A Connection
+If you're in an anonymous chat room talking to someone and it's going well, it makes it hard to reconnect with the same person again. That's why anonymous chat rooms are best suited for casual conversations. 
+- You're Never Truly Anonymous
+One thing you must remember when using these services is that it's possible that people can find out who you are, even if you don't believe you have revealed anything private. Some can trace or find your identity using clues. However, realizing that your identity could be revealed is a good way to prevent you from saying anything you shouldn't
+",Quan Hoc Gioi,2021-08-12 11:31:50,2021-08-12 11:31:50,1,1
+72,chat.anti,Who use Anonymous Chat Rooms?,"Anonymous Chat Rooms is for all, who have trouble with sharing our thoughts, emotions, confessions, secret crushes, adult jokes and conversations without the eye popping reactions of friends, family and everyone on the chatting portals. Confess, be honest, ask questions. Share secrets, date interesting people or just kill time. Nobody will judge you, as nobody can find out your real name.",Quan Hoc Gioi,2021-08-13 11:31:50,2021-08-13 11:31:50,1,1
+73,com.google.android.apps.books,What is Google Play Books?,"Google Play Books is the one app you need for enjoying audiobooks and ebooks purchased from Google Play. Choose from millions of best selling ebooks, comics, textbooks, and audiobooks. Download your book to read or listen on the go. When you’re finished, find your next favorite from recommendations personalized just for you. Buy audiobooks and ebooks as you go - with no subscription required.",Quan Hoc Gioi,2021-08-14 11:31:50,2021-08-14 11:31:50,1,1
+74,com.google.android.apps.books,How to download Google Play Books?,"You can download Google Play Books by following in 3 ways:
+1.Directly on downloadAPK in this link: https://downloadapk.net/Google-Play-Books.html 
+2.On Google Play Store:
+- Open Google Play on your phone
+- Search for “Google Play Books"" in the search bar. Tap the search tool (magnifying glass icon) at the top-right corner of Google Play and type in “Google Play Books” Press “OK” on your keyboard to start searching.
+- Access the app’s information page. The official website should be the first app to come out in the list. Tap it.
+- Tap on the Install button, then touch Accept with Google Play Books's permissions.
+3.On Appstore with link: https://apps.apple.com/us/app/google-play-books/id400989007 
+",Quan Hoc Gioi,2021-08-15 11:31:50,2021-08-15 11:31:50,1,1
+75,com.google.android.apps.books,Is Google Play books free?,"In May 2013, Play Books started allowing users to upload PDF and EPUB files for free through the Play Books website, with support for up to 1,000 files. The Android app was updated in December 2013 with support for uploading files.",Quan Hoc Gioi,2021-08-16 11:31:50,2021-08-16 11:31:50,1,1
+76,com.google.android.apps.books,How to buy ebook on Google Play Books?,"On your Android phone or tablet, open the Google Play Books app Play Books.
+Search for the ebook you’d like to read.
+Select an ebook and thentap the price.
+[Optional] Depending on the book, you may also be able to read a sample. Tap Free Sample.",Quan Hoc Gioi,2021-08-17 11:31:50,2021-08-17 11:31:50,1,1
+77,com.google.android.apps.books,Can I rent book on Google Play Books?,"You can rent book on Google Play Books by following:
+1. On your device, open Google Play Books Play Books.
+2. Browse textbooks for rent or search for a specific book.
+3. Select the book you want to rent.
+4. To find out if you can rent the book: Check whether it says ""Rent"" next to the price.
+5. To find out how long the rental lasts: Select “Rent” then check the information in the pop-up.
+6. To rent the book, select the price then complete the check out process.
+Your rental period starts when you make your purchase, even if you haven’t opened the book.
+7. To find how much time you have before the rental expires, go to Library then check the book’s cover.",Quan Hoc Gioi,2021-08-18 11:31:50,2021-08-18 11:31:50,1,1
+78,com.google.android.apps.books,Is Google Play Books safe?,"All buyers must have Google Accounts in order to purchase books on Google Play. Well-established security measures in place, used by all Google products, to help keep users' accounts secure.",Quan Hoc Gioi,2021-08-19 11:31:50,2021-08-19 11:31:50,1,1
+79,com.google.android.apps.books,Advantages and disadvantages,"Advantages:
+Frequent sales ensure a deal for less than the cost of a credit on rival audiobook services
+Many title categories, including a free children’s book section
+Books are available in nine different languages
+Listen with seamless syncing on any device that uses the Google Assistant
+ 
+ Disadvantages:
+New releases and popular classics end up being more expensive than when using the credit system
+Narration by the Google Assistant can feel stilted and unnatural
+Google Play interface is bland and simplistic
+No member discounts like with other subscription services
+",Quan Hoc Gioi,2021-08-20 11:31:50,2021-08-20 11:31:50,1,1
+80,com.google.android.apps.books,How much does Google Play books cost?,Google Play Books offers no subscriptions so you need to pay for individual titles at their shelf price.,Quan Hoc Gioi,2021-08-21 11:31:50,2021-08-21 11:31:50,1,1
+81,com.google.android.apps.books,Does Google Play Books have a free trial?,"You can download the Google Play Book app for free, and you can listen to free samples of specific titles you’re interested in. But because Google Play Books is a pay-as-you-go service, there is no free trial.",Quan Hoc Gioi,2021-08-22 11:31:50,2021-08-22 11:31:50,1,1
+82,jp.ne.ibis.ibispaintx.app,What is ibis Paint X?,"ibis Paint X is a popular and versatile drawing app downloaded more than 100 million times in total as a series, over 2500 materials, over 800 fonts, which provides 381 brushes, 71 filters, 46 screentones, 27 blending modes, recording drawing processes, stroke stabilization feature, various ruler features such as Radial Line rulers or Symmetry rulers, and clipping mask features.",Quan Hoc Gioi,2021-08-23 11:31:50,2021-08-23 11:31:50,1,1
+83,jp.ne.ibis.ibispaintx.app,How to download ibis Paint X on your phone?,"You can download ibis Paint X by following in 3 ways:
+1. Directly on downloadAPK in this link: https://downloadapk.net/ibisPaint-X-Anime-Paint.html 
+2. On Google Play Store:
+- Open Google Play on your phone
+- Search for “ibis Paint X” in the search bar. Tap the search tool (magnifying glass icon) at the top-right corner of Google Play and type in “ibis Paint X” Press “OK” on your keyboard to start searching.
+- Access the app’s information page. The official website should be the first app to come out in the list. Tap it.
+- Tap on the Install button, then touch Accept with ibis Paint X's permissions.
+3. On Appstore with link: https://apps.apple.com/us/app/ibis-paint-x/id450722833 ",Quan Hoc Gioi,2021-08-24 11:31:50,2021-08-24 11:31:50,1,1
+84,jp.ne.ibis.ibispaintx.app,What is the difference between Ibis paint and Ibis paint X?,"Unlike ibis Paint (paid version), advertisements are displayed on ibis Paint X (free version). If you buy this Add-On (one off payment), advertisements will remove. Even if you become a prime member, advertisements will remove.",Quan Hoc Gioi,2021-08-25 11:31:50,2021-08-25 11:31:50,1,1
+85,jp.ne.ibis.ibispaintx.app,Features of ibis Paint X,"- A Highly functional and professional features surpassing that of desktop drawing apps.
+- Smooth and comfortable drawing experience realized by OpenGL technology.
+- Recording your drawing process as a video.
+- SNS feature where you can learn drawing techniques from other users' drawing process videos.",Quan Hoc Gioi,2021-08-26 11:31:50,2021-08-26 11:31:50,1,1
+86,jp.ne.ibis.ibispaintx.app,What is Ibis paint X compatible with?,"ibisPaint is available for iPhone, iPad, and Android smartphones and tablets. Please select and download the correct version for your device.",Quan Hoc Gioi,2021-08-27 11:31:50,2021-08-27 11:31:50,1,1
+87,jp.ne.ibis.ibispaintx.app,Advantages of ibis Paint X,"1. Being able to make good images up to the smallest details, 
+2. Having various types of canvas, 
+3. Having 142 types of pencils and other supporting tools, 
+4. Being able to import pictures from the gallery to be merged on the layer, 
+5. being able to share the design process with the community, 
+6. Being able to find the designs of another user and learn it. 
+",Quan Hoc Gioi,2021-08-28 11:31:50,2021-08-28 11:31:50,1,1
+88,jp.ne.ibis.ibispaintx.app,How to Switching devices/transferring data?,"There are several ways to transfer data between devices in ibisPaint.
+- Using Dropbox: data transferring on Dropbox is easy to understand. It can be done using a telephone line, but we recommend using WiFi especially if you have many files to transfer. The transfer is only for the artwork files.
+- Using SD card on Android: Copy artwork files over using an SD card. Both devices (i.e., device that contains the data and the device to be copied to) must run on Android.
+- Using PC on iOS: Copy artwork files using iTunes. Both devices (i.e., device that contains the data and the device to be copied to) must run on iOS.",Quan Hoc Gioi,2021-08-29 11:31:50,2021-08-29 11:31:50,1,1
+89,com.careem.acma,What is Careem?,"Careem is the internet platform for the greater Middle East region. A pioneer of the region's ride-hailing economy, Careem is expanding services across its platform to include mass transportation, delivery and payments to become the region's everyday SuperApp. ",Quan Hoc Gioi,2021-08-30 11:31:50,2021-08-30 11:31:50,1,1
+90,com.careem.acma,How to download Careem on your phone?,"You can download Caeem by following in 3 ways:
+1. Directly on downloadAPK in this link: https://downloadapk.net/Careem-Car-Booking-App.html 
+2. On Google Play Store:
+- Open Google Play on your phone
+- Search for “Kinemaster” in the search bar. Tap the search tool (magnifying glass icon) at the top-right corner of Google Play and type in “Careem” Press “OK” on your keyboard to start searching.
+- Access the app’s information page. The official website should be the first app to come out in the list. Tap it.
+- Tap on the Install button, then touch Accept with Careem's permissions.
+3. On Appstore with link: https://apps.apple.com/us/app/careem-rides-food-delivery/id592978487 ",Quan Hoc Gioi,2021-08-31 11:31:50,2021-08-31 11:31:50,1,1
+91,com.careem.acma,How does an account get blocked or suspended??,"Following are the most common reasons for an account to be blocked: 
+- High cancellation ratio: When booking a ride, a user has the option to cancel the ride. If a cancellation occurs too often, the system will display a warning. If this is continued, the account will be blocked. 
+- Unpaid negative balance in the Careem Pay Wallet: If a ride was not paid in full or was not paid, the account would have a negative balance that is owed. An account would be temporarily blocked until this amount is settled.
+- Multiple user accounts being used on the same mobile device: When we find that a device has been used to log into several Careem accounts, your account  might suspend .
+- Cross country referral: In order to limit fraudulent activity, do not encourage customers to send cross-country referrals. 
+- Misuse of referral credit: Any suspicious transactions with referral credits could lead to the account being suspended.
+- Misuse of Careem Pay credit: To limit fraudulent activity, Careem Pay credit is only valid in the country where the credit was acquired.",Quan Hoc Gioi,2021-09-01 11:31:50,2021-09-01 11:31:50,1,1
+92,com.careem.acma,How do I contact careem?,"You can follow the below steps:
+- Open Careem app on your phone
+- Select the 'Car' tile on the app
+- Go to Menu and select 'Help'
+- Your most recent ride will be displayed on top. You can choose from the listed reasons to report a problem.
+- If you want support on a past ride, select 'Show past rides' and choose the ride to report a problem.",Quan Hoc Gioi,2021-09-02 11:31:50,2021-09-02 11:31:50,1,1
+93,com.careem.acma,How to create a Careem account on your phone?,"To create a Careem account you need a valid mobile number.
+Download the app for your iOS or Android device and follow the below steps:
+- Select ‘Continue with mobile number’ and enter your number
+- Enter the 4-digit code sent to the number (if the SMS with the code does not arrive, you can request a call from the same screen)
+- Create a strong password
+- Enter your full name and you’re done!
+- Alternatively, if you're comfortable with linking your Facebook profile to your Careem account, you can sign up via Facebook. The app will redirect you to a Facebook page where you are required to authorize Careem usage.",Quan Hoc Gioi,2021-09-03 11:31:50,2021-09-03 11:31:50,1,1
+94,com.careem.acma,How do I get a job at careem?,"- Register: Complete the form at the top and apply to become a Careem Captain.
+- Train: After filling the form, please select your training slot- you can train online or at our offices.
+Ride: After completing your training, you will receive a confirmation SMS. Log in to ADMA and start earning!",Quan Hoc Gioi,2021-09-04 11:31:50,2021-09-04 11:31:50,1,1
+95,com.careem.acma,Who is owner of Careem?,"Careem was established in July 2012, and was acquired by Uber in 2020. ",Quan Hoc Gioi,2021-09-05 11:31:50,2021-09-05 11:31:50,1,1
+96,com.airbnb.android,What is Airbnb?,Airbnb is an online marketplace that connects people who want to rent out their homes with people who are looking for accommodations in that locale.,Quan Hoc Gioi,2021-09-06 11:31:50,2021-09-06 11:31:50,1,1
+97,com.airbnb.android,How to downloading Airbnb on your phone?,"You can download Airbnb by following in 3 ways:
+1. Directly on downloadAPK in this link: https://downloadapk.net/Airbnb.html 
+2. On Google Play Store:
+- Open Google Play on your phone
+- Search for “Airbnb” in the search bar. Tap the search tool (magnifying glass icon) at the top-right corner of Google Play and type in “Airbnb” Press “OK” on your keyboard to start searching.
+- Access the app’s information page. The official website should be the first app to come out in the list. Tap it.
+- Tap on the Install button, then touch Accept with Airbnb's permissions.
+3. On Appstore with link: https://apps.apple.com/us/app/airbnb/id401626263 ",Quan Hoc Gioi,2021-09-07 11:31:50,2021-09-07 11:31:50,1,1
+98,com.airbnb.android,Whats Airbnb stand for?,"Airbnb is an abbreviation for air mattress bed and breakfast. Unlike traditional bed and breakfast accommodations, however, breakfast is not typically included in a stay. The spelling of Airbnb is a tricky one and many people get it wrong. AirBNB, AirBnB and AirB’n’B are common mistakes.",Quan Hoc Gioi,2021-09-08 11:31:50,2021-09-08 11:31:50,1,1
+99,com.airbnb.android,How does an Airbnb work?,,Quan Hoc Gioi,2021-09-09 11:31:50,2021-09-09 11:31:50,1,1
+100,com.airbnb.android,How to create Airbnb account?,"1. Open Airbnb app on your phone
+2. Tap sign up on app 
+3. You can sign up for an account using your email address, phone number, Facebook account, Google account, or Apple ID. Signing up and creating an Airbnb account is free.
+4. After you sign up, be sure to complete your account before booking a reservation.",Quan Hoc Gioi,2021-09-10 11:31:50,2021-09-10 11:31:50,1,1
+101,com.airbnb.android,The Advantages of Airbnb,"The Advantages of Airbnb
+- Wide Selection: Airbnb hosts list many different kinds of properties-single rooms, a suite of rooms, apartments, moored yachts, houseboats, entire houses, even a castle-on the Airbnb.
+- Free Listings: Hosts don’t have to pay to list their properties.
+- Hosts Can Set Their Own Price: It’s up to each host to decide how much to charge per night, per week, or per month.
+- Customizable Searches: Guests can search the Airbnb database—not only by date and location, but by price, type of property, amenities, and the language of the host. They can also add keywords to further narrow their search.
+- Additional Services: In recent years Airbnb has expanded its offerings to include experiences and restaurants. People searching by location will see a list of experiences.
+- Protections for Guests and Hosts: Airbnb holds the guest’s payment for 24 hours after check-in before releasing the funds to the host. For hosts, Airbnb’s Host Guarantee program “provides protection for up to $1,000,000 in damages to covered property in the rare event of guest damage, in eligible countries.",Quan Hoc Gioi,2021-09-11 11:31:50,2021-09-11 11:31:50,1,1
+102,com.airbnb.android,The Disadvantages of Airbnb,"The Disadvantages of Airbnb
+- What You See May Not Be What You Get
+Booking accommodations with Airbnb is not where you have a reasonable assurance that the property will be as advertised. Individual hosts create their own listings. Check the comments of other guests who have stayed at that Airbnb property to make sure the listing is accurate.
+
+- Potential Damage
+Probably the biggest risk for hosts is that their property will be damaged. Airbnb’s Host Guarantee program, described above, provides some assurance, but it may not cover everything, such as cash, rare artwork, jewelry, and pets. 
+
+- Added Fees
+Airbnb imposes a number of additional fees (as, of course, do hotels and other lodging providers). Guests pay a guest service fee of 0% to 20% on top of the reservation fee, to cover Airbnb’s customer support and other services. Banks or credit card issuers may add fees if applicable.
+And while listings are free, Airbnb charges hosts a service fee of at least 3% for each reservation, to cover the cost of processing the transaction.
+
+- Taxes
+Both hosts and guests from the European Union, Switzerland, and Norway may be subject to a value-added tax (VAT). And depending on their location, hosts may be subject to rental income taxes. To assist with U.S. tax compliance, Airbnb collects taxpayer information from hosts so they can provide an account of their earnings each year.
+
+- It Isn’t Legal Everywhere
+Before listing their properties on Airbnb, would-be hosts need to check their local zoning ordinances to make sure it’s legal to rent out their properties.
+
+",Quan Hoc Gioi,2021-09-12 11:31:50,2021-09-12 11:31:50,1,1
+103,com.airbnb.android,How do I book a place on Airbnb?,"1. Complete your profile
+Your profile should include your ID verification, especially because some hosts require guests to have a verified ID or profile photo in order to book.
+2. Find the right place
+When you’re searching for a place, make sure to include your dates and number of guests to get the most accurate pricing. Read reviews, descriptions, house rules, amenities, and the cancellation policy for each place to see if it’s the right fit for your trip. You can always contact the host if you have any questions about their home.
+3. Book your place
+Once you’ve found the right place, it’s time to book it. This is where the host’s preferred way of booking will determine how you’ll confirm your reservation.
+- Instant Book
+For hosts who don’t want to approve each reservation, once you tap Reserve, the next page will show Confirm and pay. Like the name suggests, you can confirm a reservation at these places right away. 
+- Request to book
+Many hosts prefer to approve reservations before they’re final. In this case, once you tap Reserve, the next page will show Request to book. To submit a reservation request, you’ll need to enter your payment details. Hosts have 24 hours to accept your request, and your reservation is automatically confirmed once they do. If your request is accepted, you’ll be charged in full for the reservation. 
+- Pre-approvals and special offers
+If you decide to contact the host to ask questions before attempting to book, the host may respond to your message by inviting you to make a reservation with either a pre-approval or special offer. A pre-approval is an invitation to finish booking for the dates and number of guests you noted in your message. A special offer gives the host the opportunity to provide special pricing, dates, and other reservation details before you book. ",Quan Hoc Gioi,2021-09-13 11:31:50,2021-09-13 11:31:50,1,1
+104,com.taxsee.taxsee,What is maxim?,"Maxim is an international service for ordering a car via the app, website or call center. The service provides informational services — it generates a database for transportation orders and grants the independent carriers online access to it.",Quan Hoc Gioi,2021-09-14 11:31:50,2021-09-14 11:31:50,1,1
+105,com.taxsee.taxsee,How to download Maxim on your phone?,"You can download Maxim by following in 3 ways:
+1. Directly on downloadAPK in this link: https://downloadapk.net/Максим:-заказ-такси.html 
+2. On Google Play Store:
+- Open Google Play on your phone
+- Search for “Maxim” in the search bar. Tap the search tool (magnifying glass icon) at the top-right corner of Google Play and type in “Maxim” Press “OK” on your keyboard to start searching.
+- Access the app’s information page. The official website should be the first app to come out in the list. Tap it.
+- Tap on the Install button, then touch Accept with Maxim's permissions.
+3. On Appstore with link:  https://apps.apple.com/ae/app/maxim-order-taxi-delivery/id579985456 ",Quan Hoc Gioi,2021-09-15 11:31:50,2021-09-15 11:31:50,1,1
+106,com.taxsee.taxsee,How do I cancel Maxim?,"To cancel maxim order taxi delivery subscription on Android, you need to realize that deleting the maxim order taxi delivery app alone won't cut it. Follow the steps below:
+- Open the Google Play Store. If you have multiple Google accounts, be sure you're signed into the right one.
+- Click on menu, then go to ""Subscriptions"".
+- Choose the maxim — order taxi & delivery subscription you wish to cancel and tap on the ""Cancel Subscription"" option.
+- Finish up as directed.
+- Once your maxim order taxi delivery subscription has been removed from Google Play, your future subscriptions will be cancelled and won't be renewed anymore.",Quan Hoc Gioi,2021-09-16 11:31:50,2021-09-16 11:31:50,1,1
+107,com.taxsee.taxsee,How do I book a maxim?,"Here are the steps:
+1. Place your pick up point.
+2. Place your destination (address where it will be delivered)
+3. Before confirming your order, click ""request for your ride"".
+4. Write the information in the space provided in ""additional information"" like name and phone number of the receiver and please specify the COD details.
+5. Wait your order",Quan Hoc Gioi,2021-09-17 11:31:50,2021-09-17 11:31:50,1,1
+108,com.taxsee.taxsee,Develope of Maxim,"In 2009 they opened branches in 7 cities at once, in 2010 branches were opened in 17 cities, then the rate reached more than 22 cities per year. In 2020, the service is operating in more than 500 localities in Russia.",Quan Hoc Gioi,2021-09-18 11:31:50,2021-09-18 11:31:50,1,1
+109,com.taxsee.taxsee,How does Maxim work?,"A huge volume of orders, which come in round-the-clock, are received by phone, website, and the Maxim app at the Russian Federation's largest specialized call center. It also supports drivers and couriers who work with the orders via the Taxsee Driver app. A professional operator training program was developed based on specifications.",Quan Hoc Gioi,2021-09-19 11:31:50,2021-09-19 11:31:50,1,1
+110,com.taxsee.taxsee,How do I receive orders?,"In the app, you can see a list of all orders, divided into categories. You can view city and intercity orders separately. You can choose the closest order or a specific scheduled order. To be assigned an order, send a request. The app also has an auto-assignment feature that you may find convenient: instead of browsing a long list, you simply accept orders offered to you based on filters you set.",Quan Hoc Gioi,2021-09-20 11:31:50,2021-09-20 11:31:50,1,1
+111,free.zaycev.net,What is Zaycev.net?,Zaycev.net is a music player application can use with no internet. It can help users download music for free without going through any form of registration. All the famous songs in the world are updated regularly and continuously. ,Quan Hoc Gioi,2021-09-21 11:31:50,2021-09-21 11:31:50,1,1
+112,free.zaycev.net,How to download Zaycev.net?,"You can download Zaycev.net by following in 2 ways:
+1. Directly on downloadAPK in this link: https://downloadapk.net/Music-mp3-zaycev-net.html 
+2. On Google Play Store:
+- Open Google Play on your phone
+- Search for “Zaycev.net” in the search bar. Tap the search tool (magnifying glass icon) at the top-right corner of Google Play and type in “Zaycev.net” Press “OK” on your keyboard to start searching.
+- Access the app’s information page. The official website should be the first app to come out in the list. Tap it.
+- Tap on the Install button, then touch Accept with Zaycev.net's permissions.",Quan Hoc Gioi,2021-09-22 11:31:50,2021-09-22 11:31:50,1,1
+113,free.zaycev.net,How does Zaycev.net work?,"Install it on your phone, tablet, set-top box, then open it, and the bunny inside does the rest. You will see that inside there is a top beloved by many, a thousand and one music collection for the taste of each listener, as well as new music, a stage proven over the years, festive, children's, adults, New Year's songs, compositions from soundtracks to films and shows.",Quan Hoc Gioi,2021-09-23 11:31:50,2021-09-23 11:31:50,1,1
+114,free.zaycev.net,What is the primary function of Zaycev.net?,This application’s primary function is to make the user’s music playlist and music library more versatile and diverse. The application is trying to provide free music platforms to create the most favorable conditions for users to access more exciting music. ,Quan Hoc Gioi,2021-09-24 11:31:50,2021-09-24 11:31:50,1,1
+115,free.zaycev.net,What are the features of Zaycev?,"When downloading the application to the device, users will be really surprised by the app’s interface and design. It is unique and beautiful, creating curiosity and attraction for everyone. Any user can download and listen to music for free through the app. Even without a subscription, you can get a huge library of music. All songs listened to are not limited in time or number of times. In zaycev, you can not only listen online and without a subscription, but also download it for free in mp3, and then use it on other devices. ",Quan Hoc Gioi,2021-09-25 11:31:50,2021-09-25 11:31:50,1,1
+116,free.zaycev.net,How to use Zaycev?,Everything in this app will be unrestricted; this makes the most favorable conditions for all users to experience the application in the best way. Users must proceed to unlock new artists and their favorite music genres. All the songs are divided into different popular music genres. ,Quan Hoc Gioi,2021-09-26 11:31:50,2021-09-26 11:31:50,1,1
+117,free.zaycev.net,What is Add-ons included?,Users can easily search for songs by writing. This is one of the extremely new and unique utilities in the app. You can easily request music collections that match your preferences. A preeminent utility included in the application is that all users can easily listen to music without the internet. The offline mode that doesn’t require activation will also help users in a lot of different cases. All tracks will be saved in My Music. ,Quan Hoc Gioi,2021-09-27 11:31:50,2021-09-27 11:31:50,1,1
+118,com.simejikeyboard,What is Facemoji Emoji Keyboard?,Facemoji Keyboard is a potent keyboard app that lets you choose from among hundreds of different skins for your Android device. And not only that: it also gives you the option to create your own skin using pictures and customizing everything down to the last detail.,Quan Hoc Gioi,2021-09-28 11:31:50,2021-09-28 11:31:50,1,1
+119,com.simejikeyboard,How to download Facemoji Emoji Keyboard on your phone?,"You can download Facemoji Emoji Keyboard by following in 3 ways:
+1. Directly on downloadAPK in this link: https://downloadapk.net/Facemoji-Emoji-Keyboard-GIF-Emoji-Keyboard-Theme.html 
+2. On Google Play Store:
+- Open Google Play on your phone
+- Search for “Facemoji Emoji Keyboard” in the search bar. Tap the search tool (magnifying glass icon) at the top-right corner of Google Play and type in “Facemoji Emoji Keyboard” Press “OK” on your keyboard to start searching.
+- Access the app’s information page. The official website should be the first app to come out in the list. Tap it.
+- Tap on the Install button, then touch Accept with Facemoji Emoji Keyboard's permissions.
+3. On Appstore with link: https://apps.apple.com/us/app/facemoji-keyboard-fonts-emoji/id1103138272 ",Quan Hoc Gioi,2021-09-29 11:31:50,2021-09-29 11:31:50,1,1
+120,com.simejikeyboard,Is Facemoji Emoji keyboard safe?,"Facemoji Keyboard: Fonts&Emoji is quiet safe to use but use with caution. This is based on NLP (Natural language processing) analysis of over 24,863 User Reviews sourced from the Appstore and the appstore cumulative rating of 4.6/5. Safety Score for Facemoji Keyboard: Fonts&Emoji Is 36.1/100",Quan Hoc Gioi,2021-09-30 11:31:50,2021-09-30 11:31:50,1,1
+121,com.simejikeyboard,Is Facemoji Keyboard: Fonts&Emoji Legit?,"Facemoji Keyboard: Fonts&Emoji is legit, but not 100% legit. This conclusion was arrived at by running over 24,863 Facemoji Keyboard: Fonts&Emoji User Reviews through NLP machine learning process to determine if users believe the app is legitimate or not. Based on this, Justuseapp Legitimacy Score for Facemoji Keyboard: Fonts&Emoji Is 36.1/100.",Quan Hoc Gioi,2021-10-01 11:31:50,2021-10-01 11:31:50,1,1
+122,com.simejikeyboard,Is Facemoji keyboard free?,"For a free app, this keyboard offers a lot more than any other keyboard app I have used. If you're looking for a new keyboard app for your Android device, then you should definitely check out the Facemoji Keyboard.",Quan Hoc Gioi,2021-10-02 11:31:50,2021-10-02 11:31:50,1,1
+123,com.simejikeyboard,How to use Facemoji Emoji keyboard?,"From the main tab in Facemoji Keyboard you can take a look at the most popular skins of the moment, which you can easily download from the app itself. Plus you can look for specific skins using the search box. Besides the skins for your keyboard, Facemoji Keyboard also has loads of sticker and emoji packs to download and add smoothly to your normal keyboard.",Quan Hoc Gioi,2021-10-03 11:31:50,2021-10-03 11:31:50,1,1
+124,com.simejikeyboard,Highlight feature of Facemoji Emoiji keyboard,"One of the most interesting features in Facemoji Keyboard is that it lets you create your own fully customizable skin. You can set whatever photo you want as a background, pick the color of the keys, the size of the font, etc. In short, you can create your own keyboard.",Quan Hoc Gioi,2021-10-04 11:31:50,2021-10-04 11:31:50,1,1
+125,com.videoshop.app,What is Videoshop?,Videoshop is the fast and easy app to personalize your videos and share them with all your friends.,Quan Hoc Gioi,2021-10-05 11:31:50,2021-10-05 11:31:50,1,1
+126,com.videoshop.app,How to download Videoshop on your phone?,"You can download Videoshop by following in 3 ways:
+1. Directly on downloadAPK in this link: https://downloadapk.net/Videoshop-Video-Editor.html 
+2. On Google Play Store:
+- Open Google Play on your phone
+- Search for “Videoshop” in the search bar. Tap the search tool (magnifying glass icon) at the top-right corner of Google Play and type in “Videoshop” Press “OK” on your keyboard to start searching.
+- Access the app’s information page. The official website should be the first app to come out in the list. Tap it.
+- Tap on the Install button, then touch Accept with Videoshop's permissions.
+3. On Appstore with link: https://apps.apple.com/us/app/videoshop-video-editor/id615563599 ",Quan Hoc Gioi,2021-10-06 11:31:50,2021-10-06 11:31:50,1,1
+127,com.videoshop.app,Is videoshop free?,"Videoshop is a FREE and easy video editor with fast editing tools, filters and many other effects for personalizing your videos.",Quan Hoc Gioi,2021-10-07 11:31:50,2021-10-07 11:31:50,1,1
+128,com.videoshop.app,Is videoshop a good app?,"Videoshop is a great personal and professional mobile video editor app. You can trim seconds easily, slow footage down, or merge multiple clips into one all in this one app. As an easy to use mobile video editor for Android and iOS, this app is excellent for fast editing, adding filters, sound effects, and so much more. ",Quan Hoc Gioi,2021-10-08 11:31:50,2021-10-08 11:31:50,1,1
+129,com.videoshop.app,Does videoshop have a watermark?,"The features of the app are very simple, and the best thing about it is that when you export your video, no watermark is added.",Quan Hoc Gioi,2021-10-09 11:31:50,2021-10-09 11:31:50,1,1
+130,com.videoshop.app,How to use Videoshop to edit video?,"This is some the most of the basic opal to use this app:
+- After you’ve recorded the music video (without audio), import it into Videoshop.
+- Your screen should now consist of four parts. The top bar shows where in the video you are. Use this to swipe around to different sections. 
+- Next are the editing tabs, which you’ll use to edit the video. The bottom section shows the clips that you’ve uploaded so far. You can tap these to make changes to individual clips. Most of the tools are straightforward: you can rotate, copy and paste a clip, change the speed, etc. 
+- To sync up the music, hit the Sound button on the Toolbar and choose Music. Your library should open and you can choose the song you want. 
+- If you want to change the look of the video, go to Display and play around with the sliders until you get something that you like. 
+- You can add filters by hitting Next in the top right and looking through the Filter tab on the bottom. 
+- Once you’re done, hit the share button in the top right, choose the resolution, and then the way you want to save it.",Quan Hoc Gioi,2021-10-10 11:31:50,2021-10-10 11:31:50,1,1
+131,com.videoshop.app,Pros and cons of Videoshop,"Pros:
+- Videoshop is packed full of useful features and gets frequent updates. You can use the app on both the iPhone and iPad.
+- Combine multiple clips into one.
+Cons:
+- The interface can be confusing and doesn't tell you how to use some of the tools.
+- Only allows for one audio recording at a time.",Quan Hoc Gioi,2021-10-11 11:31:50,2021-10-11 11:31:50,1,1
+132,com.videoshop.app,Who is founder of Videoshop?,"Joseph Riquelme (Founder)
+Joseph graduated from the University of California, Davis in 2006 with a BS in Electrical Engineering, and a minor in Technology Management. He discovered his new found passion in video editing products that enable people to explore their creativity.",Quan Hoc Gioi,2021-10-12 11:31:50,2021-10-12 11:31:50,1,1

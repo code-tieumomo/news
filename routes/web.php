@@ -18,6 +18,11 @@ Route::get('/', 'HomeController@index')->name('home.index');
 Route::get('posts/{slug}', 'PostController@show')->name('posts.show');
 Route::get('categories/{slug}', 'CategoryController@show')->name('categories.show');
 Route::get('categories/{slug}/{subSlug}', 'CategoryController@show')->name('subCategories.show');
+Route::get('lastest-posts', 'PostController@lastest')->name('posts.lastest');
+Route::get('search', 'PostController@search')->name('posts.search');
+Route::post('comments', 'CommentController@comment')->name('comments.post');
+Route::delete('comments/{id}', 'CommentController@destroy')->name('comments.destroy');
+Route::put('comments', 'CommentController@update')->name('comments.update');
 Route::get('test', 'HomeController@test');
 Route::get('logs', 'LogController@index');
 
@@ -35,8 +40,8 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin
     Route::resource('writers', 'WriterController');
     Route::delete('writers/remove-write-permission/{writer}', 'WriterController@removeWritePermission')->name('writers.removeWritePermission');
     Route::resource('manage-posts', 'PostController');
-    Route::put('comments/update', 'CommentController@update')->name('comments.update');
-    Route::put('comments/destroy', 'CommentController@destroy')->name('comments.destroy');
+    Route::put('manage-comments/update', 'CommentController@update')->name('manage-comments.update');
+    Route::put('manage-comments/destroy', 'CommentController@destroy')->name('manage-comments.destroy');
 
     //Debug
     Route::get('change-most-recent-user', 'UserController@changeMostRecentUser');
@@ -44,7 +49,11 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin
 
 Route::group(['middleware' => 'auth', 'namespace' => 'UserFeatures', 'prefix' => 'user-features'], function() {
     Route::get('dashboard', 'UserFeaturesController@index')->name('user-features.index');
-    Route::put('infomations/{name}', 'UserFeaturesController@putInfomations')->name('infomations.update');
-    Route::put('password/{currentPassword}/{newPassword}/{confirmPassword}', 'UserFeaturesController@putPassword')->name('password.update');
-    Route::put('comments/{comment}/{postId}', 'UserFeaturesController@putComments')->name('comments.update');
+    Route::put('infomations', 'UserFeaturesController@putInfomations')->name('infomations.update');
+    Route::put('password', 'UserFeaturesController@putPassword')->name('password.update');
+    Route::put('comments', 'UserFeaturesController@putComments')->name('comments.update');
+    Route::delete('comments/{id}', 'UserFeaturesController@deleteComment')->name('comments.destroy');
+
+    Route::get('become-writer', 'UserFeaturesController@showBecomeWriter')->name('request.show-become-writer');
+    Route::post('become-writer', 'UserFeaturesController@postBecomeWriter')->name('request.post-become-writer');
 });

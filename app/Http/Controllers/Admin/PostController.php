@@ -55,14 +55,14 @@ class PostController extends Controller
     {
         try {
             $post = Post::findOrFail($id);
-            $comments = Comment::where('post_id', $id)->orderBy('id', 'desc')->simplePaginate(3);
+            $comments = Comment::with('user')->where('post_id', $id)->orderBy('id', 'desc')->get();
 
             return view('admin.post-detail', [
                 'post' => $post,
                 'comments' => $comments
             ]);
         } catch(ModelNotFoundException $e) {
-            return 'fail';
+            abort(404);
         }
     }
 
@@ -86,7 +86,21 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post = Post::find($id);
+        $post->update([
+            'title' => $request->title,
+            'sumary' => $request->sumary,
+            'content' => $request->content,
+        ]);
+
+        if ($request->file('thumbnail') != null) {
+            $image = 'data:image/png;base64, ' . base64_encode(file_get_contents($request->file('thumbnail')));
+            $post->update([
+                'thumbnail' => $image
+            ]);
+        }
+
+        return "success";
     }
 
     /**

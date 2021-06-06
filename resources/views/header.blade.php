@@ -48,7 +48,7 @@
                         </div>
                     @elserole('writer')
                         <div class="right-topbar">
-                            <a href="#">
+                            <a href="{{ route('user-features.index') }}">
                                 <i class="fa fa-pencil"></i> {{ Auth::user()->name }}
                             </a>
 
