@@ -71,32 +71,38 @@
             </form>
 
             <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Comments</h3>
-                </div>
-                <div class="card-body">
-                    <div class="latest-timeline scrollbar3" id="scrollbar3">
-                        <ul id="list-comments" class="timeline mb-0">
-                            @foreach ($comments as $comment)
-                                <li class="mb-0 mt-0">
-                                    <div class="d-flex">
-                                        <span class="time-data">
-                                            <span class="content" id="comment-{{ $comment->id }}">{{ $comment->content }}</span>
-                                            <a id="" data-id="{{ $comment->id }}" data-comment="{{ $comment->content }}" data-mysql-id="{{ $comment->id }}" href="javascript:void(0)" class="new ml-3 btn-edit-comment"><i class="text-warning fe fe-edit fs-16"></i></a>
-                                            <a id="" data-id="{{ $comment->id }}" data-comment="{{ $comment->content }}" data-mysql-id="{{ $comment->id }}" href="javascript:void(0)" class="new ml-3 btn-delete-comment"><i class="text-danger fe fe-trash-2 fs-16"></i></a>
-                                        </span>
-                                        <span class="ml-auto text-muted fs-11">
-                                            {{ $comment->updated_at->toDateTimeString() }}
-                                        </span>
-                                    </div>
-                                    <p class="text-muted fs-12">
-                                        <span class="text-info">{{ $comment->user->name }}</span>
-                                    </p>
-                                </li>
-                            @endforeach
-                        </ul>
+                @if (count($comments) == 0)
+                    <div class="card-header">
+                        <h3 class="card-title">This post doesn't have any comments</h3>
                     </div>
-                </div>
+                @else
+                    <div class="card-header">
+                        <h3 class="card-title">Comments</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="latest-timeline scrollbar3" id="scrollbar3">
+                            <ul id="list-comments" class="timeline mb-0">
+                                @foreach ($comments as $comment)
+                                    <li class="mb-0 mt-0">
+                                        <div class="d-flex">
+                                            <span class="time-data">
+                                                <span class="content" id="comment-{{ $comment->id }}">{{ $comment->content }}</span>
+                                                <a id="" data-id="{{ $comment->id }}" data-comment="{{ $comment->content }}" data-mysql-id="{{ $comment->id }}" href="javascript:void(0)" class="new ml-3 btn-edit-comment"><i class="text-warning fe fe-edit fs-16"></i></a>
+                                                <a id="" data-id="{{ $comment->id }}" data-comment="{{ $comment->content }}" data-mysql-id="{{ $comment->id }}" href="javascript:void(0)" class="new ml-3 btn-delete-comment"><i class="text-danger fe fe-trash-2 fs-16"></i></a>
+                                            </span>
+                                            <span class="ml-auto text-muted fs-11">
+                                                {{ $comment->updated_at->toDateTimeString() }}
+                                            </span>
+                                        </div>
+                                        <p class="text-muted fs-12">
+                                            <span class="text-info">{{ $comment->user->name }}</span>
+                                        </p>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                @endif
             </div>
         </div>
     </div>
@@ -179,19 +185,13 @@
                             _token: '{{ csrf_token() }}',
                         },
                         beforeSend: function() {
-                            $('#card-post-detail').hide();
-                            $('#card-post-thumbnail').hide();
-                            $('#card-post-loader').show();
+                            $('#btn-delete-post').html('<i class="fa fa-spinner fa-pulse fa-fw"></i> Deleting');
+                            $('#btn-delete-post').attr('disabled', true);
                         }
                     })
                     .done(function(response) {
-                        $('#card-post-detail').html('<h6 class="text-danger">Post has been removed!</h6><a href="/admin/manage-posts">Click here to back <i class="fa fa-location-arrow"></i></a>');
-                        $('#card-post-detail').show();
-                        $('#card-post-thumbnail').remove();
-                        $('#card-post-loader').hide();
-                        $('.card-title').html('All comments have been removed!')
-                        $('#card-comments').remove();
-                        $('#btn-loadmore').remove();
+                        $('#btn-delete-post').html('<i class="fe fe-trash-2 fs-16"></i> Delete');
+                        $('#btn-delete-post').removeAttr('disabled');
                         if (response == 'success'){
                             $('#modal-user-detail').modal('hide');
                             $('tr[id=' + id + ']').remove();
@@ -200,19 +200,20 @@
                                 'Post has been deleted.',
                                 'success'
                             );
-
                         } else {
-                            Swal.fire(
-                                'Oops!',
-                                'Something went wrong! Please try later.',
-                                'error'
-                            );
+                            Swal.fire({
+                                title: 'Deleted!',
+                                text: "Deleted post, back to posts list!",
+                                icon: 'success',
+                                confirmButtonColor: '#3085d6',
+                                confirmButtonText: 'OK'
+                            });
+                            window.location.replace('/admin/manage-posts');
                         }
                     })
                     .fail(function(reponse) {
-                        $('#card-post-detail').show();
-                        $('#card-post-thumbnail').show();
-                        $('#card-post-loader').hide();
+                        $('#btn-delete-post').html('<i class="fe fe-trash-2 fs-16"></i> Delete');
+                        $('#btn-delete-post').removeAttr('disabled');
                         Swal.fire(
                             'Oops!',
                             'Something went wrong! Please try later.',

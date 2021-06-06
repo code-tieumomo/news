@@ -140,7 +140,7 @@
                                 </span>
 
                                 <div class="flex-wr-s-s size-w-0">
-                                    <a href="#" class="dis-block f1-s-13 cl0 bg-facebook borad-3 p-tb-4 p-rl-18 hov-btn1 m-r-3 m-b-3 trans-03">
+                                    <a href="https://www.facebook.com/sharer/sharer.php?kid_directed_site=0&sdk=joey&u={{ route('posts.show', ['slug' => $post->slug]) }}&display=popup&ref=plugin&src=share_button" class="dis-block f1-s-13 cl0 bg-facebook borad-3 p-tb-4 p-rl-18 hov-btn1 m-r-3 m-b-3 trans-03">
                                         <i class="fa fa-facebook-f m-r-7"></i>
                                         Facebook
                                     </a>
