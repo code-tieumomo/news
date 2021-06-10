@@ -56,7 +56,6 @@
                     <div class="media py-3 mt-0 border-top">
                         <div class="ml-auto">
                             <div class="d-flex">
-                                <a href="/posts/{{ $post->slug }}" target="_blank" class="btn btn-success new ml-3"><i class="fe fe-arrow-up-right fs-16"></i> View this post in UET-News</a>
                                 <button type="submit" id="btn-edit-post" href="javascript:void(0)" class="btn btn-warning new ml-3"><i class="fe fe-edit fs-16"></i> Update</button>
                                 <button id="btn-delete-post" data-id="{{ $post->id }}" href="javascript:void(0)" class="btn btn-danger new ml-3"><i class="fe fe-trash-2 fs-16"></i> Delete</button>
                             </div>

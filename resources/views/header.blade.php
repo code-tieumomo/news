@@ -58,7 +58,7 @@
                         </div>
                     @else
                         <div class="right-topbar">
-                            <a href="#">
+                            <a href="/admin/dashboard">
                                 Admin Features
                             </a>
 

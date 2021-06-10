@@ -747,9 +747,10 @@ class Connection implements ConnectionInterface
         // run the SQL against the PDO connection. Then we can calculate the time it
         // took to execute and log the query SQL, bindings and time in our memory.
         try {
-            $starttime = microtime(true);
+            //$starttime = microtime(true);
             $result = $callback($query, $bindings);
-            $duration = microtime(true) - $starttime;
+            //echo Str::replaceArray('?', $bindings, $query) . '<br>';
+            // $duration = microtime(true) - $starttime;
 
             // QueryLog::create([
             //     'ip' => \Request::ip(),

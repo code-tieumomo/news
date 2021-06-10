@@ -71,7 +71,7 @@
                         </div>
                     </div>
                     <div class="card-footer text-right">
-                        <button type="submit" class="btn btn-primary">Updated</button>
+                        <button type="submit" class="btn btn-primary">Update</button>
                         <button type="reset" class="btn btn-danger">Cancle</button>
                     </div>
                 </form>
@@ -100,7 +100,7 @@
                         </div>
                     </div>
                     <div class="card-footer text-right">
-                        <button type="submit" class="btn btn-primary">Updated</button>
+                        <button type="submit" class="btn btn-primary">Update</button>
                         <button type="reset" class="btn btn-danger">Cancle</button>
                     </div>
                 </form>

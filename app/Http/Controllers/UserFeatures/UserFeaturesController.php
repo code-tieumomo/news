@@ -6,10 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Models\BecomeWriter;
 use App\Models\Comment;
 use App\Models\Post;
+use App\Models\Category;
+use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class UserFeaturesController extends Controller
 {
@@ -138,10 +141,12 @@ class UserFeaturesController extends Controller
         try {
             $post = Post::findOrFail($id);
             $comments = Comment::with('user')->where('post_id', $id)->orderBy('id', 'desc')->get();
+            $categories = Category::all();
 
             return view('user-features.manage-post', [
                 'post' => $post,
-                'comments' => $comments
+                'comments' => $comments,
+                'categories' => $categories
             ]);
         } catch(ModelNotFoundException $e) {
             abort(404);
@@ -150,6 +155,67 @@ class UserFeaturesController extends Controller
 
     public function createPost()
     {
-        return view('user-features.create-post');
+        $categories = Category::all();
+
+        return view('user-features.create-post', compact('categories'));
+    }
+
+    public function savePost(Request $request)
+    {
+        if ($request->file('thumbnail') != null) {
+            $image = 'data:image/png;base64, ' . base64_encode(file_get_contents($request->file('thumbnail')));
+            $post = Post::create([
+                'title' => $request->title,
+                'sumary' => $request->sumary,
+                'content' => $request->content,
+                'thumbnail' => $image,
+                'slug' => Str::slug($request->title, '-'),
+                'user_id' => Auth::id(),
+                'sub_category_id' => $request->sub_category_id
+            ]);
+
+            return $post->id;
+        }
+
+        return 'fail';
+    }
+
+    public function updatePost(Request $request)
+    {
+        $post = Post::find($request->id);
+        if ($request->file('thumbnail') != null) {
+            $image = 'data:image/png;base64, ' . base64_encode(file_get_contents($request->file('thumbnail')));
+            $post->update([
+                'thumbnail' => $image
+            ]);
+        }
+        $post->update([
+            'title' => $request->title,
+            'sumary' => $request->sumary,
+            'content' => $request->content,
+            'slug' => Str::slug($request->title, '-'),
+            'sub_category_id' => $request->sub_category_id
+        ]);
+
+        return 'success';
+    }
+
+    public function checkSlug(Request $request)
+    {
+        $slug = trim($request->slug);
+        $post = Post::where('slug', '=', $slug)->first();
+        if ($post == null) {
+            return 'available';
+        } else {
+            return 'duplicate';
+        }
+    }
+
+    public function getSubcategories(Request $request)
+    {
+        $category_id = trim($request->category_id);
+        $subCategories = SubCategory::where('category_id', '=', $category_id)->get();
+
+        return $subCategories;
     }
 }

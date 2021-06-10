@@ -294,7 +294,7 @@
                                             Facebook
                                         </span>
 
-                                        <a href="#" class="f1-s-9 text-uppercase cl3 hov-cl10 trans-03">
+                                        <a href="https://www.facebook.com/" target="_blank" class="f1-s-9 text-uppercase cl3 hov-cl10 trans-03">
                                             Like
                                         </a>
                                     </div>
@@ -310,7 +310,7 @@
                                             Twitter
                                         </span>
 
-                                        <a href="#" class="f1-s-9 text-uppercase cl3 hov-cl10 trans-03">
+                                        <a href="https://www.twitter.com/" target="_blank" class="f1-s-9 text-uppercase cl3 hov-cl10 trans-03">
                                             Follow
                                         </a>
                                     </div>
@@ -326,7 +326,7 @@
                                             Youtube
                                         </span>
 
-                                        <a href="#" class="f1-s-9 text-uppercase cl3 hov-cl10 trans-03">
+                                        <a href="https://www.youtube.com/" target="_blank" class="f1-s-9 text-uppercase cl3 hov-cl10 trans-03">
                                             Subscribe
                                         </a>
                                     </div>

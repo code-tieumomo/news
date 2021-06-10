@@ -83,7 +83,7 @@
                     <div class=" card-body">
                         <div class="row">
                             <div class="col-lg-12 col-sm-12">
-                                <input name="sample_article" type="file" class="dropify input-become-writer" data-height="150" data-required="Sample article are required"/>
+                                <input name="sample_article" type="file" class="dropify input-become-writer" data-height="150" data-required="Sample article are required" accept=".pdf"/>
                             </div>
                         </div>
                     </div>
@@ -98,7 +98,7 @@
                     <div class=" card-body">
                         <div class="row">
                             <div class="col-lg-12 col-sm-12">
-                                <input name="cv" type="file" class="dropify input-become-writer" data-height="150" data-required="CV are required"/>
+                                <input name="cv" type="file" class="dropify input-become-writer" data-height="150" data-required="CV are required" accept=".pdf"/>
                             </div>
                         </div>
                     </div>
@@ -109,7 +109,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
-                            <button type="submit" class="btn btn-primary mr-3"><i class="fe fe-upload mr-2"></i>Send Request</button>
+                            <button id="btn-submit" type="submit" class="btn btn-primary mr-3"><i class="fe fe-upload mr-2"></i>Send Request</button>
                             <button type="reset" class="btn btn-danger"><i class="fe fe-trash mr-2"></i>Reset</button>
                         </div>
                     </div>
@@ -170,6 +170,9 @@
                 return false;
             }
 
+            $('#btn-submit').html('<i class="fa fa-spinner fa-pulse fa-fw"></i> Saving');
+            $('#btn-submit').attr('disabled', true);
+
             let data = new FormData(this);
             data.append('_token', '{{ csrf_token() }}');
             $.ajax({
@@ -196,6 +199,8 @@
                     text: 'Sent your request!',
                     icon: 'success'
                 });
+                $('#btn-submit').html('<i class="fe fe-upload mr-2"></i>Send Request');
+                $('#btn-submit').removeAttr('disabled');
             })
             .fail(function() {
                 Swal.fire({
@@ -203,6 +208,8 @@
                     text: 'Some thing went wrong! Try again',
                     icon: 'error'
                 });
+                $('#btn-submit').html('<i class="fe fe-upload mr-2"></i>Send Request');
+                $('#btn-submit').removeAttr('disabled');
             });
         });
     </script>

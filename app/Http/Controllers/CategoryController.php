@@ -11,23 +11,28 @@ use Illuminate\Support\Facades\Log;
 
 class CategoryController extends Controller
 {
-    public function show($slug, $subSlug = null,Request $request)
+    public function show($slug, $subSlug = null)
     {
         $categories = Category::with('subCategories.posts')->get();
         $popPosts = Post::orderByViews('desc', Period::pastDays(3))->limit(7)->get();
 
         if (!$subSlug) {
-            $category = Category::where('slug', $slug)->first();
+            $category = Category::with('subCategories')->where('slug', $slug)->first();
             if (!$category) {
                 abort(404);
             }
             $posts = $category->posts()->sortByDesc('id')->paginate(8);
+            foreach ($category->subCategories as $subCategory) {
+                $subId[] = $subCategory->id;
+            }
+            $popCatePosts = Post::whereIn('sub_category_id', $subId)->orderByViews('desc', Period::pastDays(3))->limit(7)->get();
 
             return view('category-detail', [
                 'categories' => $categories,
                 'popPosts' => $popPosts,
                 'category' => $category,
                 'posts' => $posts,
+                'popCatePosts' => $popCatePosts,
             ]);
         } else {
             $category = Category::where('slug', $slug)->first();
@@ -41,8 +46,8 @@ class CategoryController extends Controller
             if (!$subCategory) {
                 abort(404);
             }
-            $popPosts = Post::where('sub_category_id', $subCategory->id)->orderByViews('desc', Period::pastDays(3))->limit(5)->get();
             $posts = $subCategory->posts->paginate(8);
+            $popCatePosts = Post::where('sub_category_id', $subCategory->id)->orderByViews('desc', Period::pastDays(3))->limit(5)->get();
 
             return view('sub-category-detail', [
                 'popPosts' => $popPosts,
@@ -51,6 +56,7 @@ class CategoryController extends Controller
                 'subCategory' => $subCategory,
                 'popPosts' => $popPosts,
                 'posts' => $posts,
+                'popCatePosts' => $popCatePosts,
             ]);
         }
     }

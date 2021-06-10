@@ -42,6 +42,10 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin
     Route::resource('manage-posts', 'PostController');
     Route::put('manage-comments/update', 'CommentController@update')->name('manage-comments.update');
     Route::put('manage-comments/destroy', 'CommentController@destroy')->name('manage-comments.destroy');
+    Route::get('file/cv/{id}', 'FileController@downloadCV');
+    Route::get('file/sample/{id}', 'FileController@downloadSA');
+    Route::delete('writers/deny-writer-request/{id}', 'WriterController@denyWriterRequest');
+    Route::post('writers/approve-writer-request/{id}', 'WriterController@approveWriterRequest');
 
     //Debug
     Route::get('change-most-recent-user', 'UserController@changeMostRecentUser');
@@ -61,4 +65,8 @@ Route::group(['middleware' => 'auth', 'namespace' => 'UserFeatures', 'prefix' =>
     Route::delete('posts/{id}', 'UserFeaturesController@destroyPost')->name('writer.destroyPosts');
     Route::get('manage-post/{id}', 'UserFeaturesController@managePost')->name('writer.managePost');
     Route::get('create-post', 'UserFeaturesController@createPost')->name('writer.create');
+    Route::post('create-post', 'UserFeaturesController@savePost')->name('writer.save');
+    Route::post('update-post', 'UserFeaturesController@updatePost');
+    Route::get('check-slug', 'UserFeaturesController@checkSlug')->name('writer.checkSlug');
+    Route::get('get-subcategories', 'UserFeaturesController@getSubcategories')->name('writer.getSubcategories');
 });

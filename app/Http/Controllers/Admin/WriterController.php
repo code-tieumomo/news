@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Comment;
 use App\Models\Post;
 use App\Models\User;
+use App\Models\BecomeWriter;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class WriterController extends Controller
 {
@@ -113,6 +115,53 @@ class WriterController extends Controller
             $user = User::find($id);
             $user->removeRole('writer');
             $user->assignRole('user');
+
+            return 'success';
+        } catch (ModelNotFoundException $e) {
+            return 'fail';
+        }
+    }
+
+    public function denyWriterRequest($id)
+    {
+        try {
+            $request = BecomeWriter::findOrFail($id);
+            $to_name = $request->name;
+            $to_email = $request->user->email;
+            $data = array(
+                'name' => $request->name
+            );
+            Mail::send('emails.auto-reply-deny-writer-request', $data, function($message) use ($to_name, $to_email) {
+                $message->to($to_email, $to_name)->subject('Autoreply request become a writer at UET-News');
+                $message->from('something.tieumomo@gmail.com');
+            });
+
+            $request->delete();
+
+            return 'success';
+        } catch (ModelNotFoundException $e) {
+            return 'fail';
+        }
+    }
+
+    public function approveWriterRequest($id)
+    {
+        try {
+            $request = BecomeWriter::findOrFail($id);
+            $user = $request->user;
+            $user->removeRole('user');
+            $user->assignRole('writer');
+            $to_name = $request->name;
+            $to_email = $user->email;
+            $data = array(
+                'name' => $request->name
+            );
+            Mail::send('emails.auto-reply-approve-writer-request', $data, function($message) use ($to_name, $to_email) {
+                $message->to($to_email, $to_name)->subject('Autoreply request become a writer at UET-News');
+                $message->from('something.tieumomo@gmail.com');
+            });
+
+            $request->delete();
 
             return 'success';
         } catch (ModelNotFoundException $e) {

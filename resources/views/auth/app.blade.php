@@ -84,12 +84,6 @@
                                     <i class="fa fa-long-arrow-left"></i> Go back
                                 </a>
                             </div>
-
-                            <div>
-                                <a href="#" class="txt1">
-                                    Forgot?
-                                </a>
-                            </div>
                         </div>
                     </form>
                 </div>

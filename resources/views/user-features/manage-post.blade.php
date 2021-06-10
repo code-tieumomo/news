@@ -1,23 +1,25 @@
 @extends('user-features.app')
 
-@section('title', {{ $post->title . ' | User Features' }})
+@section('title')
+    Manage Post | User Features
+@endsection
 
 @section('custom-css')
-    <!-- Simplebar css -->
-    <link rel="stylesheet" href="{{ asset('admin-assets/plugins/simplebar/css/simplebar.css') }}">
     <!-- INTERNAL File Uploads css -->
     <link href="{{ asset('admin-assets/plugins/fancyuploder/fancy_fileupload.css') }}" rel="stylesheet" />
     <!-- INTERNAL File Uploads css-->
     <link href="{{ asset('admin-assets/plugins/fileupload/css/fileupload.css') }}" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 @endsection
 
 @section('content')
     <!--Page header-->
     <div class="page-header">
         <div class="page-leftheader">
-            <h4 class="page-title mb-0">Post Detail: {{ $post->title }}</h4>
+            <h4 class="page-title mb-0">Create Post</h4>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a><i class="fe fe-layout  mr-2 fs-14"></i>Posts</a></li>
+                <li class="breadcrumb-item"><a><i class="fe fe-layout  mr-2 fs-14"></i>CRUD</a></li>
+                <li class="breadcrumb-item"><a></i>Posts</a></li>
                 <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('manage-posts.index') }}">Posts</a></li>
             </ol>
         </div>
@@ -33,107 +35,57 @@
                     <img src="{{ $post->thumbnail }}" alt="img" class="cover-image br-7 w-100">
                 </div>
                 <div class="item7-card-img px-4 pt-4">
-                    <div class="item7-card-desc d-md-flex mb-5">
-                        <a class="d-flex mr-4"><i class="fe fe-file fs-16 mr-1"></i> To change post's thumbnail, choose a file below.</a>
-                    </div>
                     <input name="thumbnail" type="file" class="dropify" data-height="100" accept=".jpg, .png, image/jpeg, image/png">
                 </div>
                 <div id="card-post-detail" class="card-body">
                     <div class="item7-card-desc d-md-flex mb-5">
-                        <a class="d-flex mr-4 mb-2"><i class="fe fe-calendar fs-16 mr-1"></i><div class="mt-0">Created: {{ $post->created_at->toDateTimeString() }}</div></a>
-                        <a class="d-flex mr-4 mb-2"><i class="fe fe-calendar fs-16 mr-1"></i><div class="mt-0">Last Modified: {{ $post->updated_at->toDateTimeString() }}</div></a>
-                        <div class="ml-auto mb-2">
-                            <a class="mr-0 d-flex" href="#list-comments"><i class="fe fe-message-square fs-16 mr-1"></i><div class="mt-0">{{ count($post->comments) }} Comments</div></a>
-                        </div>
+                        <a class="d-flex mr-4"><i class="fe fe-file fs-16 mr-1"></i>All fields below are require <span class="text-danger">*</span></a>
                     </div>
-                    <a class="mt-4"><input name="title" class="font-weight-semibold w-100 h-6 fs-16 border mb-5" style="outline: none;" value="{{ $post->title }}"></a>
+                    <div class="py-3 mt-0 border-top">
+                        <label>Category</label>
+                        <select class="form-control custom-select w-100 h-10 fs-12 border" id="category" style="outline: none;">
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="py-3 mt-0 border-top">
+                        <label>Subcategory</label>
+                        <select id="subcategory" class="form-control custom-select w-100 h-10 fs-12 border" style="outline: none;">
+                            @foreach ($post->subCategory->category->subCategories as $subCategory)
+                                <option value="{{ $subCategory->id }}">{{ $subCategory->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <label>Title</label>
+                    <a class="mt-4"><input name="title" class="font-weight-semibold w-100 h-6 fs-16 border" style="outline: none; padding: 5px 10px;" placeholder="Enter post title ..." value="{{ $post->title }}"></a>
+                    <a><input name="slug" class=" w-100 h-6 fs-12 border mb-5" style="outline: none; padding: 5px 10px;" placeholder="Post's slug goes here .."  value="{{ $post->slug }}" disabled></a>
+                    <label>Summary</label>
                     <p class="">
-                        <textarea name="sumary" rows="3" class="w-100 border">{{ $post->sumary }}</textarea>
+                        <textarea name="sumary" rows="3" class="w-100 border" placeholder="Enter post sumary" style="outline: none; padding: 5px 10px;">{{ $post->sumary }}</textarea>
                     </p>
                     <div class="py-3 mt-0 border-top">
-                        <textarea name="editor"></textarea>
+                        <label>Content</label>
+                        <textarea id="summernote" name="content"></textarea>
                     </div>
                     <div class="media py-3 mt-0 border-top">
                         <div class="ml-auto">
                             <div class="d-flex">
-                                <a href="/posts/{{ $post->slug }}" target="_blank" class="btn btn-success new ml-3"><i class="fe fe-arrow-up-right fs-16"></i> View this post in UET-News</a>
-                                <button type="submit" id="btn-edit-post" href="javascript:void(0)" class="btn btn-warning new ml-3"><i class="fe fe-edit fs-16"></i> Update</button>
+                                <button id="btn-save" type="submit" href="javascript:void(0)" class="btn btn-warning new ml-3"><i class="fe fe-edit fs-16"></i> Save</button>
                                 <button id="btn-delete-post" data-id="{{ $post->id }}" href="javascript:void(0)" class="btn btn-danger new ml-3"><i class="fe fe-trash-2 fs-16"></i> Delete</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </form>
-
-            <div class="card">
-                @if (count($comments) == 0)
-                    <div class="card-header">
-                        <h3 class="card-title">This post doesn't have any comments</h3>
-                    </div>
-                @else
-                    <div class="card-header">
-                        <h3 class="card-title">Comments</h3>
-                    </div>
-                    <div class="card-body">
-                        <div class="latest-timeline scrollbar3" id="scrollbar3">
-                            <ul id="list-comments" class="timeline mb-0">
-                                @foreach ($comments as $comment)
-                                    <li class="mb-0 mt-0">
-                                        <div class="d-flex">
-                                            <span class="time-data">
-                                                <span class="content" id="comment-{{ $comment->id }}">{{ $comment->content }}</span>
-                                                <a id="" data-id="{{ $comment->id }}" data-comment="{{ $comment->content }}" data-mysql-id="{{ $comment->id }}" href="javascript:void(0)" class="new ml-3 btn-edit-comment"><i class="text-warning fe fe-edit fs-16"></i></a>
-                                                <a id="" data-id="{{ $comment->id }}" data-comment="{{ $comment->content }}" data-mysql-id="{{ $comment->id }}" href="javascript:void(0)" class="new ml-3 btn-delete-comment"><i class="text-danger fe fe-trash-2 fs-16"></i></a>
-                                            </span>
-                                            <span class="ml-auto text-muted fs-11">
-                                                {{ $comment->updated_at->toDateTimeString() }}
-                                            </span>
-                                        </div>
-                                        <p class="text-muted fs-12">
-                                            <span class="text-info">{{ $comment->user->name }}</span>
-                                        </p>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
-                @endif
-            </div>
         </div>
     </div>
     <!--End Row-->
-
-    <!-- Edit comment modal -->
-    <div class="modal" id="modal-edit-comment">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h6 class="modal-title">Edit comment</h6><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
-                </div>
-                <div id="modal-body" class="modal-body">
-                    <input class="form-control" type="text" name="comment">
-                    <table class="table border" style="display: none;">
-                        <tr>
-                            <td>Mysql id</td>
-                            <td id="modal-mysql-id"></td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="modal-footer justify-content-center">
-                    <button id="btn-update-comment" class="btn btn-indigo" type="button">Save changes</button> <button class="btn btn-secondary" data-dismiss="modal" type="button">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
 @endsection
 
 @section('custom-js')
-    <!--INTERNAL Index js-->
-    <script src="{{ asset('admin-assets/js/index1.js') }}"></script>
-    <!-- Simplebar JS -->
-    <script src="{{ asset('admin-assets/plugins/simplebar/js/simplebar.min.js') }}"></script>
-    <!-- CKEditor -->
-    <script src="https://cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script>
+    <!-- Summernote -->
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
     <!-- INTERNAL File-Uploads Js-->
     <script src="{{ asset('admin-assets/plugins/fancyuploder/jquery.ui.widget.js') }}"></script>
     <script src="{{ asset('admin-assets/plugins/fancyuploder/jquery.fileupload.js') }}"></script>
@@ -146,196 +98,225 @@
     <!--INTERNAL Form Advanced Element -->
     <script src="{{ asset('admin-assets/js/file-upload.js') }}"></script>
     <script type="text/javascript">
-        CKEDITOR.config.height = 1000;
-        let editor = CKEDITOR.replace('editor');
-        editor.setData(`{!! $post->content !!}`);
-
-        $('#btn-delete-post').on('click', function(event) {
-            event.preventDefault();
-
-            var id = $(this).data('id');
-            deletePost(id);
+        $('#summernote').on('summernote.init', function() {
+            $('#summernote').summernote('code', `{!! $post->content !!}`);
+        }).summernote({
+            placeholder: 'Content goes here ...',
+            height: 500,
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['fontsize', ['fontsize']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture', 'video']],
+            ]
         });
+        $('.note-editable').css('font-size','14px');
 
-        function deletePost(id) {
-            Swal.fire({
-                title: 'Are you sure?',
-                text: "All post's comment will be delete too!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $.ajax({
-                        url: '{{ route('manage-posts.destroy', $post->id) }}',
-                        type: 'DELETE',
-                        data: {
-                            _token: '{{ csrf_token() }}',
-                        },
-                        beforeSend: function() {
-                            $('#btn-delete-post').html('<i class="fa fa-spinner fa-pulse fa-fw"></i> Deleting');
-                            $('#btn-delete-post').attr('disabled', true);
-                        }
-                    })
-                    .done(function(response) {
-                        $('#btn-delete-post').html('<i class="fe fe-trash-2 fs-16"></i> Delete');
-                        $('#btn-delete-post').removeAttr('disabled');
-                        if (response == 'success'){
-                            $('#modal-user-detail').modal('hide');
-                            $('tr[id=' + id + ']').remove();
-                            Swal.fire(
-                                'Deleted!',
-                                'Post has been deleted.',
-                                'success'
-                            );
-                            window.location.replace('/user-features/posts');
-                        } else {
+        function string_to_slug (str) {
+            str = str.replace(/^\s+|\s+$/g, ''); // trim
+            str = str.toLowerCase();
+          
+            // remove accents, swap ñ for n, etc
+            var from = "áàảãạăắặâấầậẫẩđéèẻẽẹêếềểễệíìỉĩịóòỏõọôốồổỗộơớờởỡợúùủũụưứừửữựýỵ·/_,:;";
+            var to   = "aaaaaaaaaaaaaadeeeeeeeeeeeiiiiiooooooooooooooooouuuuuuuuuuuyy------";
+            for (var i=0, l=from.length ; i<l ; i++) {
+                str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+            }
+
+            str = str.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
+                .replace(/\s+/g, '-') // collapse whitespace and replace by -
+                .replace(/-+/g, '-'); // collapse dashes
+
+            return str;
+        }
+
+        $(document).ready(function() {
+            $('input[name=title]').on('keyup', function(event) {
+                let title = $(this).val();
+                let slug = string_to_slug(title);
+                $('input[name=slug]').val(slug);
+            })
+
+            $('#btn-delete-post').on('click', function(event) {
+                event.preventDefault();
+
+                var id = $(this).data('id');
+                deletePost(id);
+            });
+
+            function deletePost(id) {
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "All post's comment will be delete too!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            url: '{{ route('manage-posts.destroy', $post->id) }}',
+                            type: 'DELETE',
+                            data: {
+                                _token: '{{ csrf_token() }}',
+                            },
+                            beforeSend: function() {
+                                $('#btn-delete-post').html('<i class="fa fa-spinner fa-pulse fa-fw"></i> Deleting');
+                                $('#btn-delete-post').attr('disabled', true);
+                            }
+                        })
+                        .done(function(response) {
+                            $('#btn-delete-post').html('<i class="fe fe-trash-2 fs-16"></i> Delete');
+                            $('#btn-delete-post').removeAttr('disabled');
+                            if (response == 'success'){
+                                $('#modal-user-detail').modal('hide');
+                                $('tr[id=' + id + ']').remove();
+                                Swal.fire(
+                                    'Deleted!',
+                                    'Post has been deleted.',
+                                    'success'
+                                );
+                                window.location.replace('/user-features/posts');
+                            } else {
+                                Swal.fire(
+                                    'Oops!',
+                                    'Something went wrong! Please try later.',
+                                    'error'
+                                );
+                            }
+                        })
+                        .fail(function(reponse) {
+                            $('#btn-delete-post').html('<i class="fe fe-trash-2 fs-16"></i> Delete');
+                            $('#btn-delete-post').removeAttr('disabled');
                             Swal.fire(
                                 'Oops!',
                                 'Something went wrong! Please try later.',
                                 'error'
                             );
-                        }
-                    })
-                    .fail(function(reponse) {
-                        $('#btn-delete-post').html('<i class="fe fe-trash-2 fs-16"></i> Delete');
-                        $('#btn-delete-post').removeAttr('disabled');
-                        Swal.fire(
-                            'Oops!',
-                            'Something went wrong! Please try later.',
-                            'error'
-                        );
-                    });
-                }
+                        });
+                    }
+                });
+            }
+
+            $('#category').on('change', function(event) {
+                let id = $(this).val();
+                $.ajax({
+                    url: '/user-features/get-subcategories',
+                    type: 'GET',
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        category_id: id
+                    },
+                    success: function(response) {
+                        $('#subcategory').empty();
+                        response.forEach(function(item, index) {
+                            let select = (index == 0) ? 'selected' : ''
+                            let html = `
+                                <option value="${item.id}" ${select}>${item.name}</option>
+                            `;
+                            $('#subcategory').append(html);
+                            $('#subcategory').removeAttr('disabled');
+                        });
+                    },
+                    error: function(response) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops ...',
+                            text: 'Something went wrong, please try later !',
+                        });
+                    }
+                });
             });
-        }
 
-        $('#list-comments').on('click', '.btn-edit-comment', function(event) {
-            event.preventDefault();
+            $('#category').val('{{ $post->subCategory->category->id }}');
+            $('#subcategory').val();
 
-            var id = $(this).data('id');
-            var comment = $(this).parent().find('.content').html();
-            var mysqlId = $(this).data('mysql-id')
-            $('input[name=comment]').val(comment);
-            $('#modal-mysql-id').html(mysqlId);
-            $('#modal-edit-comment').modal('show');
-        });
+            $('#form-detail').on('submit', function(event) {
+                event.preventDefault();
 
-        $('#list-comments').on('click', '.btn-delete-comment', function(event) {
-            event.preventDefault();
-
-            var btn = $(this);
-            var id = $(this).data('id');
-            var comment = $(this).data('comment');
-            var mysqlId = $(this).data('mysql-id')
-            Swal.fire({
-                title: 'Are you sure?',
-                text: "Comment will be delete!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $.ajax({
-                        url: '{{ route('manage-comments.destroy') }}',
-                        method: 'PUT',
-                        data: {
-                            _token: '{{ csrf_token() }}',
-                            mysql_id: mysqlId,
-                            post_id: {{ $post->id }},
-                            comment: comment
-                        },
-                        beforeSend: function() {
-                            btn.html('<i class="text-warning">Deleting ...</i>');
-                        }
-                    })
-                    .done(function() {
-                        btn.parent().parent().parent().remove();
-                    })
-                    .fail(function() {
-                        btn.html('<i class="text-warning fe fe-edit fs-16"></i>');
-                        Swal.fire(
-                            'Oops!',
-                            'Something went wrong! Please try later.',
-                            'error'
-                        );
-                    });
-                }
-            });
-        });
-
-        $('#btn-update-comment').on('click', function(event) {
-            event.preventDefault();
-
-            $.ajax({
-                url: '{{ route('manage-comments.update') }}',
-                method: 'PUT',
-                data: {
-                    _token: '{{ csrf_token() }}',
-                    mysql_id: $('#modal-mysql-id').html(),
-                    post_id: {{ $post->id }},
-                    comment:  $('input[name=comment]').val()
-                },
-                beforeSend: function() {
-                    $('input[name=comment]').prop('disabled', true);
-                    $('#btn-update-comment').prop('disabled', true);
-                }
-            })
-            .done(function() {
-                $('#comment-' + $('#modal-mysql-id').html()).html($('input[name=comment]').val());
-                $('input[name=comment]').prop('disabled', false);
-                $('#btn-update-comment').prop('disabled', false);
-                $('#modal-edit-comment').modal('hide');
-            })
-            .fail(function() {
-                $('input[name=comment]').prop('disabled', false);
-                $('#btn-update-comment').prop('disabled', false);
-                Swal.fire(
-                    'Oops!',
-                    'Something went wrong! Please try later.',
-                    'error'
-                );
-            });
-        });
-
-        $('#form-detail').on('submit', function(event) {
-            event.preventDefault();
-            $('#btn-edit-post').html('<i class="fa fa-spinner fa-pulse fa-fw"></i> Updating');
-            $('#btn-edit-post').attr('disabled', true);
-
-            let data = new FormData(this);
-            data.append('content', editor.getData());
-            data.append('_token', '{{ csrf_token() }}');
-            data.append('_method', 'PUT');
-            $.ajax({
-                url: '/admin/manage-posts/' + {{ $post->id }},
-                type: 'POST',
-                data: data,
-                contentType: false,
-                cache: false,
-                processData: false,
-                success: (response, textStatus, xhr) => {
-                    $('#btn-edit-post').html('<i class="fa fa-pencil-square-o"></i> Update');
-                    $('#btn-edit-post').removeAttr('disabled');
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Success',
-                        text: 'Updated post'
-                    });
-                },
-                error: function(xhr, textStatus, errorThrown) {
-                    $('#btn-edit-post').html('<i class="fa fa-pencil-square-o"></i> Update');
-                    $('#btn-edit-post').removeAttr('disabled');
+                let data = new FormData(this);
+                data.append('sub_category_id', $('#subcategory').val());
+                data.append('_token', '{{ csrf_token() }}');
+                data.append('id', {{ $post->id }});
+                let slug = $('input[name=slug]').val();
+                let dataToValidate = Array.from(data);
+                if (dataToValidate[1][1] == undefined || dataToValidate[1][1] == '') {
                     Swal.fire({
                         icon: 'error',
-                        title: 'Oops...',
-                        text: 'Some thing went wrong! Try later'
+                        title: 'Missing title',
+                        text: 'Enter title please !',
                     });
+
+                    return false;
                 }
+                if (dataToValidate[2][1] == undefined || dataToValidate[2][1] == '') {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Missing summary',
+                        text: 'Enter summary please !',
+                    });
+
+                    return false;
+                }
+                if (dataToValidate[3][1] == undefined || dataToValidate[3][1] == '') {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Missing content',
+                        text: 'Enter content please !',
+                    });
+
+                    return false;
+                }
+                if (dataToValidate[5][1] == undefined || dataToValidate[5][1] == '') {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Missing category',
+                        text: 'Pick a category and subcategory please !',
+                    });
+
+                    return false;
+                }
+                $('#btn-save').html('<i class="fa fa-spinner fa-pulse fa-fw"></i> Saving');
+                $('#btn-save').attr('disabled', true);
+
+                $.ajax({
+                    url: '/user-features/update-post',
+                    type: 'POST',
+                    data: data,
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    success: function(response) {
+                        $('#btn-save').html('<i class="fe fe-edit fs-16"></i> Save');
+                        $('#btn-save').removeAttr('disabled');
+                        if (response == 'fail') {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops ...',
+                                text: 'Something went wrong, please try later !',
+                            });
+                        } else {
+                            Swal.fire(
+                                'Success!',
+                                'Post has been updated.',
+                                'success'
+                            );
+                        }
+                    },
+                    error: function(response) {
+                        $('#btn-save').html('<i class="fe fe-edit fs-16"></i> Save');
+                        $('#btn-save').removeAttr('disabled');
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops ...',
+                            text: 'Something went wrong, please try later !',
+                        });
+                    }
+                });
             });
         });
     </script>
