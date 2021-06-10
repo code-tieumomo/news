@@ -5,6 +5,7 @@ namespace App\Http\Controllers\UserFeatures;
 use App\Http\Controllers\Controller;
 use App\Models\BecomeWriter;
 use App\Models\Comment;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -109,5 +110,46 @@ class UserFeaturesController extends Controller
         return response()->json([
             'message' => 'Sent your request'
         ], 200);
+    }
+
+    function showPosts()
+    {
+        $posts = Post::where('user_id', '=', Auth::id())->get();
+
+        return view('user-features.post', [
+            'posts' => $posts
+        ]);
+    }
+
+    public function destroyPost($id)
+    {
+        try {
+            Comment::where('post_id', $id)->delete();
+            Post::destroy($id);
+
+            return 'success';
+        } catch(ModelNotFoundException $e) {
+            return 'fail';
+        }
+    }
+
+    public function managePost($id)
+    {
+        try {
+            $post = Post::findOrFail($id);
+            $comments = Comment::with('user')->where('post_id', $id)->orderBy('id', 'desc')->get();
+
+            return view('user-features.manage-post', [
+                'post' => $post,
+                'comments' => $comments
+            ]);
+        } catch(ModelNotFoundException $e) {
+            abort(404);
+        }
+    }
+
+    public function createPost()
+    {
+        return view('user-features.create-post');
     }
 }

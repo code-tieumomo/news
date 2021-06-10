@@ -56,4 +56,9 @@ Route::group(['middleware' => 'auth', 'namespace' => 'UserFeatures', 'prefix' =>
 
     Route::get('become-writer', 'UserFeaturesController@showBecomeWriter')->name('request.show-become-writer');
     Route::post('become-writer', 'UserFeaturesController@postBecomeWriter')->name('request.post-become-writer');
+
+    Route::get('posts', 'UserFeaturesController@showPosts')->name('writer.posts');
+    Route::delete('posts/{id}', 'UserFeaturesController@destroyPost')->name('writer.destroyPosts');
+    Route::get('manage-post/{id}', 'UserFeaturesController@managePost')->name('writer.managePost');
+    Route::get('create-post', 'UserFeaturesController@createPost')->name('writer.create');
 });

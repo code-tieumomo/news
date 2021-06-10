@@ -110,9 +110,9 @@ class WriterController extends Controller
                 Comment::where('post_id', $post->id)->delete();
             }
             Post::where('user_id', $id)->delete();
-            User::find($id)->update([
-                'role_id' => 1
-            ]);
+            $user = User::find($id);
+            $user->removeRole('writer');
+            $user->assignRole('user');
 
             return 'success';
         } catch (ModelNotFoundException $e) {

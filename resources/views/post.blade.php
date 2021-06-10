@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('title')
-    {{ $post->title }} | UET-News
+    {!! $post->title !!} | UET-News
 @endsection
 
 @section('custom-css')
@@ -42,7 +42,7 @@
                 </a>
 
                 <span class="breadcrumb-item f1-s-3 cl9">
-                     {{ $post->title }}
+                     {!! $post->title !!}
                 </span>
             </div>
 
@@ -67,7 +67,7 @@
                 </a>
 
                 <h3 class="f1-l-5 cl0 p-b-16 txt-center respon2">
-                    {{ $post->title }}
+                    {!! $post->title !!}
                 </h3>
 
                 <div class="flex-wr-c-s cl0">
@@ -104,7 +104,7 @@
                             <!-- Sumary -->
                             <div class="flex-s-s p-t-12 p-b-15">
                                 <span class="f1-s-12 cl5 m-r-8">
-                                    <b>{{ $post->sumary }}</b>
+                                    <b>{!! $post->sumary !!}</b>
                                 </span>
                             </div>
 
@@ -117,7 +117,7 @@
                                 </span>
 
                                 <div class="flex-wr-s-s size-w-0">
-                                    <a href="#" class="f1-s-12 cl8 hov-link1">
+                                    <a class="f1-s-12 cl8 hov-link1">
                                         {{ $post->user->name }}
                                     </a>
                                 </div>
@@ -127,7 +127,7 @@
                                 </span>
 
                                 <div class="flex-wr-s-s size-w-0">
-                                    <a href="#" class="f1-s-12 cl8 hov-link1 m-r-15">
+                                    <a href="{{ route('subCategories.show', ['slug' => $post->subCategory->category->slug, 'subSlug' => $post->subCategory->slug]) }}" class="f1-s-12 cl8 hov-link1 m-r-15">
                                         {{ $post->subCategory->name }}
                                     </a>
                                 </div>

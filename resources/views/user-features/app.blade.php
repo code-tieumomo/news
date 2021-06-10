@@ -75,13 +75,31 @@
                             </a>
                         </li>
 
-                        <li class="side-item side-item-category">Request</li>
-                        <li id="list-menu-user" class="slide">
-                            <a id="menu-post" class="side-menu__item" href="{{ route('request.show-become-writer') }}">
-                                <img class="side-menu__icon" src="{{ asset('admin-assets/images/icons/posts.png') }}" width="24px"/>
-                                <span class="side-menu__label">Become Writer</span>
-                            </a>
-                        </li>
+                        @hasrole('user')
+                            <li class="side-item side-item-category">Request</li>
+                            <li id="list-menu-user" class="slide">
+                                <a id="menu-post" class="side-menu__item" href="{{ route('request.show-become-writer') }}">
+                                    <img class="side-menu__icon" src="{{ asset('admin-assets/images/icons/posts.png') }}" width="24px"/>
+                                    <span class="side-menu__label">Become Writer</span>
+                                </a>
+                            </li>
+                        @endhasrole
+
+                        @hasrole('writer')
+                            <li class="side-item side-item-category">Posts</li>
+                            <li id="list-menu-user" class="slide">
+                                <a id="menu-post" class="side-menu__item" href="{{ route('writer.posts') }}">
+                                    <img class="side-menu__icon" src="{{ asset('admin-assets/images/icons/posts.png') }}" width="24px"/>
+                                    <span class="side-menu__label">Manage Posts</span>
+                                </a>
+                            </li>
+                            <li id="list-menu-user" class="slide">
+                                <a id="menu-post" class="side-menu__item" href="{{ route('writer.create') }}">
+                                    <img class="side-menu__icon" src="{{ asset('admin-assets/images/icons/posts.png') }}" width="24px"/>
+                                    <span class="side-menu__label">Create Posts</span>
+                                </a>
+                            </li>
+                        @endhasrole
                     </ul>
                 </aside>
                 <!--aside closed-->

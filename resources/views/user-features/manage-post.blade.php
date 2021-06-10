@@ -1,4 +1,6 @@
-@extends('admin.layout.app')
+@extends('user-features.app')
+
+@section('title', {{ $post->title . ' | User Features' }})
 
 @section('custom-css')
     <!-- Simplebar css -->
@@ -15,8 +17,7 @@
         <div class="page-leftheader">
             <h4 class="page-title mb-0">Post Detail: {{ $post->title }}</h4>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a><i class="fe fe-layout  mr-2 fs-14"></i>CRUD</a></li>
-                <li class="breadcrumb-item"><a></i>Posts</a></li>
+                <li class="breadcrumb-item"><a><i class="fe fe-layout  mr-2 fs-14"></i>Posts</a></li>
                 <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('manage-posts.index') }}">Posts</a></li>
             </ol>
         </div>
@@ -41,7 +42,6 @@
                     <div class="item7-card-desc d-md-flex mb-5">
                         <a class="d-flex mr-4 mb-2"><i class="fe fe-calendar fs-16 mr-1"></i><div class="mt-0">Created: {{ $post->created_at->toDateTimeString() }}</div></a>
                         <a class="d-flex mr-4 mb-2"><i class="fe fe-calendar fs-16 mr-1"></i><div class="mt-0">Last Modified: {{ $post->updated_at->toDateTimeString() }}</div></a>
-                        <a class="d-flex mb-2"><i class="fe fe-user fs-16 mr-1"></i><div class="mt-0">{{ $post->user->name }}</div></a>
                         <div class="ml-auto mb-2">
                             <a class="mr-0 d-flex" href="#list-comments"><i class="fe fe-message-square fs-16 mr-1"></i><div class="mt-0">{{ count($post->comments) }} Comments</div></a>
                         </div>
@@ -61,11 +61,6 @@
                                 <button id="btn-delete-post" data-id="{{ $post->id }}" href="javascript:void(0)" class="btn btn-danger new ml-3"><i class="fe fe-trash-2 fs-16"></i> Delete</button>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div id="card-post-loader" class="card-body">
-                    <div class="dimmer active">
-                        <div class="lds-hourglass"></div>
                     </div>
                 </div>
             </form>
@@ -117,7 +112,7 @@
                 </div>
                 <div id="modal-body" class="modal-body">
                     <input class="form-control" type="text" name="comment">
-                    <table class="table border">
+                    <table class="table border" style="display: none;">
                         <tr>
                             <td>Mysql id</td>
                             <td id="modal-mysql-id"></td>
@@ -151,14 +146,9 @@
     <!--INTERNAL Form Advanced Element -->
     <script src="{{ asset('admin-assets/js/file-upload.js') }}"></script>
     <script type="text/javascript">
-        document.title = '{{ $post->title }} | UET-News';
         CKEDITOR.config.height = 1000;
         let editor = CKEDITOR.replace('editor');
         editor.setData(`{!! $post->content !!}`);
-        $('#menu-post').addClass('active');
-        $('nav[role=navigation]').hide();
-        $('#card-post-loader').hide();
-        $('#card-comments-loader').hide();
 
         $('#btn-delete-post').on('click', function(event) {
             event.preventDefault();
@@ -200,7 +190,7 @@
                                 'Post has been deleted.',
                                 'success'
                             );
-                            window.location.replace('/admin/manage-posts');
+                            window.location.replace('/user-features/posts');
                         } else {
                             Swal.fire(
                                 'Oops!',

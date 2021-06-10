@@ -20,9 +20,9 @@
                 <div class="card-body">
                     <p class=" mb-1 ">Total Posts</p>
                     <h2 class="mb-1 number-font">{{ $totalPosts }}</h2>
-                    <small class="fs-12 text-muted">Compared to All Time</small>
-                    <span class="ratio bg-warning">{{ round($totalPosts/1000*100) }}%</span>
-                    <span class="ratio-text text-muted">Goals: 1000</span>
+                    <small class="fs-12 text-muted">posts</small>
+                    <span class="ratio bg-warning"></span>
+                    <span class="ratio-text text-muted"></span>
                 </div>
             </div>
         </div>
@@ -31,9 +31,9 @@
                 <div class="card-body">
                     <p class=" mb-1 ">Total User</p>
                     <h2 class="mb-1 number-font">{{ $totalUsers }}</h2>
-                    <small class="fs-12 text-muted">Compared to All Time</small>
-                    <span class="ratio bg-info">{{ round($totalUsers/1000*100) }}%</span>
-                    <span class="ratio-text text-muted">Goals: 1000</span>
+                    <small class="fs-12 text-muted">users</small>
+                    <span class="ratio bg-info"></span>
+                    <span class="ratio-text text-muted"></span>
                 </div>
             </div>
         </div>
@@ -42,9 +42,9 @@
                 <div class="card-body">
                     <p class=" mb-1 ">Total Writer</p>
                     <h2 class="mb-1 number-font">{{ $totalWriters }}</h2>
-                    <small class="fs-12 text-muted">Compared to All Time</small>
-                    <span class="ratio bg-danger">{{ round($totalWriters/100*100) }}%</span>
-                    <span class="ratio-text text-muted">Goals: 100</span>
+                    <small class="fs-12 text-muted">writers</small>
+                    <span class="ratio bg-danger"></span>
+                    <span class="ratio-text text-muted"></span>
                 </div>
             </div>
         </div>
@@ -53,7 +53,7 @@
                 <div class="card-body">
                     <p class=" mb-1">Total Comments</p>
                     <h2 class="mb-1 number-font">{{ $totalComments }}</h2>
-                    <small class="fs-12 text-muted">Compared to All Time</small>
+                    <small class="fs-12 text-muted">comments</small>
                     <span class="ratio bg-success"><a href="#"></a></span>
                     <span class="ratio-text text-muted"></span>
                 </div>
@@ -71,13 +71,28 @@
                     <div class="card-options">
                         <a href="#" class="option-dots" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fe fe-more-horizontal fs-20"></i></a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <button id="btn-refresh-recent-users" class="dropdown-item">Refresh</button>
-                            <button class="dropdown-item">View all</button>
+                            <a href="/admin/users" class="dropdown-item">View all</a>
                         </div>
                     </div>
                 </div>
                 <div id="card-recent-users" class="card-body">
-                    {{-- Recent users go here --}}
+                    @foreach ($recentUsers as $user)
+                        <div class="list-card">
+                            <span class="bg-primary list-bar"></span>
+                            <div class="row align-items-center">
+                                <div class="col-9 col-sm-9">
+                                    <div class="media mt-0">
+                                        <img src="{{ asset('client-assets/images/users/user-sample.png') }}" alt="img" class="avatar brround avatar-md mr-3">
+                                        <div class="media-body">
+                                            <div class="d-md-flex align-items-center mt-1">
+                                                <h6 class="mb-1">{{ $user->name }}</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -88,13 +103,28 @@
                     <div class="card-options">
                         <a href="#" class="option-dots" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fe fe-more-horizontal fs-20"></i></a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <button id="btn-refresh-recent-writers" class="dropdown-item">Refresh</button>
-                            <button class="dropdown-item">View all</button>
+                            <a href="/admin/writers" class="dropdown-item">View all</a>
                         </div>
                     </div>
                 </div>
                 <div id="card-recent-writers" class="card-body">
-                    {{-- Recent writers go here --}}
+                    @foreach ($recentWriters as $user)
+                        <div class="list-card">
+                            <span class="bg-primary list-bar"></span>
+                            <div class="row align-items-center">
+                                <div class="col-9 col-sm-9">
+                                    <div class="media mt-0">
+                                        <img src="{{ asset('client-assets/images/users/user-sample.png') }}" alt="img" class="avatar brround avatar-md mr-3">
+                                        <div class="media-body">
+                                            <div class="d-md-flex align-items-center mt-1">
+                                                <h6 class="mb-1">{{ $user->name }}</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -257,102 +287,6 @@
 
 @section('custom-js')
     <script type="text/javascript">
-        $('#menu-dashboard').addClass('active');
 
-        var database = firebase.database();
-        var recentWritersRef = database.ref('recentWriters');
-        recentWritersRef.on('value', (snapshot) => {
-            $('#card-recent-writers').empty();
-            const recentWriters = snapshot.val();
-            Object.entries(recentWriters).forEach(function(recentWriter, order) {
-                var html = `
-                    <div class="list-card">
-                        <span class="bg-primary list-bar"></span>
-                        <div class="row align-items-center">
-                            <div class="col-9 col-sm-9">
-                                <div class="media mt-0">
-                                    <img src="/admin-assets/images/users/${recentWriter['0']}.jpg" alt="img" class="avatar brround avatar-md mr-3">
-                                    <div class="media-body">
-                                        <div class="d-md-flex align-items-center mt-1">
-                                            <h6 class="mb-1">${recentWriter['1']}</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-3 col-sm-3">
-                                <div class="text-right">
-                                    <span class="font-weight-semibold fs-16 number-font">#${recentWriter['0']}</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                $('#card-recent-writers').prepend(html);
-            });
-        });
-
-        var recentUsersRef = database.ref('recentUsers');
-        recentUsersRef.on('value', (snapshot) => {
-            $('#card-recent-users').empty();
-            const recentUsers = snapshot.val();
-            Object.entries(recentUsers).forEach(function(recentUser, order) {
-                var html = `
-                    <div class="list-card">
-                        <span class="bg-primary list-bar"></span>
-                        <div class="row align-items-center">
-                            <div class="col-9 col-sm-9">
-                                <div class="media mt-0">
-                                    <img src="/admin-assets/images/users/${recentUser['0']}.jpg" alt="img" class="avatar brround avatar-md mr-3">
-                                    <div class="media-body">
-                                        <div class="d-md-flex align-items-center mt-1">
-                                            <h6 class="mb-1">${recentUser['1']}</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-3 col-sm-3">
-                                <div class="text-right">
-                                    <span class="font-weight-semibold fs-16 number-font">#${recentUser['0']}</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                $('#card-recent-users').prepend(html);
-            });
-        });
-
-        var recentClientActivitiesRef = database.ref('recentClientActivities').orderByKey().limitToLast(6);
-        recentClientActivitiesRef.on('value', (snapshot) => {
-            $('#list-recent-client-activities').empty();
-            const recentClientActivities = snapshot.val();
-            Object.entries(recentClientActivities).forEach(([key, activity]) => {
-                var html = `
-                    <li class="mt-0">
-                        <div class="d-flex"><span class="time-data">${activity['activity']}</span><span class="ml-auto text-muted fs-11">${activity['time']}</span></div>
-                        <p class="text-muted fs-12"><span class="text-info">${activity['description']}</a></p>
-                    </li>
-                `;
-                $('#list-recent-client-activities').prepend(html);
-            });
-        });
-
-        var recentPendingPostsRef = database.ref('recentPendingPosts').orderByKey().limitToLast(6);
-        recentPendingPostsRef.on('value', (snapshot) => {
-            $('#tbl-recent-pending-posts').empty();
-            const recentPendingPosts = snapshot.val();
-            Object.entries(recentPendingPosts).forEach(([key, post]) => {
-                var html = `
-                    <tr class="mb-0">
-                        <td class="font-weight-bold">${post['title'].substr(0, 40) + ' ...'}</td>
-                        <td>${post['writer']}</td>
-                        <td>${post['sumary'].substr(0, 40) + ' ...'}</td>
-                        <td><a href="#"><span class="badge badge-success">Approve</span></a></td>
-                        <td><a href="#"><span class="badge badge-danger">Deny</span></a></td>
-                    </tr>
-                `;
-                $('#tbl-recent-pending-posts').prepend(html);
-            });
-        });
     </script>
 @endsection
